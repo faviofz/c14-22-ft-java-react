@@ -7,6 +7,7 @@
 ### Commit type
 - **`fix`**: solución de un problema.
 - **`feat`**: incluir un nuevo recurso en la base
+- **`ui`**: nueva interface de usuario.
 - **`test`**: agrega/refactoriza pruebas sin alteración en la producción.
 - **`refactor`**: refactoriza el código en producción.
 - **`docs`**: altera la documentación.

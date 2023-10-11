@@ -1,9 +1,21 @@
-import Login from "./views/pages/Login";
+
+import { Outlet, Link } from 'react-router-dom';
 
 function App() {
   return (
     <>
-      <Login/>
+      <nav>
+        <ul>
+          <li>
+            <Link to='/'>Home</Link>
+          </li>
+          <li>
+            <Link to='/register'>Register</Link>
+          </li>
+        </ul>
+      </nav>
+      <Outlet />
+
     </>
   );
 }
