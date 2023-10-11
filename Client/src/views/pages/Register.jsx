@@ -1,14 +1,14 @@
 import imgRegister from '../../assets/images/imgRegister.png';
 import logo from '../../assets/logo/logo-blue.svg';
 
-import { Link } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 export const Register = () => {
   return (
     <div className='bg-base-200 h-[100vh]'>
-      <div className='flex flex-row'>
+      <div className='grid grid-cols-2 '>
         {/* LEFT */}
-        <div className='hidden'>
+        <div className=''>
           {/* Image */}
           <img
             src={imgRegister}
