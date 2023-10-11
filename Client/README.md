@@ -1,8 +1,27 @@
-# React + Vite
+# StockWise
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Semantic commits
+
+### Commit type
+- **`fix`**: solución de un problema.
+- **`feat`**: incluir un nuevo recurso en la base
+- **`test`**: agrega/refactoriza pruebas sin alteración en la producción.
+- **`refactor`**: refactoriza el código en producción.
+- **`docs`**: altera la documentación.
+- **`style`**: altera el formato sin modificar la producción.
+- **`chore`**: actualiza tareas sin alteraciones de producción.
+- **`ci`**: modifica archivos y *scripts* de configuración de CI.
+- **`build`**: altera el sistema de compilación o las dependencias externas.
+- **`perf`**: mejora el desempeño.
+- **`improvement`**: añade mejoras en la implementación actual sin agregar nuevos recursos o corregir problemas.
+- **`env`**: modifica archivos de configuración.
+
+### Commit
+```bash
+git commit -m <commit-type>(scope): <descripcion>
+```
+```bash
+git commit -m "improvement(frontend): Config absolute rutes"
+```
