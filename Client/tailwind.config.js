@@ -6,10 +6,9 @@ export default {
       {
         projectLight: {
           primary: '#3378FF',
-          neutral: '#ffffff',
+          neutral: '#545F7',
           accent: '#5A1846',
           'base-100': '#FCFCFC',
-          'base-900': '#545F7',
         },
         projectDark: {
           primary: '#3378FF',

@@ -37,9 +37,12 @@ export default function Login() {
                   type='password'
                   placeholder='Contraseña'
                   className='w-[347px] input input-bordered  max-w-xs'
+
                 />
               </div>
+            </div>
             </nav>
+
             <div className='flex mt-5 justify-center items-center'>
               <button className='first:w-[347px] h-12 px-4 py-3 bg-blue-500 rounded-md justify-center items-center gap-2.5 inline-flex text-center text-white text-base font-semibold'>
                 Ingresar
@@ -49,6 +52,7 @@ export default function Login() {
               Olvidaste tu contraseña
             </p>
           </div>
+
           <p className='mt-5 text-white md:text-black'>
             No tienes Cuenta?Registrare
           </p>
