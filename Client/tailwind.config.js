@@ -22,7 +22,11 @@ export default {
     ],
   },
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lexend: ['Lexend'],
+      },
+    },
   },
   plugins: [require('daisyui')],
 };

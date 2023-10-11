@@ -1,4 +1,3 @@
-
 import { Outlet, Link } from 'react-router-dom';
 
 function App() {
@@ -15,10 +14,12 @@ function App() {
           <li>
             <Link to='/login'>Login</Link>
           </li>
+          <li>
+            <Link to='/forgot-password'>¿Olvidaste tu Contraseña?</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
-
     </>
   );
 }
