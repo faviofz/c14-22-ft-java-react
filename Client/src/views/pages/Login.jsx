@@ -1,7 +1,6 @@
 // Imports
 import Img from '../../assets/svg/Login/img-login.png';
 import Logo from "../../assets/svg/logo.png"
-//////
 export default function Login() {
   return (
     <div>
