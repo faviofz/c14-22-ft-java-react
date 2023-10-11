@@ -7,6 +7,8 @@ export const Login = () => {
     <div>
       <section className='flex w-full h-screen'>
         <section className='bg-[#EDF2F4] w-[40%] flex-col flex justify-evenly items-center'>
+         
+         
           <div className='w-[400px] h-[360px] mt-16 bg-neutral-50 rounded-[35px] shadow'>
             <p className="text-center mt-8  text-slate-800 text-[28px] font-semibold font-['Lexend']">
               Acceda a su cuenta
@@ -16,13 +18,21 @@ export const Login = () => {
                 <label>Email</label>
                 <input className='w-[321px]' type='email' />
               </div>
-              <div className='flex flex-col'>
-                <label>Contraseña</label>
-                <input className='w-[321px]' type='email' />
+              <div>
+              <div className='w-full max-w-xs form-control'>
+                <label className='label'>
+                  <span className='label-text'>Contrase;a</span>
+                </label>
+                <input
+                  type='text'
+                  placeholder='Type here'
+                  className='w-full max-w-xs input input-bordered'
+                />
               </div>
+            </div>
             </nav>
             <div className='flex items-center justify-center mt-5'>
-              <button className='first:w-[347px] h-12 px-4 py-3 bg-blue-500 rounded-md justify-center items-center gap-2.5 inline-flex text-center text-white text-base font-semibold'>
+              <button className='btn btn-primary w-[347px]'>
                 Ingresar
               </button>
             </div>
@@ -30,6 +40,9 @@ export const Login = () => {
               Olvidaste tu contraseña
             </p>
           </div>
+
+
+
           <p className='mt-5'>No tienes Cuenta?Registrare</p>
           <p className="text-slate-800 text-xs font-normal mt-12 font-['Lexend'] leading-snug">
             © 2023, StockWise. Todos los derechos reservados.
