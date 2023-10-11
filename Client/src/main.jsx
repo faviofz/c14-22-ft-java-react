@@ -6,7 +6,8 @@ import App from './App.jsx';
 
 
 import '../index.css'
-import { Register } from './views/layout/Register.jsx';
+import { Register } from './views/pages/Register.jsx';
+import { Login } from './views/pages/Login.jsx';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path='/' element={<App />}>
           <Route path='/register' element={<Register />}/>
+          <Route path='/login' element={<Login />}/>
         </Route>
       </Routes>
     </BrowserRouter>

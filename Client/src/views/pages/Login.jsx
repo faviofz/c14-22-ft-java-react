@@ -1,7 +1,8 @@
 // Imports
 import Img from '../../assets/svg/Login/img-login.png';
-import Logo from "../../assets/svg/logo.png"
-export default function Login() {
+import Logo from '../../assets/svg/logo.png';
+
+export const Login = () => {
   return (
     <div>
       <section className='flex w-full h-screen'>
@@ -10,7 +11,7 @@ export default function Login() {
             <p className="text-center mt-8  text-slate-800 text-[28px] font-semibold font-['Lexend']">
               Acceda a su cuenta
             </p>
-            <nav className='flex items-center flex-col gap-4 mt-4'>
+            <nav className='flex flex-col items-center gap-4 mt-4'>
               <div className='flex flex-col'>
                 <label>Email</label>
                 <input className='w-[321px]' type='email' />
@@ -20,7 +21,7 @@ export default function Login() {
                 <input className='w-[321px]' type='email' />
               </div>
             </nav>
-            <div className='flex mt-5 justify-center items-center'>
+            <div className='flex items-center justify-center mt-5'>
               <button className='first:w-[347px] h-12 px-4 py-3 bg-blue-500 rounded-md justify-center items-center gap-2.5 inline-flex text-center text-white text-base font-semibold'>
                 Ingresar
               </button>
@@ -29,25 +30,29 @@ export default function Login() {
               Olvidaste tu contraseña
             </p>
           </div>
-            <p className='mt-5'>
-              No tienes Cuenta?Registrare
-            </p>
-            <p className="text-slate-800 text-xs font-normal mt-12 font-['Lexend'] leading-snug">© 2023, StockWise. Todos los derechos reservados.</p>
+          <p className='mt-5'>No tienes Cuenta?Registrare</p>
+          <p className="text-slate-800 text-xs font-normal mt-12 font-['Lexend'] leading-snug">
+            © 2023, StockWise. Todos los derechos reservados.
+          </p>
         </section>
         <section
           className='w-[60%] bg-cover bg-center'
           style={{ backgroundImage: `url(${Img})` }}
         >
-        <section className='flex  flex-col mt-28 ml-20'>
-          <img className='w-[392px] h-[80px] mb-20' src={Logo} alt='logo' />
-          <section className=''>
-          <h2 className="w-[454px] h-[147px] text-neutral-50 text-[43px] font-semibold font-['Lexend'] leading-[46px]">Solución que facilita la gestión diaria de tu negocio.</h2>
-          <div className='flex items-center  gap-5'>
-            <p>No tienes Cuenta?</p> <button  className='px-4 py-2 bg-neutral-50 rounded-md border border-blue-500  text-blue-400'>Registrate</button>
-          </div>
+          <section className='flex flex-col ml-20 mt-28'>
+            <img className='w-[392px] h-[80px] mb-20' src={Logo} alt='logo' />
+            <section className=''>
+              <h2 className="w-[454px] h-[147px] text-neutral-50 text-[43px] font-semibold font-['Lexend'] leading-[46px]">
+                Solución que facilita la gestión diaria de tu negocio.
+              </h2>
+              <div className='flex items-center gap-5'>
+                <p>No tienes Cuenta?</p>{' '}
+                <button className='px-4 py-2 text-blue-400 border border-blue-500 rounded-md bg-neutral-50'>
+                  Registrate
+                </button>
+              </div>
+            </section>
           </section>
-          </section>
-         
         </section>
       </section>
     </div>
