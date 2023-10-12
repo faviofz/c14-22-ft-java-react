@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export function StartLayout() {
   return (
     <>
-      <nav className='text-black'>
+      <nav className='text-black absolute z-10'>
         <ul>
           <li>
             <Link to='/'>Home</Link>

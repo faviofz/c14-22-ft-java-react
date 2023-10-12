@@ -1,3 +1,12 @@
 .panel-component{
     box-shadow: 0 0 20px rgba($color: #000000, $alpha: .1);
+    .card-title{
+        margin-bottom: 1rem;
+    }
+}
+
+[data-theme='projectDark']{
+    .panel-component{
+        border: solid .05rem #3378FF;
+    }
 }

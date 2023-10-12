@@ -4,5 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --color-primary: #3378FF;
+}
 
+body{
+    font-size: 14px;
+}
 
+a{
+    color: var(--color-primary);
+}
+
+p{
+    word-break: break-all;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+}

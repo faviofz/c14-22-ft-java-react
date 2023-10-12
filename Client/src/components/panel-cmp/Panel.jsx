@@ -3,9 +3,9 @@ import './panel.scss';
 
 export function Panel({ children, title = '' }) {
   return (
-    <section className='panel-component card w-auto bg-neutral'>
+    <section className='panel-component card w-auto bg-base-200'>
       <div className='card-body'>
-        <h2 className='card-title block text-center'>{title}</h2>
+        <h2 className='card-title block text-center text-2xl'>{title}</h2>
         {children}
       </div>
     </section>
