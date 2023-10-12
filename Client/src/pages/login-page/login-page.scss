@@ -1,0 +1,60 @@
+.login-page{
+    header{
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+
+        .logo-component{
+            width: 20em;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+
+        h1{
+            display: none;
+
+            & + div{
+                display: none;
+            }
+        }
+        
+    }
+
+    .panel-component{
+        width: 100%;
+        margin-bottom: 1rem;
+
+        form + a{
+            text-align: center;
+        }
+    }
+
+    @media (min-width:900px) {
+        header{
+            position: relative;
+            align-items: flex-start;
+            
+
+            h1{
+                display: block;
+                font-size: 2.5em;
+                line-height: 1em;
+                font-weight: bold;
+                margin-bottom: 1em;
+
+                 & + div{
+                    display: block;
+                }
+            }
+        }
+    }
+
+    @media (min-width:1100px){
+        header{
+            font-size: 1.15em;
+            width: 27em
+        }
+    }
+}

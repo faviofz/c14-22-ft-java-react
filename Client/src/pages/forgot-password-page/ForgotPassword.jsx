@@ -1,7 +1,7 @@
 import { Panel, Input, Button, Footer, Logo } from '@/components';
 import { DoubleColumnLayout } from '@/layout';
-import './forgot-password-page.scss';
 import { Link } from 'react-router-dom';
+import './forgot-password-page.scss';
 
 export function ForgotPassword() {
   return (
@@ -11,7 +11,7 @@ export function ForgotPassword() {
           <header>
             <Logo />
             <div>
-              ¿No tiene una cuenta? <Link to='/'>Regístrese</Link>
+              ¿No tiene una cuenta? <Link to='/register'>Regístrese</Link>
             </div>
           </header>
           <Panel title='¿Olvidaste tu contraseña?'>
@@ -22,7 +22,7 @@ export function ForgotPassword() {
             <form>
               <Input
                 label='Correo electrónico'
-                placeholder='Ingresa tu contraseña'
+                placeholder='Ingresa tu correo electrónico'
               />
               <Button>Solicitar restablecimiento de contraseña</Button>
             </form>
