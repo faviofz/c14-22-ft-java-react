@@ -1,1 +1,1 @@
-export * from './panel-comp/Panel';
+export * from './panel-cmp/Panel';
