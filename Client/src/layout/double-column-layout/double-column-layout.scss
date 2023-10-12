@@ -1,6 +1,7 @@
 .dc-layout{
     display: flex;
     flex-direction: column;
+    align-items: stretch;
     min-height: 100vh;
     position: relative;
 
@@ -22,11 +23,11 @@
     &-right{
         position: absolute;
         inset: 0;
-        margin: auto;
+        
 
         &::after{
             content: '';
-            background-image: url(@/assets/images/interior-gran-almacen-distribucion-estantes-apilados-paletas-productos-listos-mercado.png);
+            background-image: url(@/assets/images/bg-stockwise.webp);
             background-size: cover;
             opacity: .2;
             position: absolute;
