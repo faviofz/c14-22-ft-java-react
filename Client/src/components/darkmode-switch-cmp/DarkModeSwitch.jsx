@@ -25,5 +25,6 @@ export function DarkModeSwitch() {
       />
       {darkmode ? 'Modo oscuro' : 'Modo claro'}
     </div>
+
   );
 }
