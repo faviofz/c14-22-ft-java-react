@@ -1,0 +1,67 @@
+.dc-layout{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+
+    &-left,
+    &-right{
+        flex: 1;
+        padding: 1.5rem;
+        min-height: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-left{
+        position: relative;
+        z-index: 1;        
+    }
+    &-right{
+        position: absolute;
+        inset: 0;
+        margin: auto;
+
+        &::after{
+            content: '';
+            background-image: url(@/assets/images/interior-gran-almacen-distribucion-estantes-apilados-paletas-productos-listos-mercado.png);
+            background-size: cover;
+            opacity: .2;
+            position: absolute;
+            inset: 0;
+            mix-blend-mode: luminosity;
+        }
+    }
+
+    header{
+        position: absolute;
+        top: 1.5rem;
+        left: 1rem;
+        right: 1rem;
+    }
+    footer{
+        position: absolute;
+        bottom: 1.5rem;
+    }
+
+    @media (min-width:450px) {
+        .panel-component{
+            width: 400px;
+        }
+    }
+    @media (min-width:900px) {
+        &-double{
+            flex-direction: row;
+            &-reverse{
+                flex-direction: row-reverse;
+            }
+            .dc-layout-right{
+                position: relative;
+            }
+        }
+
+        
+    }
+}
