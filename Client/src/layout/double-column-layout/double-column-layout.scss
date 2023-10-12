@@ -48,7 +48,7 @@
 
     @media (min-width:450px) {
         .panel-component{
-            width: 400px;
+            width: 400px !important;
         }
     }
     @media (min-width:900px) {
