@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { StartLayout } from '@/layout';
-import { Login, Register, ForgotPassword } from '@/views/pages';
+import { Login, Register, ForgotPassword } from '@/pages';
 
 export function MainRoutes() {
   return (

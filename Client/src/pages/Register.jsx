@@ -1,7 +1,7 @@
-import imgRegister from '../../assets/images/imgRegister.png';
-import logo from '../../assets/logo/logo-blue.svg';
+import imgRegister from '@/assets/images/imgRegister.png';
+import logo from '@/assets/logo/logo-blue.svg';
 
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const Register = () => {
   return (
