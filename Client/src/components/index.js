@@ -3,3 +3,4 @@ export * from './input-cmp/Input';
 export * from './button-cmp/Button';
 export * from './footer-cmp/Footer';
 export * from './logo-cmp/Logo';
+export * from './darkmode-switch-cmp/DarkModeSwitch';
