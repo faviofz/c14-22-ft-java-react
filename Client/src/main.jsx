@@ -13,6 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
