@@ -1,27 +1,9 @@
-import { Outlet, Link } from 'react-router-dom';
+import { MainRoutes } from '@/routes';
 
-function App() {
+export function App() {
   return (
     <>
-      <nav className='text-black'>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/register'>Register</Link>
-          </li>
-          <li>
-            <Link to='/login'>Login</Link>
-          </li>
-          <li>
-            <Link to='/forgot-password'>¿Olvidaste tu Contraseña?</Link>
-          </li>
-        </ul>
-      </nav>
-      <Outlet />
+      <MainRoutes />
     </>
   );
 }
-
-export default App;
