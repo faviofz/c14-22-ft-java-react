@@ -1,11 +1,9 @@
-import { Login } from '@/layout';
+import { MainRoutes } from '@/routes';
 
-function App() {
+export function App() {
   return (
     <>
-      <Login />
+      <MainRoutes />
     </>
   );
 }
-
-export default App;

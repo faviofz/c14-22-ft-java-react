@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router';
 import { Link } from 'react-router-dom';
 
-export function Login() {
+export function StartLayout() {
   return (
     <>
       <nav className='text-black'>
@@ -23,7 +23,6 @@ export function Login() {
       <section>
         <Outlet />
       </section>
-      ;
     </>
   );
 }
