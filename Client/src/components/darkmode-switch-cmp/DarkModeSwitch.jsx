@@ -16,7 +16,7 @@ export function DarkModeSwitch() {
       .setAttribute('data-theme', darkmode ? 'projectDark' : 'projectLight');
   }, [darkmode]);
   return (
-    <>
+    <div className='flex items-center gap-[.5rem]'>
       <input
         type='checkbox'
         className='toggle toggle-xs'
@@ -24,6 +24,7 @@ export function DarkModeSwitch() {
         onChange={handleChange}
       />
       {darkmode ? 'Modo oscuro' : 'Modo claro'}
-    </>
+    </div>
+
   );
 }

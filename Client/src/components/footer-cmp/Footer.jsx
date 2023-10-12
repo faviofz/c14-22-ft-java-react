@@ -2,7 +2,7 @@ import { DarkModeSwitch } from '../darkmode-switch-cmp/DarkModeSwitch';
 
 export function Footer() {
   return (
-    <footer className='flex items-center gap-[.5rem]'>
+    <footer className='footer-component flex items-center gap-[.5rem] flex-col'>
       © {new Date().getFullYear()}, StockWise. Todos los derechos reservados.
       <DarkModeSwitch />
     </footer>
