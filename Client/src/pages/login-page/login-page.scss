@@ -24,7 +24,6 @@
             color: white;
         }
     }
-
     .panel-component{
         width: 100%;
         margin-bottom: 1rem;
@@ -42,7 +41,6 @@
             }
         }
     }
-    
     .dc-layout{
         &-right{
             background-color: #3378FF; 
@@ -53,8 +51,6 @@
             }
         }
     }
-    
-
     @media (min-width:900px) {
         header{
             position: relative;
@@ -67,11 +63,6 @@
                 font-weight: bold;
                 margin-bottom: 1em;
             }
-
-            // div{
-            //     display: block;
-                
-            // }
         }
         .panel-component{
             & + div{
@@ -90,11 +81,20 @@
             }
         }
     }
-
     @media (min-width:1100px){
         header{
             font-size: 1.15em;
             width: 27em
+        }
+    }
+    @media (max-height:500px) {
+        footer{
+            margin-top: 3rem;
+            position: relative;
+            inset: auto;
+        }
+        .panel-component{
+            margin-top: 7rem;
         }
     }
 }
@@ -106,6 +106,14 @@
             &-right{
                 background-color: #2B2D42
             }
+        }
+        .panel-component{
+            & + div{
+                color: white;
+            }
+        }
+        footer{          
+            color: white !important;
         }
     }
 }
