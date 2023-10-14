@@ -15,7 +15,10 @@ export const Login = () => {
                 placeholder='Ingresa tu correo electrónico'
               />
               <Input label='Contraseña' placeholder='Ingresa tu contraseña' />
-              <Button>Ingresar</Button>
+              
+              {/* Acceso para mostrar dashboard */}
+              <Link to={'/dashboard'}><Button>Ingresar</Button></Link>
+            
             </form>
             <Link to='/forgot-password'>¿Olvidaste tu contraseña?</Link>
           </Panel>

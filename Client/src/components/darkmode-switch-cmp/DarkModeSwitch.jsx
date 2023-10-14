@@ -16,14 +16,14 @@ export function DarkModeSwitch() {
       .setAttribute('data-theme', darkmode ? 'projectDark' : 'projectLight');
   }, [darkmode]);
   return (
-    <div className='flex items-center gap-[.5rem]'>
+    <div className='flex items-center justify-between gap-[.5rem]'>
+      {darkmode ? 'Modo oscuro' : 'Modo claro'}
       <input
         type='checkbox'
-        className='toggle toggle-xs'
+        className='toggle toggle-xs toggle-primary'
         checked={darkmode}
         onChange={handleChange}
       />
-      {darkmode ? 'Modo oscuro' : 'Modo claro'}
     </div>
 
   );
