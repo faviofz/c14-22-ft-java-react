@@ -5,23 +5,40 @@ import {
   RefreshSVG,
   TruckSVG,
   BellSVG,
-  RowDownSVG,
+  BarsSVG,
 } from '@/assets/svg';
 import { Avatar } from '@/assets/images';
 import { Link } from 'react-router-dom';
 import { DarkModeSwitch } from '../darkmode-switch-cmp/DarkModeSwitch';
-import { useEffect, useState } from 'react';
 
 export default function Navbar() {
-
   return (
-    <nav className='flex flex-row'>
-      <div className='min-w-[256px] h-[100vh] bg-base-200 rounded-e-3xl shadow flex flex-col gap-10 pt-10'>
-        <div className='flex justify-center w-full'>
-          <Logo />
+    <nav className='sticky top-0 flex flex-row justify-between bg-base-100 lg:justify-between'>
+      <div className='z-10 my-5 ml-5 lg:ml-0 lg:my-0 lg:drawer-open'>
+        <input id='my-drawer-2' type='checkbox' className='drawer-toggle' />
+        <div className='flex'>
+          {/* Page content here */}
+          <label
+            htmlFor='my-drawer-2'
+            className='btn btn-circle drawer-button lg:hidden'
+          >
+            <img src={BarsSVG} alt='bars' />
+          </label>
         </div>
-        <div>
-          <ul className=' menu'>
+        <div className='drawer-side'>
+          <label
+            htmlFor='my-drawer-2'
+            aria-label='close sidebar'
+            className='drawer-overlay'
+          ></label>
+
+          <ul className='min-h-full p-4 menu w-80 bg-base-200 text-base-content'>
+            {/* Sidebar content here */}
+            <li>
+              <div className='flex justify-center w-full mb-10'>
+                <Logo />
+              </div>
+            </li>
             <li>
               <Link to={'/product'} className='text-secondary'>
                 <img src={IconProductSVG} alt='icon-product' />
@@ -63,19 +80,42 @@ export default function Navbar() {
           </ul>
         </div>
       </div>
-      <div className='flex flex-row items-center justify-end w-full h-20 gap-5 pr-5'>
-        <img width={30} height={30} src={BellSVG} alt='bell' />
-        <div className='dropdown dropdown-end'>
+
+      <div className='my-5 lg:hidden'>
+        <Logo />
+      </div>
+
+      <div className='flex flex-row gap-5 my-5 mr-5'>
+        <details className='dropdown dropdown-end max-lg:hidden'>
+          <summary className='m-1 btn btn-circle'>
+            <div className='indicator'>
+              <img width={25} height={25} src={BellSVG} alt='bell' />
+              <span className='badge badge-xs badge-primary indicator-item'></span>
+            </div>
+          </summary>
+          <ul className='p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52'>
+            <li>
+              <h1 className='menu-title'>Notificación</h1>
+            </li>
+            <li>
+              <a>Notificación 1</a>
+            </li>
+            <li>
+              <a>Notificación 2</a>
+            </li>
+          </ul>
+        </details>
+        <div className=' dropdown dropdown-end'>
           <label tabIndex={0}>
-            <div className='avatar'>
-              <div className='rounded-full '>
-                <img src={Avatar} />
+            <div className=' avatar'>
+              <div className='rounded-full shadow-lg '>
+                <img  src={Avatar} />
               </div>
             </div>
           </label>
           <ul
             tabIndex={0}
-            className={`dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-64 border-2 border-primary`}
+            className={`dropdown-content z-[1] menu p-2 m-1 shadow bg-base-200 rounded-box w-64 border-2 border-primary`}
           >
             <li>
               <div className='flex flex-row'>
@@ -90,6 +130,12 @@ export default function Navbar() {
                 </div>
               </div>
             </li>
+            <li className=''>
+              <Link className='text-secondary' to={''}>
+                <div className='badge badge-primary badge-xs'></div>
+                Notificación
+              </Link>
+            </li>
             <li className='border-t-2'>
               <DarkModeSwitch />
             </li>
@@ -98,6 +144,7 @@ export default function Navbar() {
                 Configuración
               </Link>
             </li>
+
             <li className='border-t-2'>
               <Link className='text-secondary' to={''}>
                 Ver política de privacidad
