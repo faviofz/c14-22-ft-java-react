@@ -5,4 +5,11 @@ import TruckSVG from './truck.svg';
 import BellSVG from './bell.svg';
 import RowDownSVG from './row-down.svg';
 
-export { IconProductSVG, DocumentReportSVG, RefreshSVG , TruckSVG, BellSVG,RowDownSVG };
+export {
+  IconProductSVG,
+  DocumentReportSVG,
+  RefreshSVG,
+  TruckSVG,
+  BellSVG,
+  RowDownSVG,
+};

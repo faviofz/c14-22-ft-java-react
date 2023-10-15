@@ -5,15 +5,12 @@ import {
   RefreshSVG,
   TruckSVG,
   BellSVG,
-  RowDownSVG,
 } from '@/assets/svg';
 import { Avatar } from '@/assets/images';
 import { Link } from 'react-router-dom';
 import { DarkModeSwitch } from '../darkmode-switch-cmp/DarkModeSwitch';
-import { useEffect, useState } from 'react';
 
 export default function Navbar() {
-
   return (
     <nav className='flex flex-row'>
       <div className='min-w-[256px] h-[100vh] bg-base-200 rounded-e-3xl shadow flex flex-col gap-10 pt-10'>
