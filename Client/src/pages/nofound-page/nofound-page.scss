@@ -1,0 +1,61 @@
+@import "@/assets/scss/vars.scss";
+
+.nofound{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    color: $base100;
+
+    .container{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+
+        @media (min-width:800px) {
+            flex-direction: row;
+            gap: 5em;
+        }
+    }
+    &-left,
+    &-right{
+        @media (min-width:800px) {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+    }
+    &-left{
+        @media (min-width:1020px) {
+            flex: .7;
+        }
+    }
+    &-right{
+        @media (min-width:800px) {
+            align-items: center;      
+        }
+    }
+    .image-404{
+        font-size: .9em;
+        transition: font-size .3s ease;
+        
+        @media (min-width:900px) {
+            font-size: 1em;
+        }
+        @media (min-width:1020px) {
+            font-size: 1.25em;
+        }
+    }
+
+    .btn{
+        margin-top: 1em;
+    }
+    
+}
+
+[data-theme='projectDark']{
+    .nofound{
+        background-color: transparent;
+    }
+}

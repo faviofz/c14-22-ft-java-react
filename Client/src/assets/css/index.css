@@ -1,27 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root{
-    --color-primary: #3378FF;
-}
-
-body{
-    font-size: 14px;
-}
-
-a{
-    color: var(--color-primary);
-}
-
-p{
-    word-break: break-all;
-}
-
-form{
-    display: flex;
-    flex-direction: column;
-    row-gap: .5rem;
-}

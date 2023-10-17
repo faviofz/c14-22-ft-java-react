@@ -1,20 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useDarkMode } from '@/hooks';
 
 export function DarkModeSwitch() {
-  const [darkmode, setDarkmode] = useState(
-    JSON.parse(localStorage.getItem('darkmode'))
-  );
+  const { darkmode, changeThemeMode } = useDarkMode();
 
-  const handleChange = e => {
-    localStorage.setItem('darkmode', JSON.stringify(e.target.checked));
-    setDarkmode(e.target.checked);
-  };
-
-  useEffect(() => {
-    document
-      .querySelector('html')
-      .setAttribute('data-theme', darkmode ? 'projectDark' : 'projectLight');
-  }, [darkmode]);
   return (
     <div className='flex items-center justify-between gap-[.5rem]'>
       {darkmode ? 'Modo oscuro' : 'Modo claro'}
@@ -22,9 +10,8 @@ export function DarkModeSwitch() {
         type='checkbox'
         className='toggle toggle-xs toggle-primary'
         checked={darkmode}
-        onChange={handleChange}
+        onChange={changeThemeMode}
       />
     </div>
-
   );
 }
