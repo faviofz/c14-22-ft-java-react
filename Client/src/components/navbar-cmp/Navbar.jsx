@@ -14,7 +14,7 @@ import { DarkModeSwitch } from '../darkmode-switch-cmp/DarkModeSwitch';
 export default function Navbar() {
   return (
     <nav className='sticky top-0 flex flex-row justify-between bg-base-100 lg:justify-between'>
-      <div className='z-10 my-5 ml-5 lg:ml-0 lg:my-0 lg:drawer-open'>
+      <div className='z-10 my-5 ml-5 lg:ml-0 lg:my-0 lg:drawer-open '>
         <input id='my-drawer-2' type='checkbox' className='drawer-toggle' />
         <div className='flex'>
           {/* Page content here */}
@@ -25,14 +25,14 @@ export default function Navbar() {
             <img src={BarsSVG} alt='bars' />
           </label>
         </div>
-        <div className='drawer-side'>
+        <div className='z-20 drawer-side'>
           <label
             htmlFor='my-drawer-2'
             aria-label='close sidebar'
             className='drawer-overlay'
           ></label>
 
-          <ul className='min-h-full p-4 menu w-80 bg-base-200 text-base-content'>
+          <ul className='z-20 min-h-full p-4 menu w-80 bg-base-200 text-base-content'>
             {/* Sidebar content here */}
             <li>
               <div className='flex justify-center w-full mb-10'>
