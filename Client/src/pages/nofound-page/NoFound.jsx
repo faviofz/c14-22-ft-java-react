@@ -1,24 +1,29 @@
-import { DoubleColumnLayout } from '@/layout';
+import { Link } from 'react-router-dom';
 import { Image404 } from './components';
 import './nofound-page.scss';
 
 export function NoFound() {
   return (
     <div className='nofound'>
-      <DoubleColumnLayout double={true}>
-        <DoubleColumnLayout.Left>
-          {/* <h1>
+      <div className='container'>
+        <div className='nofound-left'>
+          <h1 className='title'>
             <b>Ooops...</b>Página no encontrada
           </h1>
           <p>
-            Parece que esta página no existe. Comprueba la URL e inténtalo de
-            nuevo.
-          </p> */}
-        </DoubleColumnLayout.Left>
-        <DoubleColumnLayout.Right>
+            Parece que esta página no existe.
+            <br />
+            Comprueba la URL e inténtalo de nuevo.
+            <br />
+            <Link to='/login' className='btn btn-second'>
+              Regresar
+            </Link>
+          </p>
+        </div>
+        <div className='nofound-right'>
           <Image404 />
-        </DoubleColumnLayout.Right>
-      </DoubleColumnLayout>
+        </div>
+      </div>
     </div>
   );
 }
