@@ -1,0 +1,155 @@
+@import "@/assets/scss/vars.scss";
+
+.image-404{
+    font-size: 1em;
+    width: 18em;
+    height: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+   
+
+    .logo-component{
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 12em;
+    }
+
+    .lgwin{
+        width: inherit;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+    }
+
+    .block{
+        width: 0;
+        height: 0;
+        z-index: 2;
+        border-radius: 1em;
+        position: absolute;
+
+        svg{
+            position: absolute;
+            inset: 0;
+            margin: auto;
+        }
+    }
+    .blockIcon{
+        padding: 1.6em;
+        left: -3.5em;
+        top: -11.5em;
+        background-color: $accent;
+        svg{
+            width: 1.6em;
+        }
+    }
+    .searchIcon{
+        padding: 2.5em;
+        right: -1em;
+        top: -9em;
+        background-color: $base100;
+        svg{
+            width: 2.5em;
+        }
+    }
+    .smwin{
+        position: absolute;
+        width: 10em;
+        bottom: -7.8em;
+        left: -5em;
+        path:first-child{
+            fill: $neutral;
+        }
+    }
+    .mdwin{
+        position: absolute;
+        width: 10em;
+        bottom: -13em;
+        right: -5em;
+        
+    }
+    .arrowIcon{
+        position: absolute;
+        width: 1.7em;
+        bottom: -10em;
+        left: -3em;
+    }
+
+    .square{
+        width: 0;
+        height: 0;
+        padding: .25em;
+        border-radius: .15em;
+        position: absolute;
+        z-index: 4;
+
+        &1{
+            top: -2.8em;
+            left: -2em;
+            padding: .45em;
+            background-color: $accent;
+        }
+        &2{
+            bottom: -2.5em;
+            right: 1em;
+            background-color: $neutral;
+        }
+        &3{
+            top: -6em;
+            right: -4em;
+            background-color: $neutral;
+        }
+    }
+
+    .line{
+        background-color: red;
+        height: .38em;
+        border-radius: .15em;
+        position: absolute;
+        
+        &1{
+            width: 4em;
+            top: -9em;
+            background-color: $base100;
+        }
+        &2{
+            width: 6.5em;
+            left: -3.5em;
+            top: -4.5em;
+            background-color: $neutral;
+        }
+        &3{
+            width: 2.5em;
+            left: 2.5em;
+            bottom: -9em;
+            background-color: $accent;
+        }
+    }
+}
+
+[data-theme='projectDark']{
+    .image-404{
+        .smwin{
+            path:first-child{
+                fill: $primary;
+            }
+        }
+        .square{
+            &2{
+                background-color: $primary;
+            }
+            &3{
+                background-color: $primary;
+            }
+        }
+        .line{ 
+            &2{
+                background-color: $primary;
+            }
+        }
+    }
+}
