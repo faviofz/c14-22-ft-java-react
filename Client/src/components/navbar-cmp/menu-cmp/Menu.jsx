@@ -11,8 +11,8 @@ import { Logo } from '@/components';
 
 export default function Menu() {
   return (
-    <div className='z-10 my-5 ml-5 lg:ml-0 lg:my-0 lg:drawer-open lg:w-[16rem] '>
-      <input id='my-drawer-2' type='checkbox' className='drawer-toggle' />
+    <div className='z-10 my-5 ml-5 lg:fixed lg:ml-0 lg:my-0 lg:drawer-open'>
+      <input id='my-drawer-2' type='checkbox' className='drawer-toggle ' />
       <div className='flex'>
         {/* Page content here */}
         <label
