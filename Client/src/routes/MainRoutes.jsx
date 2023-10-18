@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { StartLayout } from '@/layout';
-import { Login, Register, ForgotPassword, Dashboard, NoFound } from '@/pages';
+import { Login, Register, ForgotPassword, Dashboard, NoFound ,Products } from '@/pages';
 
 export function MainRoutes() {
   return (
@@ -11,6 +11,7 @@ export function MainRoutes() {
           <Route path='register' element={<Register />} />
           <Route path='forgot-password' element={<ForgotPassword />} />
           <Route path='dashboard' element={<Dashboard />} />
+          <Route path='product' element={<Products />} />
         </Route>
         <Route path='*' element={<NoFound />} />
       </Routes>
