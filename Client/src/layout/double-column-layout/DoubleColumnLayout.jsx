@@ -20,8 +20,9 @@ export function DoubleColumnLayout({ children, double, reverse }) {
     'dc-layout',
     double ? 'dc-layout-double' : '',
     reverse ? 'dc-layout-double-reverse' : '',
-  ];
-  return <div className={classNameList.join(' ')}>{children}</div>;
+  ].join(' ');
+
+  return <div className={classNameList}>{children}</div>;
 }
 DoubleColumnLayout.propTypes = {
   children: PropTypes.node,
