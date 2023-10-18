@@ -6,9 +6,9 @@ import {
   TruckSVG,
 } from '@/assets/svg';
 
-export function StartsGroup() {
+export function StatsGroup() {
   return (
-    <div className='starts-group box-border w-full flex flex-col justify-center gap-5'>
+    <div className='box-border flex flex-col justify-center w-full gap-5 starts-group'>
       <Stat title='Productos' stat={31} Icon={IconProductSVG} />
       <Stat title='Stock' stat={1.2} Icon={DocumentReportSVG} />
       <Stat title='Proveedor' stat={5} Icon={TruckSVG} />

@@ -1,9 +1,10 @@
 import Navbar from '../../components/navbar-cmp/Navbar';
-import { /* BellSVG, */ IconProductSVG } from '@/assets/svg';
+import { BellSVG, IconProductSVG } from '@/assets/svg';
 
 import { DashboardPanel } from './components';
-import { StartsGroup } from './views';
+import { StatsGroup } from './views';
 import './dashboard-page.scss';
+import { Welcome } from './components/welcome-cmp/Welcome';
 
 const {
   title: prodTitle,
@@ -28,37 +29,36 @@ const {
   ],
 };
 
-// const {
-//   title: notTitle,
-//   Icon: notTitle,
-//   listItems: notList,
-// } = {
-//   title: 'Últimos productos registrados',
-//   Icon: IconProductSVG,
-//   listItems: [
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//     { name: 'produto', category: 'categoria' },
-//   ],
-// };
+const {
+  title: notTitle,
+  Icon: notIcon,
+  listItems: notList,
+} = {
+  title: 'Notificaciones',
+  Icon: BellSVG,
+  listItems: [
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificaion', category: 'ver mas' },
+  ],
+};
 
 export function Dashboard() {
   return (
-    <div className='dashboard flex flex-col items-center lg:flex-row lg:items-start'>
+    <div className='flex flex-col items-center dashboard lg:flex-row lg:items-stretch '>
       <Navbar />
       <section
         className='
         dashboard-content
-        border 
         flex flex-col items-center justify-center gap-5 mx-5 mt-5  
         max-w-[500px]
         lg:max-w-[100%]
@@ -66,9 +66,12 @@ export function Dashboard() {
         lg:flex-1 
       '
       >
-        <StartsGroup />
+        
+        <Welcome fullname={'Luis Angel Salcedo'}/>
+        
+        <StatsGroup />
 
-        <div className='dashboard-panels'>
+        <div className='flex flex-col gap-5 mb-5 dashboard-panels xl:flex-row '>
           <DashboardPanel
             title={prodTitle}
             Icon={ProdTitle}
@@ -82,16 +85,11 @@ export function Dashboard() {
             </div>
           </DashboardPanel>
 
-          <DashboardPanel
-            title={prodTitle}
-            Icon={ProdTitle}
-            listItems={prodList}
-          >
+          <DashboardPanel title={notTitle} Icon={notIcon} listItems={notList}>
             <div className='flex flex-col gap-3 mt-5'>
               <button className='w-full btn btn-outline btn-primary'>
-                Ver más productos
+                Ver más notificaciones
               </button>
-              <button className='w-full btn btn-primary'>Agregar nuevo</button>
             </div>
           </DashboardPanel>
         </div>

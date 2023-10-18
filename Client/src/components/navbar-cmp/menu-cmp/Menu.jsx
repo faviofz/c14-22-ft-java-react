@@ -19,7 +19,7 @@ export default function Menu() {
           htmlFor='my-drawer-2'
           className='btn btn-circle drawer-button lg:hidden'
         >
-          <img src={BarsSVG} alt='bars' />
+          <BarsSVG />
         </label>
       </div>
       <div className='z-20 drawer-side'>
@@ -29,33 +29,33 @@ export default function Menu() {
           className='drawer-overlay'
         ></label>
 
-        <ul className='z-20 min-h-full p-4 menu w-80 bg-base-200 text-base-content'>
+        <ul className='z-20 min-h-full pt-5 menu bg-base-200 text-base-content'>
           {/* Sidebar content here */}
           <li>
-            <div className='flex justify-center w-full mb-10'>
+            <div className='flex justify-center mb-10'>
               <Logo />
             </div>
           </li>
           <li>
             <Link to={'/product'} className='text-secondary'>
-              <img src={IconProductSVG} alt='icon-product' />
+              <IconProductSVG className='[&>path]:stroke-secondary-content' />
               Productos
             </Link>
           </li>
           <li>
             <Link to={'/stock'} className='text-secondary'>
-              <img src={DocumentReportSVG} alt='document-report' />
+              <DocumentReportSVG className='[&>path]:stroke-secondary-content' />
               Stock
             </Link>
           </li>
           <li>
             <Link to={'/provider'} className='text-secondary'>
-              <img src={TruckSVG} alt='truck' />
+              <TruckSVG className='[&>path]:stroke-secondary-content' />
               Proveedor
             </Link>
             <details open>
               <summary>
-                <img src={RefreshSVG} alt='refresh' />
+                <RefreshSVG className='[&>path]:stroke-secondary-content' />
                 Historial
               </summary>
               <ul>

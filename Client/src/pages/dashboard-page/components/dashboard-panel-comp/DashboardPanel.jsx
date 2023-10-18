@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 
 export function DashboardPanel({ children, title, Icon, listItems }) {
   return (
-    <div className='dashboard-panel flex flex-col justify-between gap-5 p-5 h-[30rem] bg-base-200 rounded-3xl w-full'>
+    <div className='dashboard-panel flex flex-col justify-between gap-5 p-5 h-[25rem] bg-base-200 rounded-3xl w-full'>
       <div className='flex gap-5'>
-        <Icon />
+        <Icon className="w-5 h-5"/>
         <h1>{title}</h1>
       </div>
-      <div className='flex flex-col items-start gap-3 overflow-y-auto h-full'>
+      <div className='flex flex-col items-start h-full gap-3 overflow-y-auto'>
         {listItems.map(({ name, category }, index) => (
           <div key={index} className='flex justify-between w-full'>
             <h3>{name}</h3>

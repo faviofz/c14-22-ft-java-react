@@ -1,1 +1,1 @@
-export * from './StartsGroup';
+export * from './StatsGroup';

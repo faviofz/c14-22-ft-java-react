@@ -5,6 +5,8 @@ import TruckSVG from './truck.svg?react';
 import BellSVG from './bell.svg?react';
 import RowDownSVG from './row-down.svg?react';
 import BarsSVG from './bars.svg?react';
+import CalendarSVG from './calendar.svg?react';
+import ClockSVG from './clock.svg?react';
 
 export {
   IconProductSVG,
@@ -14,4 +16,6 @@ export {
   BellSVG,
   RowDownSVG,
   BarsSVG,
+  CalendarSVG,
+  ClockSVG,
 };
