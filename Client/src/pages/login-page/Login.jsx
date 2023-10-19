@@ -1,25 +1,32 @@
 import { Panel, Input, Button, Footer, Logo } from '@/components';
 import { DoubleColumnLayout } from '@/layout';
 import { Link } from 'react-router-dom';
+import { useAuth } from '@/hooks/useAuth';
 import './login-page.scss';
 
 export const Login = () => {
+  const { userLogged, loginUser } = useAuth();
+
+  const handlerLogin = () => {
+    loginUser({ name: 'luis' });
+  };
+
+  console.log(userLogged);
+
   return (
     <div className='login-page'>
       <DoubleColumnLayout double={true}>
         <DoubleColumnLayout.Left>
           <Panel title='Acceda a su cuenta'>
-            <form>
-              <Input
-                label='Correo electrónico'
-                placeholder='Ingresa tu correo electrónico'
-              />
-              <Input label='Contraseña' placeholder='Ingresa tu contraseña' />
-              
-              {/* Acceso para mostrar dashboard */}
-              <Link to={'/dashboard'}><Button>Ingresar</Button></Link>
-            
-            </form>
+            {/* <form> */}
+            <Input
+              label='Correo electrónico'
+              placeholder='Ingresa tu correo electrónico'
+            />
+            logoutUser
+            <Input label='Contraseña' placeholder='Ingresa tu contraseña' />
+            <Button onClick={handlerLogin}>Ingresar</Button>
+            {/* </form> */}
             <Link to='/forgot-password'>¿Olvidaste tu contraseña?</Link>
           </Panel>
           <div>
