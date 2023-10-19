@@ -1,10 +1,8 @@
-import Navbar from '../../components/navbar-cmp/Navbar';
-import { BellSVG, IconProductSVG } from '@/assets/svg';
+import { ProductIcon, BellSVG } from '@/assets/svg';
+import { Container } from '@/components';
+import { Welcome, StatsGroup, DashboardPanel } from './components';
 
-import { DashboardPanel } from './components';
-import { StatsGroup } from './views';
 import './dashboard-page.scss';
-import { Welcome } from './components/welcome-cmp/Welcome';
 
 const {
   title: prodTitle,
@@ -12,7 +10,7 @@ const {
   listItems: prodList,
 } = {
   title: 'Últimos productos registrados',
-  Icon: IconProductSVG,
+  Icon: ProductIcon,
   listItems: [
     { name: 'produto', category: 'categoria' },
     { name: 'produto', category: 'categoria' },
@@ -54,24 +52,11 @@ const {
 
 export function Dashboard() {
   return (
-    <div className='flex flex-col items-center dashboard lg:flex-row lg:items-stretch '>
-      <Navbar />
-      <section
-        className='
-        dashboard-content
-        flex flex-col items-center justify-center gap-5 mx-5 mt-5  
-        max-w-[500px]
-        lg:max-w-[100%]
-        lg:mt-[5rem]
-        lg:flex-1 
-      '
-      >
-        
-        <Welcome fullname={'Luis Angel Salcedo'}/>
-        
+    <div className='dashboard-page'>
+      <Container>
+        <Welcome fullname='Luis Angel Salcedo' />
         <StatsGroup />
-
-        <div className='flex flex-col gap-5 mb-5 dashboard-panels xl:flex-row '>
+        <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>
           <DashboardPanel
             title={prodTitle}
             Icon={ProdTitle}
@@ -93,7 +78,7 @@ export function Dashboard() {
             </div>
           </DashboardPanel>
         </div>
-      </section>
+      </Container>
     </div>
   );
 }

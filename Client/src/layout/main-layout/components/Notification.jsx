@@ -1,17 +1,13 @@
-import {
-  BellSVG,
-} from '@/assets/svg';
+import { BellSVG } from '@/assets/svg';
 
 import { Link } from 'react-router-dom';
 
-
-export function Notification () {
-    
-    return(
-      <details className='dropdown dropdown-end max-lg:hidden'>
+export function Notification() {
+  return (
+    <details className='dropdown dropdown-end max-lg:hidden'>
       <summary className='m-1 btn btn-circle'>
         <div className='indicator'>
-          <BellSVG className="[&>path]:stroke-secondary-content"/>
+          <BellSVG className='[&>path]:stroke-secondary-content' />
           <span className='badge badge-xs badge-primary indicator-item'></span>
         </div>
       </summary>
@@ -27,5 +23,5 @@ export function Notification () {
         </li>
       </ul>
     </details>
-    )
+  );
 }

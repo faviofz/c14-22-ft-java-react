@@ -1,4 +1,4 @@
-export * from './welcome-cmp/Welcome';
-export * from './stat-cmp/Stat';
-export * from './dashboard-panel-comp/DashboardPanel';
-
+export * from './Welcome';
+export * from './StatsGroup';
+export * from './Stat';
+export * from './DashboardPanel';
