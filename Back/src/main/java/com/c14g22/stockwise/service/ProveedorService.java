@@ -12,7 +12,7 @@ public interface ProveedorService {
 
   public Proveedor obtenerProveedorPorId(Long id);
 
-  public Proveedor guardarProveedor(Proveedor proveedor);
+  public ProveedorDto guardarProveedor(ProveedorDto proveedorDto);
 
   public void actualizarProveedor(Long id, ProveedorDto proveedorDto);
 

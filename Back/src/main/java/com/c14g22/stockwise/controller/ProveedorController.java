@@ -1,5 +1,6 @@
 package com.c14g22.stockwise.controller;
 
+import com.c14g22.stockwise.dto.ProveedorDto;
 import com.c14g22.stockwise.model.Proveedor;
 import com.c14g22.stockwise.service.ProveedorService;
 import jakarta.persistence.EntityNotFoundException;
@@ -27,7 +28,7 @@ public class ProveedorController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Proveedor> getProductoById(@PathVariable Long id) {
+  public ResponseEntity<Proveedor> getProveedorById(@PathVariable Long id) {
     Proveedor proveedor;
     try {
       proveedor = proveedorService.obtenerProveedorPorId(id);
@@ -38,12 +39,13 @@ public class ProveedorController {
   }
 
   @PostMapping
-  public Proveedor postProveedor(@RequestBody Proveedor proveedorDto) {
-    return proveedorService.guardarProveedor(proveedorDto);
+  public ResponseEntity<ProveedorDto> postProveedor(@RequestBody ProveedorDto proveedorDto) {
+    ProveedorDto dto = proveedorService.guardarProveedor(proveedorDto);
+    return ResponseEntity.ok(dto);
   }
 
 //  @PutMapping("/{id}")
-//  public Producto putProducto(@PathVariable Long id, @RequestBody ProductoDto) {
+//  public Producto putProveedor(@PathVariable Long id, @RequestBody ProductoDto) {
 //
 //  }
 
