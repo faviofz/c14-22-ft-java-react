@@ -6,10 +6,9 @@ import { authActions } from './actions';
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [userLogged, dispatch] = useReducer(authReducer, initialState);
+  const [userState, dispatch] = useReducer(authReducer, initialState);
 
   const loginUser = user => {
-    console.log('aaaaa');
     dispatch({ type: authActions.LOGIN, payload: user });
   };
 
@@ -18,8 +17,8 @@ export function AuthProvider({ children }) {
   };
 
   const valueMemo = useMemo(
-    () => ({ userLogged, loginUser, logoutUser }),
-    [userLogged]
+    () => ({ userState, loginUser, logoutUser }),
+    [userState]
   );
 
   return (

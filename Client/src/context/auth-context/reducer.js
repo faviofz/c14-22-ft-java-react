@@ -1,16 +1,22 @@
 import { authActions } from './actions';
 
 export const initialState = {
-  user: {},
-  logged: false,
+  user: JSON.parse(localStorage.getItem('userLogger')) || {},
+  isLogged: JSON.parse(localStorage.getItem('isLogged')) || false,
 };
 
 export function authReducer(state, action) {
   if (action.type === authActions.LOGIN) {
-    return { ...state, user: action.payload, logged: true };
+    localStorage.setItem('userLogger', JSON.stringify(action.payload));
+    localStorage.setItem('isLogged', JSON.stringify(true));
+
+    return { ...state, user: action.payload, isLogged: true };
   }
   if (action.type === authActions.LOGOUT) {
-    return initialState;
+    localStorage.setItem('userLogger', JSON.stringify({}));
+    localStorage.setItem('isLogged', JSON.stringify(false));
+
+    return { ...initialState };
   }
   throw Error('Unknown action: ' + action.type);
 }

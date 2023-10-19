@@ -5,13 +5,13 @@ import { useAuth } from '@/hooks/useAuth';
 import './login-page.scss';
 
 export const Login = () => {
-  const { userLogged, loginUser } = useAuth();
+  const { userState, loginUser } = useAuth();
 
   const handlerLogin = () => {
     loginUser({ name: 'luis' });
   };
 
-  console.log(userLogged);
+  console.log(userState);
 
   return (
     <div className='login-page'>
@@ -23,7 +23,6 @@ export const Login = () => {
               label='Correo electrónico'
               placeholder='Ingresa tu correo electrónico'
             />
-            logoutUser
             <Input label='Contraseña' placeholder='Ingresa tu contraseña' />
             <Button onClick={handlerLogin}>Ingresar</Button>
             {/* </form> */}

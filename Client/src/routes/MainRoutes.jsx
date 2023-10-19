@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainLayout } from '@/layout';
+import { PublicRoutes } from './PublicRoute';
+import { PrivateRoutes } from './PrivateRoute';
 import {
   Login,
   Register,
@@ -13,10 +15,46 @@ export function MainRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<MainLayout />}>
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Register />} />
-          <Route path='forgot-password' element={<ForgotPassword />} />
-          <Route path='dashboard' element={<Dashboard />} />
+          <Route
+            path='login'
+            element={
+              <PublicRoutes>
+                <Login />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path='register'
+            element={
+              <PublicRoutes>
+                <Register />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path='forgot-password'
+            element={
+              <PublicRoutes>
+                <ForgotPassword />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            index
+            element={
+              <PrivateRoutes>
+                <Dashboard />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path='dashboard'
+            element={
+              <PrivateRoutes>
+                <Dashboard />
+              </PrivateRoutes>
+            }
+          />
           {/* <Route path='product' element={<Products />} /> */}
         </Route>
         <Route path='*' element={<NoFound />} />

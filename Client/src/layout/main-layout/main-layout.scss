@@ -1,6 +1,8 @@
 .main-layout{
     min-height: 100vh;
 
+    
+
     &-navbar{
         display: flex;
         justify-content: space-between;
@@ -19,6 +21,13 @@
     @media (min-width:1024px) {
         display: flex;
         align-items: stretch;
+
+        &.logged{
+            .main-layout-content{
+                margin-top: 5em;
+            }
+        }
+
         &-navbar{
              & > .logo-component{
                 display: none;
@@ -29,7 +38,7 @@
              }
         }
         &-content{
-            margin-top: 5em;
+            
             flex: 1;
         }
     }
