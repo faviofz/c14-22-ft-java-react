@@ -5,7 +5,9 @@ import {
   Register,
   ForgotPassword,
   Dashboard,
+  ServicePolicy,
   NoFound /* Products, */,
+  Products,
 } from '@/pages';
 
 export function MainRoutes() {
@@ -16,8 +18,9 @@ export function MainRoutes() {
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
           <Route path='forgot-password' element={<ForgotPassword />} />
+          <Route path='service-policy' element={<ServicePolicy />} />
           <Route path='dashboard' element={<Dashboard />} />
-          {/* <Route path='product' element={<Products />} /> */}
+          <Route path='product' element={<Products />} />
         </Route>
         <Route path='*' element={<NoFound />} />
       </Routes>

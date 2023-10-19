@@ -1,9 +1,10 @@
 package com.c14g22.stockwise.controller;
 
-import com.c14g22.stockwise.model.Producto;
-import com.c14g22.stockwise.service.ProductoService;
+import com.c14g22.stockwise.model.Proveedor;
+import com.c14g22.stockwise.service.ProveedorService;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,33 +15,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/productos")
-public class ProductoController {
+@RequestMapping("/proveedores")
+public class ProveedorController {
 
-  private final ProductoService productoService;
-
-  public ProductoController(ProductoService productoService) {
-    this.productoService = productoService;
-  }
+  @Autowired
+  private ProveedorService proveedorService;
 
   @GetMapping
-  public List<Producto> getProductos() {
-    return productoService.obtenerProductos();
+  public List<Proveedor> getProveedores() {
+    return proveedorService.obtenerProveedores();
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Producto> getProductoById(@PathVariable Long id) {
+  public ResponseEntity<Proveedor> getProductoById(@PathVariable Long id) {
+    Proveedor proveedor;
     try {
-      Producto producto = productoService.obtenerProductoPorId(id);
+      proveedor = proveedorService.obtenerProveedorPorId(id);
     } catch (EntityNotFoundException e) {
       return ResponseEntity.notFound().build();
     }
-    return ResponseEntity.ok(productoService.obtenerProductoPorId(id));
+    return ResponseEntity.ok(proveedor);
   }
 
   @PostMapping
-  public Producto postProducto(@RequestBody Producto nuevoProducto) {
-    return productoService.guardarProducto(nuevoProducto);
+  public Proveedor postProveedor(@RequestBody Proveedor proveedorDto) {
+    return proveedorService.guardarProveedor(proveedorDto);
   }
 
 //  @PutMapping("/{id}")
@@ -49,7 +48,7 @@ public class ProductoController {
 //  }
 
   @DeleteMapping("/{id}")
-  public void deleteProducto(@PathVariable Long id) {
-    productoService.eliminarProducto(id);
+  public void deleteProveedor(@PathVariable Long id) {
+    proveedorService.eliminarProveedor(id);
   }
 }
