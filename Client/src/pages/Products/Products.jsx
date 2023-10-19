@@ -20,14 +20,14 @@ export function Products() {
 
   return (
     <div>
-      <section className='flex'>
+      <section className='flex flex-col items-center lg:flex-row lg:items-stretch'>
         <Navbar />
         <section className=' w-[100%] mt-16 px-4'>
           <h1 className="text-slate-600 text-[32px] font-semibold font-['Inter']">
             Productos
           </h1>
-          <main className='flex items-center px-3 justify-between'>
-            <div className='flex gap-2  items-center'>
+          <main className='flex items-center justify-between px-3'>
+            <div className='flex items-center gap-2'>
               <p>Vista</p>
               <button
                 onClick={() => handleSwitchView('list')}
@@ -64,7 +64,7 @@ export function Products() {
             <Filter />
           </section>
           <section>{viewType === 'list' ? <Grid /> : <Card />}</section>
-          <nav>
+          <nav className="flex justify-center mt-5">
             <Paginated />
           </nav>
         </section>
