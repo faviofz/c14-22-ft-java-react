@@ -15,5 +15,5 @@ public interface ProductoService {
 
   public void actualizarProducto(Long id, ProductoDto productoDto);
 
-  public void borrarProducto(Long id);
+  public void eliminarProducto(Long id);
 }
