@@ -13,8 +13,7 @@ import org.springframework.stereotype.Service;
 public class ProductoServiceImpl implements ProductoService {
 
   @Autowired
-  ProductoRepository productoRepository;
-
+  private ProductoRepository productoRepository;
 
   @Override
   public List<Producto> obtenerProductos() {
@@ -35,7 +34,7 @@ public class ProductoServiceImpl implements ProductoService {
   }
 
   @Override
-  public void borrarProducto(Long id) {
+  public void eliminarProducto(Long id) {
     productoRepository.deleteById(id);
   }
 }
