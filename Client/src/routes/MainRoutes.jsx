@@ -1,18 +1,78 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { StartLayout } from '@/layout';
-import { Login, Register, ForgotPassword, Dashboard, NoFound ,Products, ServicePolicy } from '@/pages';
+import { MainLayout } from '@/layout';
+import { PublicRoutes } from './PublicRoute';
+import { PrivateRoutes } from './PrivateRoute';
+import {
+  Login,
+  Register,
+  ForgotPassword,
+  Dashboard,
+  ServicePolicy,
+  NoFound /* Products, */,
+  Products,
+} from '@/pages';
 
 export function MainRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<StartLayout />}>
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Register />} />
-          <Route path='forgot-password' element={<ForgotPassword />} />
-          <Route path='service-policy' element={<ServicePolicy />} />
-          <Route path='dashboard' element={<Dashboard />} />
-          <Route path='product' element={<Products />} />
+        <Route path='/' element={<MainLayout />}>
+          <Route
+            path='login'
+            element={
+              <PublicRoutes>
+                <Login />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path='register'
+            element={
+              <PublicRoutes>
+                <Register />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path='forgot-password'
+            element={
+              <PublicRoutes>
+                <ForgotPassword />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path='service-policy'
+            element={
+              <PublicRoutes>
+                <ServicePolicy />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            index
+            element={
+              <PrivateRoutes>
+                <Dashboard />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path='dashboard'
+            element={
+              <PrivateRoutes>
+                <Dashboard />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path='product'
+            element={
+              <PrivateRoutes>
+                <Products />
+              </PrivateRoutes>
+            }
+          />
         </Route>
         <Route path='*' element={<NoFound />} />
       </Routes>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import Navbar from '../../components/navbar-cmp/Navbar';
 import Search from './Components/Search/Search';
 import Filter from './Components/Filter/Filter';
 import Grid from './Components/Grid/Grid';
@@ -21,7 +20,6 @@ export function Products() {
   return (
     <div>
       <section className='flex flex-col items-center lg:flex-row lg:items-stretch'>
-        <Navbar />
         <section className=' w-[100%] mt-16 px-4'>
           <h1 className="text-slate-600 text-[32px] font-semibold font-['Inter']">
             Productos
@@ -64,7 +62,7 @@ export function Products() {
             <Filter />
           </section>
           <section>{viewType === 'list' ? <Grid /> : <Card />}</section>
-          <nav className="flex justify-center mt-5">
+          <nav className='flex justify-center mt-5'>
             <Paginated />
           </nav>
         </section>

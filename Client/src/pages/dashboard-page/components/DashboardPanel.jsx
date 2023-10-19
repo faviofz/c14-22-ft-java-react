@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 
 export function DashboardPanel({ children, title, Icon, listItems }) {
   return (
-    <div className='dashboard-panel flex flex-col justify-between gap-5 p-5 h-[25rem] bg-base-200 rounded-3xl w-full'>
+    <div className='dashboard-page-panel flex flex-col justify-between gap-5 p-5 h-[25rem] bg-base-200 rounded-3xl w-full'>
       <div className='flex gap-5'>
-        <Icon className="w-5 h-5"/>
+        <Icon className='w-5 h-5' />
         <h1>{title}</h1>
       </div>
       <div className='flex flex-col items-start h-full gap-3 overflow-y-auto'>
@@ -24,7 +24,7 @@ export function DashboardPanel({ children, title, Icon, listItems }) {
 DashboardPanel.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
-  Icon: PropTypes.node,
+  Icon: PropTypes.func,
   listItems: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './panel.scss';
+import './panel-cmp.scss';
 
 export function Panel({ children, title = '' }) {
   return (
