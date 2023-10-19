@@ -1,5 +1,6 @@
 package com.c14g22.stockwise.model;
 
+import com.c14g22.stockwise.dto.ProductoDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -18,6 +20,7 @@ import org.hibernate.type.SqlTypes;
 @Table(name="productos")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Producto {
 
   @Id
@@ -40,4 +43,12 @@ public class Producto {
   @ManyToOne
   @JoinColumn(name = "marca_id")
   private Marca marca;
+
+  public Producto(ProductoDto productoDto){
+    this.nombre = productoDto.getNombre();
+    this.imagen = productoDto.getImagen();
+    this.costo = productoDto.getCosto();
+    this.impuesto = productoDto.getImpuesto();
+    this.fechaVencimiento = productoDto.getFechaVencimiento();
+  }
 }

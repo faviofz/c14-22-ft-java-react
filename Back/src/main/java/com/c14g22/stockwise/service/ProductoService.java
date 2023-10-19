@@ -11,7 +11,7 @@ public interface ProductoService {
 
   public Producto obtenerProductoPorId(Long id);
 
-  public Producto guardarProducto(Producto producto);
+  public ProductoDto guardarProducto(ProductoDto producto);
 
   public void actualizarProducto(Long id, ProductoDto productoDto);
 

@@ -1,5 +1,6 @@
 package com.c14g22.stockwise.controller;
 
+import com.c14g22.stockwise.dto.ProductoDto;
 import com.c14g22.stockwise.model.Producto;
 import com.c14g22.stockwise.service.ProductoService;
 import jakarta.persistence.EntityNotFoundException;
@@ -39,8 +40,9 @@ public class ProductoController {
   }
 
   @PostMapping
-  public Producto postProducto(@RequestBody Producto nuevoProducto) {
-    return productoService.guardarProducto(nuevoProducto);
+  public ResponseEntity<ProductoDto> postProducto(@RequestBody ProductoDto productoDto) {
+    ProductoDto nuevoProducto = productoService.guardarProducto(productoDto);
+    return ResponseEntity.ok(nuevoProducto);
   }
 
 //  @PutMapping("/{id}")

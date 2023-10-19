@@ -25,8 +25,9 @@ public class ProductoServiceImpl implements ProductoService {
     return productoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
   }
 
-  public Producto guardarProducto(Producto producto){
-    return productoRepository.save(producto);
+  public ProductoDto guardarProducto(ProductoDto productoDto){
+    Producto producto = new Producto(productoDto);
+    return new ProductoDto(productoRepository.save(producto));
   }
 
   @Override
