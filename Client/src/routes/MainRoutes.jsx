@@ -7,7 +7,9 @@ import {
   Register,
   ForgotPassword,
   Dashboard,
+  ServicePolicy,
   NoFound /* Products, */,
+  Products,
 } from '@/pages';
 
 export function MainRoutes() {
@@ -15,6 +17,7 @@ export function MainRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<MainLayout />}>
+
           <Route
             path='login'
             element={
@@ -56,6 +59,7 @@ export function MainRoutes() {
             }
           />
           {/* <Route path='product' element={<Products />} /> */}
+
         </Route>
         <Route path='*' element={<NoFound />} />
       </Routes>
