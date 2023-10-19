@@ -30,7 +30,7 @@ export const Register = () => {
                   type='checkbox'
                   className='toggle toggle-sm toggle-primary'
                 />
-                He leido y acepta terminos y condiciones
+                He leido y acepta <Link to={'/service-policy'}>terminos y condiciones</Link>
               </div>
               <Button>Ingresar</Button>
             </form>
