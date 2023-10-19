@@ -6,7 +6,7 @@ import Menu from './menu-cmp/Menu';
 
 export default function Navbar() {
   return (
-    <nav className='flex flex-row justify-between bg-base-100 w-full lg:w-[16rem]'>
+    <nav className='flex flex-row md:bg-white justify-between bg-base-100 w-full lg:w-[16rem]'>
       <Menu />
       <div className='my-5 lg:hidden'>
         <Logo />

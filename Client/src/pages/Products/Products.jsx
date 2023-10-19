@@ -64,7 +64,7 @@ export function Products() {
             <Filter />
           </section>
           <section>{viewType === 'list' ? <Grid /> : <Card />}</section>
-          <nav>
+          <nav className="flex justify-center mt-5">
             <Paginated />
           </nav>
         </section>
