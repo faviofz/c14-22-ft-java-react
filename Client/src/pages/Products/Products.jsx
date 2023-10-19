@@ -5,7 +5,7 @@ import Search from './Components/Search/Search';
 import Filter from './Components/Filter/Filter';
 import Grid from './Components/Grid/Grid';
 import Card from '../Products/Components/Card/Card';
-import Paginated from './Components/Paginated/Paginated.JSX';
+import Paginated from './Components/Paginated/Paginated.jsx';
 
 import list from '../../assets/svg/Lista-vista.svg';
 import grid from '../../assets/svg/Cuadrado-vista.svg';
