@@ -2,7 +2,7 @@ import { Avatar } from '@/assets/images';
 import { DarkModeSwitch } from '@/components/darkmode-switch-cmp/DarkModeSwitch';
 import { Link } from 'react-router-dom';
 
-export function InfoUser() {
+export function UserInfo() {
   return (
     <div className=' dropdown dropdown-end'>
       <label tabIndex={0}>
@@ -14,7 +14,7 @@ export function InfoUser() {
       </label>
       <ul
         tabIndex={0}
-        className={`dropdown-content z-[1] menu p-2 m-1 shadow bg-base-200 rounded-box w-64 border-2 border-primary`}
+        className={`dropdown-content z-[30] menu p-2 m-1 shadow bg-base-200 rounded-box w-64 border-2 border-primary`}
       >
         <li>
           <div className='flex flex-row'>

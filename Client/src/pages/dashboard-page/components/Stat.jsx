@@ -28,7 +28,7 @@ export function Stat({ title = '', stat = 0, Icon }) {
 Stat.propTypes = {
   title: PropTypes.string,
   stat: PropTypes.number,
-  Icon: PropTypes.node,
+  Icon: PropTypes.func,
 };
 
 Stat.defaultProps = {
