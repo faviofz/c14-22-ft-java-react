@@ -17,7 +17,6 @@ export function MainRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<MainLayout />}>
-
           <Route
             path='login'
             element={
@@ -43,6 +42,14 @@ export function MainRoutes() {
             }
           />
           <Route
+            path='service-policy'
+            element={
+              <PublicRoutes>
+                <ServicePolicy />
+              </PublicRoutes>
+            }
+          />
+          <Route
             index
             element={
               <PrivateRoutes>
@@ -58,8 +65,14 @@ export function MainRoutes() {
               </PrivateRoutes>
             }
           />
-          {/* <Route path='product' element={<Products />} /> */}
-
+          <Route
+            path='product'
+            element={
+              <PrivateRoutes>
+                <Products />
+              </PrivateRoutes>
+            }
+          />
         </Route>
         <Route path='*' element={<NoFound />} />
       </Routes>
