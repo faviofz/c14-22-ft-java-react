@@ -1,8 +1,17 @@
 import { Avatar } from '@/assets/images';
 import { DarkModeSwitch } from '@/components/darkmode-switch-cmp/DarkModeSwitch';
 import { Link } from 'react-router-dom';
+import { useAuth } from '@/hooks/useAuth';
 
 export function UserInfo() {
+  const { logoutUser } = useAuth();
+
+  const handlerLogout = () => {
+    logoutUser();
+
+    window.location.href = '/';
+  };
+
   return (
     <div className=' dropdown dropdown-end'>
       <label tabIndex={0}>
@@ -55,7 +64,7 @@ export function UserInfo() {
           </Link>
         </li>
         <li className='border-t-2'>
-          <Link to={''}>Cerrar sesion</Link>
+          <button onClick={handlerLogout}>Cerrar sesion</button>
         </li>
       </ul>
     </div>

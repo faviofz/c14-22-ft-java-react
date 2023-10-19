@@ -1,1 +1,2 @@
-export * from './darkmode-hook/useDarkMode';
+export * from './useDarkMode';
+export * from './useAuth';

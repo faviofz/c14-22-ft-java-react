@@ -1,10 +1,12 @@
 import { MainRoutes } from '@/routes';
-import { DarkmodeProvider } from '@/context';
+import { DarkmodeProvider, AuthProvider } from '@/context';
 
 export function App() {
   return (
     <DarkmodeProvider>
-      <MainRoutes />
+      <AuthProvider>
+        <MainRoutes />
+      </AuthProvider>
     </DarkmodeProvider>
   );
 }

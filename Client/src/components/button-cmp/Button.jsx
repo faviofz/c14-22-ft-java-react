@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 
-export function Button({ children }) {
+export function Button({ children, ...props }) {
   return (
-    <button className='btn btn-primary btn-block normal-case'>
+    <button className='btn btn-primary btn-block normal-case' {...props}>
       {children}
     </button>
   );
