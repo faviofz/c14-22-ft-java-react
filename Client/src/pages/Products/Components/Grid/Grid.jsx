@@ -45,22 +45,22 @@ export default function Grid() {
           {/* head */}
           <thead>
             <tr>
-              <th>
+              <th className="hidden md:block">
                 <label>
                   <input type='checkbox' className='checkbox' />
                 </label>
               </th>
-              <th>Nombre</th>
+              <th >Nombre</th>
               <th>Imagen</th>
-              <th>Categoria</th>
-              <th>Marcas</th>
-              <th>Stock</th>
+              <th >Categoria</th>
+              <th >Marcas</th>
+              <th >Stock</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item, index) => (
               <tr key={index}>
-                <td>
+                <td className="hidden md:block">
                   <label>
                     <input type='checkbox' className='checkbox' />
                   </label>
@@ -71,7 +71,7 @@ export default function Grid() {
                     <img src={item.Img} alt='Imagen' />
                   </div>
                 </td>
-                <td>{item.Categoria}</td>
+                <td >{item.Categoria}</td>
                 <td>{item.Marcas}</td>
                 <td>{item.Stock}</td>
               </tr>
