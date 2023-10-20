@@ -1,54 +1,53 @@
 import { useState } from 'react';
 
-import Search from './Components/Search/Search';
-import Filter from './Components/Filter/Filter';
-import Grid from './Components/Grid/Grid';
-import Card from '../Products/Components/Card/Card';
-import Paginated from './Components/Paginated/Paginated.jsx';
-
-/* import de las vistas */
-import list from '../../assets/svg/Lista-vista.svg';
-import grid from '../../assets/svg/Cuadrado-vista.svg';
-
-/* import del Modal */
-import ModaladdProduct from './Components/modal/ModaladdProduct';
+import {
+  ViewTable,
+  Search,
+  FilterGroup,
+  Grid,
+  Card,
+  Paginated,
+  ModaladdProduct,
+} from '@/pages/Products/components';
 
 export function Products() {
-  
-  /* Funcion para el Cambio de Vistas */
   const [viewType, setViewType] = useState('list');
   const handleSwitchView = view => {
     setViewType(view);
   };
-
   return (
-    <div>
-      <section className='flex flex-col items-center lg:flex-row lg:items-stretch'>
+    <div className='flex flex-col gap-5'>
+      <h1 className='mt-5 ml-5 text-5xl font-semibold text-slate-600'>Productos</h1>
+      <main className='flex flex-col gap-3 px-5'>
+        <ViewTable handleSwitchView={handleSwitchView} viewType={viewType} />
+        <Search />
+        <ModaladdProduct />
+        <FilterGroup />
+      </main>
+      <section className='px-5'>
+        {viewType === 'list' ? <Grid /> : <Card />}
+      </section>
+      <nav className='flex justify-center mb-5'>
+        <Paginated />
+      </nav>
+      {/* <section className='flex flex-col items-center lg:flex-row lg:items-stretch'>
         <section className=' w-[100%]  px-4'>
-          <h1 className="text-slate-600 mt-5 md:mt-0 text-[50px] font-semibold font-['Inter']">
+          <h1 className="mt-5 text-5xl font-semibold text-slate-600 md:mt-0">
             Productos
           </h1>
           <section className='hidden md:block'>
-            <main className='flex items-center  justify-between px-3'>
+            <main className='flex items-center justify-between px-3'>
               <div className='flex items-center gap-2'>
                 <p>Vista</p>
                 <button
                   onClick={() => handleSwitchView('list')}
-                  className={viewType === 'list' ? 'active' : ''}
-                  style={{
-                    background: viewType === 'list' ? '#c8e4ed' : 'transparent',
-                    transition: 'background-color 0.3s',
-                  }}
+                  className={ `${viewType === 'list' ? 'active bg-base-200' : 'transparent'} transition-all p-1 ease-in-out rounded-lg`}
                 >
                   <img src={list} />
                 </button>
                 <button
                   onClick={() => handleSwitchView('cards')}
-                  className={viewType === 'cards' ? 'active' : ''}
-                  style={{
-                    background:
-                      viewType === 'cards' ? '#c8e4ed' : 'transparent',
-                  }}
+                  className={ `${viewType === 'cards' ? 'active bg-base-200' : 'transparent'} transition-all p-1 ease-in-out rounded-lg`}
                 >
                   <img src={grid} />
                 </button>
@@ -59,7 +58,7 @@ export function Products() {
               <ModaladdProduct />
             </main>
           </section>
-          <section className='mt-5 hidden md:block'>
+          <section className='hidden mt-5 md:block'>
             <Filter />
           </section>
           <section>{viewType === 'list' ? <Grid /> : <Card />}</section>
@@ -67,7 +66,7 @@ export function Products() {
             <Paginated />
           </nav>
         </section>
-      </section>
+      </section> */}
     </div>
   );
 }

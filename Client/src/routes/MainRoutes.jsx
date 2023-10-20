@@ -8,7 +8,7 @@ import {
   ForgotPassword,
   Dashboard,
   ServicePolicy,
-  NoFound /* Products, */,
+  NoFound,
   Products,
 } from '@/pages';
 

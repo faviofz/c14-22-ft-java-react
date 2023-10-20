@@ -1,21 +1,21 @@
-import Broza from '../../../../assets/svg/boton-rosa.svg';
+import { PlusIcon } from '@/assets/svg';
 
-export default function ModaladdProduct() {
+export function ModaladdProduct() {
   return (
     <div>
       <div>
         <button
           onClick={() => document.getElementById('my_modal_3').showModal()}
+          className='w-full gap-5 btn btn-primary'
         >
-          <button className='flex items-center'>
-            <img className='hover:scale-[1.1]' src={Broza} />
-            AgregarProducto
-          </button>
+          <PlusIcon width="15" />
+          Nuevo Producto
         </button>
+
         <dialog id='my_modal_3' className='modal '>
-          <div className='modal-box w-11/12 max-w-5xl '>
+          <div className='w-11/12 max-w-5xl modal-box '>
             <form method='dialog'>
-              <div className='flex justify-evenly mb-5 items-center'>
+              <div className='flex items-center mb-5 justify-evenly'>
                 <h3 className="text-slate-800 text-[28px] font-semibold font-['Inter']">
                   Nuevo Producto
                 </h3>
@@ -29,7 +29,7 @@ export default function ModaladdProduct() {
                     <input
                       type='text'
                       placeholder='Type here'
-                      className='input input-bordered w-full max-w-xs'
+                      className='w-full max-w-xs input input-bordered'
                     />
                   </div>
                   <div>
@@ -37,7 +37,7 @@ export default function ModaladdProduct() {
                     <input
                       type='text'
                       placeholder='Type here'
-                      className='input input-bordered w-full max-w-xs'
+                      className='w-full max-w-xs input input-bordered'
                     />
                   </div>
                   <div className='flex gap-4'>
@@ -54,7 +54,7 @@ export default function ModaladdProduct() {
                       <input
                         type='date'
                         placeholder='Type here'
-                        className='input input-bordered w-full max-w-xs'
+                        className='w-full max-w-xs input input-bordered'
                       />
                     </div>
                   </div>
@@ -63,7 +63,7 @@ export default function ModaladdProduct() {
                     <input
                       type='text'
                       placeholder='Type here'
-                      className='input input-bordered w-full max-w-xs'
+                      className='w-full max-w-xs input input-bordered'
                     />
                   </div>
                 </section>
@@ -77,7 +77,7 @@ export default function ModaladdProduct() {
                   <div>
                     <input
                       type='file'
-                      className='file-input file-input-bordered file-input-info w-full max-w-xs'
+                      className='w-full max-w-xs file-input file-input-bordered file-input-info'
                     />
                   </div>
                   <div>
@@ -85,12 +85,12 @@ export default function ModaladdProduct() {
                     <input
                       type='text'
                       placeholder='Type here'
-                      className='input input-bordered w-full max-w-xs'
+                      className='w-full max-w-xs input input-bordered'
                     />
                   </div>
                 </section>
               </section>
-              <div className='flex justify-center items-center gap-6 mr-3 mt-5'>
+              <div className='flex items-center justify-center gap-6 mt-5 mr-3'>
                 <div>
                   <button className='btn btn-outline btn-info w-[295px]'>
                     Cancelar
