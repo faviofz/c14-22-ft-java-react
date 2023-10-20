@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { fetchProducts } from '../../redux/reducers';
+import { useState } from 'react';
 
 import Search from './Components/Search/Search';
 import Filter from './Components/Filter/Filter';
@@ -8,33 +6,17 @@ import Grid from './Components/Grid/Grid';
 import Card from '../Products/Components/Card/Card';
 import Paginated from './Components/Paginated/Paginated.jsx';
 
+/* import de las vistas */
 import list from '../../assets/svg/Lista-vista.svg';
 import grid from '../../assets/svg/Cuadrado-vista.svg';
-import Broza from '../../assets/svg/boton-rosa.svg';
+
+/* import del Modal */
+import ModaladdProduct from './Components/modal/ModaladdProduct';
 
 export function Products() {
-  // const dispatch =useDispatch()
-  // const products = useSelector((state) => state.products.products);
-
-  // console.log(products)
-
-  // useEffect(() => {
-  //   dispatch(fetchProducts());
-  // }, [dispatch]);
-
-  const [data, setData] = useState([]);
-
-  console.log(data);
-
-  useEffect(() => {
-    fetch('http://inexpensive-action-production.up.railway.app/productos')
-      .then(res => res.json())
-      .then(res => setData(res))
-      .catch(error => console.error(error));
-  }, []);
-
+  
+  /* Funcion para el Cambio de Vistas */
   const [viewType, setViewType] = useState('list');
-
   const handleSwitchView = view => {
     setViewType(view);
   };
@@ -60,7 +42,6 @@ export function Products() {
                 >
                   <img src={list} />
                 </button>
-
                 <button
                   onClick={() => handleSwitchView('cards')}
                   className={viewType === 'cards' ? 'active' : ''}
@@ -75,44 +56,7 @@ export function Products() {
               <div>
                 <Search />
               </div>
-              <div>
-                <button
-                  onClick={() =>
-                    document.getElementById('my_modal_3').showModal()
-                  }
-                >
-                  <button className='flex items-center '>
-                    <img className='hover:scale-[1.1]' src={Broza} />
-                    AgregarProducto
-                  </button>
-                </button>
-                <dialog id='my_modal_3' className='modal'>
-                  <div className='modal-box'>
-                    <form method='dialog'>
-                    <section>
-                    <section>
-                      <div>
-                        <label>Nombre</label>
-                        <input
-                          type='text'
-                          placeholder='Type here'
-                          className='input input-bordered w-full max-w-xs'
-                        />
-                      </div>
-                      <div>
-                        <label>Precio</label>
-                        <input
-                          type='text'
-                          placeholder='Type here'
-                          className='input input-bordered w-full max-w-xs'
-                        />
-                      </div>
-                      </section>
-                      </section>
-                    </form>
-                  </div>
-                </dialog>
-              </div>
+              <ModaladdProduct />
             </main>
           </section>
           <section className='mt-5 hidden md:block'>
