@@ -22,7 +22,7 @@ export function Products() {
         <h1 className='text-5xl font-semibold text-slate-600'>Productos</h1>
         <ViewTable handleSwitchView={handleSwitchView} viewType={viewType} />
       </div>
-      
+
       <section className='flex flex-col w-full gap-3 '>
         <Search />
         <div className='flex flex-col justify-between gap-3 sm:flex-row-reverse'>
@@ -30,18 +30,18 @@ export function Products() {
           <FilterGroup />
         </div>
       </section>
-      
-      {/* <div className='grid grid-cols-[1fr_208px] gap-5'>
+
+      {/* <section className='flex flex-col gap-5'>
+        <div className='grid grid-cols-[1fr_208px] gap-5'>
           <Search />
           <ModaladdProduct />
         </div>
         <div className='flex gap-5'>
           <Filter />
-        </div> */}
+        </div>
+      </section> */}
 
-      <section className=''>
-        {viewType === 'list' ? <Grid /> : <Card />}
-      </section>
+      <section>{viewType === 'list' ? <Grid /> : <Card />}</section>
       <nav className='flex justify-center mb-5'>
         <Paginated />
       </nav>
