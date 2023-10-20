@@ -14,11 +14,11 @@ export function Card() {
   }, [dispatch]);
 
   return (
-    <section className='flex flex-row flex-wrap gap-3'>
+    <section className='flex flex-row flex-wrap justify-center gap-5'>
       {products.map((item, index) => (
         <div
           key={index}
-          className=' w-full h-[153px] bg-base-200 rounded-3xl shadow flex flex-row min-[360px]:max-w-[342px]'
+          className=' w-full h-[153px] bg-base-200 rounded-3xl shadow flex flex-row min-[400px]:max-w-[342px]'
         >
           <img
             className=' object-cover rounded-3xl w-[146px] max-w-4xl h-full'

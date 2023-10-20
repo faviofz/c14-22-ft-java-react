@@ -6,7 +6,7 @@ export function ModaladdProduct() {
       <div>
         <button
           onClick={() => document.getElementById('my_modal_3').showModal()}
-          className='w-full gap-5 btn btn-primary'
+          className='w-full gap-5 md:w-80 lg:w-52 sm:btn-wide btn btn-primary'
         >
           <PlusIcon width="15" />
           Nuevo Producto

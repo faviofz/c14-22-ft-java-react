@@ -4,7 +4,7 @@ import {list as ListIcon, grid as GridIcon} from '@/assets/svg'
 export function ViewTable({viewType, handleSwitchView}) {
 
   return (
-    <div className='absolute flex items-center gap-2 right-3 top-[5.5rem]'>
+    <div className='flex items-center gap-2'>
       <p className='hidden sm:inline'>Vista</p>
       <button
         onClick={() => handleSwitchView('list')}
