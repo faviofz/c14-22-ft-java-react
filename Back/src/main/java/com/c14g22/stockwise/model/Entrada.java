@@ -36,3 +36,4 @@ public class Entrada {
   @JoinColumn(name = "pedido_id")
   private Pedido pedido;
 }
+
