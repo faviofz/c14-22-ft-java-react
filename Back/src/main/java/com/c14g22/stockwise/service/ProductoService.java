@@ -2,18 +2,19 @@ package com.c14g22.stockwise.service;
 
 import com.c14g22.stockwise.dto.ProductoDto;
 import com.c14g22.stockwise.model.Producto;
+
 import java.util.List;
 
 
 public interface ProductoService {
 
-  public List<Producto> obtenerProductos();
+    List<Producto> obtenerProductos();
 
-  public Producto obtenerProductoPorId(Long id);
+    Producto obtenerProductoPorId(Long id);
 
-  public ProductoDto guardarProducto(ProductoDto producto);
+    ProductoDto guardarProducto(ProductoDto productoDto);
 
-  public void actualizarProducto(Long id, ProductoDto productoDto);
+    void actualizarProducto(Long id, ProductoDto productoDto);
 
-  public void eliminarProducto(Long id);
+    void eliminarProducto(Long id);
 }

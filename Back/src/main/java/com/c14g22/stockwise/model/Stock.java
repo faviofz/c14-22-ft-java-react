@@ -1,12 +1,9 @@
 package com.c14g22.stockwise.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.c14g22.stockwise.dto.StockDto;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -15,15 +12,22 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "stocks")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Stock {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "stock_id", nullable = false)
-  @JdbcTypeCode(SqlTypes.INTEGER)
-  private Long id;
-  private Integer min;
-  private Integer max;
-  private Integer actual;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "stock_id", nullable = false)
+    @JdbcTypeCode(SqlTypes.INTEGER)
+    private Long id;
+    private Integer min;
+    private Integer max;
+    private Integer actual;
+
+    public Stock(StockDto stockDto) {
+        this.min = stockDto.getMin();
+        this.max = stockDto.getMax();
+        this.actual = stockDto.getActual();
+    }
 
 }
