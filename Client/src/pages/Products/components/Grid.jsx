@@ -14,7 +14,7 @@ export function Grid() {
   }, [dispatch]);
 
   return (
-    <table className='table table-xs bg-base-200'>
+    <table className='table bg-base-200 '>
       <thead>
         <tr>
           <th>Nombre</th>
