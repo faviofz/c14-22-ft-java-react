@@ -3,6 +3,13 @@ import { Container } from '@/components';
 import { Welcome, StatsGroup, DashboardPanel } from './components';
 
 import './dashboard-page.scss';
+import { useEffect } from 'react';
+import {
+  getAllProducts,
+  getProductById,
+  createProduct,
+  deleteProductById,
+} from '@/services';
 
 const {
   title: prodTitle,
@@ -51,6 +58,18 @@ const {
 };
 
 export function Dashboard() {
+  useEffect(() => {
+    // fetch(url)
+    //   .then(data => data.json())
+    //   .then(console.log);
+    getAllProducts().then(console.log).catch(console.log);
+    // getProductById(12).then(console.log).catch(console.log);
+    // const newProduct = {
+    //   nombre: 'caja sorpresa',
+    // };
+    // createProduct(newProduct).then(console.log).catch(console.log);
+    // deleteProductById(15).then(console.log).catch(console.log);
+  }, []);
   return (
     <div className='dashboard-page'>
       <Container>
