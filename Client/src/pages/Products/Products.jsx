@@ -28,7 +28,7 @@ export function Products() {
         <ViewTable handleSwitchView={handleSwitchView} viewType={viewType} />
       </div>
 
-      {width <= 1024 ? (
+      {width <= 1023 ? (
         <section className='flex flex-col w-full gap-3 '>
           <Search />
           <div className='flex flex-col justify-between gap-3 sm:flex-row-reverse'>
