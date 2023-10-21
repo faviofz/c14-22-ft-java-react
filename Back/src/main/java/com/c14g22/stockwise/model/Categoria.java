@@ -1,12 +1,9 @@
 package com.c14g22.stockwise.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.c14g22.stockwise.dto.CategoriaDto;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -15,13 +12,19 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "categorias")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Categoria {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "categoria_id", nullable = false)
-  @JdbcTypeCode(SqlTypes.INTEGER)
-  private Long id;
-  @Column(nullable = false)
-  private String nombre;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "categoria_id", nullable = false)
+    @JdbcTypeCode(SqlTypes.INTEGER)
+    private Long id;
+    @Column(nullable = false)
+    private String nombre;
+
+    public Categoria(CategoriaDto categoriaDto) {
+
+        this.nombre = categoriaDto.getNombre();
+    }
 }

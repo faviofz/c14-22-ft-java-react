@@ -1,14 +1,10 @@
 package com.c14g22.stockwise.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.c14g22.stockwise.dto.MarcaDto;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.antlr.v4.runtime.misc.NotNull;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -16,14 +12,20 @@ import org.hibernate.type.SqlTypes;
 @Table(name = "marcas")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Marca {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "marca_id", nullable = false)
-  @JdbcTypeCode(SqlTypes.INTEGER)
-  private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "marca_id", nullable = false)
+    @JdbcTypeCode(SqlTypes.INTEGER)
+    private Long id;
 
-  @Column(nullable = false)
-  private String nombre;
+    @Column(nullable = false)
+    private String nombre;
+
+    public Marca(MarcaDto marcaDto) {
+
+        this.nombre = marcaDto.getNombre();
+    }
 }

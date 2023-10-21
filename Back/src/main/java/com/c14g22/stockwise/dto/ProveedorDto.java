@@ -11,17 +11,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProveedorDto {
-  private Long id;
-  private String nombre;
-  private String empresa;
-  private String email;
-  private String telefono;
+    private Long id;
+    private String nombre;
+    private String empresa;
+    private String email;
+    private String telefono;
 
-  public ProveedorDto(Proveedor proveedor){
-    this.id = proveedor.getId();
-    this.nombre = proveedor.getNombre();
-    this.empresa = proveedor.getEmpresa();
-    this.email = proveedor.getEmail();
-    this.telefono = proveedor.getTelefono();
-  }
+    public ProveedorDto(Proveedor proveedor) {
+        this.id = proveedor.getId();
+        this.nombre = proveedor.getNombre();
+        this.empresa = proveedor.getEmpresa();
+        this.email = proveedor.getEmail();
+        this.telefono = proveedor.getTelefono();
+    }
 }
