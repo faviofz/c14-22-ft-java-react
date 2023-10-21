@@ -7,14 +7,24 @@ import MdWin from './md-win.svg?react';
 import LgWin from './lg-win.svg?react';
 import ArrowIcon from './arrow-icon.svg?react';
 import SearchIcon from './search-icon.svg?react';
+import SearchInputIcon from './search-icon-input.svg?react';
 import BlockIcon from './block-icon.svg?react';
 import MenuIcon from './menu-icon.svg?react';
 import ProductIcon from './IconProduct.svg?react';
 import StockIcon from './document-report.svg?react';
 import ProviderIcon from './truck.svg?react';
 import HistoricalIcon from './refresh.svg?react';
+import PlusIcon from './plus.svg?react';
+import fisquierda from "./fisquierda.svg?react"
+import fderecha from "./fderecha.svg?react"
+import list from './Lista-vista.svg?react';
+import grid from './Cuadrado-vista.svg?react';
 
 export {
+  list,
+  grid,
+  fisquierda,
+  fderecha,
   BellSVG,
   RowDownSVG,
   CalendarSVG,
@@ -24,10 +34,12 @@ export {
   LgWin,
   ArrowIcon,
   SearchIcon,
+  SearchInputIcon,
   BlockIcon,
   MenuIcon,
   ProductIcon,
   StockIcon,
   ProviderIcon,
   HistoricalIcon,
+  PlusIcon,
 };

@@ -1,73 +1,57 @@
 import { useState } from 'react';
 
-import Search from './Components/Search/Search';
-import Filter from './Components/Filter/Filter';
-import Grid from './Components/Grid/Grid';
-import Card from '../Products/Components/Card/Card';
-import Paginated from './Components/Paginated/Paginated.jsx';
+import {
+  ViewTable,
+  Search,
+  FilterGroup,
+  Filter,
+  Grid,
+  Card,
+  Paginated,
+  ModaladdProduct,
+} from '@/pages/Products/components';
 
-/* import de las vistas */
-import list from '../../assets/svg/Lista-vista.svg';
-import grid from '../../assets/svg/Cuadrado-vista.svg';
-
-/* import del Modal */
-import ModaladdProduct from './Components/modal/ModaladdProduct';
+import { useWindowDimensions } from '@/hooks';
 
 export function Products() {
-  
-  /* Funcion para el Cambio de Vistas */
   const [viewType, setViewType] = useState('list');
   const handleSwitchView = view => {
     setViewType(view);
   };
 
+  const { width } = useWindowDimensions();
+
   return (
-    <div>
-      <section className='flex flex-col items-center lg:flex-row lg:items-stretch'>
-        <section className=' w-[100%]  px-4'>
-          <h1 className="text-slate-600 mt-5 md:mt-0 text-[50px] font-semibold font-['Inter']">
-            Productos
-          </h1>
-          <section className='hidden md:block'>
-            <main className='flex items-center  justify-between px-3'>
-              <div className='flex items-center gap-2'>
-                <p>Vista</p>
-                <button
-                  onClick={() => handleSwitchView('list')}
-                  className={viewType === 'list' ? 'active' : ''}
-                  style={{
-                    background: viewType === 'list' ? '#c8e4ed' : 'transparent',
-                    transition: 'background-color 0.3s',
-                  }}
-                >
-                  <img src={list} />
-                </button>
-                <button
-                  onClick={() => handleSwitchView('cards')}
-                  className={viewType === 'cards' ? 'active' : ''}
-                  style={{
-                    background:
-                      viewType === 'cards' ? '#c8e4ed' : 'transparent',
-                  }}
-                >
-                  <img src={grid} />
-                </button>
-              </div>
-              <div>
-                <Search />
-              </div>
-              <ModaladdProduct />
-            </main>
-          </section>
-          <section className='mt-5 hidden md:block'>
-            <Filter />
-          </section>
-          <section>{viewType === 'list' ? <Grid /> : <Card />}</section>
-          <nav className='flex justify-center mt-5'>
-            <Paginated />
-          </nav>
+    <div className='flex flex-col gap-5 px-5'>
+      <div className='flex flex-row items-center justify-between mt-5'>
+        <h1 className='text-5xl font-semibold text-slate-600'>Productos</h1>
+        <ViewTable handleSwitchView={handleSwitchView} viewType={viewType} />
+      </div>
+
+      {width <= 1023 ? (
+        <section className='flex flex-col w-full gap-3 '>
+          <Search />
+          <div className='flex flex-col justify-between gap-3 sm:flex-row-reverse'>
+            <ModaladdProduct />
+            <FilterGroup />
+          </div>
         </section>
-      </section>
+      ) : (
+        <section className='flex flex-col gap-5'>
+          <div className='grid grid-cols-[1fr_208px] gap-5'>
+            <Search />
+            <ModaladdProduct />
+          </div>
+          <div className='flex gap-5'>
+            <Filter />
+          </div>
+        </section>
+      )}
+
+      <section className='w-full h-full overflow-auto'>{viewType === 'list' ? <Grid /> : <Card />}</section>
+      <nav className='flex justify-center mb-5'>
+        <Paginated />
+      </nav>
     </div>
   );
 }

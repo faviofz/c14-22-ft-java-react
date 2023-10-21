@@ -7,7 +7,7 @@ import './main-layout.scss';
 export function MainLayout() {
   const { userState } = useAuth();
   const { isLogged } = userState;
-  console.log(isLogged);
+  // console.log(isLogged);
   return (
     <section className={isLogged ? 'main-layout logged' : 'main-layout'}>
       {isLogged && (
