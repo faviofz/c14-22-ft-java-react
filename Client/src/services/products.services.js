@@ -1,17 +1,17 @@
 import { httpClient } from '@/utils/';
 
 // CREATE
-export function createProduct(product) {
+export function serviceCreateProduct(newProduct) {
   return new Promise((resolve, reject) => {
     httpClient
-      .post(`/productos`, product)
+      .post(`/productos`, newProduct)
       .then(({ data }) => resolve(data))
       .catch(error => reject(new Error(error)));
   });
 }
 
 // READ
-export function getAllProducts() {
+export function serviceGetAllProducts() {
   return new Promise((resolve, reject) => {
     httpClient
       .get('/productos')
@@ -20,7 +20,7 @@ export function getAllProducts() {
   });
 }
 
-export function getProductById(id) {
+export function serviceGetProduct(id) {
   return new Promise((resolve, reject) => {
     httpClient
       .get(`/productos/${id}`)
@@ -30,18 +30,21 @@ export function getProductById(id) {
 }
 
 // // UPDATE
-// export function updateProductById(id, product) {
+// export function serviceUpdateProduct(id, modifiedProduct) {
 //   return new Promise((resolve, reject) => {
-//     throw new Error('Implement getProductById');
+//     httpClient
+//   .put(`/productos/${id}`, modifiedProduct)
+//   .then(({ data }) => resolve(data))
+//   .catch(error => reject(new Error(error)));
 //   });
 // }
 
-// DELETE
-export function deleteProductById(id) {
-  return new Promise((resolve, reject) => {
-    httpClient
-      .delete(`/productos/${id}`)
-      .then(({ data }) => resolve(data))
-      .catch(error => reject(new Error(error)));
-  });
-}
+// // DELETE
+// export function serviceDeleteProduct(id) {
+//   return new Promise((resolve, reject) => {
+//     httpClient
+//       .delete(`/productos/${id}`)
+//       .then(({ data }) => resolve(data))
+//       .catch(error => reject(new Error(error)));
+//   });
+// }

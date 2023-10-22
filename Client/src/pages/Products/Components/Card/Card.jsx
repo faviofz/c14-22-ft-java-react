@@ -1,21 +1,16 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../../../redux/reducers/index';
+import { useProducts } from '@/hooks';
 
 export default function Card() {
-  const dispatch = useDispatch();
+  const { products, getAllProducts } = useProducts();
 
-  /* Se Guarda los datos en la const */
-  const products = useSelector(state => state.products);
-
-  /* Se llama a la funcion Para Traer los Productos */
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    getAllProducts();
+  }, []);
 
   return (
     <div>
-      <section className="mt-5 flex flex-wrap gap-3 px-2">
+      <section className='mt-5 flex flex-wrap gap-3 px-2'>
         {products.map((item, index) => (
           <div
             key={index}
