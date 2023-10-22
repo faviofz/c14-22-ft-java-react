@@ -1,17 +1,12 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../../redux/reducers/index';
+import { useProducts } from '@/hooks';
 
 export function Card() {
-  const dispatch = useDispatch();
+  const { products, getAllProducts } = useProducts();
 
-  /* Se Guarda los datos en la const */
-  const products = useSelector(state => state.products);
-
-  /* Se llama a la funcion Para Traer los Productos */
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    getAllProducts();
+  }, []);
 
   return (
     <section className='flex flex-row flex-wrap justify-center gap-5'>
@@ -27,12 +22,12 @@ export function Card() {
           />
           <div className='flex flex-col justify-between w-full p-4'>
             <div>
-            <p className='block mt-1 text-lg font-medium leading-tight text-black'>
-              {item.nombre}
-            </p>
-            <p className='text-sm tracking-wide uppercase text-primary'>
-              Category
-            </p>
+              <p className='block mt-1 text-lg font-medium leading-tight text-black'>
+                {item.nombre}
+              </p>
+              <p className='text-sm tracking-wide uppercase text-primary'>
+                Category
+              </p>
             </div>
 
             <div className='flex justify-between w-full'>

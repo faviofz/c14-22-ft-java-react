@@ -1,17 +1,12 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../../redux/reducers/index';
+import { useProducts } from '@/hooks';
 
 export function Grid() {
-  const dispatch = useDispatch();
+  const { products, getAllProducts } = useProducts();
 
-  /* Se Guarda los datos en la const */
-  const products = useSelector(state => state.products);
-
-  /* Se llama a la funcion Para Traer los Productos */
   useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+    getAllProducts();
+  }, []);
 
   return (
     <table className='table bg-base-200 '>
