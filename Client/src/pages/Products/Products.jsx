@@ -24,7 +24,7 @@ export function Products() {
   return (
     <div className='flex flex-col gap-5 px-5'>
       <div className='flex flex-row items-center justify-between mt-5'>
-        <h1 className='text-5xl font-semibold text-slate-600'>Productos</h1>
+        <h1 className='text-5xl font-semibold text-secondary'>Productos</h1>
         <ViewTable handleSwitchView={handleSwitchView} viewType={viewType} />
       </div>
 

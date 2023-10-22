@@ -58,7 +58,7 @@ export function UserInfo() {
           </Link>
         </li>
         <li className='border-t-2'>
-          <Link className='text-secondary' to={''}>
+          <Link className='text-secondary' to={'/service-policy'}>
             Ver condiciones de servicio
           </Link>
         </li>

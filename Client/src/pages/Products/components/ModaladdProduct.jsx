@@ -102,7 +102,7 @@ export function ModaladdProduct() {
               </section>
 
               {/* BUTTOMS */}
-              <div className='flex justify-between'>
+              <div className='flex justify-between '>
                 <button className='w-[12rem] lg:btn-wide btn btn-outline btn-primary'>
                   Cancelar
                 </button>
