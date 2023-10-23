@@ -1,5 +1,8 @@
 package com.c14g22.stockwise;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import java.util.Base64;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
