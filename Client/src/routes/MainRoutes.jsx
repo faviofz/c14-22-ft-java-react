@@ -4,13 +4,14 @@ import { PublicRoutes } from './PublicRoute';
 import { PrivateRoutes } from './PrivateRoute';
 
 import {
-  Login,
-  Register,
-  ForgotPassword,
   Dashboard,
   ServicePolicy,
-  Products,
   NoFound,
+  ForgotPassword,
+  Login,
+  Register,
+  Products,
+  Category,
 } from '@/pages';
 
 export function MainRoutes() {
@@ -64,6 +65,14 @@ export function MainRoutes() {
             element={
               <PrivateRoutes>
                 <Products />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path='category'
+            element={
+              <PrivateRoutes>
+                <Category />
               </PrivateRoutes>
             }
           />
