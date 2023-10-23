@@ -2,18 +2,29 @@ import { Panel, Footer, Logo } from '@/components';
 import { DoubleColumnLayout } from '@/layout';
 import { Link } from 'react-router-dom';
 import './service-policy-page.scss';
+import { useAuth } from '@/hooks/useAuth';
 
 export function ServicePolicy() {
+  const { userState } = useAuth();
+  const { isLogged } = userState;
+
   return (
     <div className='service-polity-page'>
       <DoubleColumnLayout>
         <DoubleColumnLayout.Left>
-          <header>
+          {
+            (isLogged) 
+            ? 
+            <div className=''></div>
+            :
+            <header>
             <Logo />
             <div>
               ¿No tiene una cuenta? <Link to='/register'>Regístrese</Link>
             </div>
           </header>
+          }
+          
           <Panel title='Términos y condiciones'>
             <p className='underline'>Ultima actualizacion el Oct 19, 2023</p>
 

@@ -12,7 +12,7 @@ export function ViewTable({viewType, handleSwitchView}) {
           viewType === 'list' ? 'active bg-base-200' : 'transparent'
         } transition-all p-1 ease-in-out rounded-lg`}
       >
-        <ListIcon/>
+        <ListIcon className="[&>path]:stroke-primary"/>
       </button>
       <button
         onClick={() => handleSwitchView('cards')}
@@ -20,7 +20,7 @@ export function ViewTable({viewType, handleSwitchView}) {
           viewType === 'cards' ? 'active bg-base-200' : 'transparent'
         } transition-all p-1 ease-in-out rounded-lg`}
       >
-        <GridIcon/>
+        <GridIcon className="[&>path]:stroke-primary"/>
       </button>
     </div>
   );

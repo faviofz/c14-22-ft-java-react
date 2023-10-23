@@ -44,9 +44,7 @@ export function MainRoutes() {
           <Route
             path='service-policy'
             element={
-              <PublicRoutes>
                 <ServicePolicy />
-              </PublicRoutes>
             }
           />
           <Route

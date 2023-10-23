@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export function Notification() {
   return (
     <details className='dropdown dropdown-end max-lg:hidden'>
-      <summary className='m-1 btn btn-circle'>
+      <summary className='m-1 btn btn-circle btn-ghost'>
         <div className='indicator'>
           <BellSVG className='[&>path]:stroke-2-content' />
           <span className='badge badge-xs badge-primary indicator-item'></span>
