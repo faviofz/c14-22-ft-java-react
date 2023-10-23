@@ -1,0 +1,56 @@
+$gap: .5rem;
+
+.datalist-component{
+    &-header{
+        display: flex;
+        flex-direction: column;
+        row-gap: .5rem;
+
+        &-top{
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        &-middle{
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            div, 
+            .search-component{
+                flex: 1;
+            }
+            @media (min-width:450px) {
+                flex-direction: row;
+            }
+        }
+
+        &-bottom{
+            input[type='checkbox']{
+                display: none;
+
+                &:checked + .filters-container{
+                    max-height: 200px;
+                }
+            }
+            .filters-container{
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height .3s ease-in-out;
+
+                
+            };
+
+            @media (min-width:600px) {
+                label{
+                    display: none;
+                }
+                .filters-container{
+                   overflow: auto; 
+                   max-height: 100%;
+                }
+            }
+        }
+    }
+}

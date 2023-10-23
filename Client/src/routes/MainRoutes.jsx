@@ -10,6 +10,7 @@ import {
   ServicePolicy,
   NoFound,
   Products,
+  Category,
 } from '@/pages';
 
 export function MainRoutes() {
@@ -70,6 +71,14 @@ export function MainRoutes() {
             element={
               <PrivateRoutes>
                 <Products />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path='category'
+            element={
+              <PrivateRoutes>
+                <Category />
               </PrivateRoutes>
             }
           />

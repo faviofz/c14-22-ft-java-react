@@ -5,3 +5,6 @@ export * from './footer-cmp/Footer';
 export * from './logo-cmp/Logo';
 export * from './darkmode-switch-cmp/DarkModeSwitch';
 export * from './container-cmp/Container';
+export * from './datalist-cmp/DataList';
+export * from './modal-cmp/Modal';
+export * from './search-cmp/Search';
