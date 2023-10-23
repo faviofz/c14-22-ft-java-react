@@ -10,6 +10,7 @@ import {
   Dashboard,
   ServicePolicy,
   Products,
+  Category,
   NoFound,
 } from '@/pages';
 
@@ -64,6 +65,14 @@ export function MainRoutes() {
             element={
               <PrivateRoutes>
                 <Products />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path='category'
+            element={
+              <PrivateRoutes>
+                <Category />
               </PrivateRoutes>
             }
           />
