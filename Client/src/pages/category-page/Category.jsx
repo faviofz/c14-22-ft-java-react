@@ -4,19 +4,19 @@ import { viewModeType } from '@/components/datalist-cmp/constants';
 import './category-page.scss';
 
 export function Category() {
-  const handleSearch = newCategory => {
-    console.log(newCategory);
+  const handleSearch = query => {
+    console.log(query);
   };
+
   return (
     <div className='category-page'>
       <Container>
         <DataList
           title='Categoría'
-          data=''
           setViewMode={viewModeType.TABLE}
           table='table component'
           grid='grid component'
-          element='default component'
+          element='generic component'
         >
           <DataList.Header>
             <Search placeholder='Buscar producto' onNewValue={handleSearch} />
