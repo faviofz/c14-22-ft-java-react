@@ -3,7 +3,7 @@ import { PlusIcon } from '@/assets/svg';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import './category-page.scss';
 
-export function Category() {
+export default function Category() {
   const handleSearch = query => {
     console.log(query);
   };

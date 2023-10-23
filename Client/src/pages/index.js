@@ -8,7 +8,8 @@ const ForgotPassword = lazy(() =>
 );
 const Login = lazy(() => import('./login-page/Login'));
 const Register = lazy(() => import('./register-page/Register'));
-const Products = lazy(() => import('./Products/Products'));
+const Products = lazy(() => import('./product-page/Products'));
+const Category = lazy(() => import('./category-page/Category'));
 
 export {
   Dashboard,
@@ -18,4 +19,5 @@ export {
   Login,
   Register,
   Products,
+  Category,
 };
