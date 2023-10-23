@@ -2,7 +2,6 @@ import { Avatar } from '@/assets/images';
 import { DarkModeSwitch } from '@/components/darkmode-switch-cmp/DarkModeSwitch';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
-import ConfigModal from './right-menu-cmp/ConfigModal';
 
 export function UserInfo() {
   const { logoutUser } = useAuth();
@@ -48,8 +47,11 @@ export function UserInfo() {
         <li className='border-t-2'>
           <DarkModeSwitch />
         </li>
-        <li className='border-t-2'>
-          <ConfigModal/>
+        <li
+          className='border-t-2'
+          onClick={() => document.getElementById('modal_config').showModal()}
+        >
+          <h3>Configuración</h3>
         </li>
 
         <li className='border-t-2'>

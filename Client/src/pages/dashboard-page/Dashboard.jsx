@@ -1,9 +1,6 @@
-import { useEffect } from 'react';
 import { ProductIcon, BellSVG } from '@/assets/svg';
 import { Container } from '@/components';
 import { Welcome, StatsGroup, DashboardPanel } from './components';
-
-import { useProducts } from '@/hooks/useProducts';
 import './dashboard-page.scss';
 
 const {
@@ -52,27 +49,10 @@ const {
   ],
 };
 
-export function Dashboard() {
-  const { products, loading, getAllProducts } = useProducts();
-  useEffect(() => {
-    // fetch(url)
-    //   .then(data => data.json())
-    //   .then(console.log);
-    // getAllProducts().then(console.log).catch(console.log);
-    // getProductById(12).then(console.log).catch(console.log);
-    // const newProduct = {
-    //   nombre: 'caja sorpresa',
-    // };
-    // createProduct(newProduct).then(console.log).catch(console.log);
-    // deleteProductById(15).then(console.log).catch(console.log);
-
-    getAllProducts();
-  }, []);
-  console.log('products', products);
+export default function Dashboard() {
   return (
     <div className='dashboard-page'>
       <Container>
-        {loading ? 'cargando...' : <>products count: {products.length}</>}
         <Welcome fullname='Luis Angel Salcedo' />
         <StatsGroup />
         <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>

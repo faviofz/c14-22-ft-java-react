@@ -1,4 +1,7 @@
 .main-layout{
+
+    
+
     min-height: 100vh;
 
     
@@ -37,9 +40,8 @@
                 right: 0;
              }
         }
-        &-content{
-            
-            flex: 1;
+        &-content{            
+            flex: 1;            
         }
     }
     // .logo-component{

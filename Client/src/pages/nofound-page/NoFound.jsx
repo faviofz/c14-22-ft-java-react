@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Image404 } from './components';
 import './nofound-page.scss';
 
-export function NoFound() {
+export default function NoFound() {
   return (
     <div className='nofound'>
       <div className='container'>

@@ -2,14 +2,15 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainLayout } from '@/layout';
 import { PublicRoutes } from './PublicRoute';
 import { PrivateRoutes } from './PrivateRoute';
+
 import {
   Login,
   Register,
   ForgotPassword,
   Dashboard,
   ServicePolicy,
-  NoFound,
   Products,
+  NoFound,
 } from '@/pages';
 
 export function MainRoutes() {
@@ -41,12 +42,7 @@ export function MainRoutes() {
               </PublicRoutes>
             }
           />
-          <Route
-            path='service-policy'
-            element={
-                <ServicePolicy />
-            }
-          />
+          <Route path='service-policy' element={<ServicePolicy />} />
           <Route
             index
             element={

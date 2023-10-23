@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { imgRegister } from '@/assets/images';
 import './register-page.scss';
 
-export const Register = () => {
+export default function Register() {
   return (
     <div className='register-page'>
       <DoubleColumnLayout double={true} reverse={true}>
@@ -30,7 +30,8 @@ export const Register = () => {
                   type='checkbox'
                   className='toggle toggle-sm toggle-primary'
                 />
-                He leido y acepta <Link to={'/service-policy'}>terminos y condiciones</Link>
+                He leido y acepta{' '}
+                <Link to={'/service-policy'}>terminos y condiciones</Link>
               </div>
               <Button>Ingresar</Button>
             </form>
@@ -47,4 +48,4 @@ export const Register = () => {
       </DoubleColumnLayout>
     </div>
   );
-};
+}

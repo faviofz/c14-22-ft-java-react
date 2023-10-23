@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import './login-page.scss';
 
-export const Login = () => {
+export default function Login() {
   const { userState, loginUser } = useAuth();
 
   const handlerLogin = () => {
@@ -45,4 +45,4 @@ export const Login = () => {
       </DoubleColumnLayout>
     </div>
   );
-};
+}

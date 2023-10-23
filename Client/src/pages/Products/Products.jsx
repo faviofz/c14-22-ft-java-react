@@ -13,7 +13,7 @@ import {
 
 import { useWindowDimensions } from '@/hooks';
 
-export function Products() {
+export default function Products() {
   const [viewType, setViewType] = useState('list');
   const handleSwitchView = view => {
     setViewType(view);
@@ -48,7 +48,9 @@ export function Products() {
         </section>
       )}
 
-      <section className='w-full h-full overflow-auto'>{viewType === 'list' ? <Grid /> : <Card />}</section>
+      <section className='w-full h-full overflow-auto'>
+        {viewType === 'list' ? <Grid /> : <Card />}
+      </section>
       <nav className='flex justify-center mb-5'>
         <Paginated />
       </nav>

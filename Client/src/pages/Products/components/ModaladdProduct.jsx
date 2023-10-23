@@ -53,6 +53,8 @@ export function ModaladdProduct() {
                       <input
                         type='number'
                         placeholder='0'
+                        min='0'
+                        step='0.01'
                         className='w-full input input-bordered'
                       />
                     </div>
@@ -71,7 +73,15 @@ export function ModaladdProduct() {
                       type='text'
                       placeholder='Type here'
                       className='w-full input input-bordered'
+                      list='marcas-list'
                     />
+                    <datalist id='marcas-list'>
+                      <option>Cocacola</option>
+                      <option>Arcor</option>
+                      <option>Nestle</option>
+                      <option>Gloria</option>
+                      <option>Chocolina</option>
+                    </datalist>
                   </div>
                 </div>
                 <div className='flex flex-col lg:gap-[1.7rem]'>
@@ -96,7 +106,15 @@ export function ModaladdProduct() {
                       type='text'
                       placeholder='Type here'
                       className='w-full input input-bordered'
+                      list='category-list'
                     />
+                    <datalist id='category-list'>
+                      <option>Tecnologia</option>
+                      <option>Lacteos</option>
+                      <option>Ropa</option>
+                      <option>Carnicería</option>
+                      <option>Licores</option>
+                    </datalist>
                   </div>
                 </div>
               </section>
@@ -106,7 +124,9 @@ export function ModaladdProduct() {
                 <button className='w-[12rem] lg:btn-wide btn btn-outline btn-primary'>
                   Cancelar
                 </button>
-                <button className='w-[12rem] lg:btn-wide btn btn-primary'>Guardar</button>
+                <button className='w-[12rem] lg:btn-wide btn btn-primary'>
+                  Guardar
+                </button>
               </div>
             </form>
           </div>

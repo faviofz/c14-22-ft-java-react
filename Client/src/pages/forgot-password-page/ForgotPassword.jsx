@@ -3,7 +3,7 @@ import { DoubleColumnLayout } from '@/layout';
 import { Link } from 'react-router-dom';
 import './forgot-password-page.scss';
 
-export function ForgotPassword() {
+export default function ForgotPassword() {
   return (
     <div className='forgot-password-page'>
       <DoubleColumnLayout>
