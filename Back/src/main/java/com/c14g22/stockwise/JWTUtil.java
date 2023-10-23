@@ -22,8 +22,6 @@ public class JWTUtil {
     return Jwts.builder()
         .setId(tokenId)
         .setSubject(subject)
-        .setIssuer("ABC_Ltd")
-        .setAudience("XYZ_Ltd")
         .setIssuedAt(new Date(System.currentTimeMillis()))
         .setExpiration(new Date(System.currentTimeMillis() + TimeUnit.HOURS.toMillis(1)))
         .signWith(SignatureAlgorithm.HS512, Base64.getEncoder().encode(secret_key.getBytes()))

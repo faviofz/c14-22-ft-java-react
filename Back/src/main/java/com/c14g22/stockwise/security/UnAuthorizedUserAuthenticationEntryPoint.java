@@ -1,4 +1,4 @@
-package com.c14g22.stockwise;
+package com.c14g22.stockwise.security;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

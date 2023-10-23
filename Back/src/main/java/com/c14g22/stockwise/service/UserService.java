@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-  Integer saveUser(User user);
+  Long saveUser(User user);
 
   Optional<User> findByUsername(String username);
 }

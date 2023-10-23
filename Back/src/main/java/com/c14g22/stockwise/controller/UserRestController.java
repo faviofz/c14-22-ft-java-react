@@ -27,19 +27,17 @@ public class UserRestController {
   @PostMapping("/signup")
   public ResponseEntity<String> saveUser(@RequestBody User user) {
 
-    Integer id = userService.saveUser(user);
+    Long id = userService.saveUser(user);
     String message= "User with id '"+id+"' saved succssfully!";
-    //return new ResponseEntity<String>(message, HttpStatus.OK);
     return ResponseEntity.ok(message);
   }
 
   @PostMapping("/login")
   public ResponseEntity<UserResponse> login(@RequestBody UserRequest request){
 
-    //Validate username/password with DB(required in case of Stateless Authentication)
     authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
         request.getUsername(), request.getPassword()));
-    String token =util.generateToken(request.getUsername());
+    String token = util.generateToken(request.getUsername());
     return ResponseEntity.ok(new UserResponse(token,"Token generated successfully!"));
   }
 
