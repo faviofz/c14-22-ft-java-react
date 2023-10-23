@@ -75,6 +75,9 @@ public class SecurityConfig {
     CorsConfiguration config = new CorsConfiguration();
     config.applyPermitDefaultValues();
     config.addAllowedOrigin("http://localhost:5173");
+    config.addAllowedOrigin("http://localhost:3000");
+    config.addAllowedOrigin("http://localhost:3030");
+    config.addAllowedOrigin("https://stockwise-client.vercel.app");
     config.addAllowedHeader("*");
     config.addAllowedMethod("*");
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
