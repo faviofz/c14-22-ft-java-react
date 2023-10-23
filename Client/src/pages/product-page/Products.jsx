@@ -9,7 +9,7 @@ import {
   Card,
   Paginated,
   ModaladdProduct,
-} from '@/pages/Products/components';
+} from './components';
 
 import { useWindowDimensions } from '@/hooks';
 

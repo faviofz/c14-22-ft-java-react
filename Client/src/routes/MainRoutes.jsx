@@ -4,14 +4,14 @@ import { PublicRoutes } from './PublicRoute';
 import { PrivateRoutes } from './PrivateRoute';
 
 import {
-  Login,
-  Register,
-  ForgotPassword,
   Dashboard,
   ServicePolicy,
+  NoFound,
+  ForgotPassword,
+  Login,
+  Register,
   Products,
   Category,
-  NoFound,
 } from '@/pages';
 
 export function MainRoutes() {

@@ -5,9 +5,13 @@ import { useAuth } from '@/hooks/useAuth';
 export function Panel({ children, title = '' }) {
   const { userState } = useAuth();
   const { isLogged } = userState;
-  
+
   return (
-    <section className={`w-auto ${(isLogged) ? '' : 'mt-20'} panel-component card bg-base-200`}>
+    <section
+      className={`w-auto ${
+        isLogged ? '' : 'mt-20'
+      } panel-component card bg-base-200`}
+    >
       <div className='card-body'>
         <h2 className='block text-2xl text-center card-title'>{title}</h2>
         {children}
