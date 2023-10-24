@@ -1,7 +1,7 @@
 import { authActions } from './actions';
 
 export const initialState = {
-  user: JSON.parse(localStorage.getItem('userLogger')) || {},
+  user: JSON.parse(localStorage.getItem('userLogger')) || null,
   isLogged: JSON.parse(localStorage.getItem('isLogged')) || false,
 };
 
@@ -13,7 +13,7 @@ export function authReducer(state, action) {
     return { ...state, user: action.payload, isLogged: true };
   }
   if (action.type === authActions.LOGOUT) {
-    localStorage.setItem('userLogger', JSON.stringify({}));
+    localStorage.setItem('userLogger', JSON.stringify(null));
     localStorage.setItem('isLogged', JSON.stringify(false));
 
     return { ...initialState };
