@@ -17,11 +17,11 @@ export function Modal({ title, buttonLabel, buttonIcon, children }) {
         <div className='w-full h-auto lg:min-w-[60rem] lg:max-h-[35rem] modal-box rounded-3xl'>
           <div method='dialog' className='flex flex-col justify-between h-full'>
             <div className='flex items-center justify-between '>
-              <h3 className='text-3xl font-semibold text-secondary '>
+              <h3 className='mb-5 text-3xl font-semibold text-secondary'>
                 {title}
               </h3>
               <form method='dialog'>
-                <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
+                <button className='absolute btn btn-sm btn-circle btn-ghost right-2 top-2'>
                   ✕
                 </button>
               </form>

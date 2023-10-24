@@ -54,11 +54,6 @@ export function UserInfo() {
         </li>
 
         <li className='border-t-2'>
-          <Link className='text-secondary' to={''}>
-            Ver política de privacidad
-          </Link>
-        </li>
-        <li className='border-t-2'>
           <Link className='text-secondary' to={'/service-policy'}>
             Ver condiciones de servicio
           </Link>

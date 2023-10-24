@@ -19,8 +19,12 @@ import fisquierda from "./fisquierda.svg?react"
 import fderecha from "./fderecha.svg?react"
 import list from './Lista-vista.svg?react';
 import grid from './Cuadrado-vista.svg?react';
+import TrashIcon from './trash.svg?react';
+import PencilAltIcon from './pencil-alt.svg?react';
 
 export {
+  PencilAltIcon,
+  TrashIcon,
   list,
   grid,
   fisquierda,

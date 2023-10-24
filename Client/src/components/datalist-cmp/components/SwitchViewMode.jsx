@@ -14,7 +14,7 @@ export function SwitchViewMode({ currentType, handleChange }) {
             : 'transparent'
         } transition-all p-1 ease-in-out rounded-lg`}
       >
-        <ListIcon />
+        <ListIcon className="[&>path]:stroke-primary" />
       </button>
       <button
         onClick={() => handleChange(viewModeType.GRID)}
@@ -24,7 +24,7 @@ export function SwitchViewMode({ currentType, handleChange }) {
             : 'transparent'
         } transition-all p-1 ease-in-out rounded-lg`}
       >
-        <GridIcon />
+        <GridIcon className="[&>path]:stroke-primary" />
       </button>
     </div>
   );

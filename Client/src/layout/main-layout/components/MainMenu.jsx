@@ -8,6 +8,7 @@ import {
   ProviderIcon,
   HistoricalIcon,
 } from '@/assets/svg';
+import { Link } from 'react-router-dom';
 
 const menuItems = [
   {
@@ -41,7 +42,7 @@ export function MainMenu() {
     <div className='z-10 lg:ml-0 lg:my-0 lg:drawer-open'>
       <input id='main-menu' type='checkbox' className='drawer-toggle' />
       <OpenMainMenuButton />
-      <div className='z-20 drawer-side h-full'>
+      <div className='z-20 h-full drawer-side'>
         <label
           htmlFor='main-menu'
           aria-label='close sidebar'
@@ -49,9 +50,9 @@ export function MainMenu() {
         ></label>
 
         <nav className='z-20 min-h-full pt-5 menu bg-base-200 text-base-content'>
-          <div className='p-2 mb-[2rem]'>
+          <Link to={'/'} className='p-2 mb-[2rem]'>
             <Logo />
-          </div>
+          </Link>
           <ul>
             {menuItems.map((item, index) => {
               return <MainMenuItem key={index} {...item} />;
