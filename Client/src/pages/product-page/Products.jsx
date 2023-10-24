@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DataList, Container, Modal, Search } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { PlusIcon } from '@/assets/svg';
@@ -7,12 +7,21 @@ import { useProducts } from './../../hooks/useProducts';
 
 export default function Product() {
   const { products, getAllProducts } = useProducts();
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   useEffect(() => {
     getAllProducts();
   }, []);
 
+  useEffect(() => {
+    setFilteredProducts(products);
+  }, [products]);
+
   const handleSearch = query => {
-    console.log(query);
+    const filtered = products.filter(product =>
+      product.nombre.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredProducts(filtered);
   };
 
   return (
@@ -21,9 +30,8 @@ export default function Product() {
         <DataList
           title='Productos'
           setViewMode={viewModeType.TABLE}
-          table={<Table data={products} />}
-          grid={<Grid data={products} />}
-          // element='generic component'
+          table={<Table data={filteredProducts} />}
+          grid={<Grid data={filteredProducts} />}
         >
           <DataList.Header>
             <Search placeholder='Buscar producto' onNewValue={handleSearch} />
