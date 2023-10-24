@@ -20,11 +20,15 @@ public class Categoria {
     @Column(name = "categoria_id", nullable = false)
     @JdbcTypeCode(SqlTypes.INTEGER)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nombre;
 
     public Categoria(CategoriaDto categoriaDto) {
 
         this.nombre = categoriaDto.getNombre();
+    }
+
+    public Categoria(String nombre) {
+        this.nombre = nombre;
     }
 }

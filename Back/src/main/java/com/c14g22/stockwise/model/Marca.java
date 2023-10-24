@@ -28,4 +28,8 @@ public class Marca {
 
         this.nombre = marcaDto.getNombre();
     }
+
+    public Marca(String nombre) {
+        this.nombre = nombre;
+    }
 }
