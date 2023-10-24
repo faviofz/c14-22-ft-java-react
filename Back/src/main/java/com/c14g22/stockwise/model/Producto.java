@@ -1,7 +1,9 @@
 package com.c14g22.stockwise.model;
 
-import com.c14g22.stockwise.dto.ProductoDto;
+import com.c14g22.stockwise.dto.ProductoRequest;
 import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,21 +30,21 @@ public class Producto {
     private Double impuesto;
     private LocalDate fechaVencimiento;
 
-    @ManyToOne
+    @ManyToOne(targetEntity = Categoria.class)
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
-    @ManyToOne
+    @ManyToOne(targetEntity = Proveedor.class)
     @JoinColumn(name = "proveedor_id")
     private Proveedor proveedor;
-    @ManyToOne
+    @ManyToOne(targetEntity = Marca.class)
     @JoinColumn(name = "marca_id")
     private Marca marca;
 
-    public Producto(ProductoDto productoDto) {
-        this.nombre = productoDto.getNombre();
-        this.imagen = productoDto.getImagen();
-        this.costo = productoDto.getCosto();
-        this.impuesto = productoDto.getImpuesto();
-        this.fechaVencimiento = productoDto.getFechaVencimiento();
+    public Producto(ProductoRequest productoRequest) {
+        this.nombre = productoRequest.getNombre();
+        this.imagen = productoRequest.getImagen();
+        this.costo = productoRequest.getCosto();
+        this.impuesto = productoRequest.getImpuesto();
+        this.fechaVencimiento = productoRequest.getFechaVencimiento();
     }
 }

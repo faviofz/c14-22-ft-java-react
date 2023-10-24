@@ -27,6 +27,11 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     @Override
+    public Categoria obtenerCategoriaPorNombre(String nombre) {
+        return categoriaRepository.findByNombre(nombre).orElseThrow(EntityNotFoundException::new);
+    }
+
+    @Override
     public CategoriaDto guardarCategoria(CategoriaDto categoriaDto) {
         Categoria categoria = new Categoria(categoriaDto);
         return new CategoriaDto(categoriaRepository.save(categoria));

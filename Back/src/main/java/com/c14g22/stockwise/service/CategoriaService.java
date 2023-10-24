@@ -11,6 +11,8 @@ public interface CategoriaService {
 
     Categoria obtenerCategoriaPorId(Long id);
 
+    Categoria obtenerCategoriaPorNombre(String nombre);
+
     CategoriaDto guardarCategoria(CategoriaDto categoriaDto);
 
     void actualizarCategoria(Long id, CategoriaDto categoriaDto);
