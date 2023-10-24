@@ -1,9 +1,8 @@
-export * from './Card';
-export * from './Filter';
-export * from './FilterGroup';
+export * from './Table';
 export * from './Grid';
-export * from './ModaladdProduct';
-export * from './Paginated';
-export * from './Search';
-export * from './ViewTable';
-
+export * from './Filters';
+// export * from './FilterGroup';
+// export * from './ModaladdProduct';
+// export * from './Paginated';
+// export * from './Search';
+// export * from './ViewTable';

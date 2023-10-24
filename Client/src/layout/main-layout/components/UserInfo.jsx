@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 
 export function UserInfo() {
-  const { logoutUser } = useAuth();
+  const { userState, onLogout } = useAuth();
 
   const handlerLogout = () => {
-    logoutUser();
-
+    onLogout();
     window.location.href = '/';
   };
 
@@ -33,7 +32,7 @@ export function UserInfo() {
               </div>
             </div>
             <div>
-              <h1>Luis Angel Salcedo</h1>
+              <h1>{userState?.user.userName}</h1>
               <h1>Usuario</h1>
             </div>
           </div>
