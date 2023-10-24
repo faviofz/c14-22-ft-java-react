@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { SwitchViewMode } from './components';
+import { SwitchViewMode, Paginated } from './components';
 import { viewModeType } from './constants';
 import './datalist-cmp.scss';
 
@@ -42,14 +42,14 @@ export function DataList({
     <section className='datalist-component'>
       <header className='datalist-component-header'>
         <div className='datalist-component-header-top'>
-          <h1 className='text-5xl font-semibold text-slate-600'>{title}</h1>
+          <h1 className='text-5xl font-semibold text-secondary'>{title}</h1>
           {!element && (
             <SwitchViewMode currentType={viewType} handleChange={setViewType} />
           )}
         </div>
         {children}
       </header>
-      <div className='datalist-component-content mt-2 w-full h-full overflow-auto'>
+      <div className='w-full h-full mt-2 overflow-auto datalist-component-content'>
         {element || undefined}
         {viewModeType.TABLE === viewType &&
           !element &&
@@ -58,6 +58,7 @@ export function DataList({
           !element &&
           (loading ? 'cargando table...' : grid)}
       </div>
+      <Paginated/>
     </section>
   );
 }

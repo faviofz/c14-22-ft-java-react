@@ -7,7 +7,7 @@ export function Notification() {
     <details className='dropdown dropdown-end max-lg:hidden'>
       <summary className='m-1 btn btn-circle btn-ghost'>
         <div className='indicator'>
-          <BellSVG className='[&>path]:stroke-2-content' />
+          <BellSVG className='[&>path]:stroke-2-content [&>path]:stroke-secondary-content' />
           <span className='badge badge-xs badge-primary indicator-item'></span>
         </div>
       </summary>

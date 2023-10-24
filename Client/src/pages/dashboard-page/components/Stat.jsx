@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-export function Stat({ title = '', stat = 0, Icon }) {
+export function Stat({ title = '', stat = 0, Icon, url }) {
   return (
-    <Link to='#' className='box-border bock flex-2'>
+    <Link to={url} className='box-border bock flex-2'>
       <div className='flex [&>div]:flex-1 items-center pl-[3rem] relative '>
         <div className='absolute left-[0px] bg-accent rounded-3xl w-[5rem] h-[5rem] p-[1.2rem] flex items-center justify-center'>
           <Icon className='[&>path]:stroke-accent-content w-full h-full' />
@@ -27,10 +27,12 @@ export function Stat({ title = '', stat = 0, Icon }) {
 
 Stat.propTypes = {
   title: PropTypes.string,
+  url: PropTypes.string,
   stat: PropTypes.number,
   Icon: PropTypes.func,
 };
 
 Stat.defaultProps = {
   children: <h3>Stat</h3>,
+  url: '#',
 };

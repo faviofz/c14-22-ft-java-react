@@ -13,8 +13,8 @@ export function Search({ placeholder, onNewValue }) {
     onNewValue(value);
   };
   return (
-    <div className='search-component flex items-center justify-between p-2 border rounded-md border-accent bg-base-200'>
-      <form onSubmit={handleSubmit}>
+    <div className='flex items-center justify-between p-2 border rounded-md search-component border-accent bg-base-200'>
+      <form onSubmit={handleSubmit} className='w-full'>
         <input
           className='flex-grow p-1 outline-none text-secondary bg-base-200 text-md'
           placeholder={placeholder}

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {TrashIcon, PencilAltIcon} from '@/assets/svg'
 
 export function Table({ data }) {
   return (
@@ -10,6 +11,7 @@ export function Table({ data }) {
           <th>Categoria</th>
           <th>Marcas</th>
           <th>Vencimiento</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +26,7 @@ export function Table({ data }) {
             <td>{item.categoria}</td>
             <td>{item.marcas}</td>
             <td>{item.fechaVencimiento}</td>
+            <td className='flex gap-5'><TrashIcon /> <PencilAltIcon/></td>
           </tr>
         ))}
       </tbody>

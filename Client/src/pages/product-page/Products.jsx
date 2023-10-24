@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { DataList, Container, Modal, Search } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { PlusIcon } from '@/assets/svg';
-import { Table, Grid, Filters } from './components';
+import { Table, Grid, Filters, FormProduct } from './components';
 import { useProducts } from './../../hooks/useProducts';
 
 export default function Product() {
@@ -40,7 +40,7 @@ export default function Product() {
               buttonLabel='Nuevo Producto'
               buttonIcon={<PlusIcon width='15' />}
             >
-              contenido del modal
+              <FormProduct />
             </Modal>
           </DataList.Header>
           <DataList.Filters>
