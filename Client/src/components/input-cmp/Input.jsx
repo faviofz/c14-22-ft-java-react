@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 
-export function Input({ label, placeholder, errorMessage }) {
+export function Input({ label, errorMessage, ...props }) {
+  const { placeholder } = props;
+
   return (
     <div className='form-control w-full block'>
       {label && (
@@ -13,6 +15,7 @@ export function Input({ label, placeholder, errorMessage }) {
         type='text'
         placeholder={placeholder}
         className='input input-bordered w-full'
+        {...props}
       />
 
       {errorMessage && (
@@ -26,8 +29,8 @@ export function Input({ label, placeholder, errorMessage }) {
 
 Input.propTypes = {
   label: PropTypes.string,
-  placeholder: PropTypes.string,
   errorMessage: PropTypes.string,
+  placeholder: PropTypes.string,
 };
 
 Input.defaultProps = {

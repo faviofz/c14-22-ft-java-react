@@ -19,7 +19,7 @@ export default function Category() {
           element='generic component'
         >
           <DataList.Header>
-            <Search placeholder='Buscar producto' onNewValue={handleSearch} />
+            <Search placeholder='Buscar categoría' onNewValue={handleSearch} />
             <Modal
               title='Nueva Categoría'
               buttonLabel='Nueva Categoría'

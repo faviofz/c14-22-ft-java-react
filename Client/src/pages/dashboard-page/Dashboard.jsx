@@ -1,6 +1,7 @@
 import { ProductIcon, BellSVG } from '@/assets/svg';
 import { Container } from '@/components';
 import { Welcome, StatsGroup, DashboardPanel } from './components';
+import { useAuth } from '@/hooks';
 import './dashboard-page.scss';
 
 const {
@@ -50,10 +51,11 @@ const {
 };
 
 export default function Dashboard() {
+  const { userState } = useAuth();
   return (
     <div className='dashboard-page'>
       <Container>
-        <Welcome fullname='Luis Angel Salcedo' />
+        <Welcome fullname={userState.user.userName} />
         <StatsGroup />
         <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>
           <DashboardPanel
