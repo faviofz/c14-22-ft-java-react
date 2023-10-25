@@ -39,12 +39,12 @@ export function serviceGetProduct(id) {
 //   });
 // }
 
-// // DELETE
-// export function serviceDeleteProduct(id) {
-//   return new Promise((resolve, reject) => {
-//     httpClient
-//       .delete(`/productos/${id}`)
-//       .then(({ data }) => resolve(data))
-//       .catch(error => reject(new Error(error)));
-//   });
-// }
+// * DELETE
+export function serviceDeleteProduct(id) {
+  return new Promise((resolve, reject) => {
+    httpClient
+      .delete(`/productos/${id}`)
+      .then(({ data }) => resolve(data))
+      .catch(error => reject(new Error(error)));
+  });
+}

@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { TrashIcon, PencilAltIcon } from '@/assets/svg';
+import { useProducts } from '../../../hooks/useProducts';
 
 // ! ADAPTER Joose
 const productAdapter = data => ({
@@ -14,6 +15,9 @@ const productAdapter = data => ({
 });
 
 export function Table({ data }) {
+  const { deleteProducts } = useProducts();
+
+
   return (
     <table className='table bg-base-200 '>
       <thead>
@@ -33,6 +37,7 @@ export function Table({ data }) {
         {data.map(
           (
             {
+              id,
               nombre,
               imagen,
               categoria,
@@ -58,7 +63,12 @@ export function Table({ data }) {
               <td>{impuesto}</td>
               <td>{costo}</td>
               <td className='flex gap-5'>
-                <TrashIcon /> <PencilAltIcon />
+                <button onClick={() => deleteProducts(id)}>
+                <TrashIcon /> 
+                </button>
+                <button>
+                <PencilAltIcon />
+                </button>
               </td>
             </tr>
           )
