@@ -14,6 +14,7 @@ import {
   Category,
   Provider,
   History,
+  Notification,
 } from '@/pages';
 
 export function MainRoutes() {
@@ -67,6 +68,14 @@ export function MainRoutes() {
             element={
               <PrivateRoutes>
                 <Products />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path='notification'
+            element={
+              <PrivateRoutes>
+                <Notification />
               </PrivateRoutes>
             }
           />

@@ -15,7 +15,7 @@ export function Grid({ data }) {
           />
           <div className='flex flex-col justify-between w-full p-4'>
             <div>
-              <p className='block mt-1 text-lg font-medium leading-tight text-black'>
+              <p className='block mt-1 text-lg font-medium leading-tight text-secondary'>
                 {item.nombre}
               </p>
               <p className='text-sm tracking-wide uppercase text-primary'>
@@ -24,8 +24,8 @@ export function Grid({ data }) {
             </div>
 
             <div className='flex justify-between w-full'>
-              <p className='mt-2 text-gray-500'>MARCA</p>
-              <p className='mt-2 text-gray-500'>$2000</p>
+              <p className='mt-2 text-secondary'>MARCA</p>
+              <p className='mt-2 text-secondary'>$2000</p>
             </div>
           </div>
         </div>

@@ -31,7 +31,7 @@ export default function Product() {
           title='Productos'
           setViewMode={viewModeType.TABLE}
           table={<Table data={filteredProducts} />}
-          // grid={<Grid data={filteredProducts} />}
+          grid={<Grid data={filteredProducts} />}
         >
           <DataList.Header>
             <Search placeholder='Buscar producto' onNewValue={handleSearch} />

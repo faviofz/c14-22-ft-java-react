@@ -38,7 +38,7 @@ export function UserInfo() {
           </div>
         </li>
         <li className=''>
-          <Link className='text-secondary' to={''}>
+          <Link className='text-secondary' to={'/notification'}>
             <div className='badge badge-primary badge-xs'></div>
             Notificación
           </Link>
