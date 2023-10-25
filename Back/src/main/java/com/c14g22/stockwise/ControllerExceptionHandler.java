@@ -1,6 +1,7 @@
 package com.c14g22.stockwise;
 
 import com.c14g22.stockwise.exception.CategoriaNotFoundException;
+import com.c14g22.stockwise.exception.MarcaNotFoundException;
 import com.c14g22.stockwise.exception.ProductoNotFoundException;
 import com.c14g22.stockwise.model.ErrorMessage;
 import jakarta.persistence.EntityNotFoundException;
@@ -13,7 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 @RestControllerAdvice
 public class ControllerExceptionHandler {
 
-  @ExceptionHandler(value = {ProductoNotFoundException.class, CategoriaNotFoundException.class})
+  @ExceptionHandler(value = {MarcaNotFoundException.class,ProductoNotFoundException.class, CategoriaNotFoundException.class})
   @ResponseStatus(value = HttpStatus.NOT_FOUND)
   public ErrorMessage entityNotFoundException(RuntimeException ex){
     return new ErrorMessage(HttpStatus.NOT_FOUND,ex.getMessage());

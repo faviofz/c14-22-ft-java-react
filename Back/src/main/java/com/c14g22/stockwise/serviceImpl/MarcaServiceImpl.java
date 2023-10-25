@@ -1,6 +1,7 @@
 package com.c14g22.stockwise.serviceImpl;
 
 import com.c14g22.stockwise.dto.MarcaDto;
+import com.c14g22.stockwise.exception.MarcaNotFoundException;
 import com.c14g22.stockwise.model.Marca;
 import com.c14g22.stockwise.repository.MarcaRepository;
 import com.c14g22.stockwise.service.MarcaService;
@@ -22,7 +23,12 @@ public class MarcaServiceImpl implements MarcaService {
 
     @Override
     public Marca obtenerMarcaPorId(Long id) {
-        return marcaRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return marcaRepository.findById(id).orElseThrow(() -> new MarcaNotFoundException(id));
+    }
+
+    @Override
+    public Marca obtenerMarcaPorNombre(String nombre) {
+        return marcaRepository.findByNombre(nombre).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
