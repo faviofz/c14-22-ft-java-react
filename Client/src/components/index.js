@@ -8,3 +8,4 @@ export * from './container-cmp/Container';
 export * from './datalist-cmp/DataList';
 export * from './modal-cmp/Modal';
 export * from './search-cmp/Search';
+export * from './alert-cmp/Alert';

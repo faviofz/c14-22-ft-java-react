@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 
-export function DashboardPanel({ children, title, Icon, listItems, isProduct }) {
+export function DashboardPanel({
+  children,
+  title,
+  Icon,
+  listItems,
+  isProduct,
+}) {
   return (
     <div className='dashboard-page-panel flex flex-col justify-between gap-5 p-5 h-[25rem] bg-base-200 rounded-3xl w-full'>
       <div className='flex gap-5'>
@@ -8,26 +14,21 @@ export function DashboardPanel({ children, title, Icon, listItems, isProduct }) 
         <h1>{title}</h1>
       </div>
       <div className='flex flex-col items-start h-full gap-3 overflow-y-auto'>
-        {(isProduct) 
-        ?
-        listItems.map(({ nombre, categoria }, index) => (
-          <div key={index} className='flex justify-between w-full'>
-            <h3>{nombre}</h3>
-            <h3 className='tracking-wide text-primary'>
-              {!categoria ? 'NULL' : categoria.nombre}
-            </h3>
-          </div>
-        ))
-        :
-        listItems.map(({ name, category }, index) => (
-          <div key={index} className='flex justify-between w-full'>
-            <h3>{name}</h3>
-            <h3 className='tracking-wide text-primary'>
-              {category}
-            </h3>
-          </div>
-        ))
-        }
+        {isProduct
+          ? listItems.map(({ nombre, categoria }, index) => (
+              <div key={index} className='flex justify-between w-full'>
+                <h3>{nombre}</h3>
+                <h3 className='tracking-wide text-primary'>
+                  {!categoria ? 'NULL' : categoria.nombre}
+                </h3>
+              </div>
+            ))
+          : listItems.map(({ name, category }, index) => (
+              <div key={index} className='flex justify-between w-full'>
+                <h3>{name}</h3>
+                <h3 className='tracking-wide text-primary'>{category}</h3>
+              </div>
+            ))}
       </div>
 
       {children}
