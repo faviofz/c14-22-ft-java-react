@@ -11,6 +11,8 @@ public interface MarcaService {
 
     Marca obtenerMarcaPorId(Long id);
 
+    Marca obtenerMarcaPorNombre(String nombre);
+
     MarcaDto guardarMarca(MarcaDto marcaDto);
 
     void actualizarMarca(Long id, MarcaDto marcaDto);
