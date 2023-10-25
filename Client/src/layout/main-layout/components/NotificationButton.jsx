@@ -2,21 +2,9 @@ import { BellSVG } from '@/assets/svg';
 
 import { Link } from 'react-router-dom';
 
-import { ToastContainer, toast } from 'react-toastify';
 
-export function Notification() {
-  const notify = () => {
-    toast.info('🦄 Wow so easy!', {
-      position: 'bottom-right',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-  };
+export function NotificationButton() {
+  
 
   return (
     <details className='dropdown dropdown-end max-lg:hidden'>
@@ -30,12 +18,12 @@ export function Notification() {
         <li>
           <h1 className='menu-title'>Notificación</h1>
         </li>
-        <li onClick={notify}>
-          <Link to={'#'}>Notificación 1</Link>
+        <li >
+          <Link to={'/notification'}>Notificación 1</Link>
         </li>
 
-        <li onClick={notify}>
-          <Link to={'#'}>Notificación 2</Link>
+        <li >
+          <Link to={'/notification'}>Notificación 2</Link>
         </li>
       </ul>
     </details>

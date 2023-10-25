@@ -1,11 +1,11 @@
-import { Notification } from './Notification';
+import { NotificationButton } from './NotificationButton';
 import { UserInfo } from './UserInfo';
 import { ConfigModal } from './ConfigModal';
 
 export function RightMenu() {
   return (
-    <div className='rightmenu-component flex items-center gap-3'>
-      <Notification />
+    <div className='flex items-center gap-3 rightmenu-component'>
+      <NotificationButton />
       <UserInfo />
       <ConfigModal />
     </div>
