@@ -28,5 +28,9 @@ export function authReducer(state, action) {
     return { ...state, errorMessage: action.payload };
   }
 
+  if (action.type === authActions.LOADING) {
+    return { ...state, loading: action.payload };
+  }
+
   throw Error('Unknown action: ' + action.type);
 }

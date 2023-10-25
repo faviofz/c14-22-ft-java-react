@@ -5,7 +5,7 @@ import { useAuth } from '@/hooks/useAuth';
 import './login-page.scss';
 
 export default function Login() {
-  const { onLogin } = useAuth();
+  const { authState, onLogin } = useAuth();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -19,6 +19,8 @@ export default function Login() {
       <DoubleColumnLayout double={true}>
         <DoubleColumnLayout.Left>
           <Panel title='Acceda a su cuenta'>
+            {authState?.errorMessage}
+
             <form onSubmit={handleSubmit}>
               <Input
                 label='Correo electrónico'
@@ -30,9 +32,12 @@ export default function Login() {
                 placeholder='Ingresa tu contraseña'
                 name='password'
               />
-              <Button>Ingresar</Button>
+              <Button disabled={authState.loading}>
+                {authState.loading ? 'Enviando...' : 'Ingresar'}
+              </Button>
             </form>
             <Link to='/forgot-password'>¿Olvidaste tu contraseña?</Link>
+            {JSON.stringify(authState, null, 2)}
           </Panel>
           <div>
             ¿No tiene una cuenta? <Link to='/register'>Regístrese</Link>

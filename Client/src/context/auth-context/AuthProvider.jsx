@@ -12,12 +12,20 @@ export function AuthProvider({ children }) {
 
   const onLogin = async user => {
     try {
+      dispatch({ type: authActions.ERROR, payload: null });
+      dispatch({ type: authActions.LOADING, payload: true });
+
       const userApi = userToUserApi(user);
       const { token } = await serviceLogin(userApi);
       user.token = token;
       dispatch({ type: authActions.LOGIN, payload: user });
     } catch (error) {
-      dispatch({ type: authActions.ERROR, payload: 'Error de autenticación' });
+      dispatch({
+        type: authActions.ERROR,
+        payload: 'Datos de autenticación inválidos',
+      });
+    } finally {
+      dispatch({ type: authActions.LOADING, payload: false });
     }
   };
 
