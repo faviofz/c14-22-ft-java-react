@@ -1,6 +1,7 @@
 package com.c14g22.stockwise.serviceImpl;
 
 import com.c14g22.stockwise.dto.CategoriaDto;
+import com.c14g22.stockwise.exception.CategoriaNotFoundException;
 import com.c14g22.stockwise.model.Categoria;
 import com.c14g22.stockwise.repository.CategoriaRepository;
 import com.c14g22.stockwise.service.CategoriaService;
@@ -23,7 +24,7 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     public Categoria obtenerCategoriaPorId(Long id) {
-        return categoriaRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return categoriaRepository.findById(id).orElseThrow(() -> new CategoriaNotFoundException(id));
     }
 
     @Override
