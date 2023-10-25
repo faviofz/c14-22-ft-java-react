@@ -12,7 +12,7 @@ export function serviceLogin(loginUser) {
 export function serviceSignUp(newUser) {
   return new Promise((resolve, reject) => {
     httpClient
-      .post('/login', newUser)
+      .post('/signup', newUser)
       .then(({ data }) => resolve(data))
       .catch(error => reject(new Error(error)));
   });
