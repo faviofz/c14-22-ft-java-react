@@ -37,7 +37,7 @@ const {
 };
 
 export default function Dashboard() {
-  const { userState } = useAuth();
+  const { authState } = useAuth();
   const { products, getAllProducts } = useProducts();
 
   useEffect(() => {
@@ -47,7 +47,8 @@ export default function Dashboard() {
   return (
     <div className='dashboard-page'>
       <Container>
-        <Welcome fullname={userState.user.userName} />
+        <Welcome fullname={authState?.user?.userName} />
+
 
         <div className='box-border flex flex-col justify-center w-full gap-5 mb-5 starts-group'>
           <Stat
