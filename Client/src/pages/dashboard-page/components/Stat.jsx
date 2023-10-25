@@ -15,12 +15,6 @@ export function Stat({ title = '', stat = 0, Icon, url }) {
           </div>
         </div>
       </div>
-      {/* <div className='relative items-center justify-center hidden w-20 h-20 translate-x-8 md:flex -z-10 bg-accent rounded-3xl'>
-        <Icon />
-      </div> */}
-      {/* <div className='w-52 sm:w-64 h-28 stat place-items-center bg-base-200 rounded-3xl -z-20'>
-        
-      </div> */}
     </Link>
   );
 }
