@@ -4,8 +4,6 @@ import { Welcome, StatsGroup, DashboardPanel } from './components';
 import { useAuth } from '@/hooks';
 import './dashboard-page.scss';
 import { Link } from 'react-router-dom';
-import { Modal } from '@/components';
-import { FormProduct } from '../product-page/components';
 
 const {
   title: prodTitle,
@@ -54,11 +52,11 @@ const {
 };
 
 export default function Dashboard() {
-  const { userState } = useAuth();
+  const { authState } = useAuth();
   return (
     <div className='dashboard-page'>
       <Container>
-        <Welcome fullname={userState.user.userName} />
+        <Welcome fullname={authState?.user?.userName} />
         <StatsGroup />
         <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>
           <DashboardPanel
@@ -67,13 +65,9 @@ export default function Dashboard() {
             listItems={prodList}
           >
             <div className='flex flex-col gap-3 mt-5'>
-              <Link
-                to={'/product'}
-                className='w-full btn btn-primary'
-              >
+              <Link to={'/product'} className='w-full btn btn-primary'>
                 Ver más productos
               </Link>
-
             </div>
           </DashboardPanel>
 

@@ -8,7 +8,7 @@ import { userToUserApi } from '../../adapters';
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [userState, dispatch] = useReducer(authReducer, initialState);
+  const [authState, dispatch] = useReducer(authReducer, initialState);
 
   const onLogin = async user => {
     try {
@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
       user.token = token;
       dispatch({ type: authActions.LOGIN, payload: user });
     } catch (error) {
-      console.log('error de autenticacion');
+      dispatch({ type: authActions.ERROR, payload: 'Error de autenticación' });
     }
   };
 
@@ -26,8 +26,8 @@ export function AuthProvider({ children }) {
   };
 
   const valueMemo = useMemo(
-    () => ({ userState, onLogin, onLogout }),
-    [userState]
+    () => ({ authState, onLogin, onLogout }),
+    [authState]
   );
 
   return (

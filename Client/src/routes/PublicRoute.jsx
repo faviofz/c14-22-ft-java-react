@@ -4,8 +4,8 @@ import { useAuth } from '@/hooks/useAuth';
 
 export function PublicRoutes({ children }) {
   const location = useLocation();
-  const { userState } = useAuth();
-  const { isLogged } = userState;
+  const { authState } = useAuth();
+  const { isLogged } = authState;
 
   return !isLogged ? (
     children
