@@ -1,6 +1,7 @@
 export const authActions = {
-  LOGIN: 'log in',
-  LOGOUT: 'log out',
-  ERROR: 'set error',
-  LOADING: 'loading...',
+  LOGIN: 'auth/logIn',
+  LOGOUT: 'auth/logOut',
+  ERROR: 'auth/setError',
+  LOADING: 'auth/loading',
+  CREATE: 'user/crate',
 };

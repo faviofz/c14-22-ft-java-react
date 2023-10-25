@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { AuthContext } from '@/context';
 
 export function useAuth() {
-  const { authState, onLogin, onLogout, setErrorMessage } =
+  const { authState, signUp, onLogin, onLogout, setErrorMessage } =
     useContext(AuthContext);
-  return { authState, onLogin, onLogout, setErrorMessage };
+  return { authState, signUp, onLogin, onLogout, setErrorMessage };
 }

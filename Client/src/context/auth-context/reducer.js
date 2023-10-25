@@ -7,9 +7,17 @@ export const initialState = {
 };
 
 export function authReducer(state, action) {
+  if (action.type === authActions.CREATE) {
+    return {
+      ...state,
+      created: action.payload,
+    };
+  }
+
   if (action.type === authActions.LOGIN) {
     localStorage.setItem('userLogger', JSON.stringify(action.payload));
     localStorage.setItem('isLogged', JSON.stringify(true));
+    console.log(action.payload);
     return {
       ...state,
       user: action.payload,
