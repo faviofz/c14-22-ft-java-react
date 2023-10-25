@@ -50,6 +50,11 @@
             margin-top: 1rem;
         }
     }
+    @media (min-width:690px) {
+        .panel-component{
+            width: 600px !important;
+        }
+    }
     @media (min-width:900px) {
         .dc-layout-right{
             background:none;

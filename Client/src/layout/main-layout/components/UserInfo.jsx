@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 
 export function UserInfo() {
-  const { userState, onLogout } = useAuth();
+  const { authState, onLogout } = useAuth();
 
   const handlerLogout = () => {
     onLogout();
@@ -32,8 +32,10 @@ export function UserInfo() {
               </div>
             </div>
             <div>
-              <h1>{userState?.user.userName}</h1>
-              <h1>Usuario</h1>
+              <h1 className='font-bold text-md text-primary'>
+                {authState?.user?.userName}
+              </h1>
+              <span className='text-xs text-neutral'>Usuario</span>
             </div>
           </div>
         </li>

@@ -15,12 +15,13 @@ import StockIcon from './document-report.svg?react';
 import ProviderIcon from './truck.svg?react';
 import HistoricalIcon from './refresh.svg?react';
 import PlusIcon from './plus.svg?react';
-import fisquierda from "./fisquierda.svg?react"
-import fderecha from "./fderecha.svg?react"
+import fisquierda from './fisquierda.svg?react';
+import fderecha from './fderecha.svg?react';
 import list from './Lista-vista.svg?react';
 import grid from './Cuadrado-vista.svg?react';
 import TrashIcon from './trash.svg?react';
 import PencilAltIcon from './pencil-alt.svg?react';
+import CircleWarn from './circle-alert.svg?react';
 
 export {
   PencilAltIcon,
@@ -46,4 +47,5 @@ export {
   ProviderIcon,
   HistoricalIcon,
   PlusIcon,
+  CircleWarn,
 };
