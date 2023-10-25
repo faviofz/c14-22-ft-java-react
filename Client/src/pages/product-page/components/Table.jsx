@@ -1,5 +1,17 @@
 import PropTypes from 'prop-types';
-import {TrashIcon, PencilAltIcon} from '@/assets/svg'
+import { TrashIcon, PencilAltIcon } from '@/assets/svg';
+
+// ! ADAPTER Joose
+const productAdapter = data => ({
+  name: data.nombre,
+  image: data.imagen,
+  category: data.categoria??{nombre: 'NULL'},
+  brand: data.marca??{nombre: 'NULL'},
+  date: data.fechaVencimiento,
+  provider: data.proveedor??{nombre: 'NULL'},
+  tax: data.impuesto,
+  cost: data.costo,
+});
 
 export function Table({ data }) {
   return (
@@ -11,24 +23,46 @@ export function Table({ data }) {
           <th>Categoria</th>
           <th>Marcas</th>
           <th>Vencimiento</th>
+          <th>Proveedor</th>
+          <th>Impuesto</th>
+          <th>Costo</th>
           <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
-        {data.map((item, index) => (
-          <tr key={index}>
-            <td>{item.nombre}</td>
-            <td>
-              <div className='w-12 h-12 mask mask-squircle'>
-                <img src={item.imagen} alt='Imagen' />
-              </div>
-            </td>
-            <td>{item.categoria}</td>
-            <td>{item.marcas}</td>
-            <td>{item.fechaVencimiento}</td>
-            <td className='flex gap-5'><TrashIcon /> <PencilAltIcon/></td>
-          </tr>
-        ))}
+        {data.map(
+          (
+            {
+              nombre,
+              imagen,
+              categoria,
+              marca,
+              fechaVencimiento,
+              proveedor,
+              impuesto,
+              costo,
+            },
+            index
+          ) => (
+            <tr key={index}>
+              <td>{nombre}</td>
+              <td>
+                <div className='w-12 h-12 mask mask-squircle'>
+                  <img src={imagen} alt='Imagen' />
+                </div>
+              </td>
+              <td>{!categoria ? 'NULL' : categoria.nombre}</td>
+              <td>{!marca ? 'NULL' : categoria.nombre}</td>
+              <td>{fechaVencimiento}</td>
+              <td>{!proveedor ? 'NULL' : categoria.nombre}</td>
+              <td>{impuesto}</td>
+              <td>{costo}</td>
+              <td className='flex gap-5'>
+                <TrashIcon /> <PencilAltIcon />
+              </td>
+            </tr>
+          )
+        )}
       </tbody>
     </table>
   );

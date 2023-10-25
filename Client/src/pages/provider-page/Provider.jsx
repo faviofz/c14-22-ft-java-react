@@ -1,45 +1,38 @@
+import { Table, Grid, Filters, FormProduct } from './components';
 import React, { useEffect, useState } from 'react';
 import { DataList, Container, Modal, Search } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { PlusIcon } from '@/assets/svg';
-import { Table, Grid, Filters, FormProduct } from './components';
-import { useProducts } from './../../hooks/useProducts';
+import { useProviders } from '@/hooks';
 
-export default function Product() {
-  const { products, getAllProducts } = useProducts();
-  const [filteredProducts, setFilteredProducts] = useState([]);
+export default function Provider() {
+  const { providers, getAllProviders } = useProviders();
 
   useEffect(() => {
-    getAllProducts();
+    getAllProviders();
   }, []);
 
-  useEffect(() => {
-    setFilteredProducts(products);
-  }, [products]);
-
   const handleSearch = query => {
-    const filtered = products.filter(product =>
+    const filtered = providers.filter(product =>
       product.nombre.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredProducts(filtered);
   };
 
-  // console.log(products)
-
   return (
     <div className='category-page'>
       <Container>
         <DataList
-          title='Productos'
+          title='Proveedor'
           setViewMode={viewModeType.TABLE}
-          table={<Table data={filteredProducts} />}
+            table={<Table data={providers} />}
           // grid={<Grid data={filteredProducts} />}
         >
           <DataList.Header>
-            <Search placeholder='Buscar producto' onNewValue={handleSearch} />
+            <Search placeholder='Buscar proveedor' onNewValue={handleSearch} />
             <Modal
-              title='Nuevo Producto'
-              buttonLabel='Nuevo Producto'
+              title='Nuevo Proveedor'
+              buttonLabel='Nuevo Proveedor'
               buttonIcon={<PlusIcon width='15' />}
             >
               <FormProduct />
