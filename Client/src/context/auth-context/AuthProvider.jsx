@@ -33,8 +33,12 @@ export function AuthProvider({ children }) {
     dispatch({ type: authActions.LOGOUT });
   };
 
+  const setErrorMessage = message => {
+    dispatch({ type: authActions.ERROR, payload: message });
+  };
+
   const valueMemo = useMemo(
-    () => ({ authState, onLogin, onLogout }),
+    () => ({ authState, onLogin, onLogout, setErrorMessage }),
     [authState]
   );
 
