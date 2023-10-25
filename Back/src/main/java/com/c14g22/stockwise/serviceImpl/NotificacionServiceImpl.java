@@ -6,7 +6,9 @@ import com.c14g22.stockwise.model.Notificacion;
 import com.c14g22.stockwise.service.NotificacionService;
 
 import java.util.List;
+import org.springframework.stereotype.Service;
 
+@Service
 public class NotificacionServiceImpl implements NotificacionService {
     @Override
     public List<Notificacion> obtenerNotificaciones() {
