@@ -6,6 +6,8 @@ import './dashboard-page.scss';
 import { Link } from 'react-router-dom';
 import { Modal } from '@/components';
 import { FormProduct } from '../product-page/components';
+import { useProducts } from '../../hooks/useProducts';
+import { useEffect } from 'react';
 
 const {
   title: prodTitle,
@@ -55,29 +57,36 @@ const {
 
 export default function Dashboard() {
   const { userState } = useAuth();
+  const { products, getAllProducts } = useProducts();
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
+
   return (
     <div className='dashboard-page'>
       <Container>
         <Welcome fullname={userState.user.userName} />
         <StatsGroup />
         <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>
+          
           <DashboardPanel
-            title={prodTitle}
-            Icon={ProdTitle}
-            listItems={prodList}
+            title={'Últimos productos registrados'}
+            Icon={ProductIcon}
+            listItems={products.slice(-7)}
+            isProduct={true}
           >
-            <div className='flex flex-col gap-3 mt-5'>
               <Link
                 to={'/product'}
-                className='w-full btn btn-primary'
+                className='w-full mt-5 btn btn-primary'
               >
                 Ver más productos
               </Link>
 
-            </div>
           </DashboardPanel>
 
-          <DashboardPanel title={notTitle} Icon={notIcon} listItems={notList}>
+          <DashboardPanel title={notTitle} Icon={notIcon} listItems={notList.slice(-7)} isProduct={false}>
             <div className='flex flex-col gap-3 mt-5'>
               <button className='w-full btn btn-primary'>
                 Ver más notificaciones
