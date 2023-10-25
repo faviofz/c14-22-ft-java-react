@@ -1,6 +1,9 @@
 package com.c14g22.stockwise.serviceImpl;
 
 import com.c14g22.stockwise.dto.ProveedorDto;
+import com.c14g22.stockwise.dto.ProveedorRequest;
+import com.c14g22.stockwise.dto.ProveedorResponse;
+import com.c14g22.stockwise.exception.ProveedorNotFoundException;
 import com.c14g22.stockwise.model.Proveedor;
 import com.c14g22.stockwise.repository.ProveedorRepository;
 import com.c14g22.stockwise.service.ProveedorService;
@@ -23,13 +26,22 @@ public class ProveedorServiceImpl implements ProveedorService {
 
     @Override
     public Proveedor obtenerProveedorPorId(Long id) {
-        return proveedorRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+        return proveedorRepository.findById(id).orElseThrow(() -> new ProveedorNotFoundException(id));
     }
+
+
+    @Override
+    public Proveedor obtenerProveedorPorNombre(String nombre) {
+        return proveedorRepository.findByNombre(nombre).orElseThrow(EntityNotFoundException::new);
+    }
+
 
     @Override
     public ProveedorDto guardarProveedor(ProveedorDto proveedorDto) {
         Proveedor proveedor = new Proveedor(proveedorDto);
         return new ProveedorDto(proveedorRepository.save(proveedor));
+
+
     }
 
     @Override
