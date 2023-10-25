@@ -6,11 +6,14 @@ import com.c14g22.stockwise.model.Producto;
 import com.c14g22.stockwise.service.ProductoService;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,11 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/productos")
 public class ProductoController {
 
-  private final ProductoService productoService;
-
-  public ProductoController(ProductoService productoService) {
-    this.productoService = productoService;
-  }
+  @Autowired
+  private ProductoService productoService;
 
   @GetMapping
   public List<Producto> getProductos() {
@@ -41,20 +41,30 @@ public class ProductoController {
   }
 
   @PostMapping
-  public ResponseEntity<ProductoRequest> postProducto(
+  public ResponseEntity<ProductoResponse> postProducto(
       @RequestBody ProductoRequest productoRequest) {
-    System.out.printf(productoRequest.toString());
-    ProductoResponse nuevoProducto = productoService.guardarProducto(productoRequest);
+    try {
+      ProductoResponse productoResponse = productoService.guardarProducto(productoRequest);
+      return new ResponseEntity<>(productoResponse, HttpStatus.CREATED);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().build();
+    }
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<String> putProducto(@PathVariable Long id,
+      @RequestBody ProductoRequest productoRequest) {
+    try {
+      productoService.actualizarProducto(id, productoRequest);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(e.getMessage());
+    }
     return ResponseEntity.noContent().build();
   }
 
-//  @PutMapping("/{id}")
-//  public Producto putProducto(@PathVariable Long id, @RequestBody ProductoDto) {
-//
-//  }
-
   @DeleteMapping("/{id}")
-  public void deleteProducto(@PathVariable Long id) {
+  public ResponseEntity<ProductoResponse> deleteProducto(@PathVariable Long id) {
     productoService.eliminarProducto(id);
+    return ResponseEntity.noContent().build();
   }
 }

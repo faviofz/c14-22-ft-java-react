@@ -3,6 +3,7 @@ package com.c14g22.stockwise.controller;
 import com.c14g22.stockwise.model.Categoria;
 import com.c14g22.stockwise.model.Entrada;
 import com.c14g22.stockwise.repository.CategoriaRepository;
+import com.c14g22.stockwise.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,8 @@ import java.util.List;
 @RestController
 public class CategoriaController {
 
+    @Autowired
+    private CategoriaService categoriaService;
     private final CategoriaRepository categoriaRepository;
 
     public CategoriaController(CategoriaRepository categoriaRepository) {
@@ -18,12 +21,12 @@ public class CategoriaController {
 
     @GetMapping("/categorias")
     public List<Categoria> getCategorias() {
-        return categoriaRepository.findAll();
+        return this.categoriaService.obtenerCategorias();
     }
 
     @GetMapping("/categorias/{id}")
     public Categoria getCategoria(@PathVariable Long id) {
-        return categoriaRepository.findById(id).orElse(null);
+        return this.categoriaService.obtenerCategoriaPorId(id);
     }
 
     @PostMapping("/categorias")
