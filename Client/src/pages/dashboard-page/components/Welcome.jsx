@@ -14,7 +14,7 @@ export function Welcome({ fullname }) {
       </h1>
       <div className='flex justify-between min-[500px]:flex-col min-[500px]:justify-center min-[500px]:items-end min-[500px]:flex-1 [&>div]:flex [&>div]:items-center [&>div]:gap-2 [&>div>h3]:text-xs'>
         <div>
-          <CalendarSVG />
+          <CalendarSVG className='[&>path]:stroke-secondary-content' />
           <h3>
             {new Date().toLocaleDateString('es', {
               weekday: 'long',
@@ -25,7 +25,7 @@ export function Welcome({ fullname }) {
           </h3>
         </div>
         <div>
-          <ClockSVG />
+          <ClockSVG className='[&>path]:stroke-secondary-content' />
           <h3>
             {
               // tiene que actualizarse la hora
