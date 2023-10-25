@@ -12,6 +12,7 @@ import {
   Register,
   Products,
   Category,
+  Provider,
 } from '@/pages';
 
 export function MainRoutes() {
@@ -73,6 +74,14 @@ export function MainRoutes() {
             element={
               <PrivateRoutes>
                 <Category />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path='provider'
+            element={
+              <PrivateRoutes>
+                <Provider />
               </PrivateRoutes>
             }
           />

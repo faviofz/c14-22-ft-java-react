@@ -1,2 +1,3 @@
 import { getAllProductAsync } from './product.reducer';
-export { getAllProductAsync };
+import { getAllProviderAsync } from './providers.reducer';
+export { getAllProductAsync, getAllProviderAsync };

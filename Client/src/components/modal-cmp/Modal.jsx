@@ -7,7 +7,7 @@ export function Modal({ title, buttonLabel, buttonIcon, children }) {
     <>
       <button
         onClick={() => document.getElementById(modalID).showModal()}
-        className='gap-5 lg:w-52 sm:btn-wide btn btn-primary md:w-80'
+        className='gap-3 lg:w-52 sm:btn-wide btn btn-primary md:w-80'
       >
         {buttonIcon}
         {buttonLabel}
