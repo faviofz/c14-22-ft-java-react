@@ -48,7 +48,6 @@ export default function Dashboard() {
     getAllProducts();
   }, []);
 
-
   return (
     <div className='dashboard-page'>
       <Container>
@@ -57,7 +56,7 @@ export default function Dashboard() {
         <div className='box-border flex flex-col justify-center w-full gap-5 mb-5 starts-group'>
           <Stat title='Productos' stat={products.length} Icon={ProductIcon} url={'/product'} />
           <Stat title='Stock' stat={1.2} Icon={StockIcon} />
-          <Stat title='Proveedor' stat={5} Icon={ProviderIcon} />
+          <Stat title='Proveedor' stat={5} Icon={ProviderIcon} url={'/provider'}/>
           <Stat title='Historial' stat={5.8} Icon={HistoricalIcon} />
         </div>
 

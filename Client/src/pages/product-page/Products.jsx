@@ -24,8 +24,6 @@ export default function Product() {
     setFilteredProducts(filtered);
   };
 
-  // console.log(products)
-
   return (
     <div className='category-page'>
       <Container>

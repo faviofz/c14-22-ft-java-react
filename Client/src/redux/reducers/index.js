@@ -1,3 +1,6 @@
 import { getAllProductAsync } from './product.reducer';
+import { deleteProductAsync } from './product.reducer';
+
 import { getAllProviderAsync } from './providers.reducer';
-export { getAllProductAsync, getAllProviderAsync };
+
+export { getAllProductAsync,deleteProductAsync, getAllProviderAsync };

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { serviceGetAllProducts } from '@/services';
+import { serviceGetAllProducts, serviceDeleteProduct } from '@/services';
 
 export const fetchProducts = createAsyncThunk(
   'products/fetchProducts',
@@ -16,6 +16,14 @@ export const getAllProductAsync = createAsyncThunk(
   'products/getAll',
   async () => {
     const response = await serviceGetAllProducts();
+    return response;
+  }
+);
+
+export const deleteProductAsync = createAsyncThunk(
+  'products/delete',
+  async (id) => {
+    const response = await serviceDeleteProduct(id);
     return response;
   }
 );
