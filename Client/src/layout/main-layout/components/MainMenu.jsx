@@ -16,11 +16,11 @@ const menuItems = [
     Icon: ProductIcon,
     href: '/product',
   },
-  {
-    label: 'Stock',
-    Icon: StockIcon,
-    href: '/stock',
-  },
+  // {
+  //   label: 'Stock',
+  //   Icon: StockIcon,
+  //   href: '/stock',
+  // },
   {
     label: 'Proveedor',
     Icon: ProviderIcon,
@@ -29,12 +29,17 @@ const menuItems = [
   {
     label: 'Historial',
     Icon: HistoricalIcon,
-    href: null,
-    subMenu: [
-      { label: 'Entrada', href: '/history/inside' },
-      { label: 'Salida', href: '/history/outside' },
-    ],
+    href: '/history',
   },
+  // {
+  //   label: 'Historial',
+  //   Icon: HistoricalIcon,
+  //   href: null,
+  //   subMenu: [
+  //     { label: 'Entrada', href: '/history/inside' },
+  //     { label: 'Salida', href: '/history/outside' },
+  //   ],
+  // },
 ];
 
 export function MainMenu() {

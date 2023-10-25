@@ -13,6 +13,7 @@ import {
   Products,
   Category,
   Provider,
+  History,
 } from '@/pages';
 
 export function MainRoutes() {
@@ -82,6 +83,14 @@ export function MainRoutes() {
             element={
               <PrivateRoutes>
                 <Provider />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path='history'
+            element={
+              <PrivateRoutes>
+                <History />
               </PrivateRoutes>
             }
           />

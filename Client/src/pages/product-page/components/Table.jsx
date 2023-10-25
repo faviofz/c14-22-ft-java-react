@@ -6,18 +6,17 @@ import { useProducts } from '../../../hooks/useProducts';
 const productAdapter = data => ({
   name: data.nombre,
   image: data.imagen,
-  category: data.categoria??{nombre: 'NULL'},
-  brand: data.marca??{nombre: 'NULL'},
+  category: data.categoria ?? { nombre: 'NULL' },
+  brand: data.marca ?? { nombre: 'NULL' },
   date: data.fechaVencimiento,
-  provider: data.proveedor??{nombre: 'NULL'},
+  provider: data.proveedor ?? { nombre: 'NULL' },
   tax: data.impuesto,
   cost: data.costo,
 });
 
 export function Table({ data }) {
   const { deleteProducts } = useProducts();
-
-
+  
   return (
     <table className='table bg-base-200 '>
       <thead>
@@ -64,10 +63,10 @@ export function Table({ data }) {
               <td>{costo}</td>
               <td className='flex gap-5'>
                 <button onClick={() => deleteProducts(id)}>
-                <TrashIcon /> 
+                  <TrashIcon />
                 </button>
                 <button>
-                <PencilAltIcon />
+                  <PencilAltIcon />
                 </button>
               </td>
             </tr>
