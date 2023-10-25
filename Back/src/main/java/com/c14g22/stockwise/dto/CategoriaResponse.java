@@ -15,7 +15,7 @@ public class CategoriaResponse {
     private Long id;
     private String nombre;
 
-    public CategoriaResponse(Categoria categoria){
+    public CategoriaResponse(Categoria categoria) {
         this.id = categoria.getId();
         this.nombre = categoria.getNombre();
     }

@@ -27,9 +27,10 @@ public class MarcaServiceImpl implements MarcaService {
     }
 
     @Override
-    public Marca obtenerMarcaPorNombre(String nombre){
-        return marcaRepository.findByNombre(nombre).orElseThrow(EntityNotFoundException ::new);
+    public Marca obtenerMarcaPorNombre(String nombre) {
+        return marcaRepository.findByNombre(nombre).orElseThrow(EntityNotFoundException::new);
     }
+
     @Override
     public MarcaDto guardarMarca(MarcaDto marcaDto) {
         Marca marca = new Marca(marcaDto);
