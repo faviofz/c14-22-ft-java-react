@@ -8,13 +8,15 @@ export function TableSkeleton({ rows = 5, headers }) {
 
   return (
     <table className='skeleton table bg-base-200'>
-      <thead>
-        <tr>
-          {headers.map((item, index) => (
-            <th key={id + index + 'th'}>{item}</th>
-          ))}
-        </tr>
-      </thead>
+      {headers && (
+        <thead>
+          <tr>
+            {headers.map((item, index) => (
+              <th key={id + index + 'th'}>{item}</th>
+            ))}
+          </tr>
+        </thead>
+      )}
       <tbody>
         {itemsRows.map((item, i) => (
           <tr key={id + i + 'td'}>
