@@ -49,7 +49,7 @@ export default function Product() {
   const displayedProducts = filteredProducts.slice(startIndex, endIndex);
 
   return (
-    <div className='category-page'>
+    <div className='products-page'>
       <Container>
         <DataList
           title='Productos'

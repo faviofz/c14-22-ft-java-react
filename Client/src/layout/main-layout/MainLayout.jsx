@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-import { Preload } from './components';
+import { Preload } from '@/components';
 import { useAuth } from '@/hooks/useAuth';
 import './main-layout.scss';
 import { Suspense } from 'react';

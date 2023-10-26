@@ -3,17 +3,11 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Container } from '@/components';
 import { DashboardPanel, Welcome, Stat } from './components';
-import {
-  useAuth,
-  useProducts,
-  useProviders,
-  // useCategories,
-  // useBrands,
-} from '@/hooks';
+import { useAuth, useProducts, useProviders } from '@/hooks';
+import { TableUltimos } from '../product-page/components/';
 
 import {
   ProductIcon,
-  // StockIcon,
   ProviderIcon,
   HistoricalIcon,
   BellSVG,
@@ -38,16 +32,17 @@ const {
 
 export default function Dashboard() {
   const { authState } = useAuth();
-  const { products, getAllProducts } = useProducts();
-  const { providers, getAllProviders } = useProviders();
-  // const { categories, getAllCategories } = useCategories();
-  // const { brands, getAllBrands } = useBrands();
+  const { products, loading: loadingProducts, getAllProducts } = useProducts();
+
+  const {
+    providers,
+    loading: loadingProviders,
+    getAllProviders,
+  } = useProviders();
 
   useEffect(() => {
     getAllProviders();
     getAllProducts();
-    // getAllCategories();
-    // getAllBrands();
   }, []);
 
   const notify = () => {
@@ -74,13 +69,14 @@ export default function Dashboard() {
             stat={products.length}
             Icon={ProductIcon}
             url={'/product'}
+            loading={loadingProducts}
           />
-          {/* <Stat title='Stock' stat={1.2} Icon={StockIcon} /> */}
           <Stat
             title='Proveedor'
-            stat={providers.lenght}
+            stat={providers.length}
             Icon={ProviderIcon}
             url={'/provider'}
+            loading={loadingProviders}
           />
           <Stat
             title='Historial'
@@ -88,6 +84,7 @@ export default function Dashboard() {
             Icon={HistoricalIcon}
             url={'/history'}
           />
+          {/* <Stat title='Stock' stat={1.2} Icon={StockIcon} /> */}
         </div>
 
         <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>
@@ -97,9 +94,15 @@ export default function Dashboard() {
             listItems={products.slice(-7)}
             isProduct={true}
           >
-            <Link to={'/product'} className='w-full mt-5 btn btn-primary'>
-              Ver más productos
-            </Link>
+            {loadingProviders && 'cargando...'}
+            <DashboardPanel.Content>
+              <TableUltimos data={products} />
+            </DashboardPanel.Content>
+            <DashboardPanel.Footer>
+              <Link to={'/product'} className='w-full mt-5 btn btn-primary'>
+                Ver más productos
+              </Link>
+            </DashboardPanel.Footer>
           </DashboardPanel>
 
           <DashboardPanel
@@ -108,17 +111,21 @@ export default function Dashboard() {
             listItems={notList.slice(-7)}
             isProduct={false}
           >
-            <div className='flex flex-col gap-3 mt-5'>
-              <button
-                onClick={() => notify()}
-                className='w-full btn btn-primary btn-outline'
-              >
-                Crear Toast
-              </button>
-              <Link to={'/notification'} className='w-full btn btn-primary'>
-                Ver más notificaciones
-              </Link>
-            </div>
+            <DashboardPanel.Content></DashboardPanel.Content>
+
+            <DashboardPanel.Footer>
+              <div className='flex flex-col gap-3 mt-5'>
+                <button
+                  onClick={() => notify()}
+                  className='w-full btn btn-primary btn-outline'
+                >
+                  Crear Toast
+                </button>
+                <Link to={'/notification'} className='w-full btn btn-primary'>
+                  Ver más notificaciones
+                </Link>
+              </div>
+            </DashboardPanel.Footer>
           </DashboardPanel>
         </div>
       </Container>

@@ -4,6 +4,7 @@ import { DataList, Container, Modal, Search, Paginated } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { PlusIcon } from '@/assets/svg';
 import { useProviders } from '@/hooks';
+import './provider-page.scss';
 
 export default function Provider() {
   const { providers, getAllProviders } = useProviders();
@@ -31,7 +32,7 @@ export default function Provider() {
   const displayedProviders = filteredProviders.slice(startIndex, endIndex);
 
   return (
-    <div className='category-page'>
+    <div className='provider-page'>
       <Container>
         <DataList
           title='Proveedor'
