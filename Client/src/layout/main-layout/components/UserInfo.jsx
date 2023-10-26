@@ -14,7 +14,9 @@ export function UserInfo() {
   return (
     <div className=' dropdown dropdown-end'>
       <label tabIndex={0}>
-        <Avatar username={authState?.user?.userName}></Avatar>
+        <div className='h-[50px] w-[50px]'>
+          <Avatar username={authState?.user?.userName}></Avatar>
+        </div>
       </label>
       <ul
         tabIndex={0}
@@ -22,7 +24,9 @@ export function UserInfo() {
       >
         <li>
           <div className='flex flex-row'>
+            <div className='h-[50px] w-[50px]'>
             <Avatar username={authState?.user?.userName}></Avatar>
+            </div>
             <div>
               <h1 className='font-bold text-md text-primary'>
                 {authState?.user?.userName}

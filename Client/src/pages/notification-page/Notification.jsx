@@ -10,12 +10,12 @@ export default function Notification() {
       </div>
       <div className='flex flex-col items-center justify-center w-full gap-5 p-5'>
         <AccordionItem
-          title={'notification 1'}
-          description={'notification 1'}
+          title={'Falta de Stock - Coca Cola 2lt'}
+          description={'minimo:10 actual:3'}
         />
         <AccordionItem
-          title={'notification 2'}
-          description={'notification 2'}
+          title={'Vencimiento de producto - Leche entera'}
+          description={'Fecha de vencimineto: 20/10/2023'}
         />
         <AccordionItem
           title={'notification 3'}
