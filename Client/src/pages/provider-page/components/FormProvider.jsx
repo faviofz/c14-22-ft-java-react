@@ -17,12 +17,7 @@ export function FormProduct() {
         telefono: '',
       },
       onSubmit: values => {
-        // console.log(value);
         createProvider(values);
-        values.nombre = '';
-        values.empresa = '';
-        values.email = '';
-        values.telefono = '';
       },
       validationSchema: Yup.object({
         nombre: Yup.string().required('Este dato es requerido'),
