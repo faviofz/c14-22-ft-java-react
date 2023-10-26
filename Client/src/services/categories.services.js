@@ -1,6 +1,6 @@
 import { httpClient } from '@/utils/';
 
-const path = '/categoria';
+const path = '/categorias';
 
 // CREATE
 export function serviceCreateCategory(newCategory) {

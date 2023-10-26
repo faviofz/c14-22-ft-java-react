@@ -1,17 +1,15 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useAuth } from '@/hooks';
-import { useProducts } from '../../hooks/useProducts';
-import { useProviders } from '../../hooks/useProviders';
+import { useAuth, useProducts, useProviders, useCategories } from '@/hooks';
 
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify';
 
-import {DashboardPanel, Welcome, Stat } from './components'
+import { DashboardPanel, Welcome, Stat } from './components';
 
 import { Container } from '@/components';
 import {
   ProductIcon,
-  StockIcon,
+  // StockIcon,
   ProviderIcon,
   HistoricalIcon,
   BellSVG,
@@ -45,11 +43,15 @@ export default function Dashboard() {
   const { authState } = useAuth();
   const { products, getAllProducts } = useProducts();
   const { providers, getAllProviders } = useProviders();
+  const { categories, getAllCategories } = useCategories();
 
   useEffect(() => {
     getAllProviders();
     getAllProducts();
+    getAllCategories();
   }, []);
+
+  console.log(categories);
 
   const notify = () => {
     toast.info('🦄 Wow so easy!', {
@@ -63,20 +65,32 @@ export default function Dashboard() {
       theme: 'light',
     });
   };
-  
+
   return (
     <div className='dashboard-page'>
       <Container>
         <Welcome fullname={authState?.user?.userName} />
 
-
         <div className='box-border flex flex-col justify-center w-full gap-5 mb-5 starts-group'>
-
-          <Stat title='Productos' stat={products.length} Icon={ProductIcon} url={'/product'} />
+          <Stat
+            title='Productos'
+            stat={products.length}
+            Icon={ProductIcon}
+            url={'/product'}
+          />
           {/* <Stat title='Stock' stat={1.2} Icon={StockIcon} /> */}
-          <Stat title='Proveedor' stat={providers.lenght} Icon={ProviderIcon} url={'/provider'}/>
-          <Stat title='Historial' stat={5.8} Icon={HistoricalIcon} url={'/history'}/>
-
+          <Stat
+            title='Proveedor'
+            stat={providers.lenght}
+            Icon={ProviderIcon}
+            url={'/provider'}
+          />
+          <Stat
+            title='Historial'
+            stat={5.8}
+            Icon={HistoricalIcon}
+            url={'/history'}
+          />
         </div>
 
         <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>
@@ -98,7 +112,10 @@ export default function Dashboard() {
             isProduct={false}
           >
             <div className='flex flex-col gap-3 mt-5'>
-              <button onClick={() => notify()} className='w-full btn btn-primary btn-outline'>
+              <button
+                onClick={() => notify()}
+                className='w-full btn btn-primary btn-outline'
+              >
                 Crear Toast
               </button>
               <Link to={'/notification'} className='w-full btn btn-primary'>
