@@ -56,10 +56,9 @@ const productsSlice = createSlice({
     });
     builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
       const idProduct = action.payload;
-      const index = state.products.findIndex(
-        products => products.id === idProduct
-      );
-      state.products.splice(index, 1);
+      const index = state.products.findIndex((product) => (product.id === idProduct))
+      state.products.splice(index,1)
+
     });
   },
 });
