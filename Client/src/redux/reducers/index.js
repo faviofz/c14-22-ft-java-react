@@ -1,4 +1,5 @@
-import { getAllProductAsync, deleteProductAsync } from './product.reducer';
+import { getAllProductAsync, deleteProductAsync, createProductAsync } from './product.reducer';
+
 import {
   getAllCategoriesAsync,
   getCategoryAsync,
@@ -6,6 +7,7 @@ import {
   updateCategoryAsync,
   deleteCategoryAsync,
 } from './category.reducer';
+
 import {
   getAllBrandsAsync,
   getBrandAsync,
@@ -20,6 +22,7 @@ export {
   getAllProductAsync,
   deleteProductAsync,
   getAllProviderAsync,
+  createProductAsync ,
   // Category
   getAllCategoriesAsync,
   getCategoryAsync,
@@ -32,4 +35,5 @@ export {
   createBrandAsync,
   updateBrandAsync,
   deleteBrandAsync,
+  
 };

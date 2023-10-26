@@ -26,9 +26,7 @@ export function Table({ data }) {
           <th>Categoria</th>
           <th>Marcas</th>
           <th>Vencimiento</th>
-          <th>Proveedor</th>
-          <th>Impuesto</th>
-          <th>Costo</th>
+          <th>Proveedor</th>      
           <th>Acciones</th>
         </tr>
       </thead>
@@ -59,8 +57,7 @@ export function Table({ data }) {
               <td>{!marca ? 'NULL' : marca.nombre}</td>
               <td>{fechaVencimiento}</td>
               <td>{!proveedor ? 'NULL' : proveedor.nombre}</td>
-              <td>{impuesto}</td>
-              <td>{costo}</td>
+              
               <td className='flex gap-5'>
                 <button onClick={() => deleteProducts(id)}>
                   <TrashIcon />
