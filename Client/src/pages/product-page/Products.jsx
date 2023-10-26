@@ -10,7 +10,7 @@ export default function Product() {
   const { products, getAllProducts } = useProducts();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 4;
 
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [filters, setFilters] = useState({
@@ -31,7 +31,7 @@ export default function Product() {
         filters.categoria === 'all' ||
         product.categoria.nombre === filters.categoria;
       const proveedorMatch =
-        filters.proveedor === 'all' || product.proveedor === filters.proveedor;
+        filters.proveedor === 'all' || product.proveedor.nombre === filters.proveedor;
       return marcaMatch && categoriaMatch && proveedorMatch;
     });
 

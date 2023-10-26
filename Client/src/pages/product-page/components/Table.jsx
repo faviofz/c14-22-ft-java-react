@@ -56,9 +56,9 @@ export function Table({ data }) {
                 </div>
               </td>
               <td>{!categoria ? 'NULL' : categoria.nombre}</td>
-              <td>{!marca ? 'NULL' : categoria.nombre}</td>
+              <td>{!marca ? 'NULL' : marca.nombre}</td>
               <td>{fechaVencimiento}</td>
-              <td>{!proveedor ? 'NULL' : categoria.nombre}</td>
+              <td>{!proveedor ? 'NULL' : proveedor.nombre}</td>
               <td>{impuesto}</td>
               <td>{costo}</td>
               <td className='flex gap-5'>
