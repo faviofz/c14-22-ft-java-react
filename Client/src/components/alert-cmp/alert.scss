@@ -1,0 +1,44 @@
+.alert-component{
+ 
+
+    &.alert-error{
+        background-color: #F87272 !important;
+        color: #470000 !important;
+
+        svg{
+            path{
+                stroke: #470000 !important;
+            }
+        }
+    }
+    &.alert-success{
+        background-color: #36D399 !important;
+        color: #003320 !important;
+
+        svg{
+            path{
+                stroke: #003320 !important;
+            }
+        }
+    }
+    &.alert-info{
+        background-color: #3ABFF8 !important;
+        color: #002B3D !important;
+
+        svg{
+            path{
+                stroke: #002B3D !important;
+            }
+        }
+    }
+    &.alert-warning{
+        background-color: #FBBD23 !important;
+        color: #382800 !important;
+
+        svg{
+            path{
+                stroke: #382800 !important;
+            }
+        }
+    }
+}

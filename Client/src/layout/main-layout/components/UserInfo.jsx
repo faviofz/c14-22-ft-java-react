@@ -1,7 +1,7 @@
-import { Avatar } from '@/assets/images';
 import { DarkModeSwitch } from '@/components/darkmode-switch-cmp/DarkModeSwitch';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { Avatar } from './Avatar';
 
 export function UserInfo() {
   const { authState, onLogout } = useAuth();
@@ -14,11 +14,7 @@ export function UserInfo() {
   return (
     <div className=' dropdown dropdown-end'>
       <label tabIndex={0}>
-        <div className=' avatar'>
-          <div className='rounded-full shadow-lg '>
-            <img src={Avatar} />
-          </div>
-        </div>
+        <Avatar username={authState?.user?.userName}></Avatar>
       </label>
       <ul
         tabIndex={0}
@@ -26,11 +22,7 @@ export function UserInfo() {
       >
         <li>
           <div className='flex flex-row'>
-            <div className='avatar'>
-              <div className='rounded-full '>
-                <img src={Avatar} />
-              </div>
-            </div>
+            <Avatar username={authState?.user?.userName}></Avatar>
             <div>
               <h1 className='font-bold text-md text-primary'>
                 {authState?.user?.userName}
