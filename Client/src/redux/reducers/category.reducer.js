@@ -61,7 +61,7 @@ const categorySlice = createSlice({
       state.loading = false;
       state.categories = action.payload;
     });
-
+    // --------------------------------
     builder.addCase(getCategoryAsync.pending, state => {
       state.loading = true;
     });
@@ -69,7 +69,7 @@ const categorySlice = createSlice({
       state.loading = false;
       state.category = action.payload;
     });
-
+    // --------------------------------
     builder.addCase(createCategoryAsync.pending, state => {
       state.loading = true;
     });

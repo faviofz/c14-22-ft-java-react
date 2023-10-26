@@ -6,6 +6,13 @@ import {
   updateCategoryAsync,
   deleteCategoryAsync,
 } from './category.reducer';
+import {
+  getAllBrandsAsync,
+  getBrandAsync,
+  createBrandAsync,
+  updateBrandAsync,
+  deleteBrandAsync,
+} from './brand.reducer';
 
 import { getAllProviderAsync } from './providers.reducer';
 
@@ -19,4 +26,10 @@ export {
   createCategoryAsync,
   updateCategoryAsync,
   deleteCategoryAsync,
+  // Brand
+  getAllBrandsAsync,
+  getBrandAsync,
+  createBrandAsync,
+  updateBrandAsync,
+  deleteBrandAsync,
 };

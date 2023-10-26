@@ -1,21 +1,29 @@
-import { useCategories } from '@/hooks';
+import { useCategories, useBrands } from '@/hooks';
 import { useEffect } from 'react';
 
 export function FormProduct() {
-  const { categories, loading, getAllCategories } = useCategories();
+  const {
+    categories,
+    loading: categoryLoading,
+    getAllCategories,
+  } = useCategories();
+  const { brands, loading: brandLoading, getAllBrands } = useBrands();
   useEffect(() => {
     getAllCategories();
+    getAllBrands();
   }, []);
   return (
     <form
       method='dialog'
       className='flex flex-col justify-between w-full h-full gap-5'
     >
-      {loading ? (
+      {categoryLoading ? (
         'cargando categorias...'
       ) : (
-        <>categories count: {categories.length}</>
+        <div>categorías: {categories.length}</div>
       )}
+      {brandLoading ? 'cargando marcas...' : <div>marcas: {brands.length}</div>}
+
       <section className='flex flex-col flex-wrap gap-5 lg:flex-row lg:justify-around'>
         <div className='flex flex-col gap-4'>
           <div>
