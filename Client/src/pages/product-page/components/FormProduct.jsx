@@ -1,82 +1,138 @@
-import { useCategories, useBrands } from '@/hooks';
-import { useEffect } from 'react';
+import { useCategories, useBrands, useProviders, useProducts } from '@/hooks';
+import { useEffect, useState } from 'react';
 
 export function FormProduct() {
-  const {
-    categories,
-    loading: categoryLoading,
-    getAllCategories,
-  } = useCategories();
-  const { brands, loading: brandLoading, getAllBrands } = useBrands();
+  const { categories, getAllCategories } = useCategories();
+  const { brands, getAllBrands } = useBrands();
+  const { providers, getAllProviders } = useProviders();
+
+
+  
+  const { createProduct } = useProducts();
+  const [formData, setFormData] = useState({
+    nombre: '',
+    proveedor: '',
+    precio: 0,
+    fechaVencimiento:'',
+    marca: '',
+    categoria: '',
+    imagen: ''
+  });
+
+
+
   useEffect(() => {
     getAllCategories();
     getAllBrands();
+    getAllProviders();
   }, []);
+
+  const handleInputChange = (e) => {
+    const { name, value, type, files } = e.target;
+    if (name === 'fechaVencimiento') {
+      const dateParts = value.split('-');
+      if (dateParts.length === 3) {
+        const [day, month, year] = dateParts;
+        const isoDate = `${year}-${month}-${day}`;
+        setFormData({
+          ...formData,
+          [name]: isoDate,
+        });
+      }
+    } else {
+      setFormData({
+        ...formData,
+        [name]: type === 'file' ? files[0] : value,
+      });
+    }
+  
+  };
+
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await createProduct(formData);
+    } catch (error) {
+      console.error('Error creating product:', error);
+    }
+  };
+
+  const formattedDate = formData.fechaVencimiento.split('-').reverse().join('-');
   return (
     <form
       method='dialog'
       className='flex flex-col justify-between w-full h-full gap-5'
+      onSubmit={handleSubmit}
     >
-      {categoryLoading ? (
-        'cargando categorias...'
-      ) : (
-        <div>categorías: {categories.length}</div>
-      )}
-      {brandLoading ? 'cargando marcas...' : <div>marcas: {brands.length}</div>}
-
       <section className='flex flex-col flex-wrap gap-5 lg:flex-row lg:justify-around'>
         <div className='flex flex-col gap-4'>
           <div>
             <label>Nombre</label>
             <input
               type='text'
+              name='nombre'
               placeholder='Type here'
+              value={formData.nombre}
+              onChange={handleInputChange}
               className='w-full input input-bordered'
             />
           </div>
           <div>
-            <label>Provedor</label>
-            <input
-              type='text'
-              placeholder='Type here'
+            <select
               className='w-full input input-bordered'
-            />
+              name='proveedor'
+              value={formData.proveedor}
+              onChange={handleInputChange}
+            >
+              <option value='all'> Proveedor</option>
+              {providers.map(provider => (
+                <option key={provider.id} value={provider.email}>
+                  {provider.nombre}
+                </option>
+              ))}
+            </select>
           </div>
           <div className='lg:flex lg:gap-5'>
             <div className='flex flex-col'>
               <label>Precio</label>
               <input
                 type='number'
+                name='precio'
                 placeholder='0'
                 min='0'
                 step='0.01'
+                value={formData.precio}
+                onChange={handleInputChange}
                 className='w-full input input-bordered'
               />
             </div>
             <div>
               <label>Fecha</label>
               <input
-                type='date'
-                placeholder='Type here'
-                className='w-full input input-bordered'
-              />
+          type="date"
+          name="fechaVencimiento"
+          value={formattedDate}
+          onChange={handleInputChange}
+          className="w-full input input-bordered"
+        />
             </div>
           </div>
           <div>
-            <label>Marca</label>
-            <input
-              type='text'
-              placeholder='Type here'
+            <select
               className='w-full input input-bordered'
-              list='marcas-list'
-            />
-            <datalist id='marcas-list'>
-              <option>Cocacola</option>
-              <option>Arcor</option>
-              <option>Nestle</option>
-              <option>Gloria</option>
-              <option>Chocolina</option>
-            </datalist>
+              name='marca'
+              value={formData.marca}
+              onChange={handleInputChange}
+            >
+              <option value='all'>Filtrar por Marca</option>
+              {brands.map(brand => (
+                <option key={brand.id} value={brand.nombre}>
+                  {brand.nombre}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className='flex flex-col lg:gap-[1.7rem] gap-5'>
@@ -91,35 +147,36 @@ export function FormProduct() {
             <div>
               <input
                 type='file'
+                name='imagen'
                 className='w-full file-input file-input-bordered file-input-primary'
+                onChange={handleInputChange}
               />
             </div>
           </div>
           <div>
-            <label>Categoria</label>
-            <input
-              type='text'
-              placeholder='Type here'
-              className='w-full input input-bordered'
-              list='category-list'
-            />
-            <datalist id='category-list'>
-              <option>Tecnologia</option>
-              <option>Lacteos</option>
-              <option>Ropa</option>
-              <option>Carnicería</option>
-              <option>Licores</option>
-            </datalist>
+            <select
+              className='w-full input input-bordered mb-6'
+              name='categoria'
+              value={formData.categoria}
+              onChange={handleInputChange}
+            >
+              <option value='all'>Filtrar por Categoria</option>
+              {categories.map(category => (
+                <option key={category.id} value={category.nombre}>
+                  {category.nombre}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </section>
 
-      {/* BUTTOMS */}
+      {/* BUTTONS */}
       <div className='flex justify-between '>
         <button className='w-[12rem] lg:btn-wide btn btn-outline btn-primary'>
           Cancelar
         </button>
-        <button className='w-[12rem] lg:btn-wide btn btn-primary'>
+        <button type='submit' className='w-[12rem] lg:btn-wide btn btn-primary'>
           Guardar
         </button>
       </div>

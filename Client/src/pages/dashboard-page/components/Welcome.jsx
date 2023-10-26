@@ -29,7 +29,7 @@ export function Welcome({ fullname }) {
           <h3>
             {
               // tiene que actualizarse la hora
-              new Date().toLocaleTimeString('es')
+              new Date().toLocaleTimeString('es', { hour: "2-digit", minute: "2-digit"})
             }
           </h3>
         </div>

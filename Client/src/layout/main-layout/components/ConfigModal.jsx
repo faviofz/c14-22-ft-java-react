@@ -1,4 +1,11 @@
+import {
+  useAuth,
+} from '@/hooks';
+import { Avatar } from './Avatar';
+
 export function ConfigModal() {
+  const { authState } = useAuth();
+
   return (
     <dialog id='modal_config' className='modal'>
       <div className='w-full lg:min-w-[60rem] lg:max-h-[35rem] modal-box rounded-3xl'>
@@ -15,7 +22,9 @@ export function ConfigModal() {
         <form className="flex flex-col gap-5">
           <div className='flex flex-col justify-between lg:justify-around lg:flex-row-reverse'>
             <section className='flex flex-col items-center justify-center gap-5 lg:bg-base-200 lg:rounded-3xl lg:px-8 lg:border lg:border-primary lg:shadow'>
-              <div className='w-40 h-40 transition-all duration-300 ease-out rounded-full lg:w-56 lg:h-56 bg-primary hover:opacity-40'></div>
+              <div className='w-40 h-40 transition-all duration-300 ease-out lg:w-52 lg:h-52 hover:opacity-40'>
+              <Avatar username={authState?.user?.userName}></Avatar>
+              </div>
               <h3 className='text-lg text-secondary'>Luis Angel Salcedo</h3>
             </section>
             {/* FORM */}
