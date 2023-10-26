@@ -1,58 +1,58 @@
 package com.c14g22.stockwise.controller;
 
-import com.c14g22.stockwise.dto.*;
-import com.c14g22.stockwise.model.Proveedor;
-import com.c14g22.stockwise.repository.ProveedorRepository;
+import com.c14g22.stockwise.dto.ProveedorRequest;
+import com.c14g22.stockwise.dto.ProveedorResponse;
 import com.c14g22.stockwise.service.ProveedorService;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/proveedores")
 public class ProveedorController {
 
-    private final ProveedorRepository proveedorRepository;
-    @Autowired
-    private ProveedorService proveedorService;
+  @Autowired
+  private ProveedorService proveedorService;
 
-    public ProveedorController(ProveedorRepository proveedorRepository) {
-        this.proveedorRepository = proveedorRepository;
-    }
+  @GetMapping
+  public List<ProveedorResponse> getProveedores() {
+    return this.proveedorService.obtenerProveedores();
+  }
 
-    @GetMapping("/proveedores")
-    public List<Proveedor> getProveedores() {
-        return this.proveedorService.obtenerProveedores();
+  @GetMapping("/{id}")
+  public ResponseEntity<ProveedorResponse> getProveedorById(@PathVariable Long id) {
+    try {
+      ProveedorResponse proveedorResponse = proveedorService.obtenerProveedorPorId(id);
+      return ResponseEntity.ok(proveedorResponse);
+    } catch (EntityNotFoundException e) {
+      return ResponseEntity.notFound().build();
     }
+  }
 
-    @GetMapping("/proveedores/{id}")
-    public ResponseEntity<Proveedor> getProveedorById(@PathVariable Long id) {
-        try {
-            Proveedor proveedor = proveedorService.obtenerProveedorPorId(id);
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(proveedorService.obtenerProveedorPorId(id));
-    }
+  @PostMapping
+  public ProveedorResponse createProveedor(@RequestBody ProveedorRequest proveedorRequest) {
+    return this.proveedorService.guardarProveedor(proveedorRequest);
+  }
 
-    @PostMapping("/proveedores")
-    public Proveedor createProveedor(@RequestBody Proveedor proveedor) {
-        return proveedorRepository.save(proveedor);
-    }
+  @PutMapping("/{id}")
+  public ResponseEntity<ProveedorResponse> updateProveedor(@PathVariable Long id,
+      @RequestBody ProveedorRequest proveedorRequest) {
+    this.proveedorService.actualizarProveedor(id, proveedorRequest);
+    return ResponseEntity.noContent().build();
+  }
 
-    @PutMapping("proveedodres({id}")
-    public Proveedor updateProveedor(@PathVariable Long id, @RequestBody Proveedor proveedor) {
-        proveedor.setId(id);
-        return proveedorRepository.save(proveedor);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ProveedorResponse> deleteProveedor(@PathVariable Long id) {
-        proveedorService.eliminarProveedor(id);
-        return ResponseEntity.noContent().build();
-    }
+  @DeleteMapping("/{id}")
+  public ResponseEntity<ProveedorResponse> deleteProveedor(@PathVariable Long id) {
+    this.proveedorService.eliminarProveedor(id);
+    return ResponseEntity.noContent().build();
+  }
 }

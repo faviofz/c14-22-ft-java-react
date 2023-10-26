@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface ProductoService {
 
-    List<Producto> obtenerProductos();
+    List<ProductoResponse> obtenerProductos();
 
-    Producto obtenerProductoPorId(Long id);
+    ProductoResponse obtenerProductoPorId(Long id);
 
     ProductoResponse guardarProducto(ProductoRequest productoRequest);
 

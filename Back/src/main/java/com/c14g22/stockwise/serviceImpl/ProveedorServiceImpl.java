@@ -20,38 +20,43 @@ public class ProveedorServiceImpl implements ProveedorService {
     private ProveedorRepository proveedorRepository;
 
     @Override
-    public List<Proveedor> obtenerProveedores() {
-        return proveedorRepository.findAll();
+    public List<ProveedorResponse> obtenerProveedores() {
+        List<Proveedor> proveedorList = this.proveedorRepository.findAll();
+        return proveedorList.stream().map(ProveedorResponse::new).toList();
     }
 
     @Override
-    public Proveedor obtenerProveedorPorId(Long id) {
-        return proveedorRepository.findById(id).orElseThrow(() -> new ProveedorNotFoundException(id));
-    }
-
-
-    @Override
-    public Proveedor obtenerProveedorPorNombre(String nombre) {
-        return proveedorRepository.findByNombre(nombre).orElseThrow(EntityNotFoundException::new);
+    public ProveedorResponse obtenerProveedorPorId(Long id) {
+        Proveedor proveedor = this.proveedorRepository.findById(id).orElseThrow(() -> new ProveedorNotFoundException(id));
+        return new ProveedorResponse(proveedor);
     }
 
 
     @Override
-    public ProveedorDto guardarProveedor(ProveedorDto proveedorDto) {
-        Proveedor proveedor = new Proveedor(proveedorDto);
-        return new ProveedorDto(proveedorRepository.save(proveedor));
+    public ProveedorResponse obtenerProveedorPorEmail(String email) {
+        Proveedor proveedor = this.proveedorRepository.findByEmail(email).orElseThrow(EntityNotFoundException::new);
+        return new ProveedorResponse(proveedor);
+    }
 
 
+    @Override
+    public ProveedorResponse guardarProveedor(ProveedorRequest proveedorRequest) {
+        Proveedor proveedor = new Proveedor(proveedorRequest);
+        return new ProveedorResponse(proveedorRepository.save(proveedor));
     }
 
     @Override
-    public void actualizarProveedor(Long id, ProveedorDto proveedorDto) {
-        Proveedor proveedor = new Proveedor(proveedorDto);
+    public void actualizarProveedor(Long id, ProveedorRequest proveedorRequest) {
+        Proveedor proveedor = this.proveedorRepository.findById(id).orElseThrow(() -> new ProveedorNotFoundException(id));
+        proveedor.setNombre(proveedorRequest.getNombre());
+        proveedor.setEmail(proveedorRequest.getEmail());
+        proveedor.setEmpresa(proveedorRequest.getEmpresa());
+        proveedor.setTelefono(proveedorRequest.getTelefono());
         proveedorRepository.save(proveedor);
     }
 
     @Override
     public void eliminarProveedor(Long id) {
-        proveedorRepository.deleteById(id);
+        this.proveedorRepository.deleteById(id);
     }
 }

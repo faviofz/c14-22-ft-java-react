@@ -1,6 +1,7 @@
 package com.c14g22.stockwise.model;
 
 import com.c14g22.stockwise.dto.ProveedorDto;
+import com.c14g22.stockwise.dto.ProveedorRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,14 +23,14 @@ public class Proveedor {
     private Long id;
     private String nombre;
     private String empresa;
-    @Column(name = "correo_electronico", nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
     private String telefono;
 
-    public Proveedor(ProveedorDto proveedorDto) {
-        this.nombre = proveedorDto.getNombre();
-        this.empresa = proveedorDto.getEmpresa();
-        this.email = proveedorDto.getEmail();
-        this.telefono = proveedorDto.getTelefono();
+    public Proveedor(ProveedorRequest proveedorRequest) {
+        this.nombre = proveedorRequest.getNombre();
+        this.empresa = proveedorRequest.getEmpresa();
+        this.email = proveedorRequest.getEmail();
+        this.telefono = proveedorRequest.getTelefono();
     }
 }

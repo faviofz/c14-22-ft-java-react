@@ -31,13 +31,15 @@ public class ProductoServiceImpl implements ProductoService {
   private MarcaRepository marcaRepository;
 
   @Override
-  public List<Producto> obtenerProductos() {
-    return productoRepository.findAll();
+  public List<ProductoResponse> obtenerProductos() {
+    List<Producto> productoList = this.productoRepository.findAll();
+    return productoList.stream().map(ProductoResponse::new).toList();
   }
 
   @Override
-  public Producto obtenerProductoPorId(Long id) {
-    return productoRepository.findById(id).orElseThrow(() -> new ProductoNotFoundException(id));
+  public ProductoResponse obtenerProductoPorId(Long id) {
+    Producto producto = this.productoRepository.findById(id).orElseThrow(() -> new ProductoNotFoundException(id));
+    return new ProductoResponse(producto);
   }
 
   @Override
@@ -55,7 +57,7 @@ public class ProductoServiceImpl implements ProductoService {
       }
     }
     if (!req.getProveedor().isBlank()) {
-      Proveedor proveedor = proveedorRepository.findByNombre(req.getProveedor())
+      Proveedor proveedor = proveedorRepository.findByEmail(req.getProveedor())
           .orElseThrow(EntityNotFoundException::new);
       producto.setProveedor(proveedor);
     }
@@ -91,8 +93,8 @@ public class ProductoServiceImpl implements ProductoService {
       producto.setCategoria(categoria);
     }
     if (productoRequest.getProveedor() != null && !productoRequest.getProveedor()
-        .equals(producto.getProveedor().getNombre())) {
-      Proveedor proveedor = proveedorRepository.findByNombre(productoRequest.getProveedor())
+        .equals(producto.getProveedor().getEmail())) {
+      Proveedor proveedor = proveedorRepository.findByEmail(productoRequest.getProveedor())
           .orElseThrow(EntityNotFoundException::new);
       producto.setProveedor(proveedor);
     }

@@ -10,15 +10,15 @@ import java.util.List;
 
 public interface ProveedorService {
 
-    List<Proveedor> obtenerProveedores();
+    List<ProveedorResponse> obtenerProveedores();
 
-    Proveedor obtenerProveedorPorId(Long id);
+    ProveedorResponse obtenerProveedorPorId(Long id);
 
-    Proveedor obtenerProveedorPorNombre(String nombre);
+    ProveedorResponse obtenerProveedorPorEmail(String email);
 
-    ProveedorDto guardarProveedor(ProveedorDto proveedorDto);
+    ProveedorResponse guardarProveedor(ProveedorRequest proveedorRequest);
 
-    void actualizarProveedor(Long id, ProveedorDto proveedorDto);
+    void actualizarProveedor(Long id, ProveedorRequest ProveedorRequest);
 
     void eliminarProveedor(Long id);
 }

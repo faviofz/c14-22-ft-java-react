@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProveedorRepository extends JpaRepository<Proveedor, Long> {
 
-  Optional<Proveedor> findByNombre(String proveedor);
+  Optional<Proveedor> findByEmail(String email);
 }

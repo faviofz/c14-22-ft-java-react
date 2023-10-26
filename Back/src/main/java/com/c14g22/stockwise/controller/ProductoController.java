@@ -28,18 +28,18 @@ public class ProductoController {
     private ProductoService productoService;
 
     @GetMapping
-    public List<Producto> getProductos() {
-        return productoService.obtenerProductos();
+    public List<ProductoResponse> getProductos() {
+        return this.productoService.obtenerProductos();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Producto> getProductoById(@PathVariable Long id) {
+    public ResponseEntity<ProductoResponse> getProductoById(@PathVariable Long id) {
         try {
-            Producto producto = productoService.obtenerProductoPorId(id);
+            ProductoResponse productoResponse = productoService.obtenerProductoPorId(id);
+            return ResponseEntity.ok(productoResponse);
         } catch (EntityNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(productoService.obtenerProductoPorId(id));
     }
 
     @PostMapping
@@ -55,16 +55,16 @@ public class ProductoController {
     @PutMapping("/{id}")
     public ResponseEntity<String> putProducto(@PathVariable Long id, @RequestBody ProductoRequest productoRequest) {
         try {
-            productoService.actualizarProducto(id, productoRequest);
+            this.productoService.actualizarProducto(id, productoRequest);
+            return ResponseEntity.noContent().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
-        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ProductoResponse> deleteProducto(@PathVariable Long id) {
-        productoService.eliminarProducto(id);
+        this.productoService.eliminarProducto(id);
         return ResponseEntity.noContent().build();
     }
 }

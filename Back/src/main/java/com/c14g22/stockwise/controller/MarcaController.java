@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/marcas")
 public class MarcaController {
 
     private final MarcaRepository marcaRepository;
@@ -15,28 +16,28 @@ public class MarcaController {
         this.marcaRepository = marcaRepository;
     }
 
-    @GetMapping("/marcas")
+    @GetMapping
     public List<Marca> getMarcas() {
         return marcaRepository.findAll();
     }
 
-    @GetMapping("/marcas/{id}")
+    @GetMapping("/{id}")
     public Marca getMarca(@PathVariable Long id) {
         return marcaRepository.findById(id).orElse(null);
     }
 
-    @PostMapping("/marcas")
+    @PostMapping
     public Marca createMarca(@RequestBody Marca marca) {
         return marcaRepository.save(marca);
     }
 
-    @PutMapping("/marcas/{id}")
+    @PutMapping("/{id}")
     public Marca updateMarca(@PathVariable Long id, @RequestBody Marca marca) {
         marca.setId(id);
         return marcaRepository.save(marca);
     }
 
-    @DeleteMapping("/marcas/{id}")
+    @DeleteMapping("/{id}")
     public void deleteMarca(@PathVariable Long id) {
         marcaRepository.deleteById(id);
     }
