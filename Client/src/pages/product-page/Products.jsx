@@ -10,7 +10,7 @@ export default function Product() {
   const { products, getAllProducts } = useProducts();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
+  const itemsPerPage = 6;
 
   const [filteredProducts, setFilteredProducts] = useState(products);
   const [filters, setFilters] = useState({
