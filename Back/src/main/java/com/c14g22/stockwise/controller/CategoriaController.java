@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping
 public class CategoriaController {
 
     private final CategoriaRepository categoriaRepository;
