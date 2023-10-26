@@ -6,7 +6,11 @@ import {
   serviceUpdateCategory,
   serviceDeleteCategory,
 } from '@/services';
-import { categoryApiListToCategoryList } from '@/adapters';
+import {
+  categoryApiListToCategoryList,
+  categoryToApiCategory,
+  categoryApiToCategory,
+} from '@/adapters';
 
 export const getAllCategoriesAsync = createAsyncThunk(
   'categories/getAll',
@@ -28,7 +32,8 @@ export const getCategoryAsync = createAsyncThunk(
 export const createCategoryAsync = createAsyncThunk(
   'categories/create',
   async newCategory => {
-    const response = await serviceCreateCategory(newCategory);
+    const categoryApi = categoryToApiCategory(newCategory);
+    const response = await serviceCreateCategory(categoryApi);
     return response;
   }
 );
@@ -36,7 +41,8 @@ export const createCategoryAsync = createAsyncThunk(
 export const updateCategoryAsync = createAsyncThunk(
   'categories/update',
   async modifiedCategory => {
-    const response = await serviceUpdateCategory(modifiedCategory);
+    const categoryApi = categoryToApiCategory(modifiedCategory);
+    const response = await serviceUpdateCategory(categoryApi);
     return response;
   }
 );
@@ -77,7 +83,21 @@ const categorySlice = createSlice({
     });
     builder.addCase(createCategoryAsync.fulfilled, (state, action) => {
       state.loading = false;
-      state.categories.push(action.payload);
+      const category = categoryApiToCategory(action.payload);
+      state.categories.push(category);
+    });
+    // --------------------------------
+    builder.addCase(deleteCategoryAsync.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(deleteCategoryAsync.fulfilled, (state, action) => {
+      state.loading = false;
+      const categoryId = action.payload;
+      const index = state.categories.findIndex(
+        category => category.id === categoryId
+      );
+      // eliminamos el elementos del arr
+      state.categories.splice(index, 1);
     });
   },
 });

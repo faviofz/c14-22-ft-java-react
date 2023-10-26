@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useCategories } from '@/hooks/';
-import { TrashIcon, PencilAltIcon } from '@/assets/svg';
+import { TrashIcon /* , PencilAltIcon */ } from '@/assets/svg';
 import { TableSkeleton } from '@/components';
 
 export function Table({ data }) {
@@ -21,16 +21,18 @@ export function Table({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map(({ id, name }) => (
+            {data.map(({ id, name }, i) => (
               <tr key={id}>
-                <td>{name}</td>
+                <td>
+                  {i + 1} - {name}
+                </td>
                 <td className='flex gap-5'>
                   <button onClick={() => deleteCategory(id)}>
                     <TrashIcon />
                   </button>
-                  <button>
+                  {/* <button>
                     <PencilAltIcon />
-                  </button>
+                  </button> */}
                 </td>
               </tr>
             ))}

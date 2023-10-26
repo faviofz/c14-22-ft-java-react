@@ -3,14 +3,14 @@ import { DataList, Container, Modal, Search, Paginated } from '@/components';
 import { PlusIcon } from '@/assets/svg';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { useCategories } from '@/hooks/';
-import { Table } from './components';
+import { Created, Table } from './components';
 import './category-page.scss';
 
 export default function Category() {
   const { categories, getAllCategories } = useCategories();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
   const [filteredCategories, setFilteredCategories] = useState(categories);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Category() {
               buttonLabel='Nueva Categoría'
               buttonIcon={<PlusIcon width='15' />}
             >
-              contenido del modal
+              <Created />
             </Modal>
           </DataList.Header>
           {/* <DataList.Filters>filters group</DataList.Filters> */}
