@@ -4,6 +4,7 @@ import {
   serviceGetCategory,
   serviceCreateCategory,
   serviceUpdateCategory,
+  serviceDeleteCategory,
 } from '@/services';
 
 export const getAllCategoriesAsync = createAsyncThunk(
@@ -38,6 +39,14 @@ export const updateCategoryAsync = createAsyncThunk(
   }
 );
 
+export const deleteCategoryAsync = createAsyncThunk(
+  'categories/delete',
+  async id => {
+    const response = await serviceDeleteCategory(id);
+    return response;
+  }
+);
+
 const categorySlice = createSlice({
   name: 'categories',
   initialState: {
@@ -52,6 +61,7 @@ const categorySlice = createSlice({
       state.loading = false;
       state.categories = action.payload;
     });
+
     builder.addCase(getCategoryAsync.pending, state => {
       state.loading = true;
     });
@@ -59,6 +69,7 @@ const categorySlice = createSlice({
       state.loading = false;
       state.category = action.payload;
     });
+
     builder.addCase(createCategoryAsync.pending, state => {
       state.loading = true;
     });
