@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { useCategories } from '@/hooks';
+import { useCategories ,useBrands ,useProviders} from '@/hooks';
 export function Filters({ filters, setFilters }) {
   const { categories, getAllCategories } = useCategories();
-  console.log(filters, '1');
+  const {brands, getAllBrands } = useBrands();
+  const {providers, getAllProviders } = useProviders();
 
   const handleFilterChange = e => {
     const { name, value } = e.target;
@@ -11,6 +12,8 @@ export function Filters({ filters, setFilters }) {
 
   useEffect(() => {
     getAllCategories();
+    getAllBrands()
+    getAllProviders()
   }, []);
 
   return (
@@ -22,7 +25,11 @@ export function Filters({ filters, setFilters }) {
         onChange={handleFilterChange}
       >
         <option value='all'>Filtrar por Marca</option>
-        
+        {brands.map(brands=> (
+          <option key={brands.id} value={brands.nombre}>
+            {brands.nombre}
+          </option>
+        ))}
       </select>
       <select
         className='w-full h-10 text-sm lg:text-[12px] min-[1150px]:text-base bg-base-200 input input-bordered'
@@ -44,7 +51,11 @@ export function Filters({ filters, setFilters }) {
         onChange={handleFilterChange}
       >
         <option value='all'>Filtrar por Proveedor</option>
-       
+        {providers.map(providers=> (
+          <option key={providers.id} value={providers.nombre}>
+            {providers.nombre}
+          </option>
+        ))}
       </select>
     </div>
   );
