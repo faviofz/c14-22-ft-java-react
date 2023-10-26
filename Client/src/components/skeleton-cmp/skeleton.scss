@@ -1,5 +1,4 @@
-$base-color: #ddd;
-$shine-color: #e8e8e8;
+@import "@/assets/scss/vars.scss";
 
 @keyframes shineitems{
     0% {
@@ -18,7 +17,7 @@ $shine-color: #e8e8e8;
     &-table-item{
         height: 1rem;
         width: 100%;
-        background-image: linear-gradient(90deg, $base-color 0px, $shine-color 40px, $base-color 80px);
+        background-image: linear-gradient(90deg, $base100 0px, $base200 40px, $base100 80px);
         margin: .2rem;
         border-radius: .5rem;
         animation: shineitems 1.5s infinite linear
@@ -27,3 +26,10 @@ $shine-color: #e8e8e8;
 
 
 
+[data-theme='projectDark']{
+    .skeleton{
+        &-table-item{
+            background-image: linear-gradient(90deg, $accent 0px, $neutral 40px, $accent 80px);
+        }
+    }
+}
