@@ -1,13 +1,12 @@
 import { useCategories, useBrands, useProviders, useProducts } from '@/hooks';
 import { useEffect, useState } from 'react';
-
+import axios from "axios"
 export function FormProduct() {
+
   const { categories, getAllCategories } = useCategories();
   const { brands, getAllBrands } = useBrands();
   const { providers, getAllProviders } = useProviders();
-
-
-  
+  const [image, setImage] = useState("");
   const { createProduct } = useProducts();
   const [formData, setFormData] = useState({
     nombre: '',
@@ -16,10 +15,8 @@ export function FormProduct() {
     fechaVencimiento:'',
     marca: '',
     categoria: '',
-    imagen: ''
+    imagen: image
   });
-
-
 
   useEffect(() => {
     getAllCategories();
@@ -37,18 +34,40 @@ export function FormProduct() {
         setFormData({
           ...formData,
           [name]: isoDate,
+          
         });
       }
     } else {
       setFormData({
         ...formData,
         [name]: type === 'file' ? files[0] : value,
+      
       });
     }
   
   };
 
-  
+  const handleImage = async (e) => {
+    const file = e.target.files[0];
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "game_store");
+    try {
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/dwfhsitwe/image/upload`,
+        data
+      );
+      const imageUrl = response.data.secure_url;
+      setImage(imageUrl);
+      setFormData({
+        ...formData,
+        imagen: imageUrl, 
+      });
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,6 +77,8 @@ export function FormProduct() {
       console.error('Error creating product:', error);
     }
   };
+
+
 
   const formattedDate = formData.fechaVencimiento.split('-').reverse().join('-');
   return (
@@ -141,15 +162,16 @@ export function FormProduct() {
               <label>Imagen</label>
               <div className=' h-[9rem] lg:h-[8.2rem] bg-base-200 border-2 border-accent'>
                 <div className='absolute flex items-center justify-center w-8 h-8' />
-                {/* <img src="" alt="" /> */} <h3>PHOTO</h3>
+                <img className='w-[180px] h-[100px] ml-20 mt-2' src={image} alt="" /> 
               </div>
             </div>
             <div>
               <input
                 type='file'
                 name='imagen'
+                onChange={handleImage}
                 className='w-full file-input file-input-bordered file-input-primary'
-                onChange={handleInputChange}
+                
               />
             </div>
           </div>
