@@ -2,6 +2,7 @@ import { httpClient } from '@/utils/';
 
 // CREATE
 export function serviceCreateProduct(newProduct) {
+  console.log(newProduct,"data")
   return new Promise((resolve, reject) => {
     httpClient
       .post(`/productos`, newProduct)
