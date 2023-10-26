@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import { useCategories } from '@/hooks/';
 import { TrashIcon /* , PencilAltIcon */ } from '@/assets/svg';
+import { useCategories } from '@/hooks/';
 import { TableSkeleton } from '@/components';
 
 export function Table({ data }) {
   const { loading, deleteCategory } = useCategories();
-
   const headers = ['Categoría', 'Acciones'];
+
   return (
     <>
       {loading ? (
