@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Preload } from '@/components';
 
-export function Stat({ title = '', stat = 0, Icon, url }) {
+export function Stat({ title = '', stat = 0, loading = false, Icon, url }) {
   return (
     <Link to={url} className='box-border bock flex-2'>
       <div className='flex [&>div]:flex-1 items-center pl-[3rem] relative '>
@@ -11,7 +12,7 @@ export function Stat({ title = '', stat = 0, Icon, url }) {
         <div className='bg-base-200 rounded-3xl pr-[3rem] pl-[3rem] h-28 w-full flex flex-col items-center justify-center'>
           <div className='font-bold stat-title text-secundary'>{title}</div>
           <div className='stat-value text-secondary'>
-            {stat >= 1000 ? stat + 'K' : stat}
+            {loading ? <Preload /> : stat}
           </div>
         </div>
       </div>
@@ -24,6 +25,7 @@ Stat.propTypes = {
   url: PropTypes.string,
   stat: PropTypes.number,
   Icon: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 Stat.defaultProps = {
