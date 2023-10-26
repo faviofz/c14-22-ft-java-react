@@ -17,8 +17,7 @@ export default function History() {
         <DataList
           title='Historial'
           setViewMode={viewModeType.TABLE}
-          // table={<Table data={providers} />}
-          // grid={<Grid data={filteredProducts} />}
+          // element={<Table data={providers} />}
         >
           <DataList.Header>
             <Search placeholder='Buscar historial' onNewValue={handleSearch} />

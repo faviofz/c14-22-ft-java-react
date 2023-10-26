@@ -29,6 +29,16 @@ export function serviceGetProvider(id) {
   });
 }
 
+// DELETE
+export function serviceDeleteProvider(id) {
+  return new Promise((resolve, reject) => {
+    httpClient
+      .delete(`/proveedores/${id}`)
+      .then(({ data }) => resolve(data))
+      .catch(error => reject(new Error(error)));
+  });
+}
+
 // // UPDATE
 // export function serviceUpdateProvider(id, modifiedProvider) {
 //   return new Promise((resolve, reject) => {
@@ -36,15 +46,5 @@ export function serviceGetProvider(id) {
 //   .put(`/proveedores/${id}`, modifiedProvider)
 //   .then(({ data }) => resolve(data))
 //   .catch(error => reject(new Error(error)));
-//   });
-// }
-
-// // DELETE
-// export function serviceDeleteProvider(id) {
-//   return new Promise((resolve, reject) => {
-//     httpClient
-//       .delete(`/proveedores/${id}`)
-//       .then(({ data }) => resolve(data))
-//       .catch(error => reject(new Error(error)));
 //   });
 // }

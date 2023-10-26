@@ -16,12 +16,12 @@ import {
   deleteBrandAsync,
 } from './brand.reducer';
 
-import { getAllProviderAsync } from './providers.reducer';
+import { getAllProviderAsync, createProviderAsync, deleteProviderAsync } from './providers.reducer';
 
 export {
+  // Product
   getAllProductAsync,
   deleteProductAsync,
-  getAllProviderAsync,
   createProductAsync ,
   // Category
   getAllCategoriesAsync,
@@ -35,5 +35,8 @@ export {
   createBrandAsync,
   updateBrandAsync,
   deleteBrandAsync,
-  
+  // Provider
+  getAllProviderAsync,
+  createProviderAsync,
+  deleteProviderAsync,
 };

@@ -1,5 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProviderAsync } from '@/redux/reducers';
+import {
+  getAllProviderAsync,
+  createProviderAsync,
+  deleteProviderAsync,
+} from '@/redux/reducers';
 
 export function useProviders() {
   const { providers, loading } = useSelector(state => state.providers);
@@ -8,9 +12,19 @@ export function useProviders() {
   function getAllProviders() {
     dispatch(getAllProviderAsync());
   }
-  //   function createProvider(){}
+  function createProvider(data) {
+    dispatch(createProviderAsync(data));
+  }
+  function deleteProvider(id) {
+    dispatch(deleteProviderAsync(id));
+  }
   //   function getProvider(){}
   //   function updateProvider(){}
-  //   function deleteProvider(){}
-  return { providers, loading, getAllProviders };
+  return {
+    providers,
+    loading,
+    getAllProviders,
+    createProvider,
+    deleteProvider,
+  };
 }

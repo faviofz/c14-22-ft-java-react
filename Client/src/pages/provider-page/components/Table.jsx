@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import { TrashIcon, PencilAltIcon } from '@/assets/svg';
-
+import { useProviders } from '@/hooks';
 
 export function Table({ data }) {
+  const { deleteProvider } = useProviders();
+
   return (
     <table className='table bg-base-200 '>
       <thead>
@@ -15,27 +17,22 @@ export function Table({ data }) {
         </tr>
       </thead>
       <tbody>
-        {data.map(
-          (
-            {
-              nombre,
-              empresa,
-              telefono,
-              email,
-            },
-            index
-          ) => (
-            <tr key={index}>
-              <td>{nombre}</td>
-              <td>{empresa}</td>
-              <td>{telefono}</td>
-              <td>{email}</td>
-              <td className='flex gap-5'>
-                <TrashIcon /> <PencilAltIcon />
-              </td>
-            </tr>
-          )
-        )}
+        {data.map(({ id, nombre, empresa, telefono, email }, index) => (
+          <tr key={index}>
+            <td>{nombre}</td>
+            <td>{empresa}</td>
+            <td>{telefono}</td>
+            <td>{email}</td>
+            <td className='flex gap-5'>
+              <button onClick={() => deleteProvider(id)}>
+                <TrashIcon />
+              </button>
+              <button>
+                <PencilAltIcon />
+              </button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
