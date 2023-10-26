@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { SwitchViewMode, Paginated } from './components';
+import { SwitchViewMode } from './components';
 import { viewModeType } from './constants';
 import './datalist-cmp.scss';
 
@@ -58,7 +58,6 @@ export function DataList({
           !element &&
           (loading ? 'cargando table...' : grid)}
       </div>
-      <Paginated />
     </section>
   );
 }
