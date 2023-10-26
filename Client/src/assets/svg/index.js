@@ -22,6 +22,7 @@ import grid from './Cuadrado-vista.svg?react';
 import TrashIcon from './trash.svg?react';
 import PencilAltIcon from './pencil-alt.svg?react';
 import CircleWarn from './circle-alert.svg?react';
+import CategoryIcon from './category-icon.svg?react';
 
 export {
   PencilAltIcon,
@@ -48,4 +49,5 @@ export {
   HistoricalIcon,
   PlusIcon,
   CircleWarn,
+  CategoryIcon,
 };
