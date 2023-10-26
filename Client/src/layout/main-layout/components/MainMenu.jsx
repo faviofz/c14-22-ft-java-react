@@ -4,9 +4,10 @@ import { OpenMainMenuButton } from './OpenMainMenuButton';
 
 import {
   ProductIcon,
-  StockIcon,
+  /* StockIcon, */
   ProviderIcon,
   HistoricalIcon,
+  CategoryIcon,
 } from '@/assets/svg';
 import { Link } from 'react-router-dom';
 
@@ -25,6 +26,11 @@ const menuItems = [
     label: 'Proveedor',
     Icon: ProviderIcon,
     href: '/provider',
+  },
+  {
+    label: 'Categorías',
+    Icon: CategoryIcon,
+    href: '/category',
   },
   {
     label: 'Historial',
