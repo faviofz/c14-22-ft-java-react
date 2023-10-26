@@ -2,21 +2,21 @@ import PropTypes from 'prop-types';
 import { TrashIcon, PencilAltIcon } from '@/assets/svg';
 import { useProducts } from '../../../hooks/useProducts';
 
-// ! ADAPTER Joose
-const productAdapter = data => ({
-  name: data.nombre,
-  image: data.imagen,
-  category: data.categoria ?? { nombre: 'NULL' },
-  brand: data.marca ?? { nombre: 'NULL' },
-  date: data.fechaVencimiento,
-  provider: data.proveedor ?? { nombre: 'NULL' },
-  tax: data.impuesto,
-  cost: data.costo,
-});
+// // ! ADAPTER Joose
+// const productAdapter = data => ({
+//   name: data.nombre,
+//   image: data.imagen,
+//   category: data.categoria ?? { nombre: 'NULL' },
+//   brand: data.marca ?? { nombre: 'NULL' },
+//   date: data.fechaVencimiento,
+//   provider: data.proveedor ?? { nombre: 'NULL' },
+//   tax: data.impuesto,
+//   cost: data.costo,
+// });
 
 export function Table({ data }) {
   const { deleteProducts } = useProducts();
-  
+
   return (
     <table className='table bg-base-200 '>
       <thead>

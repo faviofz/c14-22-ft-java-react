@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { DataList, Container, Modal, Search } from '@/components';
+import { DataList, Container, Modal, Search, Paginated } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { PlusIcon } from '@/assets/svg';
 import { Table, Grid, Filters, FormProduct } from './components';
 import { useProducts } from './../../hooks/useProducts';
-import { Paginated } from '../../components/datalist-cmp/components/Paginated';
 
 export default function Product() {
   const { products, getAllProducts } = useProducts();
@@ -31,7 +30,8 @@ export default function Product() {
         filters.categoria === 'all' ||
         product.categoria.nombre === filters.categoria;
       const proveedorMatch =
-        filters.proveedor === 'all' || product.proveedor.nombre === filters.proveedor;
+        filters.proveedor === 'all' ||
+        product.proveedor.nombre === filters.proveedor;
       return marcaMatch && categoriaMatch && proveedorMatch;
     });
 
@@ -72,12 +72,11 @@ export default function Product() {
           </DataList.Filters>
         </DataList>
         <Paginated
-        currentPage={currentPage}
-        totalPages={Math.ceil(filteredProducts.length / itemsPerPage)}
-        onPageChange={setCurrentPage}
-      />
+          currentPage={currentPage}
+          totalPages={Math.ceil(filteredProducts.length / itemsPerPage)}
+          onPageChange={setCurrentPage}
+        />
       </Container>
-      
     </div>
   );
 }
