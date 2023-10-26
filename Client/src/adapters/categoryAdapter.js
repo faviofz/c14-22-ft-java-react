@@ -5,7 +5,7 @@ export const categoryToApiCategory = (data = {}) => ({
 
 export const categoryApiToCategory = (data = {}) => ({
   id: data.id,
-  name: data.nombre,
+  nombre: data.nombre,
 });
 
 export const categoryApiListToCategoryList = list =>

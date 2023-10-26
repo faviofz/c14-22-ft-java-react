@@ -34,7 +34,7 @@ export function Created() {
         />
 
         <Button disabled={loading} type='submit'>
-          {loading ? 'Enviando...' : 'Ingresar'}
+          {loading ? 'Enviando...' : 'Crear'}
         </Button>
       </form>
     </>

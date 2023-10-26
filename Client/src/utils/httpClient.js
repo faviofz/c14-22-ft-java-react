@@ -18,8 +18,6 @@ httpClient.interceptors.request.use(
       config.headers = newHeaders;
     }
 
-    console.log('interceptor request');
-
     return config;
   },
   error => Promise.reject(error)

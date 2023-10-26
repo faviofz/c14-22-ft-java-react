@@ -11,3 +11,4 @@ export * from './search-cmp/Search';
 export * from './alert-cmp/Alert';
 export * from './skeleton-cmp/TableSkeleton';
 export * from './paginated-cmp/Paginated';
+export * from './preload-cmp/Preload';
