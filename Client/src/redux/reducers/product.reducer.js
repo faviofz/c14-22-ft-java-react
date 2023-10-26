@@ -55,22 +55,14 @@ const productsSlice = createSlice({
       state.loading = false;
       state.products = action.payload;
     });
-    // builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
-    //   state.products = action.payload;
-
-      // console.log(action.payload)
-      // console.log(`BEFORE -> ${state.products}`)
-
-      // state.products.map((item) => {
-      //   if(item.id === payload){
-      //     let index = state.products.indexOf(item);
-      //     state.products.splice(index,1)
-      //     return 
-      //   }
-      // })
-      // console.log(` AFTER -> ${state.products}`)
-
-    // });
+    builder.addCase(createProductAsync.fulfilled, (state, action) => {
+      state.products.push(action.payload);
+    });
+    builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
+      const idProduct = action.payload;
+      const index = state.products.findIndex((products) => (products.id === idProduct))
+      state.products.splice(index,1)
+    });
   },
 });
 

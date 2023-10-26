@@ -25,8 +25,7 @@ export default function Provider() {
         <DataList
           title='Proveedor'
           setViewMode={viewModeType.TABLE}
-            table={<Table data={providers} />}
-          // grid={<Grid data={filteredProducts} />}
+            element={<Table data={providers} />}
         >
           <DataList.Header>
             <Search placeholder='Buscar proveedor' onNewValue={handleSearch} />
