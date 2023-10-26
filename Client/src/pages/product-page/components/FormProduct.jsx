@@ -1,5 +1,5 @@
 import { useCategories, useBrands, useProviders, useProducts } from '@/hooks';
-import { Input } from '@/components';
+import { Input, Select } from '@/components';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useFormik } from 'formik';
@@ -65,20 +65,6 @@ export function FormProduct() {
     }
   };
 
-  // const handleSubmit = async e => {
-  //   e.preventDefault();
-  //   try {
-  //     await createProduct(formData);
-  //   } catch (error) {
-  //     console.error('Error creating product:', error);
-  //   }
-  // };
-
-  // const formattedDate= (value) => {
-  //   const formatted = value.split('-').reverse().join('-')
-  //   return formatted;
-  // };
-
   const { handleChange, handleSubmit, handleBlur, values, touched, errors } =
     useFormik({
       initialValues: {
@@ -96,16 +82,7 @@ export function FormProduct() {
           .split('-')
           .reverse()
           .join('-');
-        // console.log(values);
         createProduct(values);
-        // values.nombre = '';
-        // values.imagen = '';
-        // values.costo = 0;
-        // values.impuesto = 0;
-        // values.fechaVencimiento = '';
-        // values.categoria = '';
-        // values.proveedor = '';
-        // values.marca = '';
       },
       validationSchema: Yup.object({
         nombre: Yup.string().required('Requerido'),
@@ -126,9 +103,9 @@ export function FormProduct() {
       className='flex flex-col justify-between w-full h-full gap-5'
       onSubmit={handleSubmit}
     >
-      <section className='flex flex-col flex-wrap gap-5 lg:flex-row lg:justify-around'>
-        <div className='flex flex-row gap-4'>
-          <div className='flex flex-col'>
+      <section className='flex flex-col flex-wrap gap-3 lg:gap-5 lg:flex-row lg:justify-around'>
+        <div className='flex flex-col gap-3 lg:gap-5 lg:flex-row'>
+          <div className='flex flex-col gap-3 lg:gap-0'>
             <Input
               label='Nombre'
               placeholder='Ingresar nombre'
@@ -139,90 +116,64 @@ export function FormProduct() {
               errorMessage={touched.nombre && errors.nombre}
             />
 
-            <select
-              className='w-full input input-bordered'
+            <Select
               name='proveedor'
+              label='proveedor'
+              list={providers}
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.proveedor}
-            >
-              <option value=''>Seleccione proveedor</option>
-              {providers.map(provider => (
-                <option key={provider.id} value={provider.email}>
-                  {provider.nombre}
-                </option>
-              ))}
-            </select>
-            {touched.proveedor && errors.proveedor && (
-              <label className='label'>
-                <span className='label-text-alt text-error'>
-                  {errors.proveedor}
-                </span>
-              </label>
-            )}
+              errorMessage={
+                  touched.proveedor && errors.proveedor
+                }
+            />
 
-            <select
-              className='w-full input input-bordered'
-              name='marca'
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.marca}
-            >
-              <option value=''>Seleccione marca</option>
-              {brands.map(brand => (
-                <option key={brand.id} value={brand.nombre}>
-                  {brand.nombre}
-                </option>
-              ))}
-            </select>
-            {touched.marca && errors.marca && (
-              <label className='label'>
-                <span className='label-text-alt text-error'>
-                  {errors.marca}
-                </span>
-              </label>
-            )}
+            
 
-            <div className='flex items-center'>
-            <div>
-              <label>Fecha</label>
-              <input
+            <div className='flex flex-col items-center gap-3 lg:gap-5 lg:flex-row'>
+              <Input
                 type='date'
+                label='fecha de vencimiento'
                 pattern='\d{2}-\d{2}-\d{4}'
                 name='fechaVencimiento'
                 value={values.fechaVencimiento}
                 onBlur={handleBlur}
                 onChange={handleChange}
-                className='w-full input input-bordered'
+                errorMessage={
+                  touched.fechaVencimiento && errors.fechaVencimiento
+                }
+              />
+
+              <Input
+                label='Precio'
+                placeholder='Ingresar precio'
+                name='precio'
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.precio}
+                errorMessage={
+                  touched.precio && errors.precio
+                }
+                type='number'
+                min='0'
+                step='0.01'
               />
             </div>
-            {touched.fechaVencimiento && errors.fechaVencimiento && (
-              <label className='label'>
-                <span className='label-text-alt text-error'>
-                  {errors.fechaVencimiento}
-                </span>
-              </label>
-            )}
-
-<Input
-              label='Precio'
-              placeholder='Ingresar precio'
-              name='precio'
+            <Select
+              label='marca'
+              list={brands}
+              name='marca'
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.precio}
-              errorMessage={touched.precio && errors.precio}
-              type='number'
-              min='0'
-              step='0.01'
+              value={values.marca}
+              errorMessage={
+                  touched.marca && errors.marca
+                }
             />
-            </div>
-
-            
           </div>
 
           <div className='flex flex-col'>
-          <div className='flex flex-col gap-2 lg:gap-[1.7rem]'>
+            <div className='flex flex-col gap-2 lg:gap-[1.7rem]'>
               <div>
                 <label>Imagen</label>
                 <div className=' h-[9rem] lg:h-[8.2rem] bg-base-200 border-2 border-accent'>
@@ -235,53 +186,34 @@ export function FormProduct() {
                 </div>
               </div>
               <div>
-                <input
+                <Input
                   type='file'
                   name='ProductImagen'
                   onChange={handleImage}
-                  // onChange={handleChange}
                   className='w-full file-input file-input-bordered file-input-primary'
                 />
 
-                <input
+                <Input
                   type='text'
                   name='imagen'
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={(values.imagen = image)}
                   className='hidden'
+                  errorMessage={touched.imagen && errors.imagen}
+                />
+
+                <Select
+                  label='categoria'
+                  list={categories}
+                  name='categoria'
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  value={values.categoria}
+                  errorMessage={touched.categoria && errors.categoria}
                 />
               </div>
             </div>
-            {touched.imagen && errors.imagen && (
-              <label className='label'>
-                <span className='label-text-alt text-error'>
-                  {errors.imagen}
-                </span>
-              </label>
-            )}
-            
-            <select
-              className='w-full mb-6 input input-bordered'
-              name='categoria'
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.categoria}
-            >
-              <option value=''>Seleccione categoria</option>
-              {categories.map(category => (
-                <option key={category.id} value={category.name}>
-                  {category.name}
-                </option>
-              ))}
-            </select>
-            {touched.categoria && errors.categoria && (
-              <label className='label'>
-                <span className='label-text-alt text-error'>
-                  {errors.categoria}
-                </span>
-              </label>
-            )}
           </div>
         </div>
       </section>
