@@ -2,15 +2,12 @@ import { BellSVG } from '@/assets/svg';
 
 import { Link } from 'react-router-dom';
 
-
 export function NotificationButton() {
-  
-
   return (
     <details className='dropdown dropdown-end max-lg:hidden'>
-      <summary className='m-1 btn btn-circle btn-ghost'>
+      <summary className='m-1 btn btn-circle btn-ghost [&>div>svg>path]:hover:fill-accent-content hover:bg-base-200'>
         <div className='indicator'>
-          <BellSVG className='[&>path]:stroke-2-content [&>path]:stroke-secondary-content' />
+          <BellSVG className='[&>path]:fill-secondary-content ' />
           <span className='badge badge-xs badge-primary indicator-item'></span>
         </div>
       </summary>
@@ -18,11 +15,11 @@ export function NotificationButton() {
         <li>
           <h1 className='menu-title'>Notificación</h1>
         </li>
-        <li >
+        <li>
           <Link to={'/notification'}>Notificación 1</Link>
         </li>
 
-        <li >
+        <li>
           <Link to={'/notification'}>Notificación 2</Link>
         </li>
       </ul>
