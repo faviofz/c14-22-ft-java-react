@@ -6,12 +6,14 @@ import {
   serviceUpdateCategory,
   serviceDeleteCategory,
 } from '@/services';
+import { categoryApiListToCategoryList } from '@/adapters';
 
 export const getAllCategoriesAsync = createAsyncThunk(
   'categories/getAll',
   async () => {
-    const response = await serviceGetAllCategories();
-    return response;
+    const categoryApiList = await serviceGetAllCategories();
+    const categoryList = categoryApiListToCategoryList(categoryApiList);
+    return categoryList;
   }
 );
 

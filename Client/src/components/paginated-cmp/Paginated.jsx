@@ -1,6 +1,5 @@
+import PropTypes from 'prop-types';
 export function Paginated({ currentPage, totalPages, onPageChange }) {
-  const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
-
   return (
     <div className='flex items-center justify-center my-2 join'>
       <button
@@ -24,3 +23,9 @@ export function Paginated({ currentPage, totalPages, onPageChange }) {
     </div>
   );
 }
+
+Paginated.propTypes = {
+  currentPage: PropTypes.number,
+  totalPages: PropTypes.number,
+  onPageChange: PropTypes.func,
+};

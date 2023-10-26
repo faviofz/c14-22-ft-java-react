@@ -9,3 +9,5 @@ export * from './datalist-cmp/DataList';
 export * from './modal-cmp/Modal';
 export * from './search-cmp/Search';
 export * from './alert-cmp/Alert';
+export * from './skeleton-cmp/TableSkeleton';
+export * from './paginated-cmp/Paginated';
