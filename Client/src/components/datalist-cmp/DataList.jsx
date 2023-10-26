@@ -58,7 +58,7 @@ export function DataList({
           !element &&
           (loading ? 'cargando table...' : grid)}
       </div>
-      <Paginated/>
+      <Paginated />
     </section>
   );
 }
