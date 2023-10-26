@@ -28,18 +28,11 @@ const {
   title: 'Notificaciones',
   Icon: BellSVG,
   listItems: [
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
-    { name: 'notificaion', category: 'ver mas' },
+    { name: 'notificación', category: 'ver mas' },
+    { name: 'notificación', category: 'ver mas' },
+    { name: 'notificación', category: 'ver mas' },
+    { name: 'notificación', category: 'ver mas' },
+    { name: 'notificación', category: 'ver mas' },
   ],
 };
 
@@ -58,7 +51,7 @@ export default function Dashboard() {
   }, []);
 
   const notify = () => {
-    toast.info('🦄 Wow so easy!', {
+    toast.info('Falta de Stock - Coca Cola 2lt', {
       position: 'bottom-right',
       autoClose: 3000,
       hideProgressBar: false,

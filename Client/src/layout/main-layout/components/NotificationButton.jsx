@@ -14,16 +14,16 @@ export function NotificationButton() {
           <span className='badge badge-xs badge-primary indicator-item'></span>
         </div>
       </summary>
-      <ul className='p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-52'>
+      <ul className='p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-80'>
         <li>
           <h1 className='menu-title'>Notificación</h1>
         </li>
         <li >
-          <Link to={'/notification'}>Notificación 1</Link>
+          <Link className='text-sm text-secondary' to={'/notification'}>Falta de Stock - Coca Cola 2lt</Link>
         </li>
 
         <li >
-          <Link to={'/notification'}>Notificación 2</Link>
+          <Link className='text-sm text-secondary' to={'/notification'}>Vencimiento de producto - Leche entera</Link>
         </li>
       </ul>
     </details>

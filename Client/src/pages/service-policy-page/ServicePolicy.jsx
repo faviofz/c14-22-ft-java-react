@@ -5,8 +5,8 @@ import './service-policy-page.scss';
 import { useAuth } from '@/hooks/useAuth';
 
 export default function ServicePolicy() {
-  const { userState } = useAuth();
-  const { isLogged } = userState;
+  const { authState } = useAuth();
+  const { isLogged } = authState;
 
   return (
     <div className='service-polity-page'>
