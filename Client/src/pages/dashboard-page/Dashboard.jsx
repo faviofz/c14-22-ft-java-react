@@ -1,12 +1,16 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useAuth, useProducts, useProviders, useCategories } from '@/hooks';
-
 import { toast } from 'react-toastify';
-
-import { DashboardPanel, Welcome, Stat } from './components';
-
 import { Container } from '@/components';
+import { DashboardPanel, Welcome, Stat } from './components';
+import {
+  useAuth,
+  useProducts,
+  useProviders,
+  // useCategories,
+  // useBrands,
+} from '@/hooks';
+
 import {
   ProductIcon,
   // StockIcon,
@@ -43,15 +47,15 @@ export default function Dashboard() {
   const { authState } = useAuth();
   const { products, getAllProducts } = useProducts();
   const { providers, getAllProviders } = useProviders();
-  const { categories, getAllCategories } = useCategories();
+  // const { categories, getAllCategories } = useCategories();
+  // const { brands, getAllBrands } = useBrands();
 
   useEffect(() => {
     getAllProviders();
     getAllProducts();
-    getAllCategories();
+    // getAllCategories();
+    // getAllBrands();
   }, []);
-
-  console.log(categories);
 
   const notify = () => {
     toast.info('🦄 Wow so easy!', {
