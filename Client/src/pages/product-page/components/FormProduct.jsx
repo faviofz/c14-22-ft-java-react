@@ -1,4 +1,4 @@
-import { useCategories, useBrands, useProviders } from '@/hooks';
+import { useCategories, useBrands, useProviders, useProducts } from '@/hooks';
 import { useEffect, useState } from 'react';
 
 export function FormProduct() {
@@ -6,15 +6,20 @@ export function FormProduct() {
   const { brands, getAllBrands } = useBrands();
   const { providers, getAllProviders } = useProviders();
 
+
+  
+  const { createProduct } = useProducts();
   const [formData, setFormData] = useState({
     nombre: '',
     proveedor: '',
     precio: 0,
-    fecha: '',
+    fechaVencimiento:'',
     marca: '',
     categoria: '',
-    imagen: '',
+    imagen: ''
   });
+
+
 
   useEffect(() => {
     getAllCategories();
@@ -22,18 +27,39 @@ export function FormProduct() {
     getAllProviders();
   }, []);
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     const { name, value, type, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'file' ? files[0] : value,
-    });
+    if (name === 'fechaVencimiento') {
+      const dateParts = value.split('-');
+      if (dateParts.length === 3) {
+        const [day, month, year] = dateParts;
+        const isoDate = `${year}-${month}-${day}`;
+        setFormData({
+          ...formData,
+          [name]: isoDate,
+        });
+      }
+    } else {
+      setFormData({
+        ...formData,
+        [name]: type === 'file' ? files[0] : value,
+      });
+    }
+  
   };
 
-  const handleSubmit = async e => {
+  
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      await createProduct(formData);
+    } catch (error) {
+      console.error('Error creating product:', error);
+    }
   };
 
+  const formattedDate = formData.fechaVencimiento.split('-').reverse().join('-');
   return (
     <form
       method='dialog'
@@ -60,9 +86,9 @@ export function FormProduct() {
               value={formData.proveedor}
               onChange={handleInputChange}
             >
-              <option value='all'>Filtrar por Proveedor</option>
+              <option value='all'> Proveedor</option>
               {providers.map(provider => (
-                <option key={provider.id} value={provider.nombre}>
+                <option key={provider.id} value={provider.email}>
                   {provider.nombre}
                 </option>
               ))}
@@ -85,13 +111,12 @@ export function FormProduct() {
             <div>
               <label>Fecha</label>
               <input
-                type='date'
-                name='fecha'
-                placeholder='Type here'
-                value={formData.fecha}
-                onChange={handleInputChange}
-                className='w-full input input-bordered'
-              />
+          type="date"
+          name="fechaVencimiento"
+          value={formattedDate}
+          onChange={handleInputChange}
+          className="w-full input input-bordered"
+        />
             </div>
           </div>
           <div>
