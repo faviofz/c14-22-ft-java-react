@@ -1,16 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { serviceGetAllProviders, serviceCreateProvider, serviceDeleteProvider } from '@/services';
-
-export const fetchProviders = createAsyncThunk(
-  'providers/fetchProviders',
-  async () => {
-    const response = await fetch(
-      'https://inexpensive-action-production.up.railway.app/proveedores'
-    );
-    const data = await response.json();
-    return data;
-  }
-);
+import {
+  serviceGetAllProviders,
+  serviceCreateProvider,
+  serviceDeleteProvider,
+} from '@/services';
 
 export const getAllProviderAsync = createAsyncThunk(
   'providers/getAll',
@@ -19,9 +12,10 @@ export const getAllProviderAsync = createAsyncThunk(
     return response;
   }
 );
+
 export const createProviderAsync = createAsyncThunk(
   'providers/create',
-  async (data) => {
+  async data => {
     const response = await serviceCreateProvider(data);
     return response;
   }
@@ -29,7 +23,7 @@ export const createProviderAsync = createAsyncThunk(
 
 export const deleteProviderAsync = createAsyncThunk(
   'providers/delete',
-  async (id) => {
+  async id => {
     const response = await serviceDeleteProvider(id);
     return response;
   }
@@ -42,10 +36,6 @@ const providersSlice = createSlice({
   },
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(fetchProviders.fulfilled, (state, action) => {
-      state.loading = 'succeeded';
-      state.providers = action.payload;
-    });
     builder.addCase(getAllProviderAsync.pending, state => {
       state.loading = true;
     });
@@ -53,13 +43,25 @@ const providersSlice = createSlice({
       state.loading = false;
       state.providers = action.payload;
     });
+    // --------------------------------
+    builder.addCase(createProviderAsync.pending, state => {
+      state.loading = true;
+    });
     builder.addCase(createProviderAsync.fulfilled, (state, action) => {
       state.providers.push(action.payload);
+      state.loading = false;
+    });
+    // --------------------------------
+    builder.addCase(deleteProviderAsync.pending, state => {
+      state.loading = true;
     });
     builder.addCase(deleteProviderAsync.fulfilled, (state, action) => {
+      state.loading = false;
       const idProvider = action.payload;
-      const index = state.providers.findIndex((provider) => (provider.id === idProvider))
-      state.providers.splice(index,1)
+      const index = state.providers.findIndex(
+        provider => provider.id === idProvider
+      );
+      state.providers.splice(index, 1);
     });
   },
 });

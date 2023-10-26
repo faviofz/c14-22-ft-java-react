@@ -1,6 +1,6 @@
-import { Table, Grid, Filters, FormProduct } from './components';
+import { Table, FormProduct } from './components';
 import React, { useEffect, useState } from 'react';
-import { DataList, Container, Modal, Search } from '@/components';
+import { DataList, Container, Modal, Search, Paginated } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { PlusIcon } from '@/assets/svg';
 import { useProviders } from '@/hooks';
@@ -8,16 +8,27 @@ import { useProviders } from '@/hooks';
 export default function Provider() {
   const { providers, getAllProviders } = useProviders();
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+  const [filteredProviders, setFilteredProviders] = useState(providers);
+
   useEffect(() => {
     getAllProviders();
   }, []);
 
+  useEffect(() => {
+    setFilteredProviders(providers);
+  }, [providers]);
+
   const handleSearch = query => {
-    const filtered = providers.filter(product =>
-      product.nombre.toLowerCase().includes(query.toLowerCase())
+    const filtered = providers.filter(({ nombre }) =>
+      nombre.toLowerCase().includes(query.toLowerCase())
     );
-    setFilteredProducts(filtered);
+    setFilteredProviders(filtered);
   };
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const displayedProviders = filteredProviders.slice(startIndex, endIndex);
 
   return (
     <div className='category-page'>
@@ -25,7 +36,7 @@ export default function Provider() {
         <DataList
           title='Proveedor'
           setViewMode={viewModeType.TABLE}
-            element={<Table data={providers} />}
+          element={<Table data={displayedProviders} />}
         >
           <DataList.Header>
             <Search placeholder='Buscar proveedor' onNewValue={handleSearch} />
@@ -37,10 +48,15 @@ export default function Provider() {
               <FormProduct />
             </Modal>
           </DataList.Header>
-          <DataList.Filters>
+          {/* <DataList.Filters>
             <Filters />
-          </DataList.Filters>
+          </DataList.Filters> */}
         </DataList>
+        <Paginated
+          currentPage={currentPage}
+          totalPages={Math.ceil(filteredProviders.length / itemsPerPage)}
+          onPageChange={setCurrentPage}
+        />
       </Container>
     </div>
   );

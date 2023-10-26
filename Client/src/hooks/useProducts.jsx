@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   getAllProductAsync,
   deleteProductAsync,
-  createProductAsync
+  createProductAsync,
 } from '@/redux/reducers';
 
 export function useProducts() {
@@ -22,5 +22,5 @@ export function useProducts() {
   //   function getProduct(){}
   //   function updateProduct(){}
   //   function deleteProduct(){}
-  return { products, createProduct, loading, getAllProducts, deleteProducts };
+  return { products, loading, createProduct, getAllProducts, deleteProducts };
 }
