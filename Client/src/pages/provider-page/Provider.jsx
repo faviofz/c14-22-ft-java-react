@@ -1,4 +1,4 @@
-import { Table, Grid, Filters, FormProduct } from './components';
+import { Table, FormProduct } from './components';
 import React, { useEffect, useState } from 'react';
 import { DataList, Container, Modal, Search, Paginated } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
