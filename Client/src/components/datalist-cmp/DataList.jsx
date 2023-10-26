@@ -58,7 +58,6 @@ export function DataList({
           !element &&
           (loading ? 'cargando table...' : grid)}
       </div>
-
     </section>
   );
 }

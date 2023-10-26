@@ -6,13 +6,13 @@ export function MainMenuItem({ label, href, Icon, subMenu }) {
     <li>
       {href ? (
         <Link to={href} className='text-secondary'>
-          <Icon className='[&>path]:stroke-secondary-content' />
+          <Icon className='[&>path]:fill-secondary-content' />
           {label}
         </Link>
       ) : (
         <details open>
           <summary>
-            <Icon className='[&>path]:stroke-secondary-content' />
+            <Icon className='[&>path]:fill-secondary-content' />
             {label}
           </summary>
           <ul>

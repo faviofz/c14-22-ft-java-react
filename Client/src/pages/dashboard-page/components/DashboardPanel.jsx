@@ -9,9 +9,9 @@ export function DashboardPanel({
 }) {
   return (
     <div className='dashboard-page-panel flex flex-col justify-between gap-5 p-5 h-[25rem] bg-base-200 rounded-3xl w-full'>
-      <div className='flex gap-5'>
-        <Icon className='w-5 h-5 [&>path]:stroke-secondary-content' />
-        <h1>{title}</h1>
+      <div className='flex items-center gap-5'>
+        <Icon className='w-5 h-5 [&>path]:fill-secondary-content' />
+        <h1 className='font-bold text-lg'>{title}</h1>
       </div>
       <div className='flex flex-col items-start h-full gap-3 overflow-y-auto'>
         {isProduct

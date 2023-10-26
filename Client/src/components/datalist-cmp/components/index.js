@@ -1,2 +1,2 @@
 export * from './SwitchViewMode';
-export * from './Paginated';
+export * from '../../paginated-cmp/Paginated';

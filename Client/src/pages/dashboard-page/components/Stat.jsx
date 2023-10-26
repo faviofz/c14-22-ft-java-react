@@ -6,7 +6,7 @@ export function Stat({ title = '', stat = 0, Icon, url }) {
     <Link to={url} className='box-border bock flex-2'>
       <div className='flex [&>div]:flex-1 items-center pl-[3rem] relative '>
         <div className='absolute left-[0px] bg-accent rounded-3xl w-[5rem] h-[5rem] p-[1.2rem] flex items-center justify-center'>
-          <Icon className='[&>path]:stroke-accent-content w-full h-full' />
+          <Icon className='[&>path]:fill-accent-content w-full h-full' />
         </div>
         <div className='bg-base-200 rounded-3xl pr-[3rem] pl-[3rem] h-28 w-full flex flex-col items-center justify-center'>
           <div className='font-bold stat-title text-secundary'>{title}</div>
