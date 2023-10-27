@@ -77,6 +77,7 @@ export default function Product() {
           onPageChange={setCurrentPage}
         />
       </Container>
+      
     </div>
   );
 }
