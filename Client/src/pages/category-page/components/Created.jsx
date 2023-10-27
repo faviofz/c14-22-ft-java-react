@@ -11,7 +11,8 @@ export function Created() {
         name: '',
       },
       onSubmit: values => {
-        createCategory(values);
+        createCategoryAlert(values)
+        
         //   values.name = '';
       },
       validationSchema: Yup.object({
@@ -20,6 +21,34 @@ export function Created() {
           .min(3, 'Debe tener más de 3 caracteres'),
       }),
     });
+
+    const createCategoryAlert = (values) => {
+      swal({
+        title: 'Desea crear una categoria',
+        icon: 'warning',
+        buttons: {
+          catch: {
+            text: 'Cancelar',
+            value: null,
+            className: 'btn btn-accent',
+          },
+          default: {
+            text: 'Eliminar',
+            value: true,
+            className: 'btn btn-primary',
+          },
+        },
+      }).then(valueButtoms => {
+        if (valueButtoms) {
+          createCategory(values);
+          swal({
+            title: 'La categoria fue creada',
+            icon: 'success',
+          });
+        }
+      });
+    };
+
   return (
     <>
       <form onSubmit={handleSubmit}>

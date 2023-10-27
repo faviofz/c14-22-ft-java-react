@@ -7,6 +7,33 @@ export function Table({ data }) {
   const { loading, deleteProvider } = useProviders();
   const headers = ['Nombre', 'Empresa', 'Telefono', 'Email', 'Acciones'];
 
+  const deleteProviderAlert = id => {
+    swal({
+      title: 'Desea eliminar el proveedor',
+      icon: 'warning',
+      buttons: {
+        catch: {
+          text: 'Cancelar',
+          value: null,
+          className: 'btn btn-accent',
+        },
+        default: {
+          text: 'Eliminar',
+          value: true,
+          className: 'btn btn-primary',
+        },
+      },
+    }).then(valueButtoms => {
+      if (valueButtoms) {
+        deleteProvider(id);
+        swal({
+          title: 'El proveedor fue eliminado',
+          icon: 'success',
+        });
+      }
+    });
+  };
+
   return (
     <>
       {loading ? (
@@ -28,7 +55,7 @@ export function Table({ data }) {
                 <td>{telefono}</td>
                 <td>{email}</td>
                 <td className='flex gap-5'>
-                  <button onClick={() => deleteProvider(id)}>
+                  <button onClick={() => deleteProviderAlert(id)}>
                     <TrashIcon />
                   </button>
                   <button>
