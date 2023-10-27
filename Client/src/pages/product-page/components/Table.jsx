@@ -14,6 +14,33 @@ export function Table({ data }) {
     'Acciones',
   ];
 
+  const deleteProductAlert = id => {
+    swal({
+      title: 'Desea eliminar el producto',
+      icon: 'warning',
+      buttons: {
+        catch: {
+          text: 'Cancelar',
+          value: null,
+          className: 'btn btn-accent',
+        },
+        default: {
+          text: 'Eliminar',
+          value: true,
+          className: 'btn btn-primary',
+        },
+      },
+    }).then(valueButtoms => {
+      if (valueButtoms) {
+        deleteProducts(id);
+        swal({
+          title: 'El producto fue eliminado',
+          icon: 'success',
+        });
+      }
+    });
+  };
+
   return (
     <>
       {loading ? (
@@ -56,7 +83,7 @@ export function Table({ data }) {
                   <td>{!proveedor ? 'NULL' : proveedor.nombre}</td>
 
                   <td className='flex gap-5'>
-                    <button onClick={() => deleteProducts(id)}>
+                    <button onClick={() => deleteProductAlert(id)}>
                       <TrashIcon />
                     </button>
                     <button>
