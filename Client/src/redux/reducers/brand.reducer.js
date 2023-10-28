@@ -6,30 +6,47 @@ import {
   serviceUpdateBrand,
   serviceDeleteBrand,
 } from '@/services';
+import {
+  brandApiListToBrandList,
+  brandToBrandApi,
+  brandApiToBrand,
+} from '@/adapters';
 
 export const getAllBrandsAsync = createAsyncThunk('brand/getAll', async () => {
-  const response = await serviceGetAllBrands();
-  return response;
+  const brandApiList = await serviceGetAllBrands();
+  // adapter
+  const brandList = brandApiListToBrandList(brandApiList);
+  return brandList;
 });
 
 export const getBrandAsync = createAsyncThunk('brand/getOne', async id => {
-  const response = await serviceGetBrand(id);
-  return response;
+  const brandApi = await serviceGetBrand(id);
+  // adapter
+  const brand = brandApiToBrand(brandApi);
+  return brand;
 });
 
 export const createBrandAsync = createAsyncThunk(
   'brand/create',
   async newBrand => {
-    const response = await serviceCreateBrand(newBrand);
-    return response;
+    // adapter
+    const brandApi = brandToBrandApi(newBrand);
+    const response = await serviceCreateBrand(brandApi);
+    // adapter
+    const brand = brandApiToBrand(response);
+    return brand;
   }
 );
 
 export const updateBrandAsync = createAsyncThunk(
   'brand/update',
   async modifiedBrand => {
-    const response = await serviceUpdateBrand(modifiedBrand);
-    return response;
+    // adapter
+    const brandApi = brandToBrandApi(modifiedBrand);
+    const response = await serviceUpdateBrand(brandApi);
+    // adapter
+    const brand = brandApiToBrand(response);
+    return brand;
   }
 );
 
@@ -67,6 +84,17 @@ const brandsSlice = createSlice({
     builder.addCase(createBrandAsync.fulfilled, (state, action) => {
       state.loading = false;
       state.brands.push(action.payload);
+    });
+    // --------------------------------
+    builder.addCase(deleteBrandAsync.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(deleteBrandAsync.fulfilled, (state, action) => {
+      state.loading = false;
+      const brandId = action.payload;
+      const index = state.brands.findIndex(brand => brand.id === brandId);
+      // eliminamos el elementos del arr
+      state.categories.splice(index, 1);
     });
   },
 });
