@@ -13,9 +13,9 @@ export function Filters({ filters, setFilters }) {
   };
 
   useEffect(() => {
-    if (!categories.lenght) getAllCategories();
-    if (!brands.lenght) getAllBrands();
-    if (!providers.lenght) getAllProviders();
+    getAllCategories();
+    getAllBrands();
+    getAllProviders();
   }, []);
 
   return (

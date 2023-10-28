@@ -14,7 +14,7 @@ export default function Category() {
   const [filteredCategories, setFilteredCategories] = useState(categories);
 
   useEffect(() => {
-    if (!categories.length) getAllCategories();
+    getAllCategories();
   }, []);
 
   useEffect(() => {

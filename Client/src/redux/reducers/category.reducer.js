@@ -69,7 +69,9 @@ const categorySlice = createSlice({
   initialState: {
     categories: [],
   },
-  reducers: {},
+  reducers: {
+    getAllCategories: state => state,
+  },
   extraReducers: builder => {
     builder.addCase(getAllCategoriesAsync.pending, state => {
       state.loading = true;
@@ -110,5 +112,5 @@ const categorySlice = createSlice({
     });
   },
 });
-
-export default categorySlice.reducer;
+export const { getAllCategories } = categorySlice.actions;
+export const categoriesReducer = categorySlice.reducer;

@@ -8,7 +8,7 @@ import {
   useProducts,
   useUploadImage,
 } from '@/hooks';
-import { Input, Select } from '@/components';
+import { Input, Select, Preload } from '@/components';
 import { ImageIcon } from '@/assets/svg';
 
 export function FormProduct() {
@@ -19,9 +19,9 @@ export function FormProduct() {
   const { handleImage, image, loading } = useUploadImage();
 
   useEffect(() => {
-    if (!categories.lenght) getAllCategories();
-    if (!brands.lenght) getAllBrands();
-    if (!providers.lenght) getAllProviders();
+    getAllCategories();
+    getAllBrands();
+    getAllProviders();
   }, []);
 
   const initialValues = {
@@ -126,16 +126,14 @@ export function FormProduct() {
                   <span className='font-bold label-text'>Imagen</span>
                 </label>
                 <div className='flex items-center justify-center h-[9rem] lg:h-[10.8rem] bg-base-200 border-2 border-accent p-5'>
-                  {image ? (
-                    loading ? (
-                      'cargando...'
-                    ) : (
-                      <img
-                        className='w-full h-full object-contain'
-                        src={image}
-                        alt='Nueva imagen de producto'
-                      />
-                    )
+                  {loading ? (
+                    <Preload />
+                  ) : image ? (
+                    <img
+                      className='w-full h-full object-contain'
+                      src={image}
+                      alt='Nueva imagen de producto'
+                    />
                   ) : (
                     <ImageIcon className='[&>path]:fill-secondary-content w-[2rem] h-[2rem]' />
                   )}

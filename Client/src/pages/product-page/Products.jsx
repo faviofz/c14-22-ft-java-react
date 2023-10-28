@@ -19,7 +19,7 @@ export default function Product() {
   });
 
   useEffect(() => {
-    if (!products.length) getAllProducts();
+    getAllProducts();
   }, []);
 
   useEffect(() => {
@@ -64,11 +64,11 @@ export default function Product() {
               buttonLabel='Nuevo Producto'
               buttonIcon={<PlusIcon width='15' />}
             >
-              {/* <FormProduct /> */}
+              <FormProduct />
             </Modal>
           </DataList.Header>
           <DataList.Filters>
-            {/* <Filters filters={filters} setFilters={setFilters} /> */}
+            <Filters filters={filters} setFilters={setFilters} />
           </DataList.Filters>
         </DataList>
         <Paginated

@@ -60,7 +60,9 @@ const brandsSlice = createSlice({
   initialState: {
     brands: [],
   },
-  reducers: {},
+  reducers: {
+    getAllBrands: state => state,
+  },
   extraReducers: builder => {
     builder.addCase(getAllBrandsAsync.pending, state => {
       state.loading = true;
@@ -98,5 +100,5 @@ const brandsSlice = createSlice({
     });
   },
 });
-
-export default brandsSlice.reducer;
+export const { getAllBrands } = brandsSlice.actions;
+export const brandsReducer = brandsSlice.reducer;

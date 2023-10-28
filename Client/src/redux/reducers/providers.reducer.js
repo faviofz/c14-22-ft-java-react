@@ -12,7 +12,7 @@ import {
   providerToProviderApi,
 } from '@/adapters';
 
-export const getAllProviderAsync = createAsyncThunk(
+export const getAllProvidersAsync = createAsyncThunk(
   'providers/getAll',
   async () => {
     const providerApiList = await serviceGetAllProviders();
@@ -70,12 +70,14 @@ const providersSlice = createSlice({
   initialState: {
     providers: [],
   },
-  reducers: {},
+  reducers: {
+    getAllProviders: state => state,
+  },
   extraReducers: builder => {
-    builder.addCase(getAllProviderAsync.pending, state => {
+    builder.addCase(getAllProvidersAsync.pending, state => {
       state.loading = true;
     });
-    builder.addCase(getAllProviderAsync.fulfilled, (state, action) => {
+    builder.addCase(getAllProvidersAsync.fulfilled, (state, action) => {
       state.loading = false;
       state.providers = action.payload;
     });
@@ -109,5 +111,5 @@ const providersSlice = createSlice({
     });
   },
 });
-
-export default providersSlice.reducer;
+export const { getAllProviders } = providersSlice.actions;
+export const providersReducer = providersSlice.reducer;
