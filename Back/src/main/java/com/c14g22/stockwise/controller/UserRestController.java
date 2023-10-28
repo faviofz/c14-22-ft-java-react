@@ -3,6 +3,7 @@ package com.c14g22.stockwise.controller;
 import com.c14g22.stockwise.JWTUtil;
 import com.c14g22.stockwise.dto.UserRequest;
 import com.c14g22.stockwise.dto.UserResponse;
+import com.c14g22.stockwise.dto.UserSignupRequest;
 import com.c14g22.stockwise.model.User;
 import com.c14g22.stockwise.service.UserService;
 import java.security.Principal;
@@ -26,9 +27,10 @@ public class UserRestController {
   private AuthenticationManager authenticationManager;
 
   @PostMapping("/signup")
-  public ResponseEntity<String> saveUser(@RequestBody User user) {
+  public ResponseEntity<String> saveUser(@RequestBody UserSignupRequest userSignupRequest) {
 
-    UUID id = userService.saveUser(user);
+    UUID id = userService.saveUser(userSignupRequest);
+
     String message= "User with id '"+id+"' saved succssfully!";
     return ResponseEntity.ok(message);
   }

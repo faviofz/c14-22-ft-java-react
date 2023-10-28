@@ -1,5 +1,8 @@
 package com.c14g22.stockwise.serviceImpl;
 
+import com.c14g22.stockwise.dto.UserSignupRequest;
+import com.c14g22.stockwise.exception.EmailDuplicateException;
+import com.c14g22.stockwise.exception.UsernameDuplicateException;
 import com.c14g22.stockwise.model.User;
 import com.c14g22.stockwise.repository.UserRepository;
 import com.c14g22.stockwise.service.UserService;
@@ -8,8 +11,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,8 +29,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
   private PasswordEncoder passwordEncoder;
 
   @Override
-  public UUID saveUser(User user) {
-    user.setPassword(passwordEncoder.encode(user.getPassword()));
+  public UUID saveUser(UserSignupRequest req) {
+    if (userRepo.existsByEmail(req.getEmail())) {
+      throw new EmailDuplicateException("El email: "+req.getEmail()+" ya existe.");
+    }
+    if(userRepo.existsByUsername(req.getUsername())){
+      throw new UsernameDuplicateException("El nombre de usuario: "+req.getUsername()+" ya existe.");
+    }
+    User user = new User();
+    user.setUsername(req.getUsername());
+    user.setPassword(passwordEncoder.encode(req.getPassword()));
+    user.setEmail(req.getEmail());
     return userRepo.save(user).getId();
   }
 
@@ -40,12 +52,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     Optional<User> opt = userRepo.findByUsername(username);
 
-    org.springframework.security.core.userdetails.User springUser=null;
+    org.springframework.security.core.userdetails.User springUser = null;
 
-    if(opt.isEmpty()) {
-      throw new UsernameNotFoundException("User with username: " +username +" not found");
-    }else {
-      User user =opt.get();	//retrieving user from DB
+    if (opt.isEmpty()) {
+      throw new UsernameNotFoundException("User with username: " + username + " not found");
+    } else {
+      User user = opt.get();  //retrieving user from DB
 //      Set<String> roles = user.getRoles();
       Set<GrantedAuthority> ga = new HashSet<>();
 //      for(String role:roles) {
@@ -55,7 +67,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
       springUser = new org.springframework.security.core.userdetails.User(
           username,
           user.getPassword(),
-          ga );
+          ga);
     }
 
     return springUser;
