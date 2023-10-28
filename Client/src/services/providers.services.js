@@ -1,10 +1,12 @@
 import { httpClient } from '@/utils/';
 
+const path = '/proveedores';
+
 // CREATE
 export function serviceCreateProvider(newProvider) {
   return new Promise((resolve, reject) => {
     httpClient
-      .post(`/proveedores`, newProvider)
+      .post(path, newProvider)
       .then(({ data }) => resolve(data))
       .catch(error => reject(new Error(error)));
   });
@@ -14,7 +16,7 @@ export function serviceCreateProvider(newProvider) {
 export function serviceGetAllProviders() {
   return new Promise((resolve, reject) => {
     httpClient
-      .get('/proveedores')
+      .get(path)
       .then(({ data }) => resolve(data))
       .catch(error => reject(new Error(error)));
   });
@@ -23,7 +25,17 @@ export function serviceGetAllProviders() {
 export function serviceGetProvider(id) {
   return new Promise((resolve, reject) => {
     httpClient
-      .get(`/proveedores/${id}`)
+      .get(`${path}/${id}`)
+      .then(({ data }) => resolve(data))
+      .catch(error => reject(new Error(error)));
+  });
+}
+
+// UPDATE
+export function serviceUpdateProvider(id, modifiedProvider) {
+  return new Promise((resolve, reject) => {
+    httpClient
+      .put(`${path}/${id}`, modifiedProvider)
       .then(({ data }) => resolve(data))
       .catch(error => reject(new Error(error)));
   });
@@ -33,18 +45,8 @@ export function serviceGetProvider(id) {
 export function serviceDeleteProvider(id) {
   return new Promise((resolve, reject) => {
     httpClient
-      .delete(`/proveedores/${id}`)
+      .delete(`${path}/${id}`)
       .then(({ data }) => resolve(data))
       .catch(error => reject(new Error(error)));
   });
 }
-
-// // UPDATE
-// export function serviceUpdateProvider(id, modifiedProvider) {
-//   return new Promise((resolve, reject) => {
-//     httpClient
-//   .put(`/proveedores/${id}`, modifiedProvider)
-//   .then(({ data }) => resolve(data))
-//   .catch(error => reject(new Error(error)));
-//   });
-// }
