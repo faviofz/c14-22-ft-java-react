@@ -23,6 +23,7 @@ import TrashIcon from './trash.svg?react';
 import PencilAltIcon from './pencil-alt.svg?react';
 import CircleWarn from './circle-alert.svg?react';
 import CategoryIcon from './category-icon.svg?react';
+import ImageIcon from './img-icon.svg?react';
 
 export {
   PencilAltIcon,
@@ -50,4 +51,5 @@ export {
   PlusIcon,
   CircleWarn,
   CategoryIcon,
+  ImageIcon,
 };
