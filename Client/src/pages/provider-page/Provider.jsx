@@ -14,7 +14,7 @@ export default function Provider() {
   const [filteredProviders, setFilteredProviders] = useState(providers);
 
   useEffect(() => {
-    getAllProviders();
+    if (!providers.length) getAllProviders();
   }, []);
 
   useEffect(() => {

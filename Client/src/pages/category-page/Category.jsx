@@ -3,7 +3,7 @@ import { DataList, Container, Modal, Search, Paginated } from '@/components';
 import { PlusIcon } from '@/assets/svg';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { useCategories } from '@/hooks/';
-import { Created, Table } from './components';
+import { FormCategory, Table } from './components';
 import './category-page.scss';
 
 export default function Category() {
@@ -14,7 +14,7 @@ export default function Category() {
   const [filteredCategories, setFilteredCategories] = useState(categories);
 
   useEffect(() => {
-    getAllCategories();
+    if (!categories.length) getAllCategories();
   }, []);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function Category() {
               buttonLabel='Nueva Categoría'
               buttonIcon={<PlusIcon width='15' />}
             >
-              <Created />
+              <FormCategory />
             </Modal>
           </DataList.Header>
           {/* <DataList.Filters>filters group</DataList.Filters> */}

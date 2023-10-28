@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
-import { useCategories ,useBrands ,useProviders} from '@/hooks';
+import PropTypes from 'prop-types';
+import { useCategories, useBrands, useProviders } from '@/hooks';
+
 export function Filters({ filters, setFilters }) {
   const { categories, getAllCategories } = useCategories();
-  const {brands, getAllBrands } = useBrands();
-  const {providers, getAllProviders } = useProviders();
+  const { brands, getAllBrands } = useBrands();
+  const { providers, getAllProviders } = useProviders();
 
   const handleFilterChange = e => {
     const { name, value } = e.target;
@@ -11,9 +13,9 @@ export function Filters({ filters, setFilters }) {
   };
 
   useEffect(() => {
-    getAllCategories();
-    getAllBrands()
-    getAllProviders()
+    if (!categories.lenght) getAllCategories();
+    if (!brands.lenght) getAllBrands();
+    if (!providers.lenght) getAllProviders();
   }, []);
 
   return (
@@ -25,9 +27,9 @@ export function Filters({ filters, setFilters }) {
         onChange={handleFilterChange}
       >
         <option value='all'>Filtrar por Marca</option>
-        {brands.map(brands=> (
-          <option key={brands.id} value={brands.nombre}>
-            {brands.nombre}
+        {brands.map(brands => (
+          <option key={brands.id} value={brands.name}>
+            {brands.name}
           </option>
         ))}
       </select>
@@ -39,8 +41,8 @@ export function Filters({ filters, setFilters }) {
       >
         <option value='all'>Filtrar por Categoria</option>
         {categories.map(category => (
-          <option key={category.id} value={category.nombre}>
-            {category.nombre}
+          <option key={category.id} value={category.name}>
+            {category.name}
           </option>
         ))}
       </select>
@@ -51,12 +53,17 @@ export function Filters({ filters, setFilters }) {
         onChange={handleFilterChange}
       >
         <option value='all'>Filtrar por Proveedor</option>
-        {providers.map(providers=> (
-          <option key={providers.id} value={providers.nombre}>
-            {providers.nombre}
+        {providers.map(providers => (
+          <option key={providers.id} value={providers.name}>
+            {providers.name}
           </option>
         ))}
       </select>
     </div>
   );
 }
+
+Filters.propTypes = {
+  filters: PropTypes.object,
+  setFilters: PropTypes.func,
+};

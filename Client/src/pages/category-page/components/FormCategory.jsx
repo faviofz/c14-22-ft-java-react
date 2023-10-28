@@ -2,34 +2,33 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Input, Button } from '@/components';
 import { useCategories } from '@/hooks';
+import { closeAllModal } from '@/utils';
 
-export function Created() {
+export function FormCategory() {
   const { createCategory, loading } = useCategories();
-  const { handleChange, handleSubmit, handleBlur, values, touched, errors } =
-    useFormik({
-      initialValues: {
-        name: '',
-      },
-      onSubmit: values => {
-        createCategory(values);
-        //   values.name = '';
-      },
-      validationSchema: Yup.object({
-        name: Yup.string()
-          .required('Este dato es requerido')
-          .min(3, 'Debe tener más de 3 caracteres'),
-      }),
-    });
+  const { handleSubmit, touched, errors, getFieldProps } = useFormik({
+    initialValues: {
+      name: '',
+    },
+    onSubmit: (values, { resetForm }) => {
+      createCategory(values);
+      resetForm();
+      closeAllModal();
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .required('Este dato es requerido')
+        .min(3, 'Debe tener más de 3 caracteres'),
+    }),
+  });
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <Input
           label='Nombre de la categoría'
           placeholder='Ingresa una categoría'
-          name='name'
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={values.name}
+          {...getFieldProps('name')}
           errorMessage={touched.name && errors.name}
         />
 

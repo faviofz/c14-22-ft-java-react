@@ -21,9 +21,9 @@ export function Table({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map(({ id, nombre }, i) => (
+            {data.map(({ id, name }, i) => (
               <tr key={id}>
-                <td>{nombre}</td>
+                <td>{name}</td>
                 <td className='flex gap-5'>
                   <button onClick={() => deleteCategory(id)}>
                     <TrashIcon />
