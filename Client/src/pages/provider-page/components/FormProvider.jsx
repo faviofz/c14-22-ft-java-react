@@ -1,13 +1,11 @@
-import { Input, Button } from '@/components';
-
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useProviders } from '../../../hooks/useProviders';
-import { closeAllModal } from '@/utils';
+import { Input, Button } from '@/components';
+import { useProviders, useModal } from '@/hooks';
 
 export function FormProduct() {
   const { loading, createProvider } = useProviders();
-
+  const { closeModal } = useModal();
   const { handleSubmit, touched, errors, getFieldProps, resetForm } = useFormik(
     {
       initialValues: {
@@ -19,7 +17,7 @@ export function FormProduct() {
       onSubmit: (values, { resetForm }) => {
         createProvider(values);
         resetForm();
-        closeAllModal();
+        closeModal();
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -70,14 +68,14 @@ export function FormProduct() {
           type='button'
           onClick={resetForm}
           disabled={loading}
-          className='w-full btn btn-outline btn-primary min-[500px]:w-[13rem]'
+          className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >
           Cancelar
         </Button>
         <Button
           type='submit'
           disabled={loading}
-          className='w-full btn btn-primary min-[500px]:w-[13rem]'
+          className='w-full btn btn-primary min-[500px]:w-[11rem]'
         >
           {loading ? 'Enviando...' : 'Crear'}
         </Button>

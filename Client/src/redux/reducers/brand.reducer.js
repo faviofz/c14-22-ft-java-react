@@ -50,8 +50,8 @@ export const updateBrandAsync = createAsyncThunk(
   }
 );
 
-export const deleteBrandAsync = createAsyncThunk('brand/delete', id => {
-  serviceDeleteBrand(id);
+export const deleteBrandAsync = createAsyncThunk('brand/delete', async id => {
+  await serviceDeleteBrand(id);
   return id;
 });
 
@@ -91,7 +91,6 @@ const brandsSlice = createSlice({
     builder.addCase(deleteBrandAsync.fulfilled, (state, action) => {
       const brandId = action.payload;
       const index = state.brands.findIndex(brand => brand.id === brandId);
-      // eliminamos el elementos del arr
       state.brands.splice(index, 1);
     });
   },

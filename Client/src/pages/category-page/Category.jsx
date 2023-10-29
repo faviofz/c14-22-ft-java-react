@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import { DataList, Container, Modal, Search, Paginated } from '@/components';
+import { DataList, Container, Search, Paginated, Button } from '@/components';
 import { PlusIcon } from '@/assets/svg';
 import { viewModeType } from '@/components/datalist-cmp/constants';
-import { useCategories, usePaginated } from '@/hooks';
+import { useCategories, usePaginated, useModal } from '@/hooks';
 import { FormCategory, Table } from './components';
 import './category-page.scss';
 
 export default function Category() {
   const { categories, getAllCategories } = useCategories();
+  const { openModal } = useModal();
   const { setFiltered, displayed, currentPage, totalPages, setCurrentPage } =
     usePaginated({ data: categories, numItems: 10 });
 
@@ -32,13 +33,18 @@ export default function Category() {
         >
           <DataList.Header>
             <Search placeholder='Buscar categoría' onNewValue={handleSearch} />
-            <Modal
-              title='Nueva Categoría'
-              buttonLabel='Nueva Categoría'
-              buttonIcon={<PlusIcon width='15' />}
+            <Button
+              className='gap-3 lg:w-52  btn btn-primary md:w-80'
+              onClick={() =>
+                openModal(<FormCategory />, {
+                  title: 'Nueva Categoría',
+                  className: 'modal-category',
+                })
+              }
             >
-              <FormCategory />
-            </Modal>
+              <PlusIcon width='15' />
+              Nueva Categoría
+            </Button>
           </DataList.Header>
           {/* <DataList.Filters>filters group</DataList.Filters> */}
         </DataList>

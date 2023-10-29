@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Input, Button } from '@/components';
 import { useCategories } from '@/hooks';
+import swal from 'sweetalert';
 
 export function Created() {
   const { createCategory, loading } = useCategories();

@@ -1,11 +1,11 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Input, Button } from '@/components';
-import { useBrands } from '@/hooks';
-import { closeAllModal } from '@/utils';
+import { useBrands, useModal } from '@/hooks';
 
 export function FormBrand() {
   const { createBrand, loading } = useBrands();
+  const { closeModal } = useModal();
   const { handleSubmit, touched, errors, getFieldProps, resetForm } = useFormik(
     {
       initialValues: {
@@ -14,7 +14,7 @@ export function FormBrand() {
       onSubmit: (values, { resetForm }) => {
         createBrand(values);
         resetForm();
-        closeAllModal();
+        closeModal();
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -39,14 +39,14 @@ export function FormBrand() {
           type='button'
           onClick={resetForm}
           disabled={loading}
-          className='w-full btn btn-outline btn-primary min-[500px]:w-[13rem]'
+          className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >
           Cancelar
         </Button>
         <Button
           type='submit'
           disabled={loading}
-          className='w-full btn btn-primary min-[500px]:w-[13rem]'
+          className='w-full btn btn-primary min-[500px]:w-[11rem]'
         >
           {loading ? 'Enviando...' : 'Crear'}
         </Button>

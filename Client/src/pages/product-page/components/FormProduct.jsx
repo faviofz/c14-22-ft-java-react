@@ -7,6 +7,7 @@ import {
   useProviders,
   useProducts,
   useUploadImage,
+  useModal,
 } from '@/hooks';
 import { Input, Select, Preload } from '@/components';
 import { ImageIcon } from '@/assets/svg';
@@ -17,6 +18,7 @@ export function FormProduct() {
   const { providers, getAllProviders } = useProviders();
   const { createProduct } = useProducts();
   const { handleImage, image, loading, resetImage } = useUploadImage();
+  const { closeModal } = useModal();
 
   useEffect(() => {
     getAllCategories();
@@ -43,19 +45,19 @@ export function FormProduct() {
           .split('-')
           .reverse()
           .join('-');
-        console.log(values);
 
         createProduct(values);
+        closeModal();
       },
       validationSchema: Yup.object({
-        nombre: Yup.string().required('Requerido'),
-        imagen: Yup.string().required('Requerido'),
-        costo: Yup.number().required('Requerido'),
-        // impuesto: Yup.number().required('Requerido'),
-        fechaVencimiento: Yup.string().required('Requerido'),
-        categoria: Yup.string().required('Requerido'),
-        proveedor: Yup.string().required('Requerido'),
-        marca: Yup.string().required('Requerido'),
+        nombre: Yup.string().required('Este dato es requerido'),
+        imagen: Yup.string().required('Este dato es requerido'),
+        costo: Yup.number().required('Este dato es requerido'),
+        // impuesto: Yup.number().required('Este dato es requerido'),
+        fechaVencimiento: Yup.string().required('Este dato es requerido'),
+        categoria: Yup.string().required('Este dato es requerido'),
+        proveedor: Yup.string().required('Este dato es requerido'),
+        marca: Yup.string().required('Este dato es requerido'),
       }),
     });
 
@@ -94,6 +96,7 @@ export function FormProduct() {
             <Input
               type='date'
               label='Fecha de vencimiento'
+              pattern='\d{2}-\d{2}-\d{4}'
               {...getFieldProps('fechaVencimiento')}
               errorMessage={touched.fechaVencimiento && errors.fechaVencimiento}
             />
@@ -178,13 +181,13 @@ export function FormProduct() {
         <button
           type='button'
           onClick={handleReset}
-          className='w-full btn btn-outline btn-primary min-[500px]:w-[13rem] min-[600px]:w-[16rem]'
+          className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >
           Cancelar
         </button>
         <button
           type='submit'
-          className='w-full btn btn-primary min-[500px]:w-[13rem] min-[600px]:w-[16rem]'
+          className='w-full btn btn-primary min-[500px]:w-[11rem]'
         >
           Guardar
         </button>

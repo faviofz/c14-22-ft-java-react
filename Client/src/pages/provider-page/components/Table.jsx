@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { TrashIcon, PencilAltIcon } from '@/assets/svg';
 import { useProviders } from '@/hooks';
 import { TableSkeleton } from '@/components';
+import swal from 'sweetalert';
 
 export function Table({ data }) {
   const { loading, deleteProvider } = useProviders();

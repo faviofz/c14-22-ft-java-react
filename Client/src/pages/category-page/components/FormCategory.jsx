@@ -1,11 +1,11 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Input, Button } from '@/components';
-import { useCategories } from '@/hooks';
-import { closeAllModal } from '@/utils';
+import { useCategories, useModal } from '@/hooks';
 
 export function FormCategory() {
   const { createCategory, loading } = useCategories();
+  const { closeModal } = useModal();
   const { handleSubmit, touched, errors, getFieldProps, resetForm } = useFormik(
     {
       initialValues: {
@@ -14,7 +14,7 @@ export function FormCategory() {
       onSubmit: (values, { resetForm }) => {
         createCategory(values);
         resetForm();
-        closeAllModal();
+        closeModal();
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -39,14 +39,14 @@ export function FormCategory() {
           type='button'
           onClick={resetForm}
           disabled={loading}
-          className='w-full btn btn-outline btn-primary min-[500px]:w-[13rem]'
+          className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >
           Cancelar
         </Button>
         <Button
           type='submit'
           disabled={loading}
-          className='w-full btn btn-primary min-[500px]:w-[13rem]'
+          className='w-full btn btn-primary min-[500px]:w-[11rem]'
         >
           {loading ? 'Enviando...' : 'Crear'}
         </Button>

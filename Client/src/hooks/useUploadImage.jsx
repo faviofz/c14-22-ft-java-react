@@ -8,7 +8,6 @@ export function useUploadImage() {
 
   const handleImage = ({ target }) => {
     const file = target.files[0];
-    console.log(file);
     const data = new FormData();
     data.append('file', file);
     data.append('upload_preset', 'game_store');

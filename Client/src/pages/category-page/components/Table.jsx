@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { TrashIcon /* , PencilAltIcon */ } from '@/assets/svg';
 import { useCategories } from '@/hooks/';
-import { TableSkeleton, Button } from '@/components';
+import { TableSkeleton } from '@/components';
 
 import swal from 'sweetalert';
 
@@ -35,6 +35,7 @@ export function Table({ data }) {
       }
     });
   };
+
   return (
     <>
       {loading ? (

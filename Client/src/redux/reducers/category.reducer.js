@@ -59,8 +59,8 @@ export const updateCategoryAsync = createAsyncThunk(
 export const deleteCategoryAsync = createAsyncThunk(
   'categories/delete',
   async id => {
-    const response = await serviceDeleteCategory(id);
-    return response;
+    await serviceDeleteCategory(id);
+    return id;
   }
 );
 
@@ -98,16 +98,11 @@ const categorySlice = createSlice({
       state.categories.push(category);
     });
     // --------------------------------
-    builder.addCase(deleteCategoryAsync.pending, state => {
-      state.loading = true;
-    });
     builder.addCase(deleteCategoryAsync.fulfilled, (state, action) => {
-      state.loading = false;
       const categoryId = action.payload;
       const index = state.categories.findIndex(
         category => category.id === categoryId
       );
-      // eliminamos el elementos del arr
       state.categories.splice(index, 1);
     });
   },
