@@ -1,40 +1,12 @@
 import PropTypes from 'prop-types';
 import { TrashIcon /* , PencilAltIcon */ } from '@/assets/svg';
-import { useCategories } from '@/hooks/';
-import { TableSkeleton, Button } from '@/components';
-
-import swal from 'sweetalert';
+import { useBrands } from '@/hooks/';
+import { TableSkeleton } from '@/components';
 
 export function Table({ data }) {
-  const { loading, deleteCategory } = useCategories();
-  const headers = ['Categoría', 'Acciones'];
+  const { loading, deleteBrand } = useBrands();
+  const headers = ['Marca', 'Acciones'];
 
-  const deleteCategoryAlert = id => {
-    swal({
-      title: 'Desea eliminar la categoria',
-      icon: 'warning',
-      buttons: {
-        catch: {
-          text: 'Cancelar',
-          value: null,
-          className: 'btn btn-accent',
-        },
-        default: {
-          text: 'Eliminar',
-          value: true,
-          className: 'btn btn-primary',
-        },
-      },
-    }).then(valueButtoms => {
-      if (valueButtoms) {
-        deleteCategory(id);
-        swal({
-          title: 'La categoria fue eliminada',
-          icon: 'success',
-        });
-      }
-    });
-  };
   return (
     <>
       {loading ? (
@@ -53,7 +25,7 @@ export function Table({ data }) {
               <tr key={id}>
                 <td>{name}</td>
                 <td className='flex gap-5'>
-                  <button onClick={() => deleteCategoryAlert(id)}>
+                  <button onClick={() => deleteBrand(id)}>
                     <TrashIcon />
                   </button>
                   {/* <button>

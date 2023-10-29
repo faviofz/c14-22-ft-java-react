@@ -1,43 +1,43 @@
 import { useEffect } from 'react';
-import { DataList, Container, Modal, Search, Paginated } from '@/components';
+import { Container, DataList, Modal, Search, Paginated } from '@/components';
 import { PlusIcon } from '@/assets/svg';
 import { viewModeType } from '@/components/datalist-cmp/constants';
-import { useCategories, usePaginated } from '@/hooks';
-import { FormCategory, Table } from './components';
-import './category-page.scss';
+import { useBrands, usePaginated } from '@/hooks';
+import { FormBrand, Table } from './components';
+import './brand-page.scss';
 
-export default function Category() {
-  const { categories, getAllCategories } = useCategories();
+export default function Brand() {
+  const { brands, getAllBrands } = useBrands();
   const { setFiltered, displayed, currentPage, totalPages, setCurrentPage } =
-    usePaginated({ data: categories, numItems: 10 });
+    usePaginated({ data: brands, numItems: 10 });
 
   useEffect(() => {
-    getAllCategories();
+    getAllBrands();
   }, []);
 
   const handleSearch = query => {
-    const filtered = categories.filter(({ name }) =>
+    const filtered = brands.filter(({ name }) =>
       name.toLowerCase().includes(query.toLowerCase())
     );
     setFiltered(filtered);
   };
 
   return (
-    <div className='category-page'>
+    <div className='brand-page'>
       <Container>
         <DataList
-          title='Categoría'
+          title='Marca'
           setViewMode={viewModeType.TABLE}
           element={<Table data={displayed} />}
         >
           <DataList.Header>
             <Search placeholder='Buscar categoría' onNewValue={handleSearch} />
             <Modal
-              title='Nueva Categoría'
-              buttonLabel='Nueva Categoría'
+              title='Nueva Marca'
+              buttonLabel='Nueva Marca'
               buttonIcon={<PlusIcon width='15' />}
             >
-              <FormCategory />
+              <FormBrand />
             </Modal>
           </DataList.Header>
           {/* <DataList.Filters>filters group</DataList.Filters> */}

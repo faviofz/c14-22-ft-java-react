@@ -5,3 +5,5 @@ export * from './useProducts';
 export * from './useProviders';
 export * from './useCategories';
 export * from './useBrands';
+export * from './useUploadImage';
+export * from './usePaginated';

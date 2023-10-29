@@ -5,7 +5,7 @@ import {
   serviceCreateProduct,
 } from '@/services';
 
-export const getAllProductAsync = createAsyncThunk(
+export const getAllProductsAsync = createAsyncThunk(
   'products/getAll',
   async () => {
     const response = await serviceGetAllProducts();
@@ -34,12 +34,14 @@ const productsSlice = createSlice({
   initialState: {
     products: [],
   },
-  reducers: {},
+  reducers: {
+    getAllProducts: state => state,
+  },
   extraReducers: builder => {
-    builder.addCase(getAllProductAsync.pending, state => {
+    builder.addCase(getAllProductsAsync.pending, state => {
       state.loading = true;
     });
-    builder.addCase(getAllProductAsync.fulfilled, (state, action) => {
+    builder.addCase(getAllProductsAsync.fulfilled, (state, action) => {
       state.loading = false;
       state.products = action.payload;
     });
@@ -56,11 +58,12 @@ const productsSlice = createSlice({
     });
     builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
       const idProduct = action.payload;
-      const index = state.products.findIndex((product) => (product.id === idProduct))
-      state.products.splice(index,1)
-
+      const index = state.products.findIndex(
+        product => product.id === idProduct
+      );
+      state.products.splice(index, 1);
     });
   },
 });
-
-export default productsSlice.reducer;
+export const { getAllProducts } = productsSlice.actions;
+export const productsReducer = productsSlice.reducer;

@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import {
+  // getAllBrands as getAllBrandsSync,
   getAllBrandsAsync,
   getBrandAsync,
   createBrandAsync,
@@ -12,7 +13,7 @@ export function useBrands() {
   const dispatch = useDispatch();
 
   function getAllBrands() {
-    dispatch(getAllBrandsAsync());
+    if (!brands.length) dispatch(getAllBrandsAsync());
   }
 
   function getBrand(id) {

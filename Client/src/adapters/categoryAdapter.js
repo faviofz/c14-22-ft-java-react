@@ -1,11 +1,12 @@
-export const categoryToApiCategory = (data = {}) => ({
+// objeto que enviamos al API
+export const categoryToCategoryApi = (data = {}) => ({
   id: data.id,
-  nombre: data.nombre,
+  nombre: data.name,
 });
-
+// objeto como lo usamos en la APP
 export const categoryApiToCategory = (data = {}) => ({
   id: data.id,
-  nombre: data.nombre,
+  name: data.nombre,
 });
 
 export const categoryApiListToCategoryList = list =>

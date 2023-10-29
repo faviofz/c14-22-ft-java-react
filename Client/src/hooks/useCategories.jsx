@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import {
+  // getAllCategories as getAllCategoriesSync,
   getAllCategoriesAsync,
   getCategoryAsync,
   createCategoryAsync,
@@ -12,7 +13,7 @@ export function useCategories() {
   const dispatch = useDispatch();
 
   function getAllCategories() {
-    dispatch(getAllCategoriesAsync());
+    if (!categories.length) dispatch(getAllCategoriesAsync());
   }
 
   function getCategory(id) {

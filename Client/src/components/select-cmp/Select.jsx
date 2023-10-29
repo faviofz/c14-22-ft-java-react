@@ -1,14 +1,18 @@
 import PropTypes from 'prop-types';
+import { useId } from 'react';
 
 export function Select({ label, list, errorMessage, ...props }) {
+  const id = useId();
   return (
     <div>
-      <h3>{label}</h3>
+      <label className='label'>
+        <span className='font-bold label-text'>{label}</span>
+      </label>
       <select className='w-full input input-bordered' {...props}>
         <option value=''>Seleccione {label}</option>
         {list.map(item => (
-          <option key={item.id} value={ (label === 'proveedor') ? item.email : item.nombre}>
-            {item.nombre}
+          <option key={item.id + id} value={item.value}>
+            {item.label}
           </option>
         ))}
       </select>
@@ -25,7 +29,13 @@ Select.propTypes = {
   label: PropTypes.string,
   errorMessage: PropTypes.string,
   placeholder: PropTypes.string,
-  type: PropTypes.string,
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      value: PropTypes.string,
+      label: PropTypes.string,
+    })
+  ),
 };
 
 Select.defaultProps = {

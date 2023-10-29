@@ -14,13 +14,16 @@ export function Modal({ title, buttonLabel, buttonIcon, children }) {
       </button>
 
       <dialog id={`${modalID}`} className='modal'>
-        <div className='modal-panel w-full h-auto lg:min-w-[60rem] lg:max-h-[35rem] modal-box rounded-3xl'>
-          <div method='dialog' className='flex flex-col justify-between h-full'>
-            <div className='flex items-center justify-between '>
-              <h3 className='mb-5 text-3xl font-semibold text-secondary'>
+        <div className='modal-panel min-w-full  lg:min-w-[60rem]  modal-box rounded-3xl'>
+          <div
+            method='dialog'
+            className='flex flex-col justify-between h-full relative'
+          >
+            <div className='flex items-center justify-between'>
+              <h3 className='mb-5 text-3xl font-semibold text-secondary flex-2'>
                 {title}
               </h3>
-              <form method='dialog'>
+              <form method='dialog' className='flex-1'>
                 <button className='absolute btn btn-sm btn-circle btn-ghost right-2 top-2'>
                   ✕
                 </button>
