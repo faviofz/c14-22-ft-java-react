@@ -34,7 +34,9 @@ export default function Register() {
           .required('Este dato es requerido')
           .min(3, 'Debe tener más de 3 caracteres'),
         userName: Yup.string().required('Este dato es requerido'),
-        email: Yup.string().required('Este dato es requerido'),
+        email: Yup.string()
+          .required('Este dato es requerido')
+          .email('Correo electrónico no válido'),
         password: Yup.string()
           .required('Este dato es requerido')
           .min(6, 'debe tener al menos 6 caracteres'),

@@ -1,13 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import productReducer from '../reducers/product.reducer';
-import providerReducer from '../reducers/providers.reducer';
-import categoriesReducer from '../reducers/category.reducer';
-import brandsReducer from '../reducers/brand.reducer';
+import {
+  productsReducer,
+  providersReducer,
+  categoriesReducer,
+  brandsReducer,
+} from '../reducers';
 
 const store = configureStore({
   reducer: {
-    products: productReducer,
-    providers: providerReducer,
+    products: productsReducer,
+    providers: providersReducer,
     categories: categoriesReducer,
     brands: brandsReducer,
   },

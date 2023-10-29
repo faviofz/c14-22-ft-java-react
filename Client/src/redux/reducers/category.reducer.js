@@ -8,7 +8,7 @@ import {
 } from '@/services';
 import {
   categoryApiListToCategoryList,
-  categoryToApiCategory,
+  categoryToCategoryApi,
   categoryApiToCategory,
 } from '@/adapters';
 
@@ -16,6 +16,7 @@ export const getAllCategoriesAsync = createAsyncThunk(
   'categories/getAll',
   async () => {
     const categoryApiList = await serviceGetAllCategories();
+    // adapter
     const categoryList = categoryApiListToCategoryList(categoryApiList);
     return categoryList;
   }
@@ -25,25 +26,33 @@ export const getCategoryAsync = createAsyncThunk(
   'categories/getOne',
   async id => {
     const response = await serviceGetCategory(id);
-    return response;
+    // adapter
+    const category = categoryApiToCategory(response);
+    return category;
   }
 );
 
 export const createCategoryAsync = createAsyncThunk(
   'categories/create',
   async newCategory => {
-    const categoryApi = categoryToApiCategory(newCategory);
+    // adapter
+    const categoryApi = categoryToCategoryApi(newCategory);
     const response = await serviceCreateCategory(categoryApi);
-    return response;
+    // adapter
+    const category = categoryApiToCategory(response);
+    return category;
   }
 );
 
 export const updateCategoryAsync = createAsyncThunk(
   'categories/update',
   async modifiedCategory => {
-    const categoryApi = categoryToApiCategory(modifiedCategory);
+    // adapter
+    const categoryApi = categoryToCategoryApi(modifiedCategory);
     const response = await serviceUpdateCategory(categoryApi);
-    return response;
+    // adapter
+    const category = categoryApiToCategory(response);
+    return category;
   }
 );
 
@@ -60,7 +69,9 @@ const categorySlice = createSlice({
   initialState: {
     categories: [],
   },
-  reducers: {},
+  reducers: {
+    getAllCategories: state => state,
+  },
   extraReducers: builder => {
     builder.addCase(getAllCategoriesAsync.pending, state => {
       state.loading = true;
@@ -83,7 +94,7 @@ const categorySlice = createSlice({
     });
     builder.addCase(createCategoryAsync.fulfilled, (state, action) => {
       state.loading = false;
-      const category = categoryApiToCategory(action.payload);
+      const category = action.payload;
       state.categories.push(category);
     });
     // --------------------------------
@@ -101,5 +112,5 @@ const categorySlice = createSlice({
     });
   },
 });
-
-export default categorySlice.reducer;
+export const { getAllCategories } = categorySlice.actions;
+export const categoriesReducer = categorySlice.reducer;

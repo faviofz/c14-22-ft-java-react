@@ -8,6 +8,7 @@ import {
   ProviderIcon,
   HistoricalIcon,
   CategoryIcon,
+  BrandIcon,
 } from '@/assets/svg';
 import { Link } from 'react-router-dom';
 
@@ -33,19 +34,15 @@ const menuItems = [
     href: '/category',
   },
   {
+    label: 'Marca',
+    Icon: BrandIcon,
+    href: '/brand',
+  },
+  {
     label: 'Historial',
     Icon: HistoricalIcon,
     href: '/history',
   },
-  // {
-  //   label: 'Historial',
-  //   Icon: HistoricalIcon,
-  //   href: null,
-  //   subMenu: [
-  //     { label: 'Entrada', href: '/history/inside' },
-  //     { label: 'Salida', href: '/history/outside' },
-  //   ],
-  // },
 ];
 
 export function MainMenu() {

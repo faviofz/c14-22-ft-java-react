@@ -41,8 +41,8 @@ export default function Dashboard() {
   } = useProviders();
 
   useEffect(() => {
-    getAllProviders();
-    getAllProducts();
+    if (!providers.length) getAllProviders();
+    if (!products.length) getAllProducts();
   }, []);
 
   const notify = () => {
