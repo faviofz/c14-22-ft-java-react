@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  getAllProductAsync,
+  // getAllProducts as getAllProductsSync,
+  getAllProductsAsync,
   deleteProductAsync,
   createProductAsync,
 } from '@/redux/reducers';
@@ -10,7 +11,7 @@ export function useProducts() {
   const dispatch = useDispatch();
 
   function getAllProducts() {
-    dispatch(getAllProductAsync());
+    if (!products.length) dispatch(getAllProductsAsync());
   }
 
   function deleteProducts(id) {

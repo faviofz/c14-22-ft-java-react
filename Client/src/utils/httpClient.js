@@ -30,7 +30,10 @@ httpClient.interceptors.response.use(
   response => response,
   error => {
     // if (error.response.status === 500) window.location.replace("/");
-    if (error.response.request.status === 401) {
+    if (
+      error.response.request.status === 403 &&
+      JSON.parse(localStorage.getItem('userLogger'))?.token
+    ) {
       setTimeout(() => {
         localStorage.setItem('userLogger', JSON.stringify(null));
         localStorage.setItem('isLogged', JSON.stringify(false));

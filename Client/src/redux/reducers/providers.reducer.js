@@ -1,23 +1,59 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import {
   serviceGetAllProviders,
+  serviceGetProvider,
   serviceCreateProvider,
+  serviceUpdateProvider,
   serviceDeleteProvider,
 } from '@/services';
+import {
+  providerApiListToProviderList,
+  providerApiToProvider,
+  providerToProviderApi,
+} from '@/adapters';
 
-export const getAllProviderAsync = createAsyncThunk(
+export const getAllProvidersAsync = createAsyncThunk(
   'providers/getAll',
   async () => {
-    const response = await serviceGetAllProviders();
-    return response;
+    const providerApiList = await serviceGetAllProviders();
+    // adapter
+    const providerList = providerApiListToProviderList(providerApiList);
+    return providerList;
+  }
+);
+
+export const getProviderAsync = createAsyncThunk(
+  'providers/getOne',
+  async id => {
+    const response = await serviceGetProvider(id);
+    // adapter
+    const provider = providerApiToProvider(response);
+    return provider;
   }
 );
 
 export const createProviderAsync = createAsyncThunk(
   'providers/create',
-  async data => {
-    const response = await serviceCreateProvider(data);
-    return response;
+  async newProvider => {
+    // adapter
+    const providerApi = providerToProviderApi(newProvider);
+    console.log(providerApi);
+    const response = await serviceCreateProvider(providerApi);
+    // adapter
+    const provider = providerApiToProvider(response);
+    return provider;
+  }
+);
+
+export const updateProviderAsync = createAsyncThunk(
+  'providers/update',
+  async modifiedProvider => {
+    // adapter
+    const providerApi = providerToProviderApi(modifiedProvider);
+    const response = await serviceUpdateProvider(providerApi);
+    // adapter
+    const provider = providerApiToProvider(response);
+    return provider;
   }
 );
 
@@ -34,14 +70,24 @@ const providersSlice = createSlice({
   initialState: {
     providers: [],
   },
-  reducers: {},
+  reducers: {
+    getAllProviders: state => state,
+  },
   extraReducers: builder => {
-    builder.addCase(getAllProviderAsync.pending, state => {
+    builder.addCase(getAllProvidersAsync.pending, state => {
       state.loading = true;
     });
-    builder.addCase(getAllProviderAsync.fulfilled, (state, action) => {
+    builder.addCase(getAllProvidersAsync.fulfilled, (state, action) => {
       state.loading = false;
       state.providers = action.payload;
+    });
+    // --------------------------------
+    builder.addCase(getProviderAsync.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(getProviderAsync.fulfilled, (state, action) => {
+      state.loading = false;
+      state.provider = action.payload;
     });
     // --------------------------------
     builder.addCase(createProviderAsync.pending, state => {
@@ -65,5 +111,5 @@ const providersSlice = createSlice({
     });
   },
 });
-
-export default providersSlice.reducer;
+export const { getAllProviders } = providersSlice.actions;
+export const providersReducer = providersSlice.reducer;

@@ -48,11 +48,11 @@ export function Table({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map(({ id, nombre, empresa, telefono, email }, index) => (
-              <tr key={index}>
-                <td>{nombre}</td>
-                <td>{empresa}</td>
-                <td>{telefono}</td>
+            {data.map(({ id, name, company, phone, email }) => (
+              <tr key={id}>
+                <td>{name}</td>
+                <td>{company}</td>
+                <td>{phone}</td>
                 <td>{email}</td>
                 <td className='flex gap-5'>
                   <button onClick={() => deleteProviderAlert(id)}>

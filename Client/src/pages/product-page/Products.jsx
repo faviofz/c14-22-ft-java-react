@@ -3,15 +3,13 @@ import { DataList, Container, Modal, Search, Paginated } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { PlusIcon } from '@/assets/svg';
 import { Table, Grid, Filters, FormProduct } from './components';
-import { useProducts } from './../../hooks/useProducts';
+import { useProducts, usePaginated } from '@/hooks';
 
 export default function Product() {
   const { products, getAllProducts } = useProducts();
+  const { setFiltered, displayed, currentPage, totalPages, setCurrentPage } =
+    usePaginated({ data: products, numItems: 7 });
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
-
-  const [filteredProducts, setFilteredProducts] = useState(products);
   const [filters, setFilters] = useState({
     marca: 'all',
     categoria: 'all',
@@ -35,18 +33,15 @@ export default function Product() {
       return marcaMatch && categoriaMatch && proveedorMatch;
     });
 
-    setFilteredProducts(filtered);
+    setFiltered(filtered);
   }, [products, filters]);
 
   const handleSearch = query => {
     const filtered = products.filter(product =>
       product.nombre.toLowerCase().includes(query.toLowerCase())
     );
-    setFilteredProducts(filtered);
+    setFiltered(filtered);
   };
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const displayedProducts = filteredProducts.slice(startIndex, endIndex);
 
   return (
     <div className='products-page'>
@@ -54,8 +49,8 @@ export default function Product() {
         <DataList
           title='Productos'
           setViewMode={viewModeType.TABLE}
-          table={<Table data={displayedProducts} />}
-          grid={<Grid data={displayedProducts} />}
+          table={<Table data={displayed} />}
+          grid={<Grid data={displayed} />}
         >
           <DataList.Header>
             <Search placeholder='Buscar producto' onNewValue={handleSearch} />
@@ -71,11 +66,13 @@ export default function Product() {
             <Filters filters={filters} setFilters={setFilters} />
           </DataList.Filters>
         </DataList>
-        <Paginated
-          currentPage={currentPage}
-          totalPages={Math.ceil(filteredProducts.length / itemsPerPage)}
-          onPageChange={setCurrentPage}
-        />
+        {totalPages > 1 && (
+          <Paginated
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        )}
       </Container>
       
     </div>
