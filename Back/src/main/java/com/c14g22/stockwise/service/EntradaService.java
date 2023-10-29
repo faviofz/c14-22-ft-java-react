@@ -15,5 +15,5 @@ public interface EntradaService {
 
     void actualizarEntrada(Long id, EntradaDto entradaDto);
 
-    void EliminarEntrada(Long id);
+    void eliminarEntrada(Long id);
 }

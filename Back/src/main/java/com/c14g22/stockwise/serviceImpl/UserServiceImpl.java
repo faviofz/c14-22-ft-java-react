@@ -3,15 +3,16 @@ package com.c14g22.stockwise.serviceImpl;
 import com.c14g22.stockwise.dto.UserSignupRequest;
 import com.c14g22.stockwise.exception.EmailDuplicateException;
 import com.c14g22.stockwise.exception.UsernameDuplicateException;
+import com.c14g22.stockwise.model.Empleado;
 import com.c14g22.stockwise.model.User;
+import com.c14g22.stockwise.repository.EmpleadoRepository;
 import com.c14g22.stockwise.repository.UserRepository;
 import com.c14g22.stockwise.service.UserService;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
   private PasswordEncoder passwordEncoder;
 
   @Override
-  public UUID saveUser(UserSignupRequest req) {
+  public User saveUser(UserSignupRequest req) {
     if (userRepo.existsByEmail(req.getEmail())) {
       throw new EmailDuplicateException("El email: "+req.getEmail()+" ya existe.");
     }
@@ -40,7 +41,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     user.setUsername(req.getUsername());
     user.setPassword(passwordEncoder.encode(req.getPassword()));
     user.setEmail(req.getEmail());
-    return userRepo.save(user).getId();
+    userRepo.saveAndFlush(user);
+    Empleado empleado = new Empleado();
+    empleado.setNombre(req.getNombre());
+    empleado.setApellido(req.getApellido());
+    empleado.setEmail(req.getEmail());
+    empleado.setFechaIngreso(LocalDateTime.now());
+    empleado.setUser(user);
+    user.setEmpleado(empleado);
+    return userRepo.saveAndFlush(user);
   }
 
   @Override
