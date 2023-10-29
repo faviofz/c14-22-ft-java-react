@@ -41,8 +41,8 @@ export default function Dashboard() {
   } = useProviders();
 
   useEffect(() => {
-    if (!providers.length) getAllProviders();
-    if (!products.length) getAllProducts();
+    getAllProviders();
+    getAllProducts();
   }, []);
 
   const notify = () => {
@@ -86,7 +86,6 @@ export default function Dashboard() {
           />
           {/* <Stat title='Stock' stat={1.2} Icon={StockIcon} /> */}
         </div>
-
         <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>
           <DashboardPanel
             title={'Últimos productos registrados'}

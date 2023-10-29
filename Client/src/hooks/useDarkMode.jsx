@@ -3,9 +3,5 @@ import { DarkmodeContext } from '@/context';
 
 export function useDarkMode() {
   const { darkmode, changeThemeMode } = useContext(DarkmodeContext);
-
-  return {
-    darkmode,
-    changeThemeMode,
-  };
+  return { darkmode, changeThemeMode };
 }

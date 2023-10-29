@@ -24,8 +24,8 @@ export const createProductAsync = createAsyncThunk(
 export const deleteProductAsync = createAsyncThunk(
   'products/delete',
   async id => {
-    const response = await serviceDeleteProduct(id);
-    return response;
+    await serviceDeleteProduct(id);
+    return id;
   }
 );
 
@@ -50,12 +50,10 @@ const productsSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(createProductAsync.fulfilled, (state, action) => {
+      state.loading = false;
       state.products.push(action.payload);
     });
     // --------------------------------
-    builder.addCase(deleteProductAsync.pending, state => {
-      state.loading = true;
-    });
     builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
       const idProduct = action.payload;
       const index = state.products.findIndex(

@@ -3,7 +3,7 @@ import { DoubleColumnLayout } from '@/layout';
 import { Panel, Input, Button, Footer, Logo, Alert } from '@/components';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '@/hooks';
 import './login-page.scss';
 
 export default function Login() {

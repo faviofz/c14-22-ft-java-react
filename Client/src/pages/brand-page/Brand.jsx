@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import { Container, DataList, Modal, Search, Paginated } from '@/components';
+import { Container, DataList, Search, Paginated, Button } from '@/components';
 import { PlusIcon } from '@/assets/svg';
 import { viewModeType } from '@/components/datalist-cmp/constants';
-import { useBrands, usePaginated } from '@/hooks';
+import { useBrands, usePaginated, useModal } from '@/hooks';
 import { FormBrand, Table } from './components';
 import './brand-page.scss';
 
 export default function Brand() {
   const { brands, getAllBrands } = useBrands();
+  const { openModal } = useModal();
   const { setFiltered, displayed, currentPage, totalPages, setCurrentPage } =
     usePaginated({ data: brands, numItems: 10 });
 
@@ -32,13 +33,18 @@ export default function Brand() {
         >
           <DataList.Header>
             <Search placeholder='Buscar categoría' onNewValue={handleSearch} />
-            <Modal
-              title='Nueva Marca'
-              buttonLabel='Nueva Marca'
-              buttonIcon={<PlusIcon width='15' />}
+            <Button
+              className='gap-3 lg:w-52  btn btn-primary md:w-80'
+              onClick={() =>
+                openModal(<FormBrand />, {
+                  title: 'Nueva Marca',
+                  className: 'modal-brand',
+                })
+              }
             >
-              <FormBrand />
-            </Modal>
+              <PlusIcon width='15' />
+              Nueva Marca
+            </Button>
           </DataList.Header>
           {/* <DataList.Filters>filters group</DataList.Filters> */}
         </DataList>

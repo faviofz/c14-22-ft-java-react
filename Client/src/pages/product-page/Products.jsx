@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { DataList, Container, Modal, Search, Paginated } from '@/components';
+import { DataList, Container, Search, Paginated, Button } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
 import { PlusIcon } from '@/assets/svg';
 import { Table, Grid, Filters, FormProduct } from './components';
-import { useProducts, usePaginated } from '@/hooks';
+import { useProducts, usePaginated, useModal } from '@/hooks';
+import './product-page.scss';
 
 export default function Product() {
   const { products, getAllProducts } = useProducts();
+  const { openModal } = useModal();
   const { setFiltered, displayed, currentPage, totalPages, setCurrentPage } =
     usePaginated({ data: products, numItems: 7 });
 
@@ -44,7 +46,7 @@ export default function Product() {
   };
 
   return (
-    <div className='products-page'>
+    <div className='product-page'>
       <Container>
         <DataList
           title='Productos'
@@ -54,13 +56,18 @@ export default function Product() {
         >
           <DataList.Header>
             <Search placeholder='Buscar producto' onNewValue={handleSearch} />
-            <Modal
-              title='Nuevo Producto'
-              buttonLabel='Nuevo Producto'
-              buttonIcon={<PlusIcon width='15' />}
+            <Button
+              className='gap-3 lg:w-52  btn btn-primary md:w-80'
+              onClick={() =>
+                openModal(<FormProduct />, {
+                  title: 'Nuevo Producto',
+                  className: 'modal-product',
+                })
+              }
             >
-              <FormProduct />
-            </Modal>
+              <PlusIcon width='15' />
+              Nuevo Producto
+            </Button>
           </DataList.Header>
           <DataList.Filters>
             <Filters filters={filters} setFilters={setFilters} />
@@ -74,7 +81,6 @@ export default function Product() {
           />
         )}
       </Container>
-      
     </div>
   );
 }

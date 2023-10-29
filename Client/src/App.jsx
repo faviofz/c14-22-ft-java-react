@@ -1,5 +1,5 @@
 import { MainRoutes } from '@/routes';
-import { DarkmodeProvider, AuthProvider } from '@/context';
+import { DarkmodeProvider, AuthProvider, ModalProvider } from '@/context';
 import { StoreProvider } from '@/redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,8 +9,10 @@ export function App() {
     <StoreProvider>
       <DarkmodeProvider>
         <AuthProvider>
-          <MainRoutes />
-          <ToastContainer />
+          <ModalProvider>
+            <MainRoutes />
+            <ToastContainer />
+          </ModalProvider>
         </AuthProvider>
       </DarkmodeProvider>
     </StoreProvider>
