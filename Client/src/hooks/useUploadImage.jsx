@@ -27,5 +27,9 @@ export function useUploadImage() {
       });
   };
 
-  return { handleImage, image, loading, error };
+  const resetImage = () => {
+    setImage('');
+  };
+
+  return { handleImage, image, loading, error, resetImage };
 }

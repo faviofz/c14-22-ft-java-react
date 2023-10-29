@@ -24,6 +24,7 @@ import PencilAltIcon from './pencil-alt.svg?react';
 import CircleWarn from './circle-alert.svg?react';
 import CategoryIcon from './category-icon.svg?react';
 import ImageIcon from './img-icon.svg?react';
+import BrandIcon from './brand-icon.svg?react';
 
 export {
   PencilAltIcon,
@@ -52,4 +53,5 @@ export {
   CircleWarn,
   CategoryIcon,
   ImageIcon,
+  BrandIcon,
 };

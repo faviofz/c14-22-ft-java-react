@@ -16,7 +16,7 @@ export function FormProduct() {
   const { brands, getAllBrands } = useBrands();
   const { providers, getAllProviders } = useProviders();
   const { createProduct } = useProducts();
-  const { handleImage, image, loading } = useUploadImage();
+  const { handleImage, image, loading, resetImage } = useUploadImage();
 
   useEffect(() => {
     getAllCategories();
@@ -28,157 +28,164 @@ export function FormProduct() {
     nombre: '',
     imagen: '',
     costo: 0,
-    impuesto: 0,
+    // impuesto: 0,
     fechaVencimiento: '',
     categoria: '',
     proveedor: '',
     marca: '',
   };
 
-  const { handleSubmit, touched, errors, values, getFieldProps } = useFormik({
-    initialValues,
-    onSubmit: values => {
-      values.fechaVencimiento = values.fechaVencimiento
-        .split('-')
-        .reverse()
-        .join('-');
-      console.log(values);
+  const { handleSubmit, touched, errors, values, getFieldProps, resetForm } =
+    useFormik({
+      initialValues,
+      onSubmit: values => {
+        values.fechaVencimiento = values.fechaVencimiento
+          .split('-')
+          .reverse()
+          .join('-');
+        console.log(values);
 
-      createProduct(values);
-    },
-    validationSchema: Yup.object({
-      nombre: Yup.string().required('Requerido'),
-      imagen: Yup.string().required('Requerido'),
-      precio: Yup.number().required('Requerido'),
-      costo: Yup.number(),
-      impuesto: Yup.number(),
-      fechaVencimiento: Yup.string().required('Requerido'),
-      categoria: Yup.string().required('Requerido'),
-      proveedor: Yup.string().required('Requerido'),
-      marca: Yup.string().required('Requerido'),
-    }),
-  });
+        createProduct(values);
+      },
+      validationSchema: Yup.object({
+        nombre: Yup.string().required('Requerido'),
+        imagen: Yup.string().required('Requerido'),
+        costo: Yup.number().required('Requerido'),
+        // impuesto: Yup.number().required('Requerido'),
+        fechaVencimiento: Yup.string().required('Requerido'),
+        categoria: Yup.string().required('Requerido'),
+        proveedor: Yup.string().required('Requerido'),
+        marca: Yup.string().required('Requerido'),
+      }),
+    });
+
+  const handleReset = () => {
+    resetForm();
+    resetImage();
+  };
 
   return (
     <form
       method='dialog'
-      className='flex flex-col justify-between w-full h-full gap-5'
+      className='flex flex-col w-full h-full gap-5 '
       onSubmit={handleSubmit}
     >
-      <section className='flex flex-col flex-wrap gap-3 lg:gap-5 lg:flex-row lg:justify-around'>
-        <div className='flex flex-col gap-3 lg:gap-5 lg:flex-row'>
-          <div className='flex flex-col gap-3 lg:gap-0'>
+      <div className='min-[730px]:flex min-[730px]:gap-5'>
+        <div>
+          <Input
+            label='Nombre'
+            placeholder='Ingresar nombre'
+            {...getFieldProps('nombre')}
+            errorMessage={touched.nombre && errors.nombre}
+          />
+
+          <Select
+            label='categoria'
+            list={categories.map(e => ({
+              id: e.id,
+              value: e.name,
+              label: e.name,
+            }))}
+            {...getFieldProps('categoria')}
+            errorMessage={touched.categoria && errors.categoria}
+          />
+
+          <div className='min-[500px]:flex min-[500px]:gap-3'>
             <Input
-              label='Nombre'
-              placeholder='Ingresar nombre'
-              {...getFieldProps('nombre')}
-              errorMessage={touched.nombre && errors.nombre}
+              type='date'
+              label='Fecha de vencimiento'
+              {...getFieldProps('fechaVencimiento')}
+              errorMessage={touched.fechaVencimiento && errors.fechaVencimiento}
             />
 
-            <Select
-              label='Proveedor'
-              list={providers.map(e => ({
-                id: e.id,
-                value: e.email,
-                label: e.name,
-              }))}
-              {...getFieldProps('proveedor')}
-              errorMessage={touched.proveedor && errors.proveedor}
-            />
-
-            <div className='flex flex-col items-center gap-3 lg:gap-5 lg:flex-row'>
-              <Input
-                type='date'
-                label='Fecha de vencimiento'
-                {...getFieldProps('fechaVencimiento')}
-                errorMessage={
-                  touched.fechaVencimiento && errors.fechaVencimiento
-                }
-              />
-
-              <Input
-                type='number'
-                label='Precio'
-                placeholder='Ingresar precio'
-                {...getFieldProps('precio')}
-                errorMessage={touched.precio && errors.precio}
-                min='0'
-                step='0.01'
-              />
-            </div>
-
-            <Select
-              label='Marca'
-              list={brands.map(e => ({
-                id: e.id,
-                value: e.name,
-                label: e.name,
-              }))}
-              {...getFieldProps('marca')}
-              errorMessage={touched.marca && errors.marca}
+            <Input
+              type='number'
+              min='0'
+              step='0.01'
+              label='Precio'
+              placeholder='Ingresar precio'
+              {...getFieldProps('costo')}
+              errorMessage={touched.costo && errors.costo}
             />
           </div>
 
-          <div className='flex flex-col'>
-            <div className='flex flex-col gap-2 '>
-              <div>
-                <label className='label'>
-                  <span className='font-bold label-text'>Imagen</span>
-                </label>
-                <div className='flex items-center justify-center h-[9rem] lg:h-[10.8rem] bg-base-200 border-2 border-accent p-5'>
-                  {loading ? (
-                    <Preload />
-                  ) : image ? (
-                    <img
-                      className='w-full h-full object-contain'
-                      src={image}
-                      alt='Nueva imagen de producto'
-                    />
-                  ) : (
-                    <ImageIcon className='[&>path]:fill-secondary-content w-[2rem] h-[2rem]' />
-                  )}
-                </div>
-              </div>
-              <div>
-                <div className='pb-2'>
-                  <Input
-                    type='file'
-                    name='ProductImagen'
-                    onChange={handleImage}
-                    className='w-full file-input file-input-bordered file-input-primary '
-                  />
-                </div>
-
-                <Input
-                  type='text'
-                  className='hidden'
-                  {...getFieldProps('imagen')}
-                  value={(values.imagen = image)}
-                  errorMessage={touched.imagen && errors.imagen}
-                />
-
-                <Select
-                  label='categoria'
-                  list={categories.map(e => ({
-                    id: e.id,
-                    value: e.name,
-                    label: e.name,
-                  }))}
-                  {...getFieldProps('categoria')}
-                  errorMessage={touched.categoria && errors.categoria}
-                />
-              </div>
-            </div>
-          </div>
+          <Select
+            label='Marca'
+            list={brands.map(e => ({
+              id: e.id,
+              value: e.name,
+              label: e.name,
+            }))}
+            {...getFieldProps('marca')}
+            errorMessage={touched.marca && errors.marca}
+          />
         </div>
-      </section>
+
+        <div>
+          <div className='mb-1'>
+            <label className='label'>
+              <span className='font-bold label-text'>Imagen</span>
+            </label>
+            <div
+              className='
+              flex items-center justify-center bg-base-200 border-2 border-accent p-5 mb-2
+               h-[12rem] min-[730px]:h-[9.7rem]
+              '
+            >
+              {loading ? (
+                <Preload />
+              ) : image ? (
+                <img
+                  className='w-full h-full object-contain'
+                  src={image}
+                  alt='Nueva imagen de producto'
+                />
+              ) : (
+                <ImageIcon className='[&>path]:fill-secondary-content w-[2rem] h-[2rem]' />
+              )}
+            </div>
+            <Input
+              type='file'
+              name='ProductImagen'
+              onChange={handleImage}
+              className='w-full file-input file-input-bordered file-input-primary '
+            />
+          </div>
+
+          <Input
+            type='text'
+            className='hidden'
+            {...getFieldProps('imagen')}
+            value={(values.imagen = image)}
+            errorMessage={touched.imagen && errors.imagen}
+          />
+
+          <Select
+            label='Proveedor'
+            list={providers.map(e => ({
+              id: e.id,
+              value: e.email,
+              label: e.name,
+            }))}
+            {...getFieldProps('proveedor')}
+            errorMessage={touched.proveedor && errors.proveedor}
+          />
+        </div>
+      </div>
 
       {/* BUTTONS */}
-      <div className='flex justify-between '>
-        <button className='w-[12rem] lg:btn-wide btn btn-outline btn-primary'>
+      <div className='flex flex-col gap-3 min-[500px]:flex-row min-[500px]:justify-between'>
+        <button
+          type='button'
+          onClick={handleReset}
+          className='w-full btn btn-outline btn-primary min-[500px]:w-[13rem] min-[600px]:w-[16rem]'
+        >
           Cancelar
         </button>
-        <button type='submit' className='w-[12rem] lg:btn-wide btn btn-primary'>
+        <button
+          type='submit'
+          className='w-full btn btn-primary min-[500px]:w-[13rem] min-[600px]:w-[16rem]'
+        >
           Guardar
         </button>
       </div>

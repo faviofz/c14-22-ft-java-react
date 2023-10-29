@@ -14,9 +14,12 @@ export function Modal({ title, buttonLabel, buttonIcon, children }) {
       </button>
 
       <dialog id={`${modalID}`} className='modal'>
-        <div className='modal-panel w-full  lg:min-w-[60rem]  modal-box rounded-3xl'>
-          <div method='dialog' className='flex flex-col justify-between h-full'>
-            <div className='flex items-center justify-between '>
+        <div className='modal-panel min-w-full  lg:min-w-[60rem]  modal-box rounded-3xl'>
+          <div
+            method='dialog'
+            className='flex flex-col justify-between h-full relative'
+          >
+            <div className='flex items-center justify-between'>
               <h3 className='mb-5 text-3xl font-semibold text-secondary'>
                 {title}
               </h3>
