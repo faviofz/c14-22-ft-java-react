@@ -8,13 +8,4 @@
             }
         }
     }
-
-    table {
-        tr{
-            td:last-child, th:last-child{
-                display: flex;
-                justify-content: flex-end;
-            }
-        }
-    }
 }

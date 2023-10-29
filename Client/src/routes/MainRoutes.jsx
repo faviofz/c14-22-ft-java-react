@@ -13,6 +13,7 @@ import {
   Products,
   Category,
   Provider,
+  Brand,
   History,
   Notification,
 } from '@/pages';
@@ -80,6 +81,14 @@ export function MainRoutes() {
             }
           />
           <Route
+            path='provider'
+            element={
+              <PrivateRoutes>
+                <Provider />
+              </PrivateRoutes>
+            }
+          />
+          <Route
             path='category'
             element={
               <PrivateRoutes>
@@ -88,10 +97,10 @@ export function MainRoutes() {
             }
           />
           <Route
-            path='provider'
+            path='brand'
             element={
               <PrivateRoutes>
-                <Provider />
+                <Brand />
               </PrivateRoutes>
             }
           />

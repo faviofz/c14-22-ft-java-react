@@ -20,10 +20,10 @@ export function Modal({ title, buttonLabel, buttonIcon, children }) {
             className='flex flex-col justify-between h-full relative'
           >
             <div className='flex items-center justify-between'>
-              <h3 className='mb-5 text-3xl font-semibold text-secondary'>
+              <h3 className='mb-5 text-3xl font-semibold text-secondary flex-2'>
                 {title}
               </h3>
-              <form method='dialog'>
+              <form method='dialog' className='flex-1'>
                 <button className='absolute btn btn-sm btn-circle btn-ghost right-2 top-2'>
                   ✕
                 </button>

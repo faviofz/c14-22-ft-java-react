@@ -50,9 +50,9 @@ export const updateBrandAsync = createAsyncThunk(
   }
 );
 
-export const deleteBrandAsync = createAsyncThunk('brand/delete', async id => {
-  const response = await serviceDeleteBrand(id);
-  return response;
+export const deleteBrandAsync = createAsyncThunk('brand/delete', id => {
+  serviceDeleteBrand(id);
+  return id;
 });
 
 const brandsSlice = createSlice({
@@ -88,15 +88,11 @@ const brandsSlice = createSlice({
       state.brands.push(action.payload);
     });
     // --------------------------------
-    builder.addCase(deleteBrandAsync.pending, state => {
-      state.loading = true;
-    });
     builder.addCase(deleteBrandAsync.fulfilled, (state, action) => {
-      state.loading = false;
       const brandId = action.payload;
       const index = state.brands.findIndex(brand => brand.id === brandId);
       // eliminamos el elementos del arr
-      state.categories.splice(index, 1);
+      state.brands.splice(index, 1);
     });
   },
 });
