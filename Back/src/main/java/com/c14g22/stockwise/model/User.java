@@ -22,14 +22,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "missuarios")
+@Table(name = "usuarios")
 @Setter
 @Getter
 @EntityListeners(AuditingEntityListener.class)
 public class User {
 
   @Id
-  @Column(name = "user_uuid")
+  @Column(name = "user_id")
   @UuidGenerator(style = Style.AUTO)
   private UUID id;
   @Column(unique = true, nullable = false, updatable = false)
