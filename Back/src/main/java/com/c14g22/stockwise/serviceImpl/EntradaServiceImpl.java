@@ -37,7 +37,7 @@ public class EntradaServiceImpl implements EntradaService {
     }
 
     @Override
-    public void EliminarEntrada(Long id) {
+    public void eliminarEntrada(Long id) {
         entradaRepository.deleteById(id);
 
     }

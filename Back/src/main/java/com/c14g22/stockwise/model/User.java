@@ -22,17 +22,17 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "usuarios")
+@Table(name = "missuarios")
 @Setter
 @Getter
 @EntityListeners(AuditingEntityListener.class)
 public class User {
 
   @Id
-  @Column(name = "user_uuid", nullable = false)
+  @Column(name = "user_uuid")
   @UuidGenerator(style = Style.AUTO)
   private UUID id;
-  @Column(unique = true, nullable = false)
+  @Column(unique = true, nullable = false, updatable = false)
   private String username;
   @Column(nullable = false)
   private String password;
@@ -44,15 +44,7 @@ public class User {
   @CreatedDate
   @Column(nullable = false)
   private LocalDateTime last_login_at;
-  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+  @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
   @PrimaryKeyJoinColumn
   private Empleado empleado;
-
-//  @ElementCollection(fetch = FetchType.EAGER)
-//  @CollectionTable(
-//      name = "roles",
-//      joinColumns = @JoinColumn(name = "user_id")
-//  )
-//  @Column(name = "user_role")
-//  private Set<String> roles;
 }

@@ -1,0 +1,27 @@
+package com.c14g22.stockwise.dto;
+
+import com.c14g22.stockwise.model.Empleado;
+import java.time.LocalDateTime;
+import java.util.UUID;
+import lombok.Data;
+
+@Data
+public class EmpleadoResponse {
+  private UUID id;
+  private String nombre;
+  private String apellido;
+  private String email;
+  private LocalDateTime fechaIngreso;
+  private String rol;
+  private boolean deleted;
+
+  public EmpleadoResponse(Empleado empleado) {
+    this.id = empleado.getId();
+    this.nombre = empleado.getNombre();
+    this.apellido = empleado.getApellido();
+    this.email = empleado.getEmail();
+    this.fechaIngreso = empleado.getFechaIngreso();
+    this.rol = empleado.getRol();
+    this.deleted = empleado.isDeleted();
+  }
+}
