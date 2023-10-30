@@ -35,6 +35,8 @@ export function FormProduct() {
     categoria: '',
     proveedor: '',
     marca: '',
+    min: 0,
+    max: 0,
   };
 
   const { handleSubmit, touched, errors, values, getFieldProps, resetForm } =
@@ -58,6 +60,8 @@ export function FormProduct() {
         categoria: Yup.string().required('Este dato es requerido'),
         proveedor: Yup.string().required('Este dato es requerido'),
         marca: Yup.string().required('Este dato es requerido'),
+        min: Yup.number().required('Este dato es requerido'),
+        max: Yup.number().required('Este dato es requerido'),
       }),
     });
 
@@ -110,6 +114,7 @@ export function FormProduct() {
               {...getFieldProps('costo')}
               errorMessage={touched.costo && errors.costo}
             />
+
           </div>
 
           <Select
@@ -122,6 +127,16 @@ export function FormProduct() {
             {...getFieldProps('marca')}
             errorMessage={touched.marca && errors.marca}
           />
+
+<Input
+              type='number'
+              min='0'
+              step='0.01'
+              label='Minimo'
+              placeholder='Ingresar minimo'
+              {...getFieldProps('min')}
+              errorMessage={touched.costo && errors.costo}
+            />
         </div>
 
         <div>
@@ -139,7 +154,7 @@ export function FormProduct() {
                 <Preload />
               ) : image ? (
                 <img
-                  className='w-full h-full object-contain'
+                  className='object-contain w-full h-full'
                   src={image}
                   alt='Nueva imagen de producto'
                 />
@@ -173,6 +188,15 @@ export function FormProduct() {
             {...getFieldProps('proveedor')}
             errorMessage={touched.proveedor && errors.proveedor}
           />
+          <Input
+              type='number'
+              min='0'
+              step='0.01'
+              label='Maximo'
+              placeholder='Ingresar maximo'
+              {...getFieldProps('max')}
+              errorMessage={touched.costo && errors.costo}
+            />
         </div>
       </div>
 
