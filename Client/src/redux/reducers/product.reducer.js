@@ -3,6 +3,8 @@ import {
   serviceGetAllProducts,
   serviceDeleteProduct,
   serviceCreateProduct,
+  serviceAddStock,
+  serviceSubtractStock,
 } from '@/services';
 
 export const getAllProductsAsync = createAsyncThunk(
@@ -18,6 +20,22 @@ export const createProductAsync = createAsyncThunk(
   async productData => {
     const response = await serviceCreateProduct(productData);
     return response;
+  }
+);
+
+export const addStockAsync = createAsyncThunk(
+  'products/addStock',
+  async arr => {
+    await serviceAddStock(arr);
+    return arr;
+  }
+);
+
+export const subtractStockAsync = createAsyncThunk(
+  'products/subtractStock',
+  async arr => {
+    await serviceSubtractStock(arr);
+    return arr;
   }
 );
 
@@ -60,6 +78,28 @@ const productsSlice = createSlice({
         product => product.id === idProduct
       );
       state.products.splice(index, 1);
+    });
+    builder.addCase(addStockAsync.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(addStockAsync.fulfilled, (state, action) => {
+      state.loading = false;
+      const pedidos = action.payload;
+      pedidos.forEach(({ id, actual }) => {
+        const index = state.products.findIndex(product => product.id === id);
+        state.products[index].actual = actual;
+      });
+    });
+    builder.addCase(subtractStockAsync.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(subtractStockAsync.fulfilled, (state, action) => {
+      state.loading = false;
+      const pedidos = action.payload;
+      pedidos.forEach(({ id, actual }) => {
+        const index = state.products.findIndex(product => product.id === id);
+        state.products[index].actual = actual;
+      });
     });
   },
 });
