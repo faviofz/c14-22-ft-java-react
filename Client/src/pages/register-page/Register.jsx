@@ -17,14 +17,14 @@ export default function Register() {
         name: '',
         surname: '',
         userName: '',
-        email: '',
         password: '',
         confirmPassword: '',
+        email: '',
         accept: false,
       },
-      onSubmit: values => {
-        const newUser = { ...values };
-        signUp(newUser);
+      onSubmit: (values, { resetForm }) => {
+        signUp(values);
+        resetForm();
       },
       validationSchema: Yup.object({
         name: Yup.string()
