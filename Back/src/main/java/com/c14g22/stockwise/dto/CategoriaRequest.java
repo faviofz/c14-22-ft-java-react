@@ -1,21 +1,17 @@
 package com.c14g22.stockwise.dto;
 
-import com.c14g22.stockwise.model.Categoria;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class CategoriaRequest {
+import lombok.ToString;
 
-        private String nombre;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+public class CategoriaRequest {
 
-        @Override
-        public String  toString() {
-            return "CategoriaRequest{" +
-                    "nombre='" + nombre;
-        }
+  private String nombre;
 }
