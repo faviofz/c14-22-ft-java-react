@@ -28,7 +28,7 @@ public class ProductoRequest {
     private String marca;
     private Integer min;
     private Integer max;
-
+    private Integer actual;
     @Override
     public String toString() {
         return "ProductoRequest{" +

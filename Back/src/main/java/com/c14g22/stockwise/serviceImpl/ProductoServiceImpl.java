@@ -86,6 +86,9 @@ public class ProductoServiceImpl implements ProductoService {
     producto.setCosto(productoRequest.getCosto());
     producto.setImpuesto(productoRequest.getImpuesto());
     producto.setFechaVencimiento(productoRequest.getFechaVencimiento());
+    producto.setMin(productoRequest.getMin());
+    producto.setMax(productoRequest.getMax());
+    producto.setActual(productoRequest.getActual());
     if (productoRequest.getCategoria() != null && !productoRequest.getCategoria()
         .equals(producto.getCategoria().getNombre())) {
       Categoria categoria = categoriaRepository.findByNombre(productoRequest.getCategoria())
