@@ -17,3 +17,12 @@ export function serviceSignUp(newUser) {
       .catch(error => reject(new Error(error)));
   });
 }
+
+export function serviceGetUser() {
+  return new Promise((resolve, reject) => {
+    httpClient
+      .get('/user')
+      .then(({ data }) => resolve(data))
+      .catch(error => reject(new Error(error)));
+  });
+}

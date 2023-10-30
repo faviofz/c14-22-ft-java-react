@@ -4,4 +4,5 @@ export const authActions = {
   ERROR: 'auth/setError',
   LOADING: 'auth/loading',
   CREATE: 'user/crate',
+  GETUSER: 'user/get',
 };

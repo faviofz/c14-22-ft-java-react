@@ -1,16 +1,17 @@
 import { CalendarSVG, ClockSVG } from '@/assets/svg';
-import PropTypes from 'prop-types';
+import { useAuth } from '@/hooks/useAuth';
 
-Welcome.propTypes = {
-  fullname: PropTypes.string,
-};
-
-export function Welcome({ fullname }) {
+export function Welcome() {
+  const { authState } = useAuth();
   return (
     <div className='flex flex-col gap-5 mt-4 mb-5 min-[500px]:flex-row  lg:flex-row lg:items-center lg:justify-between'>
       <h1 className='text-lg tracking-wider lg:text-2xl flex gap-x-2 min-[500px]:flex-col min-[700px]:flex-row'>
         <span>Bienvenido</span>
-        <span className='font-bold capitalize'>{fullname}</span>
+        <span className='font-bold capitalize'>
+          {authState.loading
+            ? '...'
+            : `${authState?.user?.name} ${authState?.user?.surname}`}
+        </span>
       </h1>
       <div className='flex justify-between min-[500px]:flex-col min-[500px]:justify-center min-[500px]:items-end min-[500px]:flex-1 [&>div]:flex [&>div]:items-center [&>div]:gap-2 [&>div>h3]:text-xs'>
         <div>
@@ -29,7 +30,10 @@ export function Welcome({ fullname }) {
           <h3>
             {
               // tiene que actualizarse la hora
-              new Date().toLocaleTimeString('es', { hour: "2-digit", minute: "2-digit"})
+              new Date().toLocaleTimeString('es', {
+                hour: '2-digit',
+                minute: '2-digit',
+              })
             }
           </h3>
         </div>

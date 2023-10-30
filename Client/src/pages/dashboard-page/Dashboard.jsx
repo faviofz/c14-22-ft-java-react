@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Container } from '@/components';
 import { DashboardPanel, Welcome, Stat } from './components';
-import { useAuth, useProducts, useProviders } from '@/hooks';
+import { useProducts, useProviders } from '@/hooks';
 import { TableUltimos } from '../product-page/components/';
 
 import {
@@ -31,7 +31,6 @@ const {
 };
 
 export default function Dashboard() {
-  const { authState } = useAuth();
   const { products, loading: loadingProducts, getAllProducts } = useProducts();
 
   const {
@@ -61,7 +60,7 @@ export default function Dashboard() {
   return (
     <div className='dashboard-page'>
       <Container>
-        <Welcome fullname={authState?.user?.userName} />
+        <Welcome />
 
         <div className='box-border flex flex-col justify-center w-full gap-5 mb-5 starts-group'>
           <Stat
@@ -93,7 +92,6 @@ export default function Dashboard() {
             listItems={products.slice(-7)}
             isProduct={true}
           >
-            {loadingProviders && 'cargando...'}
             <DashboardPanel.Content>
               <TableUltimos data={products} />
             </DashboardPanel.Content>
