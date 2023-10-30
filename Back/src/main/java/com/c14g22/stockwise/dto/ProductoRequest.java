@@ -6,6 +6,7 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductoRequest {
+    @NonNull
     private String nombre;
     private String imagen;
     private Double costo;
@@ -24,6 +26,8 @@ public class ProductoRequest {
     private String categoria;
     private String proveedor;
     private String marca;
+    private Integer min;
+    private Integer max;
 
     @Override
     public String toString() {

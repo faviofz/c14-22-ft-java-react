@@ -29,6 +29,9 @@ public class Producto {
     private Double costo;
     private Double impuesto;
     private LocalDate fechaVencimiento;
+    private Integer min;
+    private Integer max;
+    private Integer actual = 0;
 
     @ManyToOne(targetEntity = Categoria.class)
     @JoinColumn(name = "categoria_id")
@@ -46,5 +49,7 @@ public class Producto {
         this.costo = productoRequest.getCosto();
         this.impuesto = productoRequest.getImpuesto();
         this.fechaVencimiento = productoRequest.getFechaVencimiento();
+        this.min = productoRequest.getMin();
+        this.max = productoRequest.getMax();
     }
 }

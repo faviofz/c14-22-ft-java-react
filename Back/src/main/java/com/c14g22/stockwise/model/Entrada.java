@@ -34,7 +34,6 @@ public class Entrada {
     private Pedido pedido;
 
     public Entrada(EntradaDto entradaDto) {
-
         this.fecha = entradaDto.getFecha();
         this.cantidad = entradaDto.getCantidad();
         this.producto = entradaDto.getProducto();
