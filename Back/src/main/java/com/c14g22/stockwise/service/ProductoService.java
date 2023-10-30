@@ -2,6 +2,7 @@ package com.c14g22.stockwise.service;
 
 import com.c14g22.stockwise.dto.ProductoRequest;
 import com.c14g22.stockwise.dto.ProductoResponse;
+import com.c14g22.stockwise.dto.StockPatchRequest;
 import com.c14g22.stockwise.model.Producto;
 
 import java.util.List;
@@ -17,7 +18,9 @@ public interface ProductoService {
 
     void actualizarProducto(Long id, ProductoRequest productoRequest);
 
-    void actualizarAtributoActual(Long id, Integer actual);
+    void actualizarProductosRestarActual(List<StockPatchRequest> stockPatchRequest);
+
+    void actualizarProductosSumarActual(List<StockPatchRequest> stockPatchRequest);
 
     void eliminarProducto(Long id);
 }

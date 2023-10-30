@@ -70,10 +70,17 @@ public class ProductoController {
         return ResponseEntity.noContent().build();
     }
 
-    @PatchMapping("/{id}/modificarStock")
-    public ResponseEntity<ProductoResponse> modificarStock(@PathVariable Long id, @RequestBody
-        StockPatchRequest stockPatchRequest){
-        this.productoService.actualizarAtributoActual(id, stockPatchRequest.actual());
+    @PatchMapping("/agregarStock")
+    public ResponseEntity<ProductoResponse> agregarStock(@RequestBody
+        List<StockPatchRequest> stockPatchRequest){
+        this.productoService.actualizarProductosSumarActual(stockPatchRequest);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/quitarStock")
+    public ResponseEntity<ProductoResponse> quitarStock(@RequestBody
+    List<StockPatchRequest> stockPatchRequest){
+        this.productoService.actualizarProductosSumarActual(stockPatchRequest);
         return ResponseEntity.noContent().build();
     }
 }

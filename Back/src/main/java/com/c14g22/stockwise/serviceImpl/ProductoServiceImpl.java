@@ -2,6 +2,7 @@ package com.c14g22.stockwise.serviceImpl;
 
 import com.c14g22.stockwise.dto.ProductoRequest;
 import com.c14g22.stockwise.dto.ProductoResponse;
+import com.c14g22.stockwise.dto.StockPatchRequest;
 import com.c14g22.stockwise.exception.ProductoNotFoundException;
 import com.c14g22.stockwise.model.Categoria;
 import com.c14g22.stockwise.model.Marca;
@@ -38,7 +39,8 @@ public class ProductoServiceImpl implements ProductoService {
 
   @Override
   public ProductoResponse obtenerProductoPorId(Long id) {
-    Producto producto = this.productoRepository.findById(id).orElseThrow(() -> new ProductoNotFoundException(id));
+    Producto producto = this.productoRepository.findById(id)
+        .orElseThrow(() -> new ProductoNotFoundException(id));
     return new ProductoResponse(producto);
   }
 
@@ -115,7 +117,24 @@ public class ProductoServiceImpl implements ProductoService {
     productoRepository.deleteById(id);
   }
 
-  public void actualizarAtributoActual(Long id, Integer actual){
-    productoRepository.updateActualById(actual, id);
+  public void actualizarProductosSumarActual(List<StockPatchRequest> requestList) {
+    List<Producto> productoList = this.productoRepository.findAllById(requestList.stream().map(
+        StockPatchRequest::id).toList());
+    for (StockPatchRequest r : requestList) {
+      productoList.stream().filter(p -> p.getId().equals(r.id())).findFirst()
+          .ifPresent(p -> p.setActual(p.getActual() + r.actual()));
+    }
+    this.productoRepository.saveAll(productoList);
   }
+
+  public void actualizarProductosRestarActual(List<StockPatchRequest> requestList) {
+    List<Producto> productoList = this.productoRepository.findAllById(requestList.stream().map(
+        StockPatchRequest::id).toList());
+    for (StockPatchRequest r : requestList) {
+      productoList.stream().filter(p -> p.getId().equals(r.id())).findFirst()
+          .ifPresent(p -> p.setActual(Math.max(p.getActual() - r.actual(),0)));
+    }
+    this.productoRepository.saveAll(productoList);
+  }
+
 }
