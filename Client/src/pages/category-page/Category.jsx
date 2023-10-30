@@ -34,7 +34,7 @@ export default function Category() {
           <DataList.Header>
             <Search placeholder='Buscar categoría' onNewValue={handleSearch} />
             <Button
-              className='gap-3 lg:w-52  btn btn-primary md:w-80'
+              className='gap-3 lg:w-52 btn btn-primary md:w-80'
               onClick={() =>
                 openModal(<FormCategory />, {
                   title: 'Nueva Categoría',

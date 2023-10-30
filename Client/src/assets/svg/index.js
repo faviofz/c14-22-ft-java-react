@@ -28,8 +28,12 @@ import BrandIcon from './brand-icon.svg?react';
 import LightIcon from './light-icon.svg?react';
 import DarkIcon from './dark-icon.svg?react';
 import ViewIcon from './viewIcon.svg?react';
+import UpArrowIcon from './upArrow.svg?react';
+import DownArrowIcon from './downArrow.svg?react';
 
 export {
+  UpArrowIcon,
+  DownArrowIcon,
   PencilAltIcon,
   TrashIcon,
   list,

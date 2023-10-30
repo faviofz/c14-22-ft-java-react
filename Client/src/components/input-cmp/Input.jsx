@@ -14,8 +14,8 @@ export function Input({ label, errorMessage, type, ...props }) {
       <input
         type={type}
         placeholder={placeholder}
-        className='w-full input input-bordered'
         {...props}
+        className={`w-full input input-bordered ${props.className}`}
       />
 
       {errorMessage && (

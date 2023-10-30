@@ -3,6 +3,7 @@ import { TrashIcon, PencilAltIcon } from '@/assets/svg';
 import { useProducts } from '../../../hooks/useProducts';
 import { TableSkeleton } from '@/components';
 import swal from 'sweetalert';
+
 export function Table({ data }) {
   const { loading, deleteProducts } = useProducts();
   const headers = [
@@ -42,7 +43,6 @@ export function Table({ data }) {
     });
   };
 
-  console.log(data)
 
   return (
     <>
@@ -76,7 +76,7 @@ export function Table({ data }) {
                 },
                 index
               ) => (
-                <tr className={`${min > actual && 'bg-red-400'}`} key={index}>
+                <tr className={`${min > actual && 'bg-base-300'}`} key={index}>
                   <td>{nombre}</td>
                   <td>
                     <div className='w-12 h-12 mask mask-squircle'>

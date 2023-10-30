@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { DataList, Container, Search, Paginated, Button } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
-import { PlusIcon } from '@/assets/svg';
-import { Table, Grid, Filters, FormProduct } from './components';
+import { PlusIcon, UpArrowIcon, DownArrowIcon } from '@/assets/svg';
+import {
+  Table,
+  Grid,
+  Filters,
+  FormProduct,
+  AddProduct,
+  SubtractStock,
+} from './components';
 import { useProducts, usePaginated, useModal } from '@/hooks';
 import './product-page.scss';
 
@@ -55,8 +62,34 @@ export default function Product() {
           grid={<Grid data={displayed} />}
         >
           <div className='flex justify-between gap-5'>
-          <button className='btn btn-primary btn-wide'>Entrada productos</button>
-          <button className='btn btn-primary btn-wide'>Salida productos</button>
+            <Button
+              className='gap-3 lg:w-52 btn btn-primary md:w-80'
+              onClick={() =>
+                openModal(<AddProduct />, {
+                  title: 'Entrada producto',
+                  className: 'modal-product',
+                })
+              }
+            >
+              <div className='flex items-center gap-5'>
+                <UpArrowIcon className='[&>path]:fill-secondary-content'/>
+                <p className='text-xs'>Entrada producto</p>
+              </div>
+            </Button>
+            <Button
+              className='gap-3 lg:w-52 btn btn-primary md:w-80'
+              onClick={() =>
+                openModal(<SubtractStock />, {
+                  title: 'Salida producto',
+                  className: 'modal-product',
+                })
+              }
+            >
+              <div className='flex items-center flex-1 gap-1'>
+                <DownArrowIcon className='[&>path]:fill-secondary-content'/>
+                Salida productos
+              </div>
+            </Button>
           </div>
           <DataList.Header>
             <Search placeholder='Buscar producto' onNewValue={handleSearch} />

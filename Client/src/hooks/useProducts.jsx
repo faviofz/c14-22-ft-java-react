@@ -4,6 +4,8 @@ import {
   getAllProductsAsync,
   deleteProductAsync,
   createProductAsync,
+  addStockAsync,
+  subtractStockAsync,  
 } from '@/redux/reducers';
 
 export function useProducts() {
@@ -20,8 +22,13 @@ export function useProducts() {
   function createProduct(data) {
     dispatch(createProductAsync(data));
   }
-  //   function getProduct(){}
+  function addStock(arr) {
+    dispatch(addStockAsync(arr));
+  }
+  function subtractStock(arr) {
+    dispatch(subtractStockAsync(arr));
+  }
+  
   //   function updateProduct(){}
-  //   function deleteProduct(){}
-  return { products, loading, createProduct, getAllProducts, deleteProducts };
+  return { products, loading, createProduct, getAllProducts, deleteProducts, addStock, subtractStock };
 }

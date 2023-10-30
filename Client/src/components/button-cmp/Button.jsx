@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export function Button({ children, ...props }) {
   return (
-    <button className='btn btn-primary btn-block normal-case' {...props}>
+    <button className='normal-case btn btn-primary btn-block btn-component' {...props}>
       {children}
     </button>
   );
