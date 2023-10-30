@@ -15,7 +15,7 @@ export function UserInfo() {
     <div className=' dropdown dropdown-end'>
       <label tabIndex={0}>
         <div className='h-[50px] w-[50px]'>
-          <Avatar username={authState?.user?.userName}></Avatar>
+          <Avatar username={authState?.user?.name}></Avatar>
         </div>
       </label>
       <ul
@@ -25,11 +25,11 @@ export function UserInfo() {
         <li>
           <div className='flex flex-row'>
             <div className='h-[50px] w-[50px]'>
-            <Avatar username={authState?.user?.userName}></Avatar>
+              <Avatar></Avatar>
             </div>
             <div>
-              <h1 className='font-bold text-md text-primary'>
-                {authState?.user?.userName}
+              <h1 className='font-bold text-md text-primary capitalize'>
+                {authState?.user?.name} {authState?.user?.surname}
               </h1>
               <span className='text-xs text-neutral'>Usuario</span>
             </div>

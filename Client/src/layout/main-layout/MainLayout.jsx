@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Preload, Footer } from '@/components';
 import { useAuth } from '@/hooks/useAuth';
@@ -6,8 +6,12 @@ import { Navbar } from './components/Navbar';
 import './main-layout.scss';
 
 export function MainLayout() {
-  const { authState } = useAuth();
+  const { authState, getUser } = useAuth();
   const { isLogged } = authState;
+
+  useEffect(() => {
+    isLogged && !authState.user.name && getUser();
+  }, [isLogged]);
 
   return (
     <section className={isLogged ? 'main-layout logged' : 'main-layout'}>

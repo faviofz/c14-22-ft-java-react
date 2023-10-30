@@ -15,15 +15,14 @@ export default function Login() {
         userName: '',
         password: '',
       },
-      onSubmit: values => {
+      onSubmit: (values, { resetForm }) => {
         onLogin(values);
-        values.userName = '';
-        values.password = '';
+        resetForm();
       },
       validationSchema: Yup.object({
         userName: Yup.string()
           .required('Este dato es requerido')
-          .min(3, 'Debe tener más de 3 caracteres'),
+          .min(3, 'Debe tener más de 2 caracteres'),
         password: Yup.string()
           .required('Este dato es requerido')
           .min(6, 'debe tener al menos 6 caracteres'),

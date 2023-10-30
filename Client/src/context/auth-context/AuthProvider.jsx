@@ -2,13 +2,33 @@ import PropTypes from 'prop-types';
 import { createContext, useMemo, useReducer } from 'react';
 import { authReducer, initialState } from './reducer';
 import { authActions } from './actions';
-import { serviceLogin, serviceSignUp } from '@/services/auth.services';
+import {
+  serviceLogin,
+  serviceSignUp,
+  serviceGetUser,
+} from '@/services/auth.services';
 import { userApiToUser, userToUserApi } from '@/adapters';
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [authState, dispatch] = useReducer(authReducer, initialState);
+
+  const getUser = async () => {
+    try {
+      dispatch({ type: authActions.ERROR, payload: null });
+      dispatch({ type: authActions.LOADING, payload: true });
+
+      const userApi = await serviceGetUser();
+      const user = userApiToUser(userApi);
+      delete user.password;
+      dispatch({ type: authActions.GETUSER, payload: user });
+    } catch (error) {
+      dispatch({ type: authActions.ERROR, payload: error });
+    } finally {
+      dispatch({ type: authActions.LOADING, payload: false });
+    }
+  };
 
   const signUp = async newUser => {
     try {
@@ -32,13 +52,10 @@ export function AuthProvider({ children }) {
       dispatch({ type: authActions.ERROR, payload: null });
       dispatch({ type: authActions.LOADING, payload: true });
 
-      const currentUser = { ...user };
-      const userApi = userToUserApi(currentUser);
+      const userApi = userToUserApi(user);
       const { token } = await serviceLogin(userApi);
-      currentUser.token = token;
-      delete currentUser.password;
 
-      dispatch({ type: authActions.LOGIN, payload: currentUser });
+      dispatch({ type: authActions.LOGIN, payload: { token } });
     } catch (error) {
       dispatch({
         type: authActions.ERROR,
@@ -58,7 +75,7 @@ export function AuthProvider({ children }) {
   };
 
   const valueMemo = useMemo(
-    () => ({ authState, signUp, onLogin, onLogout, setErrorMessage }),
+    () => ({ authState, signUp, onLogin, onLogout, setErrorMessage, getUser }),
     [authState]
   );
 
