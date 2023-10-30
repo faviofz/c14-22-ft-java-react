@@ -93,7 +93,6 @@ export default function Dashboard() {
             listItems={products.slice(-7)}
             isProduct={true}
           >
-            {loadingProviders && 'cargando...'}
             <DashboardPanel.Content>
               <TableUltimos data={products} />
             </DashboardPanel.Content>

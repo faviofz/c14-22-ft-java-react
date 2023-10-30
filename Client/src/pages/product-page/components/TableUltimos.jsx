@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import { PencilAltIcon } from '@/assets/svg';
-import { useProducts } from '@/hooks/';
+import { ViewIcon } from '@/assets/svg';
+import { useProducts, useModal } from '@/hooks/';
 import { TableSkeleton } from '@/components';
 export function TableUltimos({ data }) {
   const { loading } = useProducts();
+  const { openModal } = useModal();
   const headers = ['Nombre', 'Imagen', 'Acciones'];
 
   return (
@@ -20,31 +21,28 @@ export function TableUltimos({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map(
-              ({
-                id,
-                nombre,
-                imagen,
-                categoria,
-                marca,
-                fechaVencimiento,
-                proveedor,
-              }) => (
-                <tr key={id}>
-                  <td>{nombre}</td>
-                  <td>
-                    <div className='w-12 h-12 mask mask-squircle'>
-                      <img src={imagen} alt='Imagen' />
-                    </div>
-                  </td>
-                  <td className='flex gap-5'>
-                    <button>
-                      <PencilAltIcon />
-                    </button>
-                  </td>
-                </tr>
-              )
-            )}
+            {data.map(({ id, nombre, imagen }) => (
+              <tr key={id}>
+                <td>{nombre}</td>
+                <td>
+                  <div className='w-12 h-12 mask mask-squircle'>
+                    <img src={imagen} alt='Imagen' />
+                  </div>
+                </td>
+                <td className='flex gap-5'>
+                  <button
+                    onClick={() =>
+                      openModal(<>Detalles de {nombre}</>, {
+                        title: nombre,
+                        className: 'modal-product',
+                      })
+                    }
+                  >
+                    <ViewIcon />
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       )}

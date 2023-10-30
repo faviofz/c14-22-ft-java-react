@@ -27,6 +27,7 @@ import ImageIcon from './img-icon.svg?react';
 import BrandIcon from './brand-icon.svg?react';
 import LightIcon from './light-icon.svg?react';
 import DarkIcon from './dark-icon.svg?react';
+import ViewIcon from './viewIcon.svg?react';
 
 export {
   PencilAltIcon,
@@ -58,4 +59,5 @@ export {
   BrandIcon,
   LightIcon,
   DarkIcon,
+  ViewIcon,
 };
