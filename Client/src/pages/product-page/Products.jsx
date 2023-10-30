@@ -54,10 +54,14 @@ export default function Product() {
           table={<Table data={displayed} />}
           grid={<Grid data={displayed} />}
         >
+          <div className='flex justify-between gap-5'>
+          <button className='btn btn-primary btn-wide'>Entrada productos</button>
+          <button className='btn btn-primary btn-wide'>Salida productos</button>
+          </div>
           <DataList.Header>
             <Search placeholder='Buscar producto' onNewValue={handleSearch} />
             <Button
-              className='gap-3 lg:w-52  btn btn-primary md:w-80'
+              className='gap-3 lg:w-52 btn btn-primary md:w-80'
               onClick={() =>
                 openModal(<FormProduct />, {
                   title: 'Nuevo Producto',
