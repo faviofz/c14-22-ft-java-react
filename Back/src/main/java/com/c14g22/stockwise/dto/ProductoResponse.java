@@ -27,9 +27,13 @@ public class ProductoResponse {
     private Double impuesto;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate fechaVencimiento;
+    private Integer min;
+    private Integer max;
+    private Integer actual;
     private CategoriaDto categoria;
     private ProveedorDto proveedor;
     private MarcaDto marca;
+
 
     public ProductoResponse(Producto producto) {
         this.id = producto.getId();
@@ -38,6 +42,9 @@ public class ProductoResponse {
         this.costo = producto.getCosto();
         this.impuesto = producto.getImpuesto();
         this.fechaVencimiento = producto.getFechaVencimiento();
+        this.min = producto.getMin();
+        this.max = producto.getMax();
+        this.actual = producto.getActual();
         this.categoria = producto.getCategoria() != null ? new CategoriaDto(producto.getCategoria()) : null;
         this.proveedor = producto.getProveedor() != null ? new ProveedorDto(producto.getProveedor()) : null;
         this.marca = producto.getMarca() != null ? new MarcaDto(producto.getMarca()) : null;

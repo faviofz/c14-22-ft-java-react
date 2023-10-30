@@ -111,4 +111,8 @@ public class ProductoServiceImpl implements ProductoService {
   public void eliminarProducto(Long id) {
     productoRepository.deleteById(id);
   }
+
+  public void actualizarAtributoActual(Long id, Integer actual){
+    productoRepository.updateActualById(actual, id);
+  }
 }

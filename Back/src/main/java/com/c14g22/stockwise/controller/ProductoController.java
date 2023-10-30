@@ -2,6 +2,7 @@ package com.c14g22.stockwise.controller;
 
 import com.c14g22.stockwise.dto.ProductoRequest;
 import com.c14g22.stockwise.dto.ProductoResponse;
+import com.c14g22.stockwise.dto.StockPatchRequest;
 import com.c14g22.stockwise.model.Producto;
 import com.c14g22.stockwise.service.ProductoService;
 import jakarta.persistence.EntityNotFoundException;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -65,6 +67,13 @@ public class ProductoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<ProductoResponse> deleteProducto(@PathVariable Long id) {
         this.productoService.eliminarProducto(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{id}/modificarStock")
+    public ResponseEntity<ProductoResponse> modificarStock(@PathVariable Long id, @RequestBody
+        StockPatchRequest stockPatchRequest){
+        this.productoService.actualizarAtributoActual(id, stockPatchRequest.actual());
         return ResponseEntity.noContent().build();
     }
 }

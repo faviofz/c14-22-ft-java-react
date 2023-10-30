@@ -15,7 +15,9 @@ public interface ProductoService {
 
     ProductoResponse guardarProducto(ProductoRequest productoRequest);
 
-    void actualizarProducto(Long id, ProductoRequest productoRequest) throws Exception;
+    void actualizarProducto(Long id, ProductoRequest productoRequest);
+
+    void actualizarAtributoActual(Long id, Integer actual);
 
     void eliminarProducto(Long id);
 }
