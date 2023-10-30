@@ -42,6 +42,8 @@ export function Table({ data }) {
     });
   };
 
+  console.log(data)
+
   return (
     <>
       {loading ? (
@@ -66,12 +68,15 @@ export function Table({ data }) {
                   marca,
                   fechaVencimiento,
                   proveedor,
+                  min,
+                  max,
+                  actual,
                   impuesto,
                   costo,
                 },
                 index
               ) => (
-                <tr key={index}>
+                <tr className={`${min > actual && 'bg-red-400'}`} key={index}>
                   <td>{nombre}</td>
                   <td>
                     <div className='w-12 h-12 mask mask-squircle'>

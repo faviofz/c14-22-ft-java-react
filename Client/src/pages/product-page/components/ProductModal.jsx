@@ -16,7 +16,6 @@ export default function ProductModal({product}) {
               <img
                 className='object-contain w-full h-full '
                 src={product.imagen}
-                // src='https://res.cloudinary.com/dwfhsitwe/image/upload/v1698341445/posters/2_khtr3x.jpg'
                 alt='Imagen'
               />
             </div>
