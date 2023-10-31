@@ -68,16 +68,16 @@ public class ProductoController {
   }
 
   @PatchMapping("/agregarStock")
-  public ResponseEntity<ProductoResponse> agregarStock(@RequestBody
+  public ResponseEntity<List<ProductoResponse>> agregarStock(@RequestBody
   List<StockPatchRequest> stockPatchRequest) {
-    this.productoService.actualizarProductosSumarActual(stockPatchRequest);
-    return ResponseEntity.noContent().build();
+    List<ProductoResponse> productoResponses = this.productoService.actualizarProductosSumarActual(stockPatchRequest);
+    return ResponseEntity.ok(productoResponses);
   }
 
   @PatchMapping("/quitarStock")
-  public ResponseEntity<ProductoResponse> quitarStock(@RequestBody
+  public ResponseEntity<List<ProductoResponse>> quitarStock(@RequestBody
   List<StockPatchRequest> stockPatchRequest) {
-    this.productoService.actualizarProductosRestarActual(stockPatchRequest);
-    return ResponseEntity.noContent().build();
+    List<ProductoResponse> productoResponses = this.productoService.actualizarProductosRestarActual(stockPatchRequest);
+    return ResponseEntity.ok(productoResponses);
   }
 }

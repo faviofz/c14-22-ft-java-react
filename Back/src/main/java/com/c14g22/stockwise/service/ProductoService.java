@@ -17,9 +17,9 @@ public interface ProductoService {
 
     ProductoResponse actualizarProducto(Long id, ProductoRequest productoRequest);
 
-    void actualizarProductosRestarActual(List<StockPatchRequest> stockPatchRequest);
+    List<ProductoResponse> actualizarProductosRestarActual(List<StockPatchRequest> stockPatchRequest);
 
-    void actualizarProductosSumarActual(List<StockPatchRequest> stockPatchRequest);
+    List<ProductoResponse> actualizarProductosSumarActual(List<StockPatchRequest> stockPatchRequest);
 
     void eliminarProducto(Long id);
 }

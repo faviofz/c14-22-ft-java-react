@@ -117,17 +117,17 @@ public class ProductoServiceImpl implements ProductoService {
     productoRepository.deleteById(id);
   }
 
-  public void actualizarProductosSumarActual(List<StockPatchRequest> requestList) {
+  public List<ProductoResponse> actualizarProductosSumarActual(List<StockPatchRequest> requestList) {
     List<Producto> productoList = this.productoRepository.findAllById(requestList.stream().map(
         StockPatchRequest::id).toList());
     for (StockPatchRequest r : requestList) {
       productoList.stream().filter(p -> p.getId().equals(r.id())).findFirst()
           .ifPresent(p -> p.setActual(p.getActual() + r.actual()));
     }
-    this.productoRepository.saveAll(productoList);
+    return this.productoRepository.saveAll(productoList).stream().map(ProductoResponse::new).toList();
   }
 
-  public void actualizarProductosRestarActual(List<StockPatchRequest> requestList) {
+  public List<ProductoResponse> actualizarProductosRestarActual(List<StockPatchRequest> requestList) {
     List<Producto> productoList = this.productoRepository.findAllById(requestList.stream().map(
         StockPatchRequest::id).toList());
     Producto producto = null;
@@ -139,7 +139,7 @@ public class ProductoServiceImpl implements ProductoService {
         producto.setActual(Math.max(producto.getActual() - r.actual(), 0));
       }
     }
-    this.productoRepository.saveAll(productoList);
+    return this.productoRepository.saveAllAndFlush(productoList).stream().map(ProductoResponse::new).toList();
   }
 
 }
