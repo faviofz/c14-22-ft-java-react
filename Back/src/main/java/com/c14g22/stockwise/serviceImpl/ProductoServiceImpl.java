@@ -130,9 +130,14 @@ public class ProductoServiceImpl implements ProductoService {
   public void actualizarProductosRestarActual(List<StockPatchRequest> requestList) {
     List<Producto> productoList = this.productoRepository.findAllById(requestList.stream().map(
         StockPatchRequest::id).toList());
+    Producto producto = null;
+    Optional<Producto> opt = null;
     for (StockPatchRequest r : requestList) {
-      productoList.stream().filter(p -> p.getId().equals(r.id())).findFirst()
-          .ifPresent(p -> p.setActual(Math.max(p.getActual() - r.actual(),0)));
+      opt = productoList.stream().filter(p -> p.getId().equals(r.id())).findFirst();
+      if (opt.isPresent()) {
+        producto = opt.get();
+        producto.setActual(Math.max(producto.getActual() - r.actual(), 0));
+      }
     }
     this.productoRepository.saveAll(productoList);
   }
