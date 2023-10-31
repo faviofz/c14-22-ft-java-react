@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { ViewIcon } from '@/assets/svg';
 import { useProducts, useModal } from '@/hooks/';
 import { TableSkeleton } from '@/components';
+import { ProductDetail } from './ProductDetail';
 export function TableUltimos({ data }) {
   const { loading } = useProducts();
   const { openModal } = useModal();
@@ -21,19 +22,19 @@ export function TableUltimos({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map(({ id, nombre, imagen }) => (
-              <tr key={id}>
-                <td>{nombre}</td>
+            {data.map(product => (
+              <tr key={product.id}>
+                <td>{product.nombre}</td>
                 <td>
                   <div className='w-12 h-12 mask mask-squircle'>
-                    <img src={imagen} alt='Imagen' />
+                    <img src={product.imagen} alt='Imagen' />
                   </div>
                 </td>
                 <td className='flex gap-5'>
                   <button
                     onClick={() =>
-                      openModal(<>Detalles de {nombre}</>, {
-                        title: nombre,
+                      openModal(<ProductDetail product={product} />, {
+                        title: '',
                         className: 'modal-product',
                       })
                     }
