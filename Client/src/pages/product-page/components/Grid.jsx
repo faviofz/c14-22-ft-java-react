@@ -1,19 +1,23 @@
 import PropTypes from 'prop-types';
-import ProductModal from './ProductModal';
-
-const test = item => {
-  document.getElementById('productModal').showModal();
-};
+import { useModal } from '@/hooks';
+import { ProductDetail } from './ProductDetail';
 
 export function Grid({ data }) {
+  const { openModal } = useModal();
 
   return (
     <section className='flex flex-row flex-wrap justify-center gap-5'>
       {data.map(item => (
         <div
           key={item.id}
-          className={`${item.min > item.actual && 'border-4 border-red-400'} bg-base-200 w-full h-[153px] rounded-3xl shadow flex flex-row min-[400px]:max-w-[342px]`}
-          onClick={() => test(item)}
+          className={`${
+            item.min > item.actual && 'border-4 border-red-400'
+          } bg-base-200 w-full h-[153px] rounded-3xl shadow flex flex-row min-[400px]:max-w-[342px]`}
+          onClick={() =>
+            openModal(<ProductDetail product={item} />, {
+              title: '',
+            })
+          }
         >
           <img
             className=' object-cover rounded-3xl w-[146px] max-w-4xl h-full'
@@ -35,7 +39,6 @@ export function Grid({ data }) {
               <p className='mt-2 text-secondary'>${item.costo}</p>
             </div>
           </div>
-          <ProductModal product={item} />
         </div>
       ))}
     </section>

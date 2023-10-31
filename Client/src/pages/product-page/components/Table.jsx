@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
-import { TrashIcon, PencilAltIcon } from '@/assets/svg';
+import { TrashIcon, PencilAltIcon, ViewIcon } from '@/assets/svg';
 import { useProducts, useModal } from '@/hooks';
 import { TableSkeleton } from '@/components';
 import swal from 'sweetalert';
 import { UpdateProduct } from './UpdateProduct';
+import { ProductDetail } from './ProductDetail';
 export function Table({ data }) {
   const { loading, deleteProducts } = useProducts();
   const { openModal } = useModal();
@@ -88,6 +89,15 @@ export function Table({ data }) {
                     }
                   >
                     <PencilAltIcon />
+                  </button>
+                  <button
+                    onClick={() =>
+                      openModal(<ProductDetail product={product} />, {
+                        title: '',
+                      })
+                    }
+                  >
+                    <ViewIcon />
                   </button>
                 </td>
               </tr>

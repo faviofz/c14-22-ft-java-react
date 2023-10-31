@@ -114,7 +114,6 @@ export function FormProduct() {
               {...getFieldProps('costo')}
               errorMessage={touched.costo && errors.costo}
             />
-
           </div>
 
           <Select
@@ -127,16 +126,6 @@ export function FormProduct() {
             {...getFieldProps('marca')}
             errorMessage={touched.marca && errors.marca}
           />
-
-<Input
-              type='number'
-              min='0'
-              step='0.01'
-              label='Minimo'
-              placeholder='Ingresar minimo'
-              {...getFieldProps('min')}
-              errorMessage={touched.costo && errors.costo}
-            />
         </div>
 
         <div>
@@ -188,16 +177,27 @@ export function FormProduct() {
             {...getFieldProps('proveedor')}
             errorMessage={touched.proveedor && errors.proveedor}
           />
-          <Input
-              type='number'
-              min='0'
-              step='0.01'
-              label='Maximo'
-              placeholder='Ingresar maximo'
-              {...getFieldProps('max')}
-              errorMessage={touched.costo && errors.costo}
-            />
         </div>
+      </div>
+      <div className='flex flex-col  min-[730px]:flex-row min-[730px]:gap-5'>
+        <Input
+          type='number'
+          min='0'
+          step='0.01'
+          label='Minimo'
+          placeholder='Ingresar minimo'
+          {...getFieldProps('min')}
+          errorMessage={touched.costo && errors.costo}
+        />
+        <Input
+          type='number'
+          min='0'
+          step='0.01'
+          label='Maximo'
+          placeholder='Ingresar maximo'
+          {...getFieldProps('max')}
+          errorMessage={touched.costo && errors.costo}
+        />
       </div>
 
       {/* BUTTONS */}
