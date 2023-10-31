@@ -46,7 +46,7 @@ export function serviceDeleteCategory(id) {
   return new Promise((resolve, reject) => {
     httpClient
       .delete(`${path}/${id}`)
-      .then(({ data }) => resolve(data))
+      .then(() => resolve(id))
       .catch(error => reject(new Error(error)));
   });
 }
