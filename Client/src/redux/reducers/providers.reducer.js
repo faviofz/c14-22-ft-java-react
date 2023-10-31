@@ -50,6 +50,7 @@ export const updateProviderAsync = createAsyncThunk(
     // adapter
     const providerApi = providerToProviderApi(modifiedProvider);
     const response = await serviceUpdateProvider(providerApi);
+    console.log('response', response);
     // adapter
     const provider = providerApiToProvider(response);
     return provider;
@@ -80,7 +81,7 @@ const providersSlice = createSlice({
       state.loading = false;
       state.providers = action.payload;
     });
-    // --------------------------------
+    // -------------------------------- GET
     builder.addCase(getProviderAsync.pending, state => {
       state.loading = true;
     });
@@ -88,7 +89,7 @@ const providersSlice = createSlice({
       state.loading = false;
       state.provider = action.payload;
     });
-    // --------------------------------
+    // -------------------------------- CREATE
     builder.addCase(createProviderAsync.pending, state => {
       state.loading = true;
     });
@@ -96,7 +97,20 @@ const providersSlice = createSlice({
       state.loading = false;
       state.providers.push(action.payload);
     });
-    // --------------------------------
+    // -------------------------------- UPDATE
+    builder.addCase(updateProviderAsync.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(updateProviderAsync.fulfilled, (state, action) => {
+      state.loading = false;
+      const providerModified = action.payload;
+      const providerId = providerModified.id;
+      const index = state.providers.findIndex(
+        provider => provider.id === providerId
+      );
+      state.providers[index] = providerModified;
+    });
+    // -------------------------------- DELETE
     builder.addCase(deleteProviderAsync.fulfilled, (state, action) => {
       const idProvider = action.payload;
       const index = state.providers.findIndex(

@@ -80,7 +80,7 @@ const categorySlice = createSlice({
       state.loading = false;
       state.categories = action.payload;
     });
-    // --------------------------------
+    // -------------------------------- GET
     builder.addCase(getCategoryAsync.pending, state => {
       state.loading = true;
     });
@@ -88,7 +88,7 @@ const categorySlice = createSlice({
       state.loading = false;
       state.category = action.payload;
     });
-    // --------------------------------
+    // -------------------------------- CREATE
     builder.addCase(createCategoryAsync.pending, state => {
       state.loading = true;
     });
@@ -97,7 +97,20 @@ const categorySlice = createSlice({
       const category = action.payload;
       state.categories.push(category);
     });
-    // --------------------------------
+    // -------------------------------- UPDATE
+    builder.addCase(updateCategoryAsync.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(updateCategoryAsync.fulfilled, (state, action) => {
+      state.loading = false;
+      const categoryModified = action.payload;
+      const categoryId = categoryModified.id;
+      const index = state.categories.findIndex(
+        category => category.id === categoryId
+      );
+      state.categories[index] = categoryModified;
+    });
+    // -------------------------------- DELETE
     builder.addCase(deleteCategoryAsync.fulfilled, (state, action) => {
       const categoryId = action.payload;
       const index = state.categories.findIndex(

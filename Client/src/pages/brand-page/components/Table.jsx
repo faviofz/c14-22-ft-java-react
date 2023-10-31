@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
-import { TrashIcon /* , PencilAltIcon */ } from '@/assets/svg';
-import { useBrands } from '@/hooks/';
+import { TrashIcon, PencilAltIcon } from '@/assets/svg';
+import { useBrands, useModal } from '@/hooks/';
 import { TableSkeleton } from '@/components';
+import { UpdateBrand } from './UpdateBrand';
 
 export function Table({ data }) {
   const { loading, deleteBrand } = useBrands();
+  const { openModal } = useModal();
   const headers = ['Marca', 'Acciones'];
-
+  console.log();
   return (
     <>
       {loading ? (
@@ -21,16 +23,18 @@ export function Table({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map(({ id, name }, i) => (
-              <tr key={id}>
-                <td>{name}</td>
+            {data.map(brand => (
+              <tr key={brand.id}>
+                <td>{brand.name}</td>
                 <td className='flex gap-5'>
-                  <button onClick={() => deleteBrand(id)}>
+                  <button onClick={() => deleteBrand(brand.id)}>
                     <TrashIcon />
                   </button>
-                  {/* <button>
+                  <button
+                    onClick={() => openModal(<UpdateBrand brand={brand} />)}
+                  >
                     <PencilAltIcon />
-                  </button> */}
+                  </button>
                 </td>
               </tr>
             ))}

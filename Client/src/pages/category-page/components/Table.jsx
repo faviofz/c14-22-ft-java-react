@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
-import { TrashIcon /* , PencilAltIcon */ } from '@/assets/svg';
-import { useCategories } from '@/hooks/';
+import { TrashIcon, PencilAltIcon } from '@/assets/svg';
+import { useCategories, useModal } from '@/hooks/';
 import { TableSkeleton } from '@/components';
-
+import { UpdateCategory } from './UpdateCategory';
 import swal from 'sweetalert';
 
 export function Table({ data }) {
   const { loading, deleteCategory } = useCategories();
+  const { openModal } = useModal();
   const headers = ['Categoría', 'Acciones'];
 
   const deleteCategoryAlert = id => {
@@ -50,16 +51,20 @@ export function Table({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map(({ id, name }, i) => (
-              <tr key={id}>
-                <td>{name}</td>
+            {data.map(product => (
+              <tr key={product.id}>
+                <td>{product.name}</td>
                 <td className='flex gap-5'>
-                  <button onClick={() => deleteCategoryAlert(id)}>
+                  <button onClick={() => deleteCategoryAlert(product.id)}>
                     <TrashIcon />
                   </button>
-                  {/* <button>
+                  <button
+                    onClick={() =>
+                      openModal(<UpdateCategory product={product} />)
+                    }
+                  >
                     <PencilAltIcon />
-                  </button> */}
+                  </button>
                 </td>
               </tr>
             ))}
