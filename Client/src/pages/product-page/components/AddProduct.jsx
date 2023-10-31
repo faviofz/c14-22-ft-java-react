@@ -35,11 +35,11 @@ export function AddProduct() {
   return (
     <>
       <select
-        className='w-full h-10 text-sm lg:text-[12px] min-[1150px]:text-base bg-base-200 input input-bordered'
+        className='w-full h-10 mb-5 text-sm lg:text-[12px] min-[1150px]:text-base bg-base-200 input input-bordered'
         name='proveedor'
         onChange={handleSelect}
       >
-        <option value=''>Filtrar por Proveedor</option>
+        <option value=''>Seleccionar proveedor</option>
         {providers.map(provider => (
           <option key={provider.id} value={provider.name}>
             {provider.name}
@@ -47,6 +47,8 @@ export function AddProduct() {
         ))}
       </select>
 
+      <div className={`${!provider && 'hidden'}`}>
+      <h3 className='my-5 text-lg font-semibold'>Selecciona el producto a recargar</h3>
       <table className='table'>
         <thead>
           <tr>
@@ -85,6 +87,7 @@ export function AddProduct() {
             ))}
         </tbody>
       </table>
+      </div>
       <div>
         <Button onClick={() => handleSubmit()}>
           Hacer pedido

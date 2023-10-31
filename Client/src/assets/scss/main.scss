@@ -64,4 +64,13 @@ table {
             }
         }
     }
+    .table {
+        button{
+            svg{
+               path{
+                stroke: rgba($color: $neutral-dark, $alpha: .7);
+               } 
+            }
+        }
+    }
 }

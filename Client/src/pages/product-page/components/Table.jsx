@@ -60,7 +60,7 @@ export function Table({ data }) {
           </thead>
           <tbody>
             {data.map(product => (
-              <tr key={product.id}>
+              <tr className={`${product.min > product.actual && 'bg-error'}`} key={product.id}>
                 <td>{product.nombre}</td>
                 <td>
                   <div className='w-12 h-12 mask mask-squircle'>
@@ -88,7 +88,7 @@ export function Table({ data }) {
                       })
                     }
                   >
-                    <PencilAltIcon />
+                    <PencilAltIcon/>
                   </button>
                   <button
                     onClick={() =>

@@ -28,13 +28,13 @@ export function SubtractStock() {
   return (
     <>
       <Search placeholder='Buscar producto' onNewValue={handleSearch}/>
-      <table className='table'>
+      <table className='table '>
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Stock minimo</th>
             <th>Stock actual</th>
-            <th>Pedido</th>
+            <th>Egreso</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +61,7 @@ export function SubtractStock() {
         </tbody>
       </table>
       <div>
-        <Button onClick={() => handleSubmit()}>Hacer pedido</Button>
+        <Button onClick={() => handleSubmit()}>Salida de productos</Button>
       </div>
     </>
   );
