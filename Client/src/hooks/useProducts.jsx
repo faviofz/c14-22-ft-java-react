@@ -2,8 +2,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   // getAllProducts as getAllProductsSync,
   getAllProductsAsync,
-  deleteProductAsync,
+  getProductAsync,
   createProductAsync,
+  updateProductAsync,
+  deleteProductAsync,
 } from '@/redux/reducers';
 
 export function useProducts() {
@@ -14,14 +16,29 @@ export function useProducts() {
     if (!products.length) dispatch(getAllProductsAsync());
   }
 
+  function getProduct(id) {
+    dispatch(getProductAsync(id));
+  }
+
+  function createProduct(newProduct) {
+    dispatch(createProductAsync(newProduct));
+  }
+
+  function updateProduct(productModified) {
+    dispatch(updateProductAsync(productModified));
+  }
+
   function deleteProducts(id) {
     dispatch(deleteProductAsync(id));
   }
-  function createProduct(data) {
-    dispatch(createProductAsync(data));
-  }
-  //   function getProduct(){}
-  //   function updateProduct(){}
-  //   function deleteProduct(){}
-  return { products, loading, createProduct, getAllProducts, deleteProducts };
+
+  return {
+    products,
+    loading,
+    getAllProducts,
+    getProduct,
+    createProduct,
+    updateProduct,
+    deleteProducts,
+  };
 }
