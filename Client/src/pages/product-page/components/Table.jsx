@@ -15,6 +15,8 @@ export function Table({ data }) {
     'Marcas',
     'Vencimiento',
     'Proveedor',
+    'Stock min',
+    'Stock actual',
     'Acciones',
   ];
 
@@ -74,6 +76,12 @@ export function Table({ data }) {
                 <td>{product.fechaVencimiento}</td>
                 <td>
                   {!product.proveedor ? 'vacio' : product.proveedor.nombre}
+                </td>
+                <td>
+                  {product.min}
+                </td>
+                <td>
+                  {product.actual}
                 </td>
 
                 <td className='flex gap-5'>
