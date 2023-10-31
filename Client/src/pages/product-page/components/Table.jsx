@@ -93,7 +93,7 @@ export function Table({ data }) {
                   <button
                     onClick={() =>
                       openModal(<ProductDetail product={product} />, {
-                        title: '',
+                        className: 'modal-product',
                       })
                     }
                   >
