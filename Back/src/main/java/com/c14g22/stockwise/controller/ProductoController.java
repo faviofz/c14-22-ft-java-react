@@ -3,12 +3,9 @@ package com.c14g22.stockwise.controller;
 import com.c14g22.stockwise.dto.ProductoRequest;
 import com.c14g22.stockwise.dto.ProductoResponse;
 import com.c14g22.stockwise.dto.StockPatchRequest;
-import com.c14g22.stockwise.model.Producto;
 import com.c14g22.stockwise.service.ProductoService;
 import jakarta.persistence.EntityNotFoundException;
-
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,61 +23,61 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/productos")
 public class ProductoController {
 
-    @Autowired
-    private ProductoService productoService;
+  @Autowired
+  private ProductoService productoService;
 
-    @GetMapping
-    public List<ProductoResponse> getProductos() {
-        return this.productoService.obtenerProductos();
-    }
+  @GetMapping
+  public List<ProductoResponse> getProductos() {
+    return this.productoService.obtenerProductos();
+  }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ProductoResponse> getProductoById(@PathVariable Long id) {
-        try {
-            ProductoResponse productoResponse = productoService.obtenerProductoPorId(id);
-            return ResponseEntity.ok(productoResponse);
-        } catch (EntityNotFoundException e) {
-            return ResponseEntity.notFound().build();
-        }
+  @GetMapping("/{id}")
+  public ResponseEntity<ProductoResponse> getProductoById(@PathVariable Long id) {
+    try {
+      ProductoResponse productoResponse = productoService.obtenerProductoPorId(id);
+      return ResponseEntity.ok(productoResponse);
+    } catch (EntityNotFoundException e) {
+      return ResponseEntity.notFound().build();
     }
+  }
 
-    @PostMapping
-    public ResponseEntity<ProductoResponse> postProducto(@RequestBody ProductoRequest productoRequest) {
-        try {
-            ProductoResponse productoResponse = productoService.guardarProducto(productoRequest);
-            return new ResponseEntity<>(productoResponse, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().build();
-        }
+  @PostMapping
+  public ResponseEntity<ProductoResponse> postProducto(
+      @RequestBody ProductoRequest productoRequest) {
+    try {
+      ProductoResponse productoResponse = productoService.guardarProducto(productoRequest);
+      return new ResponseEntity<>(productoResponse, HttpStatus.CREATED);
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().build();
     }
+  }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String> putProducto(@PathVariable Long id, @RequestBody ProductoRequest productoRequest) {
-        try {
-            this.productoService.actualizarProducto(id, productoRequest);
-            return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
+  @PutMapping("/{id}")
+  public ResponseEntity<ProductoResponse> putProducto(@PathVariable Long id,
+      @RequestBody ProductoRequest productoRequest) {
+    ProductoResponse productoResponse = this.productoService.actualizarProducto(id,
+        productoRequest);
+    return ResponseEntity.ok(productoResponse);
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ProductoResponse> deleteProducto(@PathVariable Long id) {
-        this.productoService.eliminarProducto(id);
-        return ResponseEntity.noContent().build();
-    }
+  }
 
-    @PatchMapping("/agregarStock")
-    public ResponseEntity<ProductoResponse> agregarStock(@RequestBody
-        List<StockPatchRequest> stockPatchRequest){
-        this.productoService.actualizarProductosSumarActual(stockPatchRequest);
-        return ResponseEntity.noContent().build();
-    }
+  @DeleteMapping("/{id}")
+  public ResponseEntity<ProductoResponse> deleteProducto(@PathVariable Long id) {
+    this.productoService.eliminarProducto(id);
+    return ResponseEntity.noContent().build();
+  }
 
-    @PatchMapping("/quitarStock")
-    public ResponseEntity<ProductoResponse> quitarStock(@RequestBody
-    List<StockPatchRequest> stockPatchRequest){
-        this.productoService.actualizarProductosSumarActual(stockPatchRequest);
-        return ResponseEntity.noContent().build();
-    }
+  @PatchMapping("/agregarStock")
+  public ResponseEntity<ProductoResponse> agregarStock(@RequestBody
+  List<StockPatchRequest> stockPatchRequest) {
+    this.productoService.actualizarProductosSumarActual(stockPatchRequest);
+    return ResponseEntity.noContent().build();
+  }
+
+  @PatchMapping("/quitarStock")
+  public ResponseEntity<ProductoResponse> quitarStock(@RequestBody
+  List<StockPatchRequest> stockPatchRequest) {
+    this.productoService.actualizarProductosRestarActual(stockPatchRequest);
+    return ResponseEntity.noContent().build();
+  }
 }

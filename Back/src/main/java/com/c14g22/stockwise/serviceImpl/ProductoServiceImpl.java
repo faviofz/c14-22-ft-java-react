@@ -77,7 +77,7 @@ public class ProductoServiceImpl implements ProductoService {
   }
 
   @Override
-  public void actualizarProducto(Long id, ProductoRequest productoRequest)
+  public ProductoResponse actualizarProducto(Long id, ProductoRequest productoRequest)
       throws NullPointerException {
     Producto producto = productoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     if (productoRequest.getNombre() == null) {
@@ -109,7 +109,7 @@ public class ProductoServiceImpl implements ProductoService {
           .orElseThrow(EntityNotFoundException::new);
       producto.setMarca(marca);
     }
-    productoRepository.save(producto);
+    return new ProductoResponse(productoRepository.save(producto));
   }
 
   @Override
