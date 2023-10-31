@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import { TrashIcon, PencilAltIcon } from '@/assets/svg';
-import { useProviders } from '@/hooks';
+import { useProviders, useModal } from '@/hooks';
 import { TableSkeleton } from '@/components';
 import swal from 'sweetalert';
+import { UpdateProvider } from './UpdateProvider';
 
 export function Table({ data }) {
   const { loading, deleteProvider } = useProviders();
+  const { openModal } = useModal();
   const headers = ['Nombre', 'Empresa', 'Telefono', 'Email', 'Acciones'];
 
   const deleteProviderAlert = id => {
@@ -49,17 +51,21 @@ export function Table({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map(({ id, name, company, phone, email }) => (
-              <tr key={id}>
-                <td>{name}</td>
-                <td>{company}</td>
-                <td>{phone}</td>
-                <td>{email}</td>
+            {data.map(provider => (
+              <tr key={provider.id}>
+                <td>{provider.name}</td>
+                <td>{provider.company}</td>
+                <td>{provider.phone}</td>
+                <td>{provider.email}</td>
                 <td className='flex gap-5'>
-                  <button onClick={() => deleteProviderAlert(id)}>
+                  <button onClick={() => deleteProviderAlert(provider.id)}>
                     <TrashIcon />
                   </button>
-                  <button>
+                  <button
+                    onClick={() =>
+                      openModal(<UpdateProvider provider={provider} />)
+                    }
+                  >
                     <PencilAltIcon />
                   </button>
                 </td>
