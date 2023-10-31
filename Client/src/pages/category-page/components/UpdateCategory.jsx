@@ -5,15 +5,16 @@ import { Input, Button } from '@/components';
 import { useCategories, useModal } from '@/hooks';
 
 export function UpdateCategory({ product }) {
-  const { createCategory, loading } = useCategories();
+  const { updateCategory, loading } = useCategories();
   const { closeModal } = useModal();
+
   const { handleSubmit, touched, errors, getFieldProps, resetForm } = useFormik(
     {
       initialValues: {
-        name: '',
+        name: product.name,
       },
       onSubmit: (values, { resetForm }) => {
-        createCategory(values);
+        updateCategory({ ...values, id: product.id });
         resetForm();
         closeModal();
       },
@@ -31,7 +32,6 @@ export function UpdateCategory({ product }) {
         placeholder='Ingresa una categoría'
         {...getFieldProps('name')}
         errorMessage={touched.name && errors.name}
-        defaultValue={product.name}
       />
 
       {/* BUTTONS */}
@@ -49,7 +49,7 @@ export function UpdateCategory({ product }) {
           disabled={loading}
           className='w-full btn btn-primary min-[500px]:w-[11rem]'
         >
-          {loading ? 'Enviando...' : 'Crear'}
+          {loading ? 'Enviando...' : 'Actualizar'}
         </Button>
       </div>
     </form>
