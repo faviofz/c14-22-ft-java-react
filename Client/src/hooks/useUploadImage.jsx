@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { serviceUploadImage } from '@/services';
 
-export function useUploadImage() {
-  const [image, setImage] = useState('');
+export function useUploadImage(currentImage) {
+  const [image, setImage] = useState(currentImage ?? '');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 

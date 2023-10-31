@@ -17,8 +17,8 @@ export default function Provider() {
   }, []);
 
   const handleSearch = query => {
-    const filtered = providers.filter(({ nombre }) =>
-      nombre.toLowerCase().includes(query.toLowerCase())
+    const filtered = providers.filter(({ name }) =>
+      name.toLowerCase().includes(query.toLowerCase())
     );
     setFiltered(filtered);
   };

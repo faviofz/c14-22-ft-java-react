@@ -32,11 +32,11 @@ export function serviceGetProvider(id) {
 }
 
 // UPDATE
-export function serviceUpdateProvider(id, modifiedProvider) {
+export function serviceUpdateProvider(modifiedProvider) {
   return new Promise((resolve, reject) => {
     httpClient
-      .put(`${path}/${id}`, modifiedProvider)
-      .then(({ data }) => resolve(data))
+      .put(`${path}/${modifiedProvider.id}`, modifiedProvider)
+      .then(() => resolve(modifiedProvider))
       .catch(error => reject(new Error(error)));
   });
 }
@@ -46,7 +46,7 @@ export function serviceDeleteProvider(id) {
   return new Promise((resolve, reject) => {
     httpClient
       .delete(`${path}/${id}`)
-      .then(({ data }) => resolve(data))
+      .then(() => resolve(id))
       .catch(error => reject(new Error(error)));
   });
 }

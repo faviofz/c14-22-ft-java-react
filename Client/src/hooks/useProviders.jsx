@@ -4,6 +4,7 @@ import {
   getAllProvidersAsync,
   createProviderAsync,
   deleteProviderAsync,
+  updateProviderAsync,
 } from '@/redux/reducers';
 
 export function useProviders() {
@@ -13,19 +14,30 @@ export function useProviders() {
   function getAllProviders() {
     if (!providers.length) dispatch(getAllProvidersAsync());
   }
-  function createProvider(data) {
-    dispatch(createProviderAsync(data));
+
+  function getProvider(id) {
+    dispatch(deleteProviderAsync(id));
   }
+
+  function createProvider(newProvider) {
+    dispatch(createProviderAsync(newProvider));
+  }
+
+  function updateProvider(providerModified) {
+    dispatch(updateProviderAsync(providerModified));
+  }
+
   function deleteProvider(id) {
     dispatch(deleteProviderAsync(id));
   }
-  //   function getProvider(){}
-  //   function updateProvider(){}
+
   return {
     providers,
     loading,
     getAllProviders,
+    getProvider,
     createProvider,
     deleteProvider,
+    updateProvider,
   };
 }
