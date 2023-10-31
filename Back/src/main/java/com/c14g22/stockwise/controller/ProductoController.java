@@ -80,7 +80,7 @@ public class ProductoController {
     @PatchMapping("/quitarStock")
     public ResponseEntity<ProductoResponse> quitarStock(@RequestBody
     List<StockPatchRequest> stockPatchRequest){
-        this.productoService.actualizarProductosSumarActual(stockPatchRequest);
+        this.productoService.actualizarProductosRestarActual(stockPatchRequest);
         return ResponseEntity.noContent().build();
     }
 }
