@@ -50,16 +50,16 @@ export const deleteProductAsync = createAsyncThunk(
 export const addStockAsync = createAsyncThunk(
   'products/addStock',
   async arr => {
-    await serviceAddStock(arr);
-    return arr;
+    const response = await serviceAddStock(arr);
+    return response;
   }
 );
 
 export const subtractStockAsync = createAsyncThunk(
   'products/subtractStock',
   async arr => {
-    await serviceSubtractStock(arr);
-    return arr;
+    const response = await serviceSubtractStock(arr);
+    return response;
   }
 );
 
@@ -122,10 +122,12 @@ const productsSlice = createSlice({
     });
     builder.addCase(addStockAsync.fulfilled, (state, action) => {
       state.loading = false;
-      const pedidos = action.payload;
-      pedidos.forEach(({ id, actual }) => {
-        const index = state.products.findIndex(product => product.id === id);
-        state.products[index].actual = actual;
+      const retornado = action.payload;
+      const estado = state.products;
+
+      retornado.forEach(({ id, actual }) => {
+        const index = estado.findIndex(product => product.id === id);
+        estado[index].actual = actual;
       });
     });
     // -------------------------------- SUSTRACT STOCK
@@ -134,10 +136,12 @@ const productsSlice = createSlice({
     });
     builder.addCase(subtractStockAsync.fulfilled, (state, action) => {
       state.loading = false;
-      const pedidos = action.payload;
-      pedidos.forEach(({ id, actual }) => {
-        const index = state.products.findIndex(product => product.id === id);
-        state.products[index].actual = actual;
+      const retornado = action.payload;
+      const estado = state.products;
+
+      retornado.forEach(({ id, actual }) => {
+        const index = estado.findIndex(product => product.id === id);
+        estado[index].actual = actual;
       });
     });
   },

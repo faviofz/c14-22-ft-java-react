@@ -1,8 +1,38 @@
 import PropTypes from 'prop-types';
+import { useProducts } from '@/hooks';
+
 
 export function ProductDetail({ product }) {
+  const { deleteProducts } = useProducts();
+  const deleteProductAlert = id => {
+    swal({
+      title: 'Desea eliminar el producto',
+      icon: 'warning',
+      buttons: {
+        catch: {
+          text: 'Cancelar',
+          value: null,
+          className: 'btn btn-accent',
+        },
+        default: {
+          text: 'Eliminar',
+          value: true,
+          className: 'btn btn-primary',
+        },
+      },
+    }).then(valueButtoms => {
+      if (valueButtoms) {
+        deleteProducts(id);
+        swal({
+          title: 'El producto fue eliminado',
+          icon: 'success',
+        });
+      }
+    });
+  };
+
   return (
-    <section className='flex flex-col w-full h-full'>
+    <section className='flex flex-col w-full h-full lg:flex-row'>
       <div className='w-full h-[20rem] rounded-3xl my-3'>
         <img
           className='object-cover w-full h-full '
@@ -26,14 +56,37 @@ export function ProductDetail({ product }) {
         </h2>
         <h2>
           Fecha de vencimiento:
-          <span className='font-semibold'> {product.fechaVencimiento} </span>
+          <span className='text-lg font-semibold'> {product.fechaVencimiento} </span>
         </h2>
-        <h2>Precio: {product.costo} </h2>
+        <h2>Costo: <span className='text-lg font-semibold'>{product.costo}</span> </h2>
 
-        <div className='flex flex-row gap-1 justify-between mt-5'>
-          <button className='btn btn-primary flex-1'>Agregar</button>
-          <button className='btn btn-primary flex-1'>Actualizar</button>
-          <button className='btn btn-error flex-1'>Eliminar</button>
+        <h2 className='mt-5 text-lg font-semibold text-center'>Stock</h2>
+        <table className='table ' >
+          <thead>
+            <tr>
+              <th>Minimo</th>
+              <th>Actual</th>
+              <th>Maximo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <h2>{product.min} </h2>
+              </td>
+              <td>
+                <h2>{product.actual} </h2>
+              </td>
+              <td>
+                <h2>{product.max} </h2>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className='flex flex-row justify-between gap-1 mt-5'>
+          <button className='flex-1 btn btn-error' onClick={() => deleteProductAlert(product.id)}>Eliminar</button>
+          <button className='flex-1 btn btn-primary'>Actualizar</button>
         </div>
       </div>
     </section>
