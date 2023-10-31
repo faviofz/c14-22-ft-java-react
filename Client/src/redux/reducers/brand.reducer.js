@@ -71,7 +71,7 @@ const brandsSlice = createSlice({
       state.loading = false;
       state.brands = action.payload;
     });
-    // --------------------------------
+    // -------------------------------- GET
     builder.addCase(getBrandAsync.pending, state => {
       state.loading = true;
     });
@@ -79,7 +79,7 @@ const brandsSlice = createSlice({
       state.loading = false;
       state.brand = action.payload;
     });
-    // --------------------------------
+    // -------------------------------- CREATE
     builder.addCase(createBrandAsync.pending, state => {
       state.loading = true;
     });
@@ -87,7 +87,18 @@ const brandsSlice = createSlice({
       state.loading = false;
       state.brands.push(action.payload);
     });
-    // --------------------------------
+    // -------------------------------- UPDATE
+    builder.addCase(updateBrandAsync.pending, state => {
+      state.loading = true;
+    });
+    builder.addCase(updateBrandAsync.fulfilled, (state, action) => {
+      state.loading = false;
+      const brandModified = action.payload;
+      const brandId = brandModified.id;
+      const index = state.brands.findIndex(brand => brand.id === brandId);
+      state.brands[index] = brandModified;
+    });
+    // -------------------------------- DELETE
     builder.addCase(deleteBrandAsync.fulfilled, (state, action) => {
       const brandId = action.payload;
       const index = state.brands.findIndex(brand => brand.id === brandId);
