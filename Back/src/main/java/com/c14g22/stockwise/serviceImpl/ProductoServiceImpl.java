@@ -3,7 +3,7 @@ package com.c14g22.stockwise.serviceImpl;
 import com.c14g22.stockwise.dto.ProductoRequest;
 import com.c14g22.stockwise.dto.ProductoResponse;
 import com.c14g22.stockwise.dto.StockPatchRequest;
-import com.c14g22.stockwise.exception.ProductoNotFoundException;
+import com.c14g22.stockwise.exception.notfound.ProductoNotFoundException;
 import com.c14g22.stockwise.model.Categoria;
 import com.c14g22.stockwise.model.Marca;
 import com.c14g22.stockwise.model.Producto;
@@ -17,6 +17,7 @@ import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -46,10 +47,10 @@ public class ProductoServiceImpl implements ProductoService {
 
   @Override
   public ProductoResponse guardarProducto(ProductoRequest req) throws NullPointerException {
-    if (req.getNombre() == null) {
-      throw new NullPointerException("El nombre no puede ser null");
-    }
     Producto producto = new Producto(req);
+    if(productoRepository.existsBySlogan(producto.getSlogan())){
+      throw new DuplicateKeyException("Slogan ya existe: " + producto.getSlogan());
+    }
     if (!req.getCategoria().isBlank()) {
       Optional<Categoria> categoria = categoriaRepository.findByNombre(req.getCategoria());
       if (categoria.isPresent()) {
@@ -139,7 +140,8 @@ public class ProductoServiceImpl implements ProductoService {
         producto.setActual(Math.max(producto.getActual() - r.actual(), 0));
       }
     }
-    return this.productoRepository.saveAllAndFlush(productoList).stream().map(ProductoResponse::new).toList();
+    return this.productoRepository.saveAll(productoList).stream().map(ProductoResponse::new).toList();
   }
+
 
 }

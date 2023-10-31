@@ -1,7 +1,7 @@
 package com.c14g22.stockwise.serviceImpl;
 
 import com.c14g22.stockwise.dto.MarcaDto;
-import com.c14g22.stockwise.exception.MarcaNotFoundException;
+import com.c14g22.stockwise.exception.notfound.MarcaNotFoundException;
 import com.c14g22.stockwise.model.Marca;
 import com.c14g22.stockwise.repository.MarcaRepository;
 import com.c14g22.stockwise.service.MarcaService;

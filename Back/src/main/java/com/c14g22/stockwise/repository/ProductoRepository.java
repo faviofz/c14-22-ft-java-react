@@ -2,14 +2,20 @@ package com.c14g22.stockwise.repository;
 
 import com.c14g22.stockwise.model.Producto;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
+
+  boolean existsBySlogan(@NonNull String slogan);
+
+  Optional<Producto> findBySlogan(@NonNull String slogan);
 
   @Transactional
   @Modifying

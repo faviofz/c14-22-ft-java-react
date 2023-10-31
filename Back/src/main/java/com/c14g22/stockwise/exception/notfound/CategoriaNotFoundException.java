@@ -1,4 +1,4 @@
-package com.c14g22.stockwise.exception;
+package com.c14g22.stockwise.exception.notfound;
 
 import java.io.Serial;
 

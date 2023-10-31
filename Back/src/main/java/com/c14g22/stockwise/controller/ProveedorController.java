@@ -46,8 +46,8 @@ public class ProveedorController {
   @PutMapping("/{id}")
   public ResponseEntity<ProveedorResponse> updateProveedor(@PathVariable Long id,
       @RequestBody ProveedorRequest proveedorRequest) {
-    this.proveedorService.actualizarProveedor(id, proveedorRequest);
-    return ResponseEntity.noContent().build();
+    ProveedorResponse proveedorResponse = this.proveedorService.actualizarProveedor(id, proveedorRequest);
+    return ResponseEntity.ok(proveedorResponse);
   }
 
   @DeleteMapping("/{id}")

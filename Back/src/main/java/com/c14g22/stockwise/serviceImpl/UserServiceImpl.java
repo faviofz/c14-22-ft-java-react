@@ -1,11 +1,10 @@
 package com.c14g22.stockwise.serviceImpl;
 
 import com.c14g22.stockwise.dto.UserSignupRequest;
-import com.c14g22.stockwise.exception.EmailDuplicateException;
-import com.c14g22.stockwise.exception.UsernameDuplicateException;
+import com.c14g22.stockwise.exception.duplicatekey.EmailDuplicateException;
+import com.c14g22.stockwise.exception.notfound.UsernameDuplicateException;
 import com.c14g22.stockwise.model.Empleado;
 import com.c14g22.stockwise.model.User;
-import com.c14g22.stockwise.repository.EmpleadoRepository;
 import com.c14g22.stockwise.repository.UserRepository;
 import com.c14g22.stockwise.service.UserService;
 import java.time.LocalDateTime;

@@ -1,7 +1,7 @@
 package com.c14g22.stockwise.serviceImpl;
 
 import com.c14g22.stockwise.dto.CategoriaDto;
-import com.c14g22.stockwise.exception.CategoriaNotFoundException;
+import com.c14g22.stockwise.exception.notfound.CategoriaNotFoundException;
 import com.c14g22.stockwise.model.Categoria;
 import com.c14g22.stockwise.repository.CategoriaRepository;
 import com.c14g22.stockwise.service.CategoriaService;

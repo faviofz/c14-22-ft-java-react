@@ -22,6 +22,7 @@ public class ProductoResponse {
 
     private Long id;
     private String nombre;
+    private String slogan;
     private String imagen;
     private Double costo;
     private Double impuesto;
@@ -38,6 +39,7 @@ public class ProductoResponse {
     public ProductoResponse(Producto producto) {
         this.id = producto.getId();
         this.nombre = producto.getNombre();
+        this.slogan = producto.getSlogan();
         this.imagen = producto.getImagen();
         this.costo = producto.getCosto();
         this.impuesto = producto.getImpuesto();

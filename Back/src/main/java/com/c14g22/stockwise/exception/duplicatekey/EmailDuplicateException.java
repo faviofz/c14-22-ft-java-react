@@ -1,4 +1,4 @@
-package com.c14g22.stockwise.exception;
+package com.c14g22.stockwise.exception.duplicatekey;
 
 import java.io.Serial;
 
@@ -10,7 +10,7 @@ public class EmailDuplicateException extends RuntimeException{
     super();
   }
 
-  public EmailDuplicateException(String message) {
-    super(message);
+  public EmailDuplicateException(String email) {
+    super("El email ya existe: " + email);
   }
 }

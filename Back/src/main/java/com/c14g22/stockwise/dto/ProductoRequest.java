@@ -18,6 +18,7 @@ import java.time.LocalDate;
 public class ProductoRequest {
     @NonNull
     private String nombre;
+    private String slogan;
     private String imagen;
     private Double costo;
     private Double impuesto;
