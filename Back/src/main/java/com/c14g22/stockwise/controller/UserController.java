@@ -73,7 +73,9 @@ public class UserController {
       @RequestBody UserDataRequest userRequest) {
     User user = userService.findByUsername(p.getName());
     assert user != null;
-    userService.updatePasswordByEmail(user.getEmail(),userRequest.getPassword());
+    if(userRequest.getPassword() != null && !userRequest.getPassword().isBlank()){
+      userService.updatePasswordByEmail(user.getEmail(),userRequest.getPassword());
+    }
 
     EmpleadoRequest empleadoRequest = new EmpleadoRequest();
     empleadoRequest.setNombre(userRequest.getNombre());
