@@ -1,10 +1,12 @@
 import { DarkModeSwitch } from '@/components/darkmode-switch-cmp/DarkModeSwitch';
 import { Link } from 'react-router-dom';
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth, useModal } from '@/hooks';
 import { Avatar } from './Avatar';
+import { ConfigUser } from './ConfigUser';
 
 export function UserInfo() {
   const { authState, onLogout } = useAuth();
+  const { openModal } = useModal();
 
   const handlerLogout = () => {
     onLogout();
@@ -44,12 +46,17 @@ export function UserInfo() {
         <li className='border-t-2'>
           <DarkModeSwitch />
         </li>
-        {/* <li
+        <li
           className='border-t-2'
-          onClick={() => document.getElementById('modal_config').showModal()}
+          onClick={() =>
+            openModal(<ConfigUser />, {
+              title: 'Perfil',
+              className: 'modal-user',
+            })
+          }
         >
           <h3>Configuración</h3>
-        </li> */}
+        </li>
 
         <li className='border-t-2'>
           <Link className='text-secondary' to={'/service-policy'}>

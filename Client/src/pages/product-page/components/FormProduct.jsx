@@ -49,9 +49,8 @@ export function FormProduct() {
           .reverse()
           .join('-');
 
-          console.log(values)
-        // createProduct(values);
-        // closeModal();
+        createProduct(values);
+        closeModal();
       },
       validationSchema: Yup.object({
         nombre: Yup.string().required('Este dato es requerido'),

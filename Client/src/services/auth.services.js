@@ -26,3 +26,14 @@ export function serviceGetUser() {
       .catch(error => reject(new Error(error)));
   });
 }
+
+export function serviceUpdateUser(newUser) {
+  return new Promise((resolve, reject) => {
+    httpClient
+      .put('/user', newUser)
+      .then(({ data }) => resolve(data))
+      .catch(error => reject(new Error(error)));
+  });
+}
+
+
