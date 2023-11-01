@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuth, useModal } from '@/hooks';
 import { Avatar } from './Avatar';
 import { ConfigUser } from './ConfigUser';
+import { MercadoPago } from './MercadoPago';
 
 export function UserInfo() {
   const { authState, onLogout } = useAuth();
@@ -62,6 +63,14 @@ export function UserInfo() {
           <Link className='text-secondary' to={'/service-policy'}>
             Ver condiciones de servicio
           </Link>
+        </li>
+        <li className='border-t-2'
+        onClick={() => openModal(<MercadoPago />, {
+          title: 'Mercado Pago',
+          className: 'modal-user',
+        })}
+        >
+            <h3>Mercado Pago</h3>
         </li>
         <li className='border-t-2'>
           <button onClick={handlerLogout}>Cerrar sesion</button>
