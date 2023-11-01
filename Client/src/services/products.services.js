@@ -34,13 +34,9 @@ export function serviceGetProduct(id) {
 // UPDATE
 export function serviceUpdateProduct(modifiedProduct) {
   return new Promise((resolve, reject) => {
-    console.log(modifiedProduct);
     httpClient
       .put(`${path}/${modifiedProduct.id}`, modifiedProduct)
-      .then(() => {
-        console.log('algo pasa');
-        resolve(modifiedProduct);
-      })
+      .then(({ data }) => resolve(data))
       .catch(error => reject(new Error(error)));
   });
 }

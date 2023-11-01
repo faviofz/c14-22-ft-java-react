@@ -14,3 +14,5 @@ export * from './skeleton-cmp/TableSkeleton';
 export * from './paginated-cmp/Paginated';
 export * from './preload-cmp/Preload';
 export * from './modal-portal-cmp/ModalPortal';
+export * from './skeleton-cmp/MenuSkeleton';
+export * from './counter-cmp/Counter';

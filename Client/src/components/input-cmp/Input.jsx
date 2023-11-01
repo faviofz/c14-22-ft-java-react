@@ -32,6 +32,7 @@ Input.propTypes = {
   errorMessage: PropTypes.string,
   placeholder: PropTypes.string,
   type: PropTypes.string,
+  className: PropTypes.string,
 };
 
 Input.defaultProps = {

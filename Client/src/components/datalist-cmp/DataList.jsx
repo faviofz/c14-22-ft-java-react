@@ -49,7 +49,7 @@ export function DataList({
         </div>
         {children}
       </header>
-      <div className='w-full h-full mt-2 overflow-auto datalist-component-content'>
+      <div className='datalist-component-content'>
         {element || undefined}
         {viewModeType.TABLE === viewType &&
           !element &&

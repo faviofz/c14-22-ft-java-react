@@ -51,7 +51,14 @@ table {
     padding-top: 1rem;
     border-radius: 1.5rem;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
+input[type=number] { -moz-appearance:textfield; }
+input[type=file] { padding-left: 0; }
 
 [data-theme='projectDark']{
     .btn {

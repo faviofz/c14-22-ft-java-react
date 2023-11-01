@@ -14,6 +14,8 @@ const Provider = lazy(() => import('./provider-page/Provider'));
 const Brand = lazy(() => import('./brand-page/Brand'));
 const History = lazy(() => import('./history-page/History'));
 const Notification = lazy(() => import('./notification-page/Notification'));
+const AddProducts = lazy(() => import('./product-page/AddProducts'));
+const SubtractProducts = lazy(() => import('./product-page/SubtractProducts'));
 
 export {
   Dashboard,
@@ -28,4 +30,6 @@ export {
   Brand,
   History,
   Notification,
+  AddProducts,
+  SubtractProducts,
 };

@@ -51,4 +51,13 @@ $gap: .5rem;
             }
         }
     }
+
+    &-content{
+        overflow-x: auto;
+        max-height: 1000px;
+        min-height: 500px;
+        box-sizing: border-box;
+        padding-top: .5rem;
+        padding-bottom: .2rem;
+    }
 }

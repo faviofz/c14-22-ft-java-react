@@ -17,6 +17,10 @@ const menuItems = [
     label: 'Productos',
     Icon: ProductIcon,
     href: '/product',
+    subMenu: [
+      { label: 'Entradas', href: '/product/addProducts' },
+      { label: 'Salidas', href: '/product/subtractProducts' },
+    ],
   },
   // {
   //   label: 'Stock',

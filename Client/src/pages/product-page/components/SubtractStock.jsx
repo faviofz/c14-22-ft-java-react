@@ -1,15 +1,17 @@
-import { useProducts, useModal,usePaginated } from '@/hooks';
+import { useProducts, useModal, usePaginated } from '@/hooks';
 import { Input, Button, Search } from '@/components';
 import { useState } from 'react';
 
 export function SubtractStock() {
-  const { products, addStock, subtractStock } = useProducts();
+  const { products, subtractStock } = useProducts();
   const [stado, setStado] = useState({});
   const { closeModal } = useModal();
-  const { setFiltered, displayed } =
-    usePaginated({ data: products, numItems: 100 });
-  
-    const handleSearch = query => {
+  const { setFiltered, displayed } = usePaginated({
+    data: products,
+    numItems: 100,
+  });
+
+  const handleSearch = query => {
     const filtered = products.filter(({ nombre }) =>
       nombre.toLowerCase().includes(query.toLowerCase())
     );
@@ -27,7 +29,7 @@ export function SubtractStock() {
 
   return (
     <>
-      <Search placeholder='Buscar producto' onNewValue={handleSearch}/>
+      <Search placeholder='Buscar producto' onNewValue={handleSearch} />
       <table className='table '>
         <thead>
           <tr>
