@@ -50,7 +50,7 @@ public class Empleado {
   public Empleado(EmpleadoRequest empleadoRequest) {
     this.nombre = empleadoRequest.getNombre();
     this.apellido = empleadoRequest.getApellido();
-    this.rol = empleadoRequest.getRol();
+    this.photo_url = empleadoRequest.getPhoto_url();
   }
 
   public boolean isDeleted() {

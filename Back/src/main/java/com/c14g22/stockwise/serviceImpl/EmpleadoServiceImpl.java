@@ -37,10 +37,10 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
   @Override
   public EmpleadoResponse actualizarEmpleado(UUID id, EmpleadoRequest empleadoRequest) {
-    Empleado empleado = empleadoRepository.findById(id).get();
+    Empleado empleado = empleadoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     empleado.setNombre(empleadoRequest.getNombre());
     empleado.setApellido(empleadoRequest.getApellido());
-    empleado.setRol(empleadoRequest.getRol());
+    empleado.setPhoto_url(empleadoRequest.getPhoto_url());
     return new EmpleadoResponse(empleadoRepository.save(empleado));
   }
 
