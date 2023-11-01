@@ -69,7 +69,7 @@ public class UserController {
   }
 
   @PutMapping("/user")
-  public ResponseEntity<EmpleadoResponse> updateUserData(Principal p,
+  public ResponseEntity<UserDataResponse> updateUserData(Principal p,
       @RequestBody UserDataRequest userRequest) {
     User user = userService.findByUsername(p.getName());
     assert user != null;
@@ -83,8 +83,15 @@ public class UserController {
     empleadoRequest.setPhoto_url(userRequest.getPhoto_url());
 
     EmpleadoResponse empleadoResponse = empleadoService.actualizarEmpleado(user.getId(), empleadoRequest);
+    UserDataResponse userDataResponse = new UserDataResponse();
+    userDataResponse.setUrl(empleadoResponse.getUrl());
+    userDataResponse.setEmail(empleadoResponse.getEmail());
+    userDataResponse.setNombre(empleadoRequest.getNombre());
+    userDataResponse.setApellido(empleadoResponse.getApellido());
+    userDataResponse.setFechaIngreso(empleadoResponse.getFechaIngreso());
+    userDataResponse.setRol(empleadoResponse.getRol());
 
-    return ResponseEntity.ok(empleadoResponse);
+    return ResponseEntity.ok(userDataResponse);
   }
 
   @PostMapping("/resetPassword")

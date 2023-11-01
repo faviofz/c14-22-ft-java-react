@@ -13,6 +13,7 @@ public class EmpleadoResponse {
   private String email;
   private LocalDateTime fechaIngreso;
   private String rol;
+  private String url;
   private boolean deleted;
 
   public EmpleadoResponse(Empleado empleado) {
@@ -22,6 +23,7 @@ public class EmpleadoResponse {
     this.email = empleado.getEmail();
     this.fechaIngreso = empleado.getFechaIngreso();
     this.rol = empleado.getRol();
+    this.url = empleado.getPhoto_url();
     this.deleted = empleado.isDeleted();
   }
 }
