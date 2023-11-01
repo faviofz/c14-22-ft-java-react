@@ -36,12 +36,12 @@ public class EmpleadoServiceImpl implements EmpleadoService {
   }
 
   @Override
-  public void actualizarEmpleado(UUID id, EmpleadoRequest empleadoRequest) {
+  public EmpleadoResponse actualizarEmpleado(UUID id, EmpleadoRequest empleadoRequest) {
     Empleado empleado = empleadoRepository.findById(id).get();
     empleado.setNombre(empleadoRequest.getNombre());
     empleado.setApellido(empleadoRequest.getApellido());
     empleado.setRol(empleadoRequest.getRol());
-    empleadoRepository.save(empleado);
+    return new EmpleadoResponse(empleadoRepository.save(empleado));
   }
 
   @Override

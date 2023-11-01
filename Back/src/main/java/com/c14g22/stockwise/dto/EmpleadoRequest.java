@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 public class EmpleadoRequest {
   private String nombre;
   private String apellido;
-  private String rol;
+  private String photo_url;
 
   public EmpleadoRequest(Empleado empleado) {
     this.nombre = empleado.getNombre();
     this.apellido = empleado.getApellido();
-    this.rol = empleado.getRol();
+    this.photo_url = empleado.getPhoto_url();
   }
 }
