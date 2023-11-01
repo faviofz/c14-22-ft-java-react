@@ -1,70 +1,77 @@
-import { useProducts, useModal, usePaginated } from '@/hooks';
-import { Input, Button, Search } from '@/components';
-import { useState } from 'react';
+import { useProducts } from '@/hooks';
+import { Button, Counter, TableSkeleton } from '@/components';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-export function SubtractStock() {
-  const { products, subtractStock } = useProducts();
-  const [stado, setStado] = useState({});
-  const { closeModal } = useModal();
-  const { setFiltered, displayed } = usePaginated({
-    data: products,
-    numItems: 100,
-  });
+export function SubtractStock({ data, setFiltered }) {
+  const { products, loading, subtractStock, getAllProducts } = useProducts();
+  // const [stado, setStado] = useState({});
+  const [newStock, setNewStock] = useState({});
 
-  const handleSearch = query => {
-    const filtered = products.filter(({ nombre }) =>
-      nombre.toLowerCase().includes(query.toLowerCase())
-    );
-    setFiltered(filtered);
+  const setStockById = id => value => {
+    setNewStock({ ...newStock, [id]: { id, actual: Number(value) } });
   };
 
-  const handleSubmit = () => {
-    subtractStock(Object.values(stado));
-    closeModal();
+  const submitStock = () => {
+    console.log(Object.values(newStock));
+    subtractStock(Object.values(newStock));
+    setNewStock({});
+    setFiltered(products);
   };
 
-  const handleChange = id => e => {
-    setStado({ ...stado, [id]: { id, actual: Number(e.target.value) } });
-  };
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
+  const headers = ['Producto', 'Stock minimo', 'Stock actual', 'Egreso'];
   return (
     <>
-      <Search placeholder='Buscar producto' onNewValue={handleSearch} />
-      <table className='table '>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Stock minimo</th>
-            <th>Stock actual</th>
-            <th>Egreso</th>
-          </tr>
-        </thead>
-        <tbody>
-          {displayed.map(item => (
-            <tr key={item.id}>
-              <td>{item.nombre}</td>
-              <td>{item.min}</td>
-              <td>{item.actual}</td>
-              <td>
-                <form className='flex items-center justify-center gap-5'>
-                  <Input
-                    name='cantidad'
-                    type='number'
-                    min={1}
-                    placeholder=''
-                    onChange={e => handleChange(item.id)(e)}
-                    className='h-[2rem] w-[4.5rem] text-center px-1'
-                    //   onChange={handleChangeInput}
-                  />
-                </form>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div>
-        <Button onClick={() => handleSubmit()}>Salida de productos</Button>
-      </div>
+      {loading ? (
+        <TableSkeleton rows={6} headers={headers} />
+      ) : (
+        <>
+          <table className='table mt-3'>
+            <thead>
+              <tr>
+                {headers.map((head, i) => (
+                  <th key={i}>{head}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {data.map(item => (
+                <tr key={item.id}>
+                  <td>{item.nombre}</td>
+                  <td>{item.min}</td>
+                  <td>{item.actual}</td>
+                  <td>
+                    <Counter
+                      handler={setStockById}
+                      currentValue={newStock[item.id]?.actual ?? 0}
+                      id={item.id}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div>
+            {Object.values(newStock).every(s => s.actual === '0') || (
+              <Button
+                onClick={submitStock}
+                className='btn btn-primary btn-block mt-2'
+              >
+                Salida de productos
+              </Button>
+            )}
+          </div>
+        </>
+      )}
     </>
   );
 }
+
+SubtractStock.propTypes = {
+  data: PropTypes.any,
+  setFiltered: PropTypes.func,
+};
