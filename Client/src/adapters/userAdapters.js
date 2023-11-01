@@ -5,6 +5,7 @@ export const userToUserApi = (data = {}) => ({
   username: data.userName,
   password: data.password,
   email: data.email,
+  url: data.url
 });
 export const userApiToUser = (data = {}) => ({
   id: data.id,
@@ -13,4 +14,5 @@ export const userApiToUser = (data = {}) => ({
   userName: data.username,
   password: data.password,
   email: data.email,
+  url: data.url
 });

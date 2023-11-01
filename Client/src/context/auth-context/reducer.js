@@ -49,5 +49,12 @@ export function authReducer(state, action) {
     return { ...state, loading: action.payload };
   }
 
+  // ? UPDATE USER
+  if (action.type === authActions.UPDATEUSER) {
+    const userMofication = { ...state.user, ...action.payload };
+    localStorage.setItem('userLogger', JSON.stringify(userMofication));
+    return { ...state, user: userMofication };
+  }
+
   throw Error('Unknown action: ' + action.type);
 }

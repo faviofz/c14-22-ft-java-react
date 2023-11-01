@@ -6,6 +6,7 @@ import {
   serviceLogin,
   serviceSignUp,
   serviceGetUser,
+  serviceUpdateUser,
 } from '@/services/auth.services';
 import { userApiToUser, userToUserApi } from '@/adapters';
 
@@ -74,8 +75,32 @@ export function AuthProvider({ children }) {
     dispatch({ type: authActions.ERROR, payload: message });
   };
 
+  async function updateUser(user) {
+    try {
+      const userApi = userToUserApi(user)
+      const response = await serviceUpdateUser(userApi);
+      const userResponse = userApiToUser(response)
+      dispatch({ type: authActions.UPDATEUSER, payload: userResponse });
+    } catch (error) {
+      dispatch({
+        type: authActions.ERROR,
+        payload: 'Datos inválidos',
+      });
+    } finally {
+      dispatch({ type: authActions.LOADING, payload: false });
+    }
+  }
+
   const valueMemo = useMemo(
-    () => ({ authState, signUp, onLogin, onLogout, setErrorMessage, getUser }),
+    () => ({
+      authState,
+      signUp,
+      onLogin,
+      onLogout,
+      setErrorMessage,
+      getUser,
+      updateUser,
+    }),
     [authState]
   );
 

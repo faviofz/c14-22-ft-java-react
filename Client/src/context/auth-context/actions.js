@@ -5,4 +5,5 @@ export const authActions = {
   LOADING: 'auth/loading',
   CREATE: 'user/crate',
   GETUSER: 'user/get',
+  UPDATEUSER: 'user/update',
 };
