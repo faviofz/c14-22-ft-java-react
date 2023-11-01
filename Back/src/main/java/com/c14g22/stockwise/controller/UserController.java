@@ -2,12 +2,14 @@ package com.c14g22.stockwise.controller;
 
 import com.c14g22.stockwise.JWTUtil;
 import com.c14g22.stockwise.dto.EmpleadoRequest;
+import com.c14g22.stockwise.dto.EmpleadoResponse;
 import com.c14g22.stockwise.dto.UserDataRequest;
 import com.c14g22.stockwise.dto.UserDataResponse;
 import com.c14g22.stockwise.dto.UserLoginRequest;
 import com.c14g22.stockwise.dto.UserLoginResponse;
 import com.c14g22.stockwise.dto.UserSignupRequest;
 import com.c14g22.stockwise.model.ChangePasswordRequest;
+import com.c14g22.stockwise.model.Empleado;
 import com.c14g22.stockwise.model.User;
 import com.c14g22.stockwise.service.EmailService;
 import com.c14g22.stockwise.service.EmpleadoService;
@@ -67,19 +69,20 @@ public class UserController {
   }
 
   @PutMapping("/user")
-  public ResponseEntity<UserLoginResponse> updateUserData(Principal p,
+  public ResponseEntity<EmpleadoResponse> updateUserData(Principal p,
       @RequestBody UserDataRequest userRequest) {
     User user = userService.findByUsername(p.getName());
     assert user != null;
+    userService.updatePasswordByEmail(user.getEmail(),userRequest.getPassword());
 
     EmpleadoRequest empleadoRequest = new EmpleadoRequest();
     empleadoRequest.setNombre(userRequest.getNombre());
     empleadoRequest.setApellido(userRequest.getApellido());
-    empleadoRequest.setRol(userRequest.getRol());
+    empleadoRequest.setPhoto_url(userRequest.getPhoto_url());
 
-    empleadoService.actualizarEmpleado(user.getId(), empleadoRequest);
+    EmpleadoResponse empleadoResponse = empleadoService.actualizarEmpleado(user.getId(), empleadoRequest);
 
-    return ResponseEntity.noContent().build();
+    return ResponseEntity.ok(empleadoResponse);
   }
 
   @PostMapping("/resetPassword")

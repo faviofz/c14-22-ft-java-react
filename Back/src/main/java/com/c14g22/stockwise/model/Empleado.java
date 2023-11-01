@@ -32,6 +32,7 @@ public class Empleado {
   private String nombre;
   @Column(nullable = false)
   private String apellido;
+  private String photo_url;
   @Column(nullable = false)
   private String rol = "empleado";
   @Column(nullable = false, unique = true)

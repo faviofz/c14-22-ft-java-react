@@ -16,7 +16,7 @@ public interface EmpleadoService {
 
   EmpleadoResponse guardarEmpleado(EmpleadoRequest empleadoRequest);
 
-  void actualizarEmpleado(UUID id, EmpleadoRequest EmpleadoRequest);
+  EmpleadoResponse actualizarEmpleado(UUID id, EmpleadoRequest EmpleadoRequest);
 
   void eliminarEmpleado(UUID id);
 }
