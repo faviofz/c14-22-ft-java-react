@@ -5,20 +5,21 @@ import PropTypes from 'prop-types';
 export function Avatar({ size }) {
   const { authState } = useAuth();
   const [firstLetter, ...rest] = authState?.user?.name ?? '???';
-
   return (
     <>
       {authState?.user?.url ? (
         <div className='min-w-full min-h-full avatar'>
           <div className='min-w-full min-h-full rounded-full shadow-lg'>
-            <div
-              className={`h-full w-full`}
-            >
-              <img
-                className='object-contain w-full h-full rounded-full'
-                src={authState?.user?.url}
-                alt='Nueva imagen de producto'
-              />
+            <div className={`h-full w-full`}>
+              {authState.loading ? (
+                <Preload />
+              ) : (
+                <img
+                  className='object-contain w-full h-full rounded-full'
+                  src={authState?.user?.url}
+                  alt='Nueva imagen de producto'
+                />
+              )}
             </div>
           </div>
         </div>

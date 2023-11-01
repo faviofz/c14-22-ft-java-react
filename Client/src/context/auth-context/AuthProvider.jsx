@@ -77,9 +77,12 @@ export function AuthProvider({ children }) {
 
   async function updateUser(user) {
     try {
-      const userApi = userToUserApi(user)
+      dispatch({ type: authActions.ERROR, payload: null });
+      dispatch({ type: authActions.LOADING, payload: true });
+
+      const userApi = userToUserApi(user);
       const response = await serviceUpdateUser(userApi);
-      const userResponse = userApiToUser(response)
+      const userResponse = userApiToUser(response);
       dispatch({ type: authActions.UPDATEUSER, payload: userResponse });
     } catch (error) {
       dispatch({

@@ -30,8 +30,6 @@ export function AddStock() {
     setShow(false);
   };
 
-  console.log(productsNoStock);
-
   return (
     <div
       className={`add-stock-page flex flex-col pt-[1rem] min-[800px]:flex-row min-[800px]:gap-2 ${

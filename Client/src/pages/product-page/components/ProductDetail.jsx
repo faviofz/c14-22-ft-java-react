@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
-import { useProducts } from '@/hooks';
-
+import { useProducts, useModal } from '@/hooks';
+import { UpdateProduct } from './UpdateProduct';
+import swal from 'sweetalert';
 
 export function ProductDetail({ product }) {
   const { deleteProducts } = useProducts();
+  const { openModal } = useModal();
+
   const deleteProductAlert = id => {
     swal({
       title: 'Desea eliminar el producto',
@@ -32,7 +35,7 @@ export function ProductDetail({ product }) {
   };
 
   return (
-    <section className='flex flex-col w-full h-full lg:flex-row'>
+    <section className='flex flex-col w-full h-full lg:flex-row gap-[2rem]'>
       <div className='w-full h-[20rem] rounded-3xl my-3'>
         <img
           className='object-cover w-full h-full '
@@ -42,26 +45,30 @@ export function ProductDetail({ product }) {
       </div>
       <div className='flex flex-col w-full h-full gap-3 pt-3 mt-2'>
         <div>
-          <h1 className='text-[2rem] font-semibold'> {product.nombre} </h1>
+          <h1 className='text-[2rem] font-semibold'>{product.nombre}</h1>
           <h1 className='font-semibold tracking-wide uppercase text-md text-primary'>
             {product.categoria.nombre}
           </h1>
         </div>
         <h2>
-          Marca: <span className='font-semibold'> {product.marca.nombre} </span>
+          Marca: <span className='font-semibold'>{product.marca.nombre}</span>
         </h2>
         <h2>
           Proveedor:
-          <span className='font-semibold'> {product.proveedor.nombre} </span>
+          <span className='font-semibold'>{product.proveedor.nombre}</span>
         </h2>
         <h2>
           Fecha de vencimiento:
-          <span className='text-lg font-semibold'> {product.fechaVencimiento} </span>
+          <span className='text-lg font-semibold'>
+            {product.fechaVencimiento}
+          </span>
         </h2>
-        <h2>Costo: <span className='text-lg font-semibold'>{product.costo}</span> </h2>
+        <h2>
+          Costo: <span className='text-lg font-semibold'>{product.costo}</span>
+        </h2>
 
         <h2 className='mt-5 text-lg font-semibold text-center'>Stock</h2>
-        <table className='table ' >
+        <table className='table '>
           <thead>
             <tr>
               <th>Minimo</th>
@@ -85,8 +92,22 @@ export function ProductDetail({ product }) {
         </table>
 
         <div className='flex flex-row justify-between gap-1 mt-5'>
-          <button className='flex-1 btn btn-error' onClick={() => deleteProductAlert(product.id)}>Eliminar</button>
-          <button className='flex-1 btn btn-primary'>Actualizar</button>
+          <button
+            className='flex-1 btn btn-error'
+            onClick={() => deleteProductAlert(product.id)}
+          >
+            Eliminar
+          </button>
+          <button
+            className='flex-1 btn btn-primary'
+            onClick={() =>
+              openModal(<UpdateProduct product={product} />, {
+                className: 'modal-product',
+              })
+            }
+          >
+            Actualizar
+          </button>
         </div>
       </div>
     </section>

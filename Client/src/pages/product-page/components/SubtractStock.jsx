@@ -13,7 +13,6 @@ export function SubtractStock({ data, setFiltered }) {
   };
 
   const submitStock = () => {
-    console.log(Object.values(newStock));
     subtractStock(Object.values(newStock));
     setNewStock({});
     setFiltered(products);
