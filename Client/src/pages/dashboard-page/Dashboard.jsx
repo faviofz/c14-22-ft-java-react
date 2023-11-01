@@ -44,6 +44,9 @@ export default function Dashboard() {
     getAllProducts();
   }, []);
 
+  
+ 
+
   const notify = () => {
     toast.info('Falta de Stock - Coca Cola 2lt', {
       position: 'bottom-right',
@@ -59,6 +62,7 @@ export default function Dashboard() {
 
   return (
     <div className='dashboard-page'>
+      
       <Container>
         <Welcome />
 
