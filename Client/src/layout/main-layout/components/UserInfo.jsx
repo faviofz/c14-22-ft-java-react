@@ -28,7 +28,7 @@ export function UserInfo() {
               <Avatar></Avatar>
             </div>
             <div>
-              <h1 className='font-bold text-md text-primary capitalize'>
+              <h1 className='font-bold capitalize text-md text-primary'>
                 {authState?.user?.name} {authState?.user?.surname}
               </h1>
               <span className='text-xs text-neutral'>Usuario</span>
@@ -44,12 +44,12 @@ export function UserInfo() {
         <li className='border-t-2'>
           <DarkModeSwitch />
         </li>
-        <li
+        {/* <li
           className='border-t-2'
           onClick={() => document.getElementById('modal_config').showModal()}
         >
           <h3>Configuración</h3>
-        </li>
+        </li> */}
 
         <li className='border-t-2'>
           <Link className='text-secondary' to={'/service-policy'}>

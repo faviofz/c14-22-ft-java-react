@@ -49,15 +49,16 @@ export function FormProduct() {
           .reverse()
           .join('-');
 
-        createProduct(values);
-        closeModal();
+          console.log(values)
+        // createProduct(values);
+        // closeModal();
       },
       validationSchema: Yup.object({
         nombre: Yup.string().required('Este dato es requerido'),
         imagen: Yup.string().required('Este dato es requerido'),
         costo: Yup.number().required('Este dato es requerido'),
         // impuesto: Yup.number().required('Este dato es requerido'),
-        fechaVencimiento: Yup.string().required('Este dato es requerido'),
+        fechaVencimiento: Yup.date().min(new Date()).required('Este dato es requerido'),
         categoria: Yup.string().required('Este dato es requerido'),
         proveedor: Yup.string().required('Este dato es requerido'),
         marca: Yup.string().required('Este dato es requerido'),
