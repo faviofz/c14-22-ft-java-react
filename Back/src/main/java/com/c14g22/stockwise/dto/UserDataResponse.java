@@ -21,5 +21,6 @@ public class UserDataResponse {
     this.rol = empleado.getRol();
     this.email = empleado.getEmail();
     this.fechaIngreso = empleado.getFechaIngreso();
+    this.url = empleado.getPhoto_url();
   }
 }
