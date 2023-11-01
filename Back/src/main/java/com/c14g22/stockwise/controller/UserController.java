@@ -7,9 +7,15 @@ import com.c14g22.stockwise.dto.UserDataResponse;
 import com.c14g22.stockwise.dto.UserLoginRequest;
 import com.c14g22.stockwise.dto.UserLoginResponse;
 import com.c14g22.stockwise.dto.UserSignupRequest;
+import com.c14g22.stockwise.model.ChangePasswordRequest;
 import com.c14g22.stockwise.model.User;
+import com.c14g22.stockwise.service.EmailService;
 import com.c14g22.stockwise.service.EmpleadoService;
 import com.c14g22.stockwise.service.UserService;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +25,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,6 +37,8 @@ public class UserController {
   private EmpleadoService empleadoService;
   @Autowired
   private JWTUtil util;
+  @Autowired
+  private EmailService emailService;
 
   @Autowired
   private AuthenticationManager authenticationManager;
@@ -52,7 +61,7 @@ public class UserController {
 
   @GetMapping("/user")
   public ResponseEntity<UserDataResponse> getUserData(Principal p) {
-    User user = userService.findByUsername(p.getName()).orElse(null);
+    User user = userService.findByUsername(p.getName());
     assert user != null;
     return ResponseEntity.ok(new UserDataResponse(user.getEmpleado()));
   }
@@ -60,13 +69,37 @@ public class UserController {
   @PutMapping("/user")
   public ResponseEntity<UserLoginResponse> updateUserData(Principal p,
       @RequestBody UserDataRequest userRequest) {
-    User user = userService.findByUsername(p.getName()).orElse(null);
+    User user = userService.findByUsername(p.getName());
     assert user != null;
+
     EmpleadoRequest empleadoRequest = new EmpleadoRequest();
     empleadoRequest.setNombre(userRequest.getNombre());
     empleadoRequest.setApellido(userRequest.getApellido());
     empleadoRequest.setRol(userRequest.getRol());
+
     empleadoService.actualizarEmpleado(user.getId(), empleadoRequest);
+
     return ResponseEntity.noContent().build();
+  }
+
+  @PostMapping("/resetPassword")
+  public ResponseEntity<String> forgotPassword(@RequestParam String email)
+      throws MalformedURLException, URISyntaxException {
+    User user = userService.findByEmail(email);
+    String token = util.generateToken(user.getEmail());
+    String url = "https://stockwise-client.vercel.app/changePassword?email=" + email +"&token=" + token;
+    emailService.sendSimpleMessage(email,"Reset password", url);
+
+    return ResponseEntity.ok().build();
+  }
+
+  @PostMapping("/changePassword")
+  public ResponseEntity<String> changePassword(@RequestParam String email, @RequestParam String token, @RequestBody
+      ChangePasswordRequest passwordRequest){
+    if (!util.isValidToken(token,email)) {
+      return ResponseEntity.badRequest().body("TOKEN INVALID");
+    }
+    userService.updatePasswordByEmail(email,passwordRequest.password());
+    return ResponseEntity.ok().build();
   }
 }

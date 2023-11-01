@@ -5,9 +5,9 @@ import com.c14g22.stockwise.exception.EmailDuplicateException;
 import com.c14g22.stockwise.exception.UsernameDuplicateException;
 import com.c14g22.stockwise.model.Empleado;
 import com.c14g22.stockwise.model.User;
-import com.c14g22.stockwise.repository.EmpleadoRepository;
 import com.c14g22.stockwise.repository.UserRepository;
 import com.c14g22.stockwise.service.UserService;
+import jakarta.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Optional;
@@ -32,10 +32,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
   @Override
   public User saveUser(UserSignupRequest req) {
     if (userRepo.existsByEmail(req.getEmail())) {
-      throw new EmailDuplicateException("El email: "+req.getEmail()+" ya existe.");
+      throw new EmailDuplicateException("El email: " + req.getEmail() + " ya existe.");
     }
-    if(userRepo.existsByUsername(req.getUsername())){
-      throw new UsernameDuplicateException("El nombre de usuario: "+req.getUsername()+" ya existe.");
+    if (userRepo.existsByUsername(req.getUsername())) {
+      throw new UsernameDuplicateException(
+          "El nombre de usuario: " + req.getUsername() + " ya existe.");
     }
     User user = new User();
     user.setUsername(req.getUsername());
@@ -53,8 +54,21 @@ public class UserServiceImpl implements UserService, UserDetailsService {
   }
 
   @Override
-  public Optional<User> findByUsername(String username) {
-    return userRepo.findByUsername(username);
+  public User findByUsername(String username) {
+    return userRepo.findByUsername(username)
+        .orElseThrow(() -> new UsernameNotFoundException(username));
+  }
+
+  @Override
+  public User findByEmail(String email) {
+    return userRepo.findByEmail(email).orElseThrow(EntityNotFoundException::new);
+  }
+
+  @Override
+  public User updatePasswordByEmail(String email, String password) {
+    User user = this.findByEmail(email);
+    user.setPassword(passwordEncoder.encode(password));
+    return this.userRepo.save(user);
   }
 
   @Override
