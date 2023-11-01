@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useProducts, useProviders, useModal } from '@/hooks';
-import { Input, Button, Preload, MenuSkeleton } from '@/components';
+import { useProducts } from '@/hooks';
+import { MenuSkeleton } from '@/components';
 import { AddStockTable } from './AddStockTable';
 import '../product-page.scss';
 import { ProviderIcon, InfoIcon } from '@/assets/svg';
@@ -87,61 +87,6 @@ export function AddStock() {
           </div>
         )}
       </div>
-      {/* <select
-        className='w-full h-10 mb-5 text-sm lg:text-[12px] min-[1150px]:text-base bg-base-200 input input-bordered'
-        name='proveedor'
-        onChange={handleSelect}
-      >
-        <option value=''>Seleccionar proveedor</option>
-        {providers.map(provider => (
-          <option key={provider.id} value={provider.name}>
-            {provider.name}
-          </option>
-        ))}
-      </select>
-
-      <div className={`${!provider && 'hidden'}`}>
-        <h3 className='my-5 text-lg font-semibold'>
-          Selecciona el producto a recargar
-        </h3>
-        <table className='table'>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Stock minimo</th>
-              <th>Stock actual</th>
-              <th>Pedido</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products
-              .filter(value => value.proveedor.nombre === provider)
-              .filter(value => value.min > value.actual)
-              .map(item => (
-                <tr key={item.id}>
-                  <td>{item.nombre}</td>
-                  <td>{item.min}</td>
-                  <td>{item.actual}</td>
-                  <td>
-                    <form className='flex items-center justify-center gap-5'>
-                      <Input
-                        name='cantidad'
-                        type='number'
-                        min={1}
-                        placeholder=''
-                        onChange={e => handleChange(item.id)(e)}
-                        className='h-[2rem] w-[4.5rem] text-center px-1'
-                      />
-                    </form>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <Button onClick={() => handleSubmit()}>Hacer pedido</Button>
-      </div> */}
     </div>
   );
 }
