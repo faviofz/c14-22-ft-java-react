@@ -10,7 +10,7 @@ export default function Product() {
   const { products, getAllProducts } = useProducts();
   const { openModal } = useModal();
   const { setFiltered, displayed, currentPage, totalPages, setCurrentPage } =
-    usePaginated({ data: products, numItems: 7 });
+    usePaginated({ data: products, numItems: 9 });
 
   const [filters, setFilters] = useState({
     marca: 'all',

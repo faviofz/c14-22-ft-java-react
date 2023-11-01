@@ -57,11 +57,15 @@ export function Table({ data }) {
                 <td>{provider.company}</td>
                 <td>{provider.phone}</td>
                 <td>{provider.email}</td>
-                <td className='flex gap-5'>
-                  <button onClick={() => deleteProviderAlert(provider.id)}>
+                <td className='flex gap-2'>
+                  <button
+                    className='btn btn-circle'
+                    onClick={() => deleteProviderAlert(provider.id)}
+                  >
                     <TrashIcon />
                   </button>
                   <button
+                    className='btn btn-circle'
                     onClick={() =>
                       openModal(<UpdateProvider provider={provider} />)
                     }

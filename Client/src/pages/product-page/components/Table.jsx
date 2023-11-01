@@ -60,7 +60,10 @@ export function Table({ data }) {
           </thead>
           <tbody>
             {data.map(product => (
-              <tr className={`${product.min > product.actual && 'bg-error'}`} key={product.id}>
+              <tr
+                className={`${product.min > product.actual && 'bg-error'}`}
+                key={product.id}
+              >
                 <td>{product.nombre}</td>
                 <td>
                   <div className='w-12 h-12 mask mask-squircle'>
@@ -76,11 +79,15 @@ export function Table({ data }) {
                   {!product.proveedor ? 'vacio' : product.proveedor.nombre}
                 </td>
 
-                <td className='flex gap-5'>
-                  <button onClick={() => deleteProductAlert(product.id)}>
+                <td className='flex gap-2'>
+                  <button
+                    className='btn btn-circle'
+                    onClick={() => deleteProductAlert(product.id)}
+                  >
                     <TrashIcon />
                   </button>
                   <button
+                    className='btn btn-circle'
                     onClick={() =>
                       openModal(<UpdateProduct product={product} />, {
                         title: 'Editar Producto',
@@ -88,9 +95,10 @@ export function Table({ data }) {
                       })
                     }
                   >
-                    <PencilAltIcon/>
+                    <PencilAltIcon />
                   </button>
                   <button
+                    className='btn btn-circle'
                     onClick={() =>
                       openModal(<ProductDetail product={product} />, {
                         title: '',

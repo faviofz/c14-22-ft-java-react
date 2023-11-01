@@ -26,11 +26,15 @@ export function Table({ data }) {
             {data.map(brand => (
               <tr key={brand.id}>
                 <td>{brand.name}</td>
-                <td className='flex gap-5'>
-                  <button onClick={() => deleteBrand(brand.id)}>
+                <td className='flex gap-2'>
+                  <button
+                    className='btn btn-circle'
+                    onClick={() => deleteBrand(brand.id)}
+                  >
                     <TrashIcon />
                   </button>
                   <button
+                    className='btn btn-circle'
                     onClick={() => openModal(<UpdateBrand brand={brand} />)}
                   >
                     <PencilAltIcon />

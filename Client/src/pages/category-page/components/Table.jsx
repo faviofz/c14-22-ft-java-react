@@ -54,11 +54,15 @@ export function Table({ data }) {
             {data.map(product => (
               <tr key={product.id}>
                 <td>{product.name}</td>
-                <td className='flex gap-5'>
-                  <button onClick={() => deleteCategoryAlert(product.id)}>
+                <td className='flex gap-2'>
+                  <button
+                    className='btn btn-circle'
+                    onClick={() => deleteCategoryAlert(product.id)}
+                  >
                     <TrashIcon />
                   </button>
                   <button
+                    className='btn btn-circle'
                     onClick={() =>
                       openModal(<UpdateCategory product={product} />)
                     }

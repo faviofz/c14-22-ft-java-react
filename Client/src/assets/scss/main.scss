@@ -46,6 +46,7 @@ table {
         }
     }
 }
+
 .swal-modal{
     width: 40rem;
     padding-top: 1rem;
@@ -75,7 +76,7 @@ input[type=file] { padding-left: 0; }
         button{
             svg{
                path{
-                stroke: rgba($color: $neutral-dark, $alpha: .7);
+                fill: rgba($color: $neutral-dark, $alpha: .7);
                } 
             }
         }
