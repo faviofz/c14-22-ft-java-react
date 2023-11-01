@@ -1,31 +1,44 @@
+import React, { useEffect } from 'react';
 import { BellSVG } from '@/assets/svg';
-
 import { Link } from 'react-router-dom';
+import { useProducts } from '../../../hooks/useProducts';
 
 export function NotificationButton() {
+  const { products, getAllProducts } = useProducts();
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
+
+
+  const filteredNotifications = products
+    .filter(product => product.min > product.actual)
+    .map(product => ({
+      title: `Falta de Stock - ${product.nombre}`,
+      to: `/notification`, 
+    }));
+
   return (
     <details className='dropdown dropdown-end max-lg:hidden'>
       <summary className='m-1 btn btn-circle btn-ghost [&>div>svg>path]:hover:fill-accent-content hover:bg-base-200'>
         <div className='indicator'>
-          <BellSVG className='[&>path]:fill-secondary-content ' />
-          <span className='badge badge-xs badge-primary indicator-item'></span>
+          <BellSVG className='[&>path]:fill-secondary-content' />
+          <span className='badge badge-xs badge-primary indicator-item'>
+            {filteredNotifications.length}
+          </span>
         </div>
       </summary>
       <ul className='p-2 shadow menu dropdown-content z-[1] bg-base-200 rounded-box w-80'>
         <li>
-          <h1 className='menu-title'>Notificación</h1>
+          <h1 className='menu-title'>Notificaciones</h1>
         </li>
-        <li>
-          <Link className='text-sm text-secondary' to={'/notification'}>
-            Falta de Stock - Coca Cola 2lt
-          </Link>
-        </li>
-
-        <li>
-          <Link className='text-sm text-secondary' to={'/notification'}>
-            Vencimiento de producto - Leche entera
-          </Link>
-        </li>
+        {filteredNotifications.map((notification, index) => (
+          <li key={index}>
+            <Link className='text-sm text-secondary' to={notification.to}>
+              {notification.title}
+            </Link>
+          </li>
+        ))}
       </ul>
     </details>
   );
