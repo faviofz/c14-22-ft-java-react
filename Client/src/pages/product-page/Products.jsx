@@ -12,6 +12,8 @@ export default function Product() {
   const { setFiltered, displayed, currentPage, totalPages, setCurrentPage } =
     usePaginated({ data: products, numItems: 9 });
 
+
+
   const [filters, setFilters] = useState({
     marca: 'all',
     categoria: 'all',

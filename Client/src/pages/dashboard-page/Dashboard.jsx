@@ -5,7 +5,7 @@ import { Container } from '@/components';
 import { DashboardPanel, Welcome, Stat } from './components';
 import { useProducts, useProviders } from '@/hooks';
 import { TableUltimos } from '../product-page/components/';
-
+import NotificationDash from "../../components/notificacion-dash/NotificationDash"
 import {
   ProductIcon,
   ProviderIcon,
@@ -108,7 +108,9 @@ export default function Dashboard() {
             listItems={notList.slice(-7)}
             isProduct={false}
           >
-            <DashboardPanel.Content></DashboardPanel.Content>
+            <DashboardPanel.Content>
+              <NotificationDash/>
+            </DashboardPanel.Content>
 
             <DashboardPanel.Footer>
               <div className='flex flex-col gap-3 mt-5'>
