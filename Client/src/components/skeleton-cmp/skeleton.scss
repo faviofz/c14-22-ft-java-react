@@ -22,14 +22,20 @@
         border-radius: .5rem;
         animation: shineitems 1.5s infinite linear
     }
+    .btn{
+        background-image: linear-gradient(90deg, $base200 0px, $base100 40px, $base200 80px);
+        animation: shineitems 1.5s infinite linear;
+        
+    }
 }
 
 
 
 [data-theme='projectDark']{
     .skeleton{
-        &-table-item{
-            background-image: linear-gradient(90deg, $accent 0px, $neutral 40px, $accent 80px);
+        &-table-item, .btn{
+            background-image: linear-gradient(90deg, $neutral 0px, $accent 40px, $neutral 80px);
         }
+        
     }
 }

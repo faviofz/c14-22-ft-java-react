@@ -33,9 +33,8 @@ export const createProductAsync = createAsyncThunk(
 export const updateProductAsync = createAsyncThunk(
   'products/updateProduct',
   async productModified => {
-    await serviceUpdateProduct(productModified);
-    // ! debe retornar el producto actualizaso (RESPONSE)
-    return productModified;
+    const response = await serviceUpdateProduct(productModified);
+    return response;
   }
 );
 

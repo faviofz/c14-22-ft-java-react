@@ -8,7 +8,7 @@ export function Table({ data }) {
   const { loading, deleteBrand } = useBrands();
   const { openModal } = useModal();
   const headers = ['Marca', 'Acciones'];
-  console.log();
+
   return (
     <>
       {loading ? (

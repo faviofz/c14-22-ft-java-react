@@ -50,7 +50,7 @@ export const updateProviderAsync = createAsyncThunk(
     // adapter
     const providerApi = providerToProviderApi(modifiedProvider);
     const response = await serviceUpdateProvider(providerApi);
-    console.log('response', response);
+
     // adapter
     const provider = providerApiToProvider(response);
     return provider;

@@ -32,17 +32,17 @@ export function UpdateProduct({ product }) {
     getAllProviders();
   }, []);
 
-  console.log(product);
   const initialValues = {
     nombre: product.nombre,
     imagen: product.imagen,
     costo: product.costo,
-    // impuesto: 0,
     fechaVencimiento: product.fechaVencimiento.split('-').reverse().join('-'),
-
     categoria: product.categoria.nombre,
     proveedor: product.proveedor.email,
     marca: product.marca.nombre,
+    min: product.min,
+    max: product.max,
+    actual: product.actual,
   };
 
   const { handleSubmit, touched, errors, values, getFieldProps, resetForm } =
@@ -61,11 +61,12 @@ export function UpdateProduct({ product }) {
         nombre: Yup.string().required('Este dato es requerido'),
         imagen: Yup.string().required('Este dato es requerido'),
         costo: Yup.number().required('Este dato es requerido'),
-        // impuesto: Yup.number().required('Este dato es requerido'),
         fechaVencimiento: Yup.string().required('Este dato es requerido'),
         categoria: Yup.string().required('Este dato es requerido'),
         proveedor: Yup.string().required('Este dato es requerido'),
         marca: Yup.string().required('Este dato es requerido'),
+        min: Yup.number().required('Este dato es requerido'),
+        max: Yup.number().required('Este dato es requerido'),
       }),
     });
 
@@ -182,6 +183,26 @@ export function UpdateProduct({ product }) {
             errorMessage={touched.proveedor && errors.proveedor}
           />
         </div>
+      </div>
+      <div className='flex flex-col  min-[730px]:flex-row min-[730px]:gap-5'>
+        <Input
+          type='number'
+          min='0'
+          step='0.01'
+          label='Minimo'
+          placeholder='Ingresar minimo'
+          {...getFieldProps('min')}
+          errorMessage={touched.costo && errors.costo}
+        />
+        <Input
+          type='number'
+          min='0'
+          step='0.01'
+          label='Maximo'
+          placeholder='Ingresar maximo'
+          {...getFieldProps('max')}
+          errorMessage={touched.costo && errors.costo}
+        />
       </div>
 
       {/* BUTTONS */}

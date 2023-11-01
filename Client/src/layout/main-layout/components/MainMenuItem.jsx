@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 export function MainMenuItem({ label, href, Icon, subMenu }) {
   return (
     <li>
-      {href ? (
+      {!subMenu ? (
         <Link to={href} className='text-secondary'>
           <Icon className='[&>path]:fill-secondary-content' />
           {label}
         </Link>
       ) : (
-        <details open>
-          <summary>
+        <>
+          <Link to={href} className='text-secondary'>
             <Icon className='[&>path]:fill-secondary-content' />
             {label}
-          </summary>
+          </Link>
           <ul>
             {subMenu.map(smenu => (
               <li key={`sm-${smenu.label}`}>
@@ -24,7 +24,7 @@ export function MainMenuItem({ label, href, Icon, subMenu }) {
               </li>
             ))}
           </ul>
-        </details>
+        </>
       )}
     </li>
   );

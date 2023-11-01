@@ -30,6 +30,7 @@ import DarkIcon from './dark-icon.svg?react';
 import ViewIcon from './viewIcon.svg?react';
 import UpArrowIcon from './upArrow.svg?react';
 import DownArrowIcon from './downArrow.svg?react';
+import InfoIcon from './infoIcon.svg?react';
 
 export {
   UpArrowIcon,
@@ -64,4 +65,5 @@ export {
   LightIcon,
   DarkIcon,
   ViewIcon,
+  InfoIcon,
 };

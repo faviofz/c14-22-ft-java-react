@@ -28,15 +28,16 @@ export function FormProduct() {
 
   const initialValues = {
     nombre: '',
+    slogan: crypto.randomUUID(), // ! no registra el slogan en create
     imagen: '',
     costo: 0,
-    // impuesto: 0,
     fechaVencimiento: '',
     categoria: '',
     proveedor: '',
     marca: '',
     min: 0,
     max: 0,
+    actual: 0,
   };
 
   const { handleSubmit, touched, errors, values, getFieldProps, resetForm } =
