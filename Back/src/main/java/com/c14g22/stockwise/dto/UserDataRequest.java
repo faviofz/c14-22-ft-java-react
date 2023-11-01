@@ -8,5 +8,5 @@ public class UserDataRequest {
   private String nombre;
   private String apellido;
   private String password;
-  private String photo_url;
+  private String url;
 }

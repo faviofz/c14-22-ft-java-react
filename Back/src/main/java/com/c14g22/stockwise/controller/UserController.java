@@ -80,7 +80,7 @@ public class UserController {
     EmpleadoRequest empleadoRequest = new EmpleadoRequest();
     empleadoRequest.setNombre(userRequest.getNombre());
     empleadoRequest.setApellido(userRequest.getApellido());
-    empleadoRequest.setPhoto_url(userRequest.getPhoto_url());
+    empleadoRequest.setPhoto_url(userRequest.getUrl());
 
     EmpleadoResponse empleadoResponse = empleadoService.actualizarEmpleado(user.getId(), empleadoRequest);
     UserDataResponse userDataResponse = new UserDataResponse();
