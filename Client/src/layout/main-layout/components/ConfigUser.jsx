@@ -1,15 +1,13 @@
 import { useAuth, useModal, useUploadImage } from '@/hooks';
 import { Avatar } from './Avatar';
 import { useFormik } from 'formik';
-import { Input } from '@/components';
+import { Input, Preload } from '@/components';
 import * as Yup from 'yup';
 
 export function ConfigUser() {
   const { authState, updateUser } = useAuth();
   const { closeModal } = useModal();
-  const { handleImage, image, loading, resetImage } = useUploadImage();
-
-  // console.log(authState?.user);
+  const { handleImage, image, loading } = useUploadImage();
 
   const {
     handleSubmit,
@@ -28,7 +26,6 @@ export function ConfigUser() {
       url: authState?.user?.url,
     },
     onSubmit: values => {
-      // console.log(values);
       updateUser(values);
       closeModal();
     },
@@ -50,15 +47,20 @@ export function ConfigUser() {
           className='flex flex-col items-center justify-center gap-5 cursor-pointer lg:bg-base-200 lg:rounded-3xl lg:px-8 lg:border lg:border-primary lg:shadow'
         >
           <div className='w-40 h-40 transition-all duration-300 ease-out lg:w-52 lg:h-52 '>
-            {authState?.user?.url ? (
-              <Avatar username={authState?.user?.url}></Avatar>
+            {loading ? (
+              <Preload />
             ) : (
-              <Avatar
-                size={'text-[4rem]'}
-                username={authState?.user?.userName}
-              ></Avatar>
+              <>
+                {image ? (
+                  <img
+                    src={image}
+                    className='min-w-full min-h-full rounded-full shadow-lg'
+                  />
+                ) : (
+                  <Avatar />
+                )}
+              </>
             )}
-
             <Input
               id='input-file'
               type='file'
@@ -126,13 +128,13 @@ export function ConfigUser() {
 
       {/* BUTTOMS */}
       <div className='w-full'>
-        {loading ? (
-          <button className='w-full mb-5 btn btn-disabled lg:mb-0'> . . . </button>
-        ) : (
-          <button type='submit' className='w-full mb-5 lg:mb-0 btn btn-primary'>
-            Guardar
-          </button>
-        )}
+        <button
+          type='submit'
+          className='w-full mb-5 lg:mb-0 btn btn-primary'
+          disabled={loading}
+        >
+          {loading ? '...' : 'Guardar'}
+        </button>
       </div>
     </form>
   );

@@ -10,13 +10,13 @@ export function Grid({ data }) {
       {data.map(item => (
         <div
           key={item.id}
-
           className={`${
             item.min > item.actual && 'border-4 border-error'
           } bg-base-200 w-full h-[153px] rounded-3xl shadow flex flex-row min-[400px]:max-w-[342px]`}
           onClick={() =>
             openModal(<ProductDetail product={item} />, {
               title: '',
+              className: 'modal-product',
             })
           }
         >

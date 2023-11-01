@@ -7,23 +7,31 @@ export const initialState = {
 };
 
 export function authReducer(state, action) {
+  //  GET USER
   if (action.type === authActions.GETUSER) {
-    localStorage.setItem(
-      'userLogger',
-      JSON.stringify({ ...state.user, ...action.payload })
-    );
+    const userModified = { ...state.user, ...action.payload };
+    localStorage.setItem('userLogger', JSON.stringify(userModified));
     return {
       ...state,
       user: { ...state.user, ...action.payload },
     };
   }
+  // ---------------------------------------------
+  //  CREATE USER
   if (action.type === authActions.CREATE) {
     return {
       ...state,
       created: action.payload,
     };
   }
-
+  // ---------------------------------------------
+  // UPDATE USER
+  if (action.type === authActions.UPDATEUSER) {
+    const userModified = { ...state.user, ...action.payload };
+    localStorage.setItem('userLogger', JSON.stringify(userModified));
+    return { ...state, user: userModified };
+  }
+  // ---------------------------------------------
   if (action.type === authActions.LOGIN) {
     localStorage.setItem('userLogger', JSON.stringify(action.payload));
     localStorage.setItem('isLogged', JSON.stringify(true));
@@ -34,27 +42,21 @@ export function authReducer(state, action) {
       errorMessage: null,
     };
   }
-
+  // ---------------------------------------------
   if (action.type === authActions.LOGOUT) {
     localStorage.setItem('userLogger', JSON.stringify(null));
     localStorage.setItem('isLogged', JSON.stringify(false));
     return { ...initialState };
   }
-
+  // ---------------------------------------------
   if (action.type === authActions.ERROR) {
     return { ...state, errorMessage: action.payload };
   }
-
+  // ---------------------------------------------
   if (action.type === authActions.LOADING) {
     return { ...state, loading: action.payload };
   }
-
-  // ? UPDATE USER
-  if (action.type === authActions.UPDATEUSER) {
-    const userMofication = { ...state.user, ...action.payload };
-    localStorage.setItem('userLogger', JSON.stringify(userMofication));
-    return { ...state, user: userMofication };
-  }
+  // ---------------------------------------------
 
   throw Error('Unknown action: ' + action.type);
 }

@@ -80,12 +80,8 @@ export function Table({ data }) {
                 <td>
                   {!product.proveedor ? 'vacio' : product.proveedor.nombre}
                 </td>
-                <td>
-                  {product.min}
-                </td>
-                <td>
-                  {product.actual}
-                </td>
+                <td>{product.min}</td>
+                <td>{product.actual}</td>
 
                 <td className='flex gap-2'>
                   <button

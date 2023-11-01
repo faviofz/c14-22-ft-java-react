@@ -31,14 +31,14 @@ httpClient.interceptors.response.use(
   error => {
     // if (error.response.status === 500) window.location.replace("/");
     if (
-      error.response.request.status === 403 &&
+      error.response.request.status === 401 &&
       JSON.parse(localStorage.getItem('userLogger'))?.token
     ) {
-      // setTimeout(() => {
-      //   localStorage.setItem('userLogger', JSON.stringify(null));
-      //   localStorage.setItem('isLogged', JSON.stringify(false));
-      //   window.location.href = '/';
-      // }, 2000);
+      setTimeout(() => {
+        localStorage.setItem('userLogger', JSON.stringify(null));
+        localStorage.setItem('isLogged', JSON.stringify(false));
+        window.location.href = '/';
+      }, 2000);
     }
 
     return Promise.reject(error);
