@@ -124,7 +124,7 @@ const productsSlice = createSlice({
       const pedidos = action.payload;
       pedidos.forEach(({ id, actual }) => {
         const index = state.products.findIndex(product => product.id === id);
-        state.products[index].actual = actual;
+        state.products[index].actual += actual;
       });
     });
     // -------------------------------- SUSTRACT STOCK
@@ -136,7 +136,7 @@ const productsSlice = createSlice({
       const pedidos = action.payload;
       pedidos.forEach(({ id, actual }) => {
         const index = state.products.findIndex(product => product.id === id);
-        state.products[index].actual = actual;
+        state.products[index].actual -= actual;
       });
     });
   },
