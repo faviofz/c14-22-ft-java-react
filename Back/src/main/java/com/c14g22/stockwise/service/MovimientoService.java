@@ -13,6 +13,8 @@ public interface MovimientoService {
 
     MovimientoDto guardarMovimiento(MovimientoDto movimientoDto);
 
+    List<MovimientoDto> guardarTodos(List<MovimientoDto> movimientoDtoList);
+
     void actualizarMovimiento(Long id, MovimientoDto movimientoDto);
 
     void eliminarMovimiento(Long id);

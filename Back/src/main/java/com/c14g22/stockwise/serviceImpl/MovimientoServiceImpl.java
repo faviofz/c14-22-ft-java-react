@@ -32,6 +32,12 @@ public class MovimientoServiceImpl implements MovimientoService {
     }
 
     @Override
+    public List<MovimientoDto> guardarTodos(List<MovimientoDto> movimientoDtoList) {
+        List<Movimiento> movimientos = movimientoDtoList.stream().map(Movimiento::new).toList();
+      return this.movimientoRepository.saveAll(movimientos).stream().map(MovimientoDto::new).toList();
+    }
+
+    @Override
     public void actualizarMovimiento(Long id, MovimientoDto movimientoDto) {
         Movimiento movimiento = new Movimiento(movimientoDto);
         movimientoRepository.save(movimiento);

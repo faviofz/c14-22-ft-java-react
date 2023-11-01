@@ -1,10 +1,14 @@
 package com.c14g22.stockwise.controller;
 
+import com.c14g22.stockwise.dto.MovimientoDto;
 import com.c14g22.stockwise.dto.ProductoRequest;
 import com.c14g22.stockwise.dto.ProductoResponse;
 import com.c14g22.stockwise.dto.StockPatchRequest;
+import com.c14g22.stockwise.enumeraciones.Tipo;
+import com.c14g22.stockwise.service.MovimientoService;
 import com.c14g22.stockwise.service.ProductoService;
 import jakarta.persistence.EntityNotFoundException;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +29,8 @@ public class ProductoController {
 
   @Autowired
   private ProductoService productoService;
+  @Autowired
+  private MovimientoService movimientoService;
 
   @GetMapping
   public List<ProductoResponse> getProductos() {
@@ -70,14 +76,27 @@ public class ProductoController {
   @PatchMapping("/agregarStock")
   public ResponseEntity<List<ProductoResponse>> agregarStock(@RequestBody
   List<StockPatchRequest> stockPatchRequest) {
-    List<ProductoResponse> productoResponses = this.productoService.actualizarProductosSumarActual(stockPatchRequest);
+    List<ProductoResponse> productoResponses = this.productoService.actualizarProductosSumarActual(
+        stockPatchRequest);
+    List<MovimientoDto> movimientoDtos = productoResponses.stream().map(pr -> new MovimientoDto(
+        LocalDateTime.now(),
+        stockPatchRequest.stream().filter(s -> s.id().equals(pr.getId())).findFirst().get()
+            .actual(),
+        Tipo.ENTRADA, pr.getNombre())).toList();
+    this.movimientoService.guardarTodos(movimientoDtos);
     return ResponseEntity.ok(productoResponses);
   }
 
   @PatchMapping("/quitarStock")
   public ResponseEntity<List<ProductoResponse>> quitarStock(@RequestBody
   List<StockPatchRequest> stockPatchRequest) {
-    List<ProductoResponse> productoResponses = this.productoService.actualizarProductosRestarActual(stockPatchRequest);
+    List<ProductoResponse> productoResponses = this.productoService.actualizarProductosRestarActual(
+        stockPatchRequest);
+    List<MovimientoDto> movimientoDtos = productoResponses.stream().map(pr -> new MovimientoDto(
+        LocalDateTime.now(),
+        stockPatchRequest.stream().filter(s -> s.id().equals(pr.getId())).findFirst().get()
+            .actual(), Tipo.SALIDA, pr.getNombre())).toList();
+    this.movimientoService.guardarTodos(movimientoDtos);
     return ResponseEntity.ok(productoResponses);
   }
 }
