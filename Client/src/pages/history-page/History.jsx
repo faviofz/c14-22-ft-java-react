@@ -59,13 +59,10 @@ export default function History() {
             <Search placeholder='Buscar historial' onNewValue={handleSearch} />
           </DataList.Header>
           <DataList.Filters>
-            <div className='flex w-full items-center gap-5'>
-              <div className='w-full'>
-                <Filters onFilterType={handleFilterType} />
-              </div>
-              <div className=''>
+            <div className='flex flex-col lg:flex-row'>
+              <Filters onFilterType={handleFilterType}>
                 <FilterDate onDateChange={handleDateChange} />
-              </div>
+              </Filters>
             </div>
           </DataList.Filters>
         </DataList>

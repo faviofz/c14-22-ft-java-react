@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Container } from '@/components';
 import { DashboardPanel, Welcome, Stat } from './components';
-import { useProducts, useProviders } from '@/hooks';
+import { useProducts, useProviders, useMovements } from '@/hooks';
 import { TableUltimos } from '../product-page/components/';
 import NotificationDash from "../../components/notificacion-dash/NotificationDash"
 import {
@@ -24,9 +24,12 @@ export default function Dashboard() {
     getAllProviders,
   } = useProviders();
 
+  const { movements, getAllMovements} = useMovements();
+
   useEffect(() => {
     getAllProviders();
     getAllProducts();
+    getAllMovements();
   }, []);
 
   
@@ -67,11 +70,16 @@ export default function Dashboard() {
           />
           <Stat
             title='Historial'
-            stat={5.8}
+            stat={movements.length}
             Icon={HistoricalIcon}
             url={'/history'}
           />
-          {/* <Stat title='Stock' stat={1.2} Icon={StockIcon} /> */}
+          <Stat
+            title='Historial'
+            stat={movements.length}
+            Icon={HistoricalIcon}
+            url={'/history'}
+          />
         </div>
         <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>
           <DashboardPanel
