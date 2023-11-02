@@ -16,6 +16,7 @@ const History = lazy(() => import('./history-page/History'));
 const Notification = lazy(() => import('./notification-page/Notification'));
 const AddProducts = lazy(() => import('./product-page/AddProducts'));
 const SubtractProducts = lazy(() => import('./product-page/SubtractProducts'));
+const ChangePassword = lazy(() => import('./change-password/ChangePassword'));
 
 export {
   Dashboard,
@@ -32,4 +33,5 @@ export {
   Notification,
   AddProducts,
   SubtractProducts,
+  ChangePassword,
 };

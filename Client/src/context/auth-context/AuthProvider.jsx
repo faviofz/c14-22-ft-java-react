@@ -7,6 +7,8 @@ import {
   serviceSignUp,
   serviceGetUser,
   serviceUpdateUser,
+  serviceResetPassword,
+  serviceChangePassword,
 } from '@/services/auth.services';
 import { userApiToUser, userToUserApi } from '@/adapters';
 
@@ -67,15 +69,7 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const onLogout = () => {
-    dispatch({ type: authActions.LOGOUT });
-  };
-
-  const setErrorMessage = message => {
-    dispatch({ type: authActions.ERROR, payload: message });
-  };
-
-  async function updateUser(user) {
+  const updateUser = async user => {
     try {
       dispatch({ type: authActions.ERROR, payload: null });
       dispatch({ type: authActions.LOADING, payload: true });
@@ -92,7 +86,64 @@ export function AuthProvider({ children }) {
     } finally {
       dispatch({ type: authActions.LOADING, payload: false });
     }
-  }
+  };
+
+  const resetPassword = async email => {
+    try {
+      dispatch({ type: authActions.ERROR, payload: null });
+      dispatch({ type: authActions.MESSAGE, payload: null });
+      dispatch({ type: authActions.LOADING, payload: true });
+
+      await serviceResetPassword(email);
+
+      dispatch({
+        type: authActions.MESSAGE,
+        payload: 'Hemos enviado una notificación a tu correo electrónico',
+      });
+    } catch (error) {
+      dispatch({
+        type: authActions.ERROR,
+        payload: 'Vuelve a intertarlo',
+      });
+    } finally {
+      dispatch({ type: authActions.LOADING, payload: false });
+    }
+  };
+
+  const changePassword = async objectOfChange => {
+    try {
+      dispatch({ type: authActions.ERROR, payload: null });
+      dispatch({ type: authActions.MESSAGE, payload: null });
+      dispatch({ type: authActions.LOADING, payload: true });
+
+      dispatch({
+        type: authActions.MESSAGE,
+        payload: 'Contraseña cambiada',
+      });
+
+      const hasChanged = await serviceChangePassword(objectOfChange);
+      return hasChanged;
+    } catch (error) {
+      dispatch({
+        type: authActions.ERROR,
+        payload: 'Enlace no válido',
+      });
+    } finally {
+      dispatch({ type: authActions.LOADING, payload: false });
+    }
+  };
+
+  const onLogout = () => {
+    dispatch({ type: authActions.LOGOUT });
+  };
+
+  const setErrorMessage = message => {
+    dispatch({ type: authActions.ERROR, payload: message });
+  };
+
+  const setMessage = message => {
+    dispatch({ type: authActions.MESSAGE, payload: message });
+  };
 
   const valueMemo = useMemo(
     () => ({
@@ -101,8 +152,11 @@ export function AuthProvider({ children }) {
       onLogin,
       onLogout,
       setErrorMessage,
+      setMessage,
       getUser,
       updateUser,
+      resetPassword,
+      changePassword,
     }),
     [authState]
   );

@@ -53,6 +53,10 @@ export function authReducer(state, action) {
     return { ...state, errorMessage: action.payload };
   }
   // ---------------------------------------------
+  if (action.type === authActions.MESSAGE) {
+    return { ...state, message: action.payload };
+  }
+  // ---------------------------------------------
   if (action.type === authActions.LOADING) {
     return { ...state, loading: action.payload };
   }

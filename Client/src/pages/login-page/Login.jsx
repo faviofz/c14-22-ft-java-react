@@ -34,6 +34,7 @@ export default function Login() {
       <DoubleColumnLayout double={true}>
         <DoubleColumnLayout.Left>
           <Panel title='Acceda a su cuenta'>
+            <Alert message={authState.message} type='success' />
             <Alert message={authState.errorMessage} type='error' />
             <form onSubmit={handleSubmit}>
               <Input

@@ -18,6 +18,7 @@ import {
   Notification,
   AddProducts,
   SubtractProducts,
+  ChangePassword,
 } from '@/pages';
 
 export function MainRoutes() {
@@ -46,6 +47,14 @@ export function MainRoutes() {
             element={
               <PublicRoutes>
                 <ForgotPassword />
+              </PublicRoutes>
+            }
+          />
+          <Route
+            path='changePassword'
+            element={
+              <PublicRoutes>
+                <ChangePassword />
               </PublicRoutes>
             }
           />

@@ -1,21 +1,50 @@
 import { DataList, Container, Search } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
-import { Table, Grid, Filters } from './components';
-import {useMovements} from '@/hooks'
-import { useEffect } from 'react';
+import { Table, Filters } from './components';
+import { useMovements } from '@/hooks';
+import { useEffect, useState } from 'react';
+import FilterDate from './components/FilterDate';
 
 export default function History() {
- const { movements, getAllMovements} = useMovements()
+  const { movements, getAllMovements } = useMovements();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterType, setFilterType] = useState('');
+  const [filteredMovements, setFilteredMovements] = useState([]);
+  const [startDate, setStartDate] = useState(new Date('01/01/2023'));
+  const [endDate, setEndDate] = useState(new Date());
 
- useEffect(() => {
-  getAllMovements()
- }, [])
-//  console.log(movements)
-  const handleSearch = query => {
-    const filtered = providers.filter(product =>
-      product.nombre.toLowerCase().includes(query.toLowerCase())
+  useEffect(() => {
+    getAllMovements();
+  }, []);
+
+  useEffect(() => {
+    const descriptionFiltered = movements.filter(movement =>
+      movement.descripcion.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setFilteredProducts(filtered);
+
+    const typeFiltered = filterType
+      ? descriptionFiltered.filter(movement => movement.tipo === filterType)
+      : descriptionFiltered;
+
+    const dateFiltered = typeFiltered.filter(movement => {
+      const movementDate = new Date(movement.fecha_asiento);
+      return movementDate >= startDate && movementDate <= endDate;
+    });
+
+    setFilteredMovements(dateFiltered);
+  }, [searchQuery, movements, filterType, startDate, endDate]);
+
+  const handleSearch = query => {
+    setSearchQuery(query);
+  };
+
+  const handleFilterType = selectedType => {
+    setFilterType(selectedType);
+  };
+
+  const handleDateChange = (start, end) => {
+    setStartDate(start);
+    setEndDate(end);
   };
 
   return (
@@ -24,14 +53,20 @@ export default function History() {
         <DataList
           title='Historial'
           setViewMode={viewModeType.TABLE}
-          element={<Table data={movements} />}
+          element={<Table data={filteredMovements} />}
         >
           <DataList.Header>
             <Search placeholder='Buscar historial' onNewValue={handleSearch} />
-            
           </DataList.Header>
           <DataList.Filters>
-            <Filters />
+            <div className='flex w-full items-center gap-5'>
+              <div className='w-full'>
+                <Filters onFilterType={handleFilterType} />
+              </div>
+              <div className=''>
+                <FilterDate onDateChange={handleDateChange} />
+              </div>
+            </div>
           </DataList.Filters>
         </DataList>
       </Container>
