@@ -1,8 +1,8 @@
 import { Suspense, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Preload, Footer } from '@/components';
-import { useAuth } from '@/hooks/useAuth';
 import { Navbar } from './components/Navbar';
+import { useAuth } from '@/hooks';
 import './main-layout.scss';
 
 export function MainLayout() {
@@ -10,7 +10,7 @@ export function MainLayout() {
   const { isLogged } = authState;
 
   useEffect(() => {
-    isLogged && !authState.user.name && getUser();
+    isLogged && !authState?.user?.name && getUser();
   }, [isLogged]);
 
   return (
