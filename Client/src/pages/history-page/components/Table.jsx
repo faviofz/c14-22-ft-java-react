@@ -1,41 +1,34 @@
 import PropTypes from 'prop-types';
 import { TrashIcon, PencilAltIcon } from '@/assets/svg';
 
-
 export function Table({ data }) {
   return (
     <table className='table bg-base-200 '>
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Empresa</th>
-          <th>Telefono</th>
-          <th>Email</th>
-          <th>Acciones</th>
+          <th>Descripcion</th>
+          <th>Cantidad</th>
+          <th>Tipo</th>
+          <th>Fecha del asiento</th>
         </tr>
       </thead>
       <tbody>
-        {data.map(
-          (
-            {
-              nombre,
-              empresa,
-              telefono,
-              email,
-            },
-            index
-          ) => (
-            <tr key={index}>
-              <td>{nombre}</td>
-              <td>{empresa}</td>
-              <td>{telefono}</td>
-              <td>{email}</td>
-              <td className='flex gap-5'>
-                <TrashIcon /> <PencilAltIcon />
-              </td>
-            </tr>
-          )
-        )}
+        {data.map(({ cantidad, descripcion, fecha_asiento, tipo }, index) => (
+          <tr key={index}>
+            <td>{descripcion}</td>
+            <td>{cantidad}</td>
+            <td>
+              <p
+                className={`w-24 py-3 text-xs text-center badge ${
+                  tipo === 'ENTRADA' ? 'badge-success' : 'badge-error'
+                }`}
+              >
+                {tipo}
+              </p>
+            </td>
+            <td>{fecha_asiento}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

@@ -17,19 +17,19 @@ export default function NotificationDash() {
     }));
 
   return (
-    <div>
+    <ul className='flex flex-col w-full gap-3 '>
       {filteredNotifications.length > 0 ? (
-        filteredNotifications.map((notification, index) => (
-          <div className='ml-5'  key={index}>
-            <div className='flex justify-between gap-6 bg-[#EDEDED] mt-1 rounded-lg p-2'>
+        filteredNotifications.slice(-7).map((notification, index) => (
+          <li key={index}>
+            <div className='flex flex-row justify-between border-b-2'>
               <Link to={notification.to}>{notification.title}</Link>
-              <Link to={notification.to}><p>Ver Detalles</p></Link>
+              <Link className='mb-1' to={notification.to}><p>Ver Detalles</p></Link>
             </div>
-          </div>
+          </li>
         ))
       ) : (
         <p>No hay notificaciones</p>
       )}
-    </div>
+    </ul>
   );
 }

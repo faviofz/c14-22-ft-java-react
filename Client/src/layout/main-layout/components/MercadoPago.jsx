@@ -9,6 +9,7 @@ export function MercadoPago() {
   };
 
   const onSubmit = async formData => {
+    // console.log(formData)
     return new Promise((resolve, reject) => {
       fetch('/process_payment', {
         method: 'POST',
@@ -19,6 +20,7 @@ export function MercadoPago() {
       })
         .then(response => response.json())
         .then(response => {
+          // console.log(response)
           if(response.ok) {
             responseOK()
           } else {

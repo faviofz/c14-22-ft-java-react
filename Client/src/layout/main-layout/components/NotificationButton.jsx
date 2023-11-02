@@ -23,7 +23,7 @@ export function NotificationButton() {
       <summary className='m-1 btn btn-circle btn-ghost [&>div>svg>path]:hover:fill-accent-content hover:bg-base-200'>
         <div className='indicator'>
           <BellSVG className='[&>path]:fill-secondary-content' />
-          <span className='badge badge-xs badge-primary indicator-item'>
+          <span className='w-full h-full badge badge-xs badge-primary indicator-item'>
             {filteredNotifications.length}
           </span>
         </div>
@@ -32,7 +32,7 @@ export function NotificationButton() {
         <li>
           <h1 className='menu-title'>Notificaciones</h1>
         </li>
-        {filteredNotifications.map((notification, index) => (
+        {filteredNotifications.slice(-5).map((notification, index) => (
           <li key={index}>
             <Link className='text-sm text-secondary' to={notification.to}>
               {notification.title}

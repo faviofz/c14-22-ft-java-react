@@ -4,6 +4,7 @@ import {
   providersReducer,
   categoriesReducer,
   brandsReducer,
+  movementsReducer,
 } from '../reducers';
 
 const store = configureStore({
@@ -12,6 +13,7 @@ const store = configureStore({
     providers: providersReducer,
     categories: categoriesReducer,
     brands: brandsReducer,
+    movements: movementsReducer,
   },
 });
 

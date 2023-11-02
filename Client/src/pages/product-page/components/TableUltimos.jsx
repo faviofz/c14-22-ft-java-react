@@ -22,7 +22,7 @@ export function TableUltimos({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.map(product => (
+            {data.slice(-7).map(product => (
               <tr key={product.id}>
                 <td>{product.nombre}</td>
                 <td>
