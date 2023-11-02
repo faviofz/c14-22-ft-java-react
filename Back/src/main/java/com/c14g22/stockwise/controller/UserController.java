@@ -109,7 +109,7 @@ public class UserController {
   public ResponseEntity<String> changePassword(@RequestParam String email, @RequestParam String token, @RequestBody
       ChangePasswordRequest passwordRequest){
     if (!util.isValidToken(token,email)) {
-      return ResponseEntity.badRequest().body("TOKEN INVALID");
+      return ResponseEntity.badRequest().body("TOKEN INVALIDO");
     }
     userService.updatePasswordByEmail(email,passwordRequest.password());
     return ResponseEntity.ok().build();
