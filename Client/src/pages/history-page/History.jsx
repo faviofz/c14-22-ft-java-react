@@ -1,37 +1,55 @@
 import { DataList, Container, Search } from '@/components';
 import { viewModeType } from '@/components/datalist-cmp/constants';
-import { Table, Grid, Filters } from './components';
+import { Table,  Filters } from './components';
 import {useMovements} from '@/hooks'
-import { useEffect } from 'react';
+import { useEffect ,useState} from 'react';
 
 export default function History() {
- const { movements, getAllMovements} = useMovements()
+  const { movements, getAllMovements } = useMovements();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterType, setFilterType] = useState(''); 
+  const [filteredMovements, setFilteredMovements] = useState([]);
 
- useEffect(() => {
-  getAllMovements()
- }, [])
-//  console.log(movements)
-  const handleSearch = query => {
-    const filtered = providers.filter(product =>
-      product.nombre.toLowerCase().includes(query.toLowerCase())
+  useEffect(() => {
+    getAllMovements();
+  }, []);
+
+  useEffect(() => {
+    
+    const descriptionFiltered = movements.filter((movement) =>
+      movement.descripcion.toLowerCase().includes(searchQuery.toLowerCase())
     );
-    setFilteredProducts(filtered);
+
+    const typeFiltered = filterType
+      ? descriptionFiltered.filter((movement) => movement.tipo === filterType)
+      : descriptionFiltered;
+
+    setFilteredMovements(typeFiltered);
+  }, [searchQuery, movements, filterType]);
+
+  console.log(filteredMovements);
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  const handleFilterType = (selectedType) => {
+    setFilterType(selectedType);
   };
 
   return (
     <div>
       <Container>
         <DataList
-          title='Historial'
+          title="Historial"
           setViewMode={viewModeType.TABLE}
-          element={<Table data={movements} />}
+          element={<Table data={filteredMovements} />}
         >
           <DataList.Header>
-            <Search placeholder='Buscar historial' onNewValue={handleSearch} />
-            
+            <Search placeholder="Buscar historial" onNewValue={handleSearch} />
           </DataList.Header>
           <DataList.Filters>
-            <Filters />
+            <Filters onFilterType={handleFilterType} />
           </DataList.Filters>
         </DataList>
       </Container>
