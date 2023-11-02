@@ -14,21 +14,6 @@ import {
 } from '@/assets/svg';
 import './dashboard-page.scss';
 
-const {
-  title: notTitle,
-  Icon: notIcon,
-  listItems: notList,
-} = {
-  title: 'Notificaciones',
-  Icon: BellSVG,
-  listItems: [
-    { name: 'notificación', category: 'ver mas' },
-    { name: 'notificación', category: 'ver mas' },
-    { name: 'notificación', category: 'ver mas' },
-    { name: 'notificación', category: 'ver mas' },
-    { name: 'notificación', category: 'ver mas' },
-  ],
-};
 
 export default function Dashboard() {
   const { products, loading: loadingProducts, getAllProducts } = useProducts();
@@ -48,7 +33,7 @@ export default function Dashboard() {
  
 
   const notify = () => {
-    toast.info('Falta de Stock -  Coca Cola 2lt', {
+    toast.info('Falta de Stock - Coca Cola 2lt', {
       position: 'bottom-right',
       autoClose: 3000,
       hideProgressBar: false,
@@ -106,9 +91,8 @@ export default function Dashboard() {
           </DashboardPanel>
 
           <DashboardPanel
-            title={notTitle}
-            Icon={notIcon}
-            listItems={notList.slice(-7)}
+            title={'Notificaciones'}
+            Icon={BellSVG}
             isProduct={false}
           >
             <DashboardPanel.Content>

@@ -13,9 +13,9 @@ export default function Notification() {
   const filteredProducts = products.filter(product => product.min > product.actual);
 
   return (
-    <div className='flex flex-col items-center gap-5 justify-center w-full h-[80vh] overflow-auto'>
-      <div className='flex gap-5 '>
-        <BellSVG className='[&>path]:stroke-secondary-content' />
+    <div className='flex flex-col items-center justify-center w-full gap-5 notification-component'>
+      <div className='flex items-center gap-5'>
+        <BellSVG className='[&>path]:fill-secondary-content h-7 w-7' />
         <h1 className='text-3xl font-semibold tracking-wide '>Notificacion</h1>
       </div>
       <div className='flex flex-col items-center justify-center w-full gap-5 p-5'>
