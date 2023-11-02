@@ -15,7 +15,7 @@ public interface MovimientoService {
 
     List<MovimientoDto> guardarTodos(List<MovimientoDto> movimientoDtoList);
 
-    void actualizarMovimiento(Long id, MovimientoDto movimientoDto);
+    MovimientoDto actualizarMovimiento(Long id, MovimientoDto movimientoDto);
 
     void eliminarMovimiento(Long id);
 }

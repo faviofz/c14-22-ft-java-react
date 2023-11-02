@@ -1,5 +1,6 @@
 package com.c14g22.stockwise.controller;
 
+import com.c14g22.stockwise.dto.MovimientoDto;
 import com.c14g22.stockwise.model.Movimiento;
 import com.c14g22.stockwise.repository.MovimientoRepository;
 import com.c14g22.stockwise.service.MovimientoService;
@@ -12,38 +13,32 @@ import java.util.List;
 @RequestMapping("/movimientos")
 public class MovimientoController {
 
-    private final MovimientoRepository movimientoRepository;
     @Autowired
     private MovimientoService movimientoService;
 
-    public MovimientoController(MovimientoRepository movimientoRepository) {
-        this.movimientoRepository = movimientoRepository;
-        this.movimientoService = movimientoService;
-    }
 
-    @GetMapping("/movimientos")
+    @GetMapping
     public List<Movimiento> getMovimientos() {
         return movimientoService.obtenerMovimientos();
     }
 
-    @GetMapping("/movimientos/{id}")
+    @GetMapping("/{id}")
     public Movimiento getMovimiento(@PathVariable Long id) {
         return this.movimientoService.obtenerMovimientoPorId(id);
     }
 
-    @PostMapping("/movimientos")
-    public Movimiento createMovimiento(@RequestBody Movimiento movimiento) {
-        return movimientoRepository.save(movimiento);
+    @PostMapping
+    public MovimientoDto createMovimiento(@RequestBody MovimientoDto movimientoDto) {
+        return this.movimientoService.guardarMovimiento(movimientoDto);
     }
 
-    @PutMapping("/movimientos/{id}")
-    public Movimiento updateMovimiento(@PathVariable Long id, @RequestBody Movimiento movimiento) {
-        movimiento.setId(id);
-        return movimientoRepository.save(movimiento);
+    @PutMapping("/{id}")
+    public MovimientoDto updateMovimiento(@PathVariable Long id, @RequestBody MovimientoDto movimientoDto) {
+        return this.movimientoService.actualizarMovimiento(id,movimientoDto);
     }
 
-    @DeleteMapping("/notificaciones({id}")
+    @DeleteMapping("/{id}")
     public void deleteMovimiento(@PathVariable Long id) {
-        movimientoRepository.deleteById(id);
+        this.movimientoService.eliminarMovimiento(id);
     }
 }
