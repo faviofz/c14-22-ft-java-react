@@ -16,7 +16,6 @@ public class MovimientoController {
     @Autowired
     private MovimientoService movimientoService;
 
-
     @GetMapping
     public List<Movimiento> getMovimientos() {
         return movimientoService.obtenerMovimientos();
