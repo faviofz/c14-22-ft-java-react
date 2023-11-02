@@ -14,6 +14,8 @@ import com.c14g22.stockwise.model.User;
 import com.c14g22.stockwise.service.EmailService;
 import com.c14g22.stockwise.service.EmpleadoService;
 import com.c14g22.stockwise.service.UserService;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -21,6 +23,7 @@ import java.net.URL;
 import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -96,12 +99,38 @@ public class UserController {
 
   @PostMapping("/resetPassword")
   public ResponseEntity<String> forgotPassword(@RequestParam String email)
-      throws MalformedURLException, URISyntaxException {
+      throws MalformedURLException, URISyntaxException, MessagingException {
     User user = userService.findByEmail(email);
+
     String token = util.generateToken(user.getEmail());
     String url = "https://stockwise-client.vercel.app/changePassword?email=" + email +"&token=" + token;
-    emailService.sendSimpleMessage(email,"Reset password", url);
-
+    String html = "<table align='center' border=\"0\" width=\"549\" style=\"text-align: center; font-family:  sans-serif;\">\n"
+        + "  <tr>\n"
+        + "    <td><a href=\"https://stockwise-client.vercel.app/\" target=\"_blank\"><img src=\"https://stockwise-client.vercel.app/mailing/header.png\" alt=\"StockWise logo\"></a></td>\n"
+        + "  </tr>\n"
+        + "  <tr>\n"
+        + "    <td>\n"
+        + "      <div style=\"padding: 5rem 2rem;\">\n"
+        + "        <img src=\"https://stockwise-client.vercel.app/mailing/icon.png\" alt=\"password icon\">\n"
+        + "        <h2 style=\"color:#3378FF; font-size:2.3rem; font-weight: 100;\">Hola <b>"+user.getUsername()+"</b></h2>\n"
+        + "        <h2 style=\"color:#545F71\">¿Olvidaste tu contraseña?</h2>\n"
+        + "        <p style=\"color:#545F71\">\n"
+        + "          <b>Hemos recibido una solicitud para restablecer tu contraseña\n"
+        + "          recientemente.</b> Si no has iniciado esta solicitud, te pedimos que por\n"
+        + "          favor desestimes este mensaje. En caso contrario, <b>por favor sigue el\n"
+        + "          siguiente enlace</b>\n"
+        + "        </p>\n"
+        + "        <a href=\""+url+"\" target=\"_blank\" style=\"margin-top: 3rem; display: inline-block;\">\n"
+        + "            <img src=\"https://stockwise-client.vercel.app/mailing/button.png\" alt=\"Button change password\">\n"
+        + "        </a>\n"
+        + "      </div>\n"
+        + "    </td>\n"
+        + "  </tr>\n"
+        + "  <tr>\n"
+        + "    <td style=\"font-size: .7rem; color:#545F71;\">&copy; 2023, StockWise. Todos los derechos reservados.</td>\n"
+        + "  </tr>\n"
+        + "</table>";
+    emailService.sendMimeMessage(email,"Reset password", html);
     return ResponseEntity.ok().build();
   }
 
