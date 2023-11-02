@@ -3,7 +3,7 @@ import { viewModeType } from '@/components/datalist-cmp/constants';
 import { Table, Filters } from './components';
 import { useMovements } from '@/hooks';
 import { useEffect, useState } from 'react';
-import FilterDate from './components/FilterDate';
+import { FilterDate } from './components/FilterDate';
 
 export default function History() {
   const { movements, getAllMovements } = useMovements();

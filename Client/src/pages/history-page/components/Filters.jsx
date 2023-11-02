@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 export function Filters({ onFilterType, children }) {
-  const handleTypeChange = (e) => {
+  const handleTypeChange = e => {
     const selectedType = e.target.value;
     onFilterType(selectedType);
   };
@@ -17,14 +17,12 @@ export function Filters({ onFilterType, children }) {
         <option value='SALIDA'>SALIDA</option>
       </select>
 
-      <div>
-      {children}
-      </div>
+      <div>{children}</div>
     </div>
   );
 }
 
 Filters.propTypes = {
   children: PropTypes.node,
+  onFilterType: PropTypes.func,
 };
-
