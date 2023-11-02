@@ -14,14 +14,14 @@ export default function FilterDate({ onDateChange }) {
   };
 
   return (
-    <div className="flex ">
+    <div className="flex items-center justify-between gap-5 ">
       <DatePicker
         selected={startDate}
         onChange={(date) => handleDateChange(date, endDate)}
         selectsStart
         startDate={startDate}
         endDate={endDate}
-        className="w-24 mr-2 p-2 rounded-md"
+        className="h-10 border input input-md lg:bg-base-200"
       />
       <DatePicker
         selected={endDate}
@@ -30,7 +30,7 @@ export default function FilterDate({ onDateChange }) {
         startDate={startDate}
         endDate={endDate}
         minDate={startDate}
-        className="w-24  p-2 rounded-md"
+        className="h-10 border input input-md lg:bg-base-200"
       />
     </div>
   );
