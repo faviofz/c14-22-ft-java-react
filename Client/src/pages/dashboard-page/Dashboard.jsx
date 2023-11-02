@@ -3,17 +3,17 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Container } from '@/components';
 import { DashboardPanel, Welcome, Stat } from './components';
-import { useProducts, useProviders } from '@/hooks';
+import { useProducts, useProviders, useMovements } from '@/hooks';
 import { TableUltimos } from '../product-page/components/';
-import NotificationDash from "../../components/notificacion-dash/NotificationDash"
+import NotificationDash from '../../components/notificacion-dash/NotificationDash';
 import {
   ProductIcon,
   ProviderIcon,
-  HistoricalIcon,
   BellSVG,
+  IconEntrada,
+  IconSalida,
 } from '@/assets/svg';
 import './dashboard-page.scss';
-
 
 export default function Dashboard() {
   const { products, loading: loadingProducts, getAllProducts } = useProducts();
@@ -24,13 +24,17 @@ export default function Dashboard() {
     getAllProviders,
   } = useProviders();
 
+  const {
+    movements,
+    loading: movementsLoading,
+    getAllMovements,
+  } = useMovements();
+
   useEffect(() => {
     getAllProviders();
     getAllProducts();
+    getAllMovements();
   }, []);
-
-  
- 
 
   const notify = () => {
     toast.info('Falta de Stock - Coca Cola 2lt', {
@@ -66,12 +70,19 @@ export default function Dashboard() {
             loading={loadingProviders}
           />
           <Stat
-            title='Historial'
-            stat={5.8}
-            Icon={HistoricalIcon}
+            title='Entradas'
+            stat={movements.filter(m => m.tipo === 'ENTRADA').length}
+            Icon={IconEntrada}
             url={'/history'}
+            loading={movementsLoading}
           />
-          {/* <Stat title='Stock' stat={1.2} Icon={StockIcon} /> */}
+          <Stat
+            title='Salidas'
+            stat={movements.filter(m => m.tipo === 'SALIDA').length}
+            Icon={IconSalida}
+            url={'/history'}
+            loading={movementsLoading}
+          />
         </div>
         <div className='flex flex-col gap-5 mb-5 dashboard-panels md:flex-row '>
           <DashboardPanel
@@ -96,7 +107,7 @@ export default function Dashboard() {
             isProduct={false}
           >
             <DashboardPanel.Content>
-              <NotificationDash/>
+              <NotificationDash />
             </DashboardPanel.Content>
 
             <DashboardPanel.Footer>
