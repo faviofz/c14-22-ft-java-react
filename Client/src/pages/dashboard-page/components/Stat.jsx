@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Preload } from '@/components';
 
-export function Stat({ title = '', stat = 0, loading = false, Icon, url }) {
+export function Stat({ title, stat, loading, Icon, url }) {
   return (
     <Link to={url} className='box-border bock flex-2'>
       <div className='flex [&>div]:flex-1 items-center pl-[3rem] relative '>
@@ -29,6 +29,9 @@ Stat.propTypes = {
 };
 
 Stat.defaultProps = {
+  title: '',
+  stat: 0,
+  loading: false,
   children: <h3>Stat</h3>,
   url: '#',
 };
