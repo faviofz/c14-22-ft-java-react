@@ -36,4 +36,20 @@ export function serviceUpdateUser(newUser) {
   });
 }
 
+export function serviceResetPassword(email) {
+  return new Promise((resolve, reject) => {
+    httpClient
+      .post(`/resetPassword?email=${email}`)
+      .then(() => resolve(true))
+      .catch(error => reject(new Error(error)));
+  });
+}
 
+export function serviceChangePassword({ password, email, token }) {
+  return new Promise((resolve, reject) => {
+    httpClient
+      .post(`/changePassword?email=${email}&token=${token}`, { password })
+      .then(() => resolve(true))
+      .catch(error => reject(new Error(error)));
+  });
+}
