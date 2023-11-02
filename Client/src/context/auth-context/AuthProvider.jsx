@@ -98,7 +98,8 @@ export function AuthProvider({ children }) {
 
       dispatch({
         type: authActions.MESSAGE,
-        payload: 'Hemos enviado una notificación a tu correo electrónico',
+        payload:
+          'Le hemos enviado por correo electrónico un enlace para restablecer su contraseña',
       });
     } catch (error) {
       dispatch({
