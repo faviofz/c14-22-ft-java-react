@@ -10,7 +10,7 @@ export default function History() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState('');
   const [filteredMovements, setFilteredMovements] = useState([]);
-  const [startDate, setStartDate] = useState(new Date('01/01/2023'));
+  const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
   useEffect(() => {
@@ -43,14 +43,9 @@ export default function History() {
   };
 
   const handleDateChange = (start, end) => {
-    // console.log(`${start} -> ${end}`)
-    if (end == 'end') {
-      setStartDate(start);
-    } else {
       setStartDate(start);
       setEndDate(end);
     }
-  };
 
   return (
     <div>
