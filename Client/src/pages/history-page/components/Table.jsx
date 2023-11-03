@@ -26,7 +26,7 @@ export function Table({ data }) {
                 {tipo}
               </p>
             </td>
-            <td>{fecha_asiento}</td>
+            <td>{fecha_asiento.slice(0,10).split('-').reverse().join('-')}</td>
           </tr>
         ))}
       </tbody>

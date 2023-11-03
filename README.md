@@ -1,4 +1,3 @@
-
 <div>
 
 <!-- PROJECT LOGO -->
@@ -9,17 +8,15 @@
   </a>
 
 <h3>Bienvenid@s a StockWise</h3></div>
-<div >
-
+<div>
   <p>
     Sistema de Gestión de Inventario para Pequeñas Empresas que ofrece una solución práctica y asequible para ayudar a las mismas a mantener un control eficiente de su inventario, lo que a su vez puede mejorar la rentabilidad y la eficiencia operativa.
   </p>
     <div align='center'>
     <a href="https://stockwise-client.vercel.app/" target="_blank">
-          <img  src="https://img.shields.io/badge/VER_DEMO-3378FF?style=for-the-badge&logo=vercel&logoColor=%23343B4E
-"/>
-      </a>
-    <a href="https://inexpensive-action-production.up.railway.app/swagger-ui/index.html " target="_blank">
+          <img  src="https://img.shields.io/badge/VER_DEMO-3378FF?style=for-the-badge&logo=vercel&logoColor=%23343B4E"/>
+       </a>
+   <!-- <a href="https://inexpensive-action-production.up.railway.app/swagger-ui/index.html " target="_blank">
           <img  src="https://img.shields.io/badge/VER_API-3378FF?style=for-the-badge&logo=swagger&logoColor=%23343B4E
 "/>
       </a>
@@ -27,18 +24,15 @@
           <img  src="https://img.shields.io/badge/VER_DISE%C3%91O-3378FF?style=for-the-badge&logo=figma&logoColor=%23343B4E
 "/>
       </a>
-      </div>
-    <br>
-</div>
-    <div align='center>
       <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
           <img  src="https://img.shields.io/badge/REPORTAR_BUG-343B4E?style=for-the-badge
 "/>
-      </a>
-    </div>
+      </a> -->
+      </div>
+</div>
 
 <!-- ABOUT THE PROJECT -->
-
+<br>
 <h1> 
 <img src="Client/public/favicon.svg" width="18px">
 Acerca del Proyecto
@@ -52,11 +46,24 @@ StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empre
 <h3>Front-End</h3>
 
 ![React](https://img.shields.io/static/v1?style=for-the-badge&message=React&color=222222&logo=React&logoColor=61DAFB&label=)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![AXIOS](https://img.shields.io/badge/AXIOS-%235A29E4?style=for-the-badge&logo=axios)
+![DaisyUI](https://img.shields.io/badge/daisyui-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Formik](https://img.shields.io/badge/FORMIK-172B4D?style=for-the-badge)
+![YUP](https://img.shields.io/badge/YUP-000?style=for-the-badge)
+![Cloudinary](https://img.shields.io/badge/cloudinary-3448C5?style=for-the-badge)
 ![Vercel](https://img.shields.io/static/v1?style=for-the-badge&message=Vercel&color=000000&logo=Vercel&logoColor=FFFFFF&label=)
 
 <h3>Back-End</h3>
 
 ![Java](https://img.shields.io/badge/Java-%2523ED8B00.svg?style=for-the-badge&logo=oracle&logoColor=red&color=white)
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 ![Railway](https://img.shields.io/badge/Railway-000?style=for-the-badge&logo=railway&logoColor=white&labelColor=black&color=black)
 
 <h3>Base de datos</h3>
@@ -67,9 +74,6 @@ StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empre
 <h3>QA</h3>
 
 ![Jira](https://img.shields.io/badge/Jira-FFF?style=for-the-badge&logo=jira&logoColor=blue)
-
-
-
 
 <!-- Organización -->
 <h1> Organización
@@ -111,12 +115,11 @@ npm run dev
 ```
 
 O simplemente clickea en el link de
-<a href="https://github.com/No-Country/c14-22-ft-java-react" target="_blank">Ver Demo.</a>
+<a href="https://stockwise-client.vercel.app/" target="_blank">Ver Demo.</a>
 
 <!-- USAGE EXAMPLES -->
 <h1> Uso
 </h1>
-
 
 Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a partir de alli podras gestionar todo tu negocio con control de productos, seguimineto de las transacciones internas de la empresa y recepcion de notificaiones y alertas correspondientes.
 
@@ -228,7 +231,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
       </div>
     </td>
 
-    
 </tr>
 </table>
 <table align='center'>
@@ -278,17 +280,8 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1> Video
 </h1>
 
-<p><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
-
-<img src="https://i.imgur.com/CnxiHOh.png"/>
-
-<!-- Screenshots -->
-<h1>Capturas de Pantalla
-</h1>
-
-<img src="https://i.imgur.com/PiiZO5v.png"/>
-
-<br/><br/><br/><br/>
+<p><a href="#" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
+<br/>
 
 <!-- ACKNOWLEDGMENTS -->
 <h1> 

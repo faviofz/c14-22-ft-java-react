@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { BellSVG } from '@/assets/svg';
 import { Link } from 'react-router-dom';
 import { useProducts } from '../../../hooks/useProducts';
+import { toast } from 'react-toastify';
 
 export function NotificationButton() {
   const { products, getAllProducts } = useProducts();
@@ -9,6 +10,19 @@ export function NotificationButton() {
   useEffect(() => {
     getAllProducts();
   }, []);
+
+  const notify = () => {
+    toast.info('Falta de Stock - Coca Cola 2lt', {
+      position: 'bottom-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+  };
 
   const filteredNotifications = products
     .filter(product => product.min > product.actual)
@@ -31,13 +45,17 @@ export function NotificationButton() {
         <li>
           <h1 className='menu-title'>Notificaciones</h1>
         </li>
-        {filteredNotifications.slice(-5).map((notification, index) => (
-          <li key={index}>
-            <Link className='text-sm text-secondary' to={notification.to}>
-              {notification.title}
-            </Link>
-          </li>
-        ))}
+        {filteredNotifications.slice(-5).map((notification, index) => {
+          console.log('asd');
+          notify();
+          return (
+            <li key={index}>
+              <Link className='text-sm text-secondary' to={notification.to}>
+                {notification.title}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </details>
   );
