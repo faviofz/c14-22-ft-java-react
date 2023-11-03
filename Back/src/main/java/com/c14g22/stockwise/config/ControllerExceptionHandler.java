@@ -1,4 +1,4 @@
-package com.c14g22.stockwise;
+package com.c14g22.stockwise.config;
 
 import com.c14g22.stockwise.exception.MercadoPagoException;
 import com.c14g22.stockwise.exception.duplicatekey.EmailDuplicateException;
