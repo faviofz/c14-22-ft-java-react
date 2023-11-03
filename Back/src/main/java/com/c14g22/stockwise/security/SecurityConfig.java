@@ -38,6 +38,19 @@ public class SecurityConfig {
   @Autowired
   private PasswordEncoder passwordEncoder;
 
+  private static final String[] AUTH_WHITELIST = {
+      "/swagger-resources",
+      "/swagger-resources/**",
+      "/configuration/ui",
+      "/configuration/security",
+      "/swagger-ui.html",
+      "/webjars/**",
+      "/v3/api-docs/**",
+      "/api/public/**",
+      "/api/public/authenticate",
+      "/actuator/*",
+      "/swagger-ui/**"
+  };
 
   @Bean
   public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
@@ -53,6 +66,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(
             request -> request.requestMatchers("/signup", "/login", "/resetPassword",
                     "/changePassword").permitAll()
+                .requestMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest().authenticated())
         .exceptionHandling(
             httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint(
