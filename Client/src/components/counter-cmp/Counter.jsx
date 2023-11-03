@@ -21,7 +21,7 @@ export function Counter({ handler, currentValue, id }) {
       <Input
         type='number'
         value={currentValue}
-        className='border-primary border-l-0 border-r-0 '
+        className='border-l-0 border-r-0 border-primary '
         onChange={handleChange}
       />
       <button className='btn btn-primary' onClick={handleClick(1)}>

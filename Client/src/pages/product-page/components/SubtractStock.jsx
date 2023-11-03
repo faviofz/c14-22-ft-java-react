@@ -12,9 +12,20 @@ export function SubtractStock({ data, setFiltered }) {
   };
 
   const submitStock = () => {
-    subtractStock(Object.values(newStock));
-    setNewStock({});
-    setFiltered(products);
+    const parse = Object.values(newStock);
+    const filtered = parse.filter(e => e.actual != 0);
+
+    if (filtered.length === 0) {
+      swal({
+        title: 'No ha hecho ninguna pedido',
+        icon: 'error',
+        button: true,
+      });
+    } else {
+      subtractStock(Object.values(newStock));
+      setNewStock({});
+      setFiltered(products);
+    }
   };
 
   useEffect(() => {
@@ -57,7 +68,7 @@ export function SubtractStock({ data, setFiltered }) {
             {Object.values(newStock).every(s => s.actual === '0') || (
               <Button
                 onClick={submitStock}
-                className='btn btn-primary btn-block mt-2'
+                className='mt-2 btn btn-primary btn-block'
               >
                 Registrar salida
               </Button>
