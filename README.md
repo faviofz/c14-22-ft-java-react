@@ -105,8 +105,8 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <table>
   <tr>
-    <td>
-      <div align='center'>
+    <td align='center'>
+      <div >
         <a href="https://github.com/alejoaraya" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/82895574?v=4"/>
         </a>
@@ -116,35 +116,35 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <div style='display: flex; flex-direction: column'>
         <a href="https://github.com/alejoaraya" target="_blank">
-          <img style='width:100%' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/alejoaraya/" target="_blank">
-          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
       </div>
     </td>
-    <td>
-      <div align='center'>
+    <td align='center'>
+      <div >
         <a href="https://github.com/jooseariias" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/98505589?v=4"/>
         </a>
         <a href="https://github.com/jooseariias" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem; color: red">Joose Arias</h4>
-          <h4 style="margin-top: 1rem; color: red">Front-End</h4>
+          <h4 style="margin-top: 1rem;">Joose Arias</h4>
+          <h4 style="margin-top: 1rem;">Front-End</h4>
         </a>
         <div style='display: flex; flex-direction: column'>
         <a href="https://github.com/jooseariias" target="_blank">
-          <img style='width:100%' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/gared-lyon-194b21222/" target="_blank">
-          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
       </div>
     </td>
-    <td>
-      <div align='center'>
+    <td align='center'>
+      <div >
         <a href="https://github.com/luisangelsalcedo" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/8843955?v=4"/>
         </a>
@@ -154,10 +154,10 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <div style='display: flex; flex-direction: column'>
         <a href="https://github.com/luisangelsalcedo" target="_blank">
-          <img style='width:100%' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/luisangelsalcedo/" target="_blank">
-          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
       </div>
@@ -165,27 +165,27 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
     
   </tr>
 <tr>
-<td>
-      <div align='center'>
+<td align='center'>
+      <div >
         <a href="https://github.com/crishof" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/113149470?v=4"/>
         </a>
         <a href="https://github.com/crishof" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem; color: red">Cristian Hoffmann</h4>
-          <h4 style="margin-top: 1rem; color: red">Back-End</h4>
+          <h4 style="margin-top: 1rem;">Cristian Hoffmann</h4>
+          <h4 style="margin-top: 1rem;">Back-End</h4>
         </a>
         <div style='display: flex; flex-direction: column'>
         <a href="https://github.com/crishof" target="_blank">
-          <img style='width:100%' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/gared-lyon-194b21222/" target="_blank">
-          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
       </div>
     </td>
-<td>
-      <div align='center'>
+<td align='center'>
+      <div >
         <a href="https://github.com/faviofz" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/65041258?v=4"/>
         </a>
@@ -195,10 +195,10 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <div style='display: flex; flex-direction: column'>
         <a href="https://github.com/faviofz" target="_blank">
-          <img style='width:100%' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/faviofernandez/" target="_blank">
-          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
       </div>
@@ -207,21 +207,21 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
     
 </tr>
 <tr>
-<td>
-      <div align='center'>
+<td align='center'>
+      <div >
         <a href="https://github.com/alvarodvc" target="_blank" rel="author">
           <img width="110" src="https://ca.slack-edge.com/T02KS88FB0E-U05UEK6G8P6-a2808b4d92a3-512"/>
         </a>
         <a href="https://github.com/alvarodvc" target="_blank" rel="author">
-          <h4 style="margin-top: 1rem; color: red">Alvaro Deveze</h4>
-          <h4 style="margin-top: 1rem; color: red">QA</h4>
+          <h4 style="margin-top: 1rem;">Alvaro Deveze</h4>
+          <h4 style="margin-top: 1rem;">QA</h4>
         </a>
-        <div style='display: flex; flex-direction: column'>
+        <div style='display: flex; flex-direction: column; width: 100%'>
         <a href="https://github.com/alvarodvc" target="_blank">
-          <img style='width:100%' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/gared-lyon-194b21222/" target="_blank">
-          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
       </div>
@@ -237,10 +237,10 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         <div style='display: flex; flex-direction: column'>
         <a href="https://github.com/Melina1599" target="_blank">
-          <img style='width:100%' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
+          <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
         <a href="https://www.linkedin.com/in/melina-delosangeles-valdez/" target="_blank">
-          <img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
+          <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
       </div>
@@ -251,7 +251,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1> Video
 </h1>
 
-<p><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
+<p><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img style='width:8rem' src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
 
 <img src="https://i.imgur.com/CnxiHOh.png"/>
 
