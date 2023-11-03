@@ -11,12 +11,7 @@ export function FilterDate({ onDateChange }) {
   const handleDateChange = (startDate, endDate) => {
     setStartDate(startDate);
     setEndDate(endDate);
-    console.log(`${startDate} -> ${endDate}`)
-    if(startDate == endDate){
-      onDateChange(startDate, 'end');
-    } else {
       onDateChange(startDate, endDate);
-    }
   };
 
   return (
