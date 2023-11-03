@@ -1,4 +1,3 @@
-
 <div>
 
 <!-- PROJECT LOGO -->
@@ -9,14 +8,13 @@
   </a>
 
 <h3>Bienvenid@s a StockWise</h3></div>
-<div >
+<div>
   <p>
     Sistema de Gestión de Inventario para Pequeñas Empresas que ofrece una solución práctica y asequible para ayudar a las mismas a mantener un control eficiente de su inventario, lo que a su vez puede mejorar la rentabilidad y la eficiencia operativa.
   </p>
     <div align='center'>
     <a href="https://stockwise-client.vercel.app/" target="_blank">
-          <img  src="https://img.shields.io/badge/VER_DEMO-3378FF?style=for-the-badge&logo=vercel&logoColor=%23343B4E
-"/>
+          <img  src="https://img.shields.io/badge/VER_DEMO-3378FF?style=for-the-badge&logo=vercel&logoColor=%23343B4E"/>
        </a>
    <!-- <a href="https://inexpensive-action-production.up.railway.app/swagger-ui/index.html " target="_blank">
           <img  src="https://img.shields.io/badge/VER_API-3378FF?style=for-the-badge&logo=swagger&logoColor=%23343B4E
@@ -52,7 +50,7 @@ StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empre
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
 ![AXIOS](https://img.shields.io/badge/AXIOS-%235A29E4?style=for-the-badge&logo=axios)
-![DaisyUI](https://img.shields.io/badge/daisyui-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white)	
+![DaisyUI](https://img.shields.io/badge/daisyui-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white)
 ![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Formik](https://img.shields.io/badge/FORMIK-172B4D?style=for-the-badge)
@@ -76,9 +74,6 @@ StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empre
 <h3>QA</h3>
 
 ![Jira](https://img.shields.io/badge/Jira-FFF?style=for-the-badge&logo=jira&logoColor=blue)
-
-
-
 
 <!-- Organización -->
 <h1> Organización
@@ -125,7 +120,6 @@ O simplemente clickea en el link de
 <!-- USAGE EXAMPLES -->
 <h1> Uso
 </h1>
-
 
 Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a partir de alli podras gestionar todo tu negocio con control de productos, seguimineto de las transacciones internas de la empresa y recepcion de notificaiones y alertas correspondientes.
 
@@ -237,7 +231,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
       </div>
     </td>
 
-    
 </tr>
 </table>
 <table align='center'>
