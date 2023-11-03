@@ -58,7 +58,6 @@ export function SubtractStock({ data, setFiltered }) {
                     <Counter
                       handler={setStockById}
                       currentValue={newStock[item.id]?.actual ?? 0}
-                      actual={newStock[item.id]?.actual}
                       id={item.id}
                     />
                   </td>
