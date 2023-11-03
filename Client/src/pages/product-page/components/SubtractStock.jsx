@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 export function SubtractStock({ data, setFiltered }) {
   const { products, loading, subtractStock, getAllProducts } = useProducts();
-  // const [stado, setStado] = useState({});
   const [newStock, setNewStock] = useState({});
 
   const setStockById = id => value => {
@@ -60,7 +59,7 @@ export function SubtractStock({ data, setFiltered }) {
                 onClick={submitStock}
                 className='btn btn-primary btn-block mt-2'
               >
-                Salida de productos
+                Registrar salida
               </Button>
             )}
           </div>
