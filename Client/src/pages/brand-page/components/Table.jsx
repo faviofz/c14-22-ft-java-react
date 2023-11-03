@@ -27,8 +27,7 @@ export function Table({ data }) {
       },
     }).then(valueButtoms => {
       if (valueButtoms) {
-        deleteBrand(id);
-        
+        deleteBrand(id)
         swal({
           title: 'La marca fue eliminada',
           icon: 'success',
