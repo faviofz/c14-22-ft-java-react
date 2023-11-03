@@ -11,18 +11,6 @@ export function NotificationButton() {
     getAllProducts();
   }, []);
 
-  const notify = () => {
-    toast.info('Falta de Stock - Coca Cola 2lt', {
-      position: 'bottom-right',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-  };
 
 
   const filteredNotifications = products
@@ -47,8 +35,7 @@ export function NotificationButton() {
           <h1 className='menu-title'>Notificaciones</h1>
         </li>
         {filteredNotifications.slice(-5).map((notification, index) => {
-          console.log('asd')
-          notify()
+       
           return(
             <li key={index}>
             <Link className='text-sm text-secondary' to={notification.to}>

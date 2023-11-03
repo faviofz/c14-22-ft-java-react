@@ -9,6 +9,34 @@ export function Table({ data }) {
   const { openModal } = useModal();
   const headers = ['Marca', 'Acciones'];
 
+  const deleteBrandAlert = id => {
+    swal({
+      title: 'Desea eliminar la marca',
+      icon: 'warning',
+      buttons: {
+        catch: {
+          text: 'Cancelar',
+          value: null,
+          className: 'btn btn-accent',
+        },
+        default: {
+          text: 'Eliminar',
+          value: true,
+          className: 'btn btn-primary',
+        },
+      },
+    }).then(valueButtoms => {
+      if (valueButtoms) {
+        deleteBrand(id);
+        
+        swal({
+          title: 'La marca fue eliminada',
+          icon: 'success',
+        });
+      }
+    });
+  };
+
   return (
     <>
       {loading ? (
@@ -29,7 +57,7 @@ export function Table({ data }) {
                 <td className='flex gap-2'>
                   <button
                     className='btn btn-circle'
-                    onClick={() => deleteBrand(brand.id)}
+                    onClick={() => deleteBrandAlert(brand.id)}
                   >
                     <TrashIcon />
                   </button>
