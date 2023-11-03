@@ -103,8 +103,8 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1> Equipo
 </h1>
 
-<table>
-  <tr>
+<table align='center' >
+<tr>
     <td align='center'>
       <div >
         <a href="https://github.com/alejoaraya" target="_blank" rel="author">
@@ -162,9 +162,12 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </div>
       </div>
     </td>
-    
   </tr>
+</tr>
+</table>
+<table align='center' >
 <tr>
+
 <td align='center'>
       <div >
         <a href="https://github.com/crishof" target="_blank" rel="author">
@@ -206,6 +209,9 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
     
 </tr>
+</tr>
+</table>
+<table align='center' >
 <tr>
 <td align='center'>
       <div >
@@ -226,8 +232,8 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </div>
       </div>
     </td>
-    <td>
-      <div align='center'>
+    <td align='center'>
+      <div >
         <a href="https://github.com/Melina1599" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/72995774?v=4"/>
         </a>
