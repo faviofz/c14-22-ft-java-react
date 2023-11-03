@@ -1,8 +1,12 @@
 import { CalendarSVG, ClockSVG } from '@/assets/svg';
 import { useAuth } from '@/hooks/useAuth';
+import { useEffect } from 'react';
 
 export function Welcome() {
   const { authState } = useAuth();
+
+  useEffect(() => {}, []);
+
   return (
     <div className='flex flex-col gap-5 mt-4 mb-5 min-[500px]:flex-row  lg:flex-row lg:items-center lg:justify-between'>
       <h1 className='text-lg tracking-wider lg:text-2xl flex gap-x-2 min-[500px]:flex-col min-[700px]:flex-row'>
@@ -30,7 +34,7 @@ export function Welcome() {
           <h3>
             {
               // tiene que actualizarse la hora
-              new Date().toLocaleTimeString('es', {
+              new Date('2023-11-1 22:20:26').toLocaleTimeString('es', {
                 hour: '2-digit',
                 minute: '2-digit',
               })

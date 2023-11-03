@@ -57,7 +57,9 @@ export function FormProduct() {
         imagen: Yup.string().required('Este dato es requerido'),
         costo: Yup.number().required('Este dato es requerido'),
         // impuesto: Yup.number().required('Este dato es requerido'),
-        fechaVencimiento: Yup.date().min(new Date()).required('Este dato es requerido'),
+        fechaVencimiento: Yup.date()
+          .min(new Date())
+          .required('Este dato es requerido'),
         categoria: Yup.string().required('Este dato es requerido'),
         proveedor: Yup.string().required('Este dato es requerido'),
         marca: Yup.string().required('Este dato es requerido'),
@@ -110,7 +112,7 @@ export function FormProduct() {
               type='number'
               min='0'
               step='0.01'
-              label='Precio'
+              label='Precio (USD)'
               placeholder='Ingresar precio'
               {...getFieldProps('costo')}
               errorMessage={touched.costo && errors.costo}
