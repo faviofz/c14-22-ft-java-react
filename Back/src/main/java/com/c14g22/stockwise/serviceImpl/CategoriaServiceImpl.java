@@ -1,6 +1,7 @@
 package com.c14g22.stockwise.serviceImpl;
 
-import com.c14g22.stockwise.dto.CategoriaDto;
+import com.c14g22.stockwise.dto.CategoriaRequest;
+import com.c14g22.stockwise.dto.CategoriaResponse;
 import com.c14g22.stockwise.exception.notfound.CategoriaNotFoundException;
 import com.c14g22.stockwise.model.Categoria;
 import com.c14g22.stockwise.repository.CategoriaRepository;
@@ -33,20 +34,20 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     @Override
-    public CategoriaDto guardarCategoria(CategoriaDto categoriaDto) {
-        Categoria categoria = new Categoria(categoriaDto);
-        return new CategoriaDto(categoriaRepository.save(categoria));
+    public CategoriaResponse guardarCategoria(CategoriaRequest categoriaRequest) {
+        Categoria categoria = new Categoria(categoriaRequest);
+        return new CategoriaResponse(categoriaRepository.save(categoria));
     }
 
     @Override
-    public void actualizarCategoria(Long id, CategoriaDto categoriaDto) {
-        Categoria categoria = new Categoria(categoriaDto);
-        categoriaRepository.save(categoria);
+    public CategoriaResponse actualizarCategoria(Long id, CategoriaRequest categoriaRequest) {
+        Categoria categoria = this.categoriaRepository.findById(id).orElseThrow(CategoriaNotFoundException::new);
+        categoria.setNombre(categoriaRequest.getNombre());
+        return new CategoriaResponse(categoriaRepository.save(categoria));
     }
 
     @Override
     public void eliminarCategoria(Long id) {
         categoriaRepository.deleteById(id);
-
     }
 }

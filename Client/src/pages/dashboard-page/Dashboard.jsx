@@ -14,6 +14,7 @@ import {
   IconSalida,
 } from '@/assets/svg';
 import './dashboard-page.scss';
+import { Botoncito } from '../../components/botoncito/botoncito';
 
 export default function Dashboard() {
   const { products, loading: loadingProducts, getAllProducts } = useProducts();
@@ -53,7 +54,7 @@ export default function Dashboard() {
     <div className='dashboard-page'>
       <Container>
         <Welcome />
-
+        <Botoncito />
         <div className='box-border flex flex-col justify-center w-full gap-5 mb-5 starts-group'>
           <Stat
             title='Productos'

@@ -1,6 +1,7 @@
 package com.c14g22.stockwise.service;
 
-import com.c14g22.stockwise.dto.MarcaDto;
+import com.c14g22.stockwise.dto.MarcaRequest;
+import com.c14g22.stockwise.dto.MarcaResponse;
 import com.c14g22.stockwise.model.Marca;
 
 import java.util.List;
@@ -13,9 +14,9 @@ public interface MarcaService {
 
     Marca obtenerMarcaPorNombre(String nombre);
 
-    MarcaDto guardarMarca(MarcaDto marcaDto);
+    MarcaResponse guardarMarca(MarcaRequest marcaRequest);
 
-    void actualizarMarca(Long id, MarcaDto marcaDto);
+    MarcaResponse actualizarMarca(Long id, MarcaRequest marcaRequest);
 
     void eliminarMarca(Long id);
 }

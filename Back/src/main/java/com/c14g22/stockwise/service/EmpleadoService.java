@@ -2,9 +2,6 @@ package com.c14g22.stockwise.service;
 
 import com.c14g22.stockwise.dto.EmpleadoRequest;
 import com.c14g22.stockwise.dto.EmpleadoResponse;
-import com.c14g22.stockwise.dto.EntradaDto;
-import com.c14g22.stockwise.model.Empleado;
-import com.c14g22.stockwise.model.Entrada;
 import java.util.List;
 import java.util.UUID;
 

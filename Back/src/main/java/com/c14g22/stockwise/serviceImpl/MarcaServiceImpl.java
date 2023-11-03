@@ -1,6 +1,7 @@
 package com.c14g22.stockwise.serviceImpl;
 
-import com.c14g22.stockwise.dto.MarcaDto;
+import com.c14g22.stockwise.dto.MarcaRequest;
+import com.c14g22.stockwise.dto.MarcaResponse;
 import com.c14g22.stockwise.exception.notfound.MarcaNotFoundException;
 import com.c14g22.stockwise.model.Marca;
 import com.c14g22.stockwise.repository.MarcaRepository;
@@ -32,15 +33,15 @@ public class MarcaServiceImpl implements MarcaService {
     }
 
     @Override
-    public MarcaDto guardarMarca(MarcaDto marcaDto) {
-        Marca marca = new Marca(marcaDto);
-        return new MarcaDto(marcaRepository.save(marca));
+    public MarcaResponse guardarMarca(MarcaRequest marcaRequest) {
+        Marca marca = new Marca(marcaRequest);
+        return new MarcaResponse(marcaRepository.save(marca));
     }
 
     @Override
-    public void actualizarMarca(Long id, MarcaDto marcaDto) {
-        Marca marca = new Marca(marcaDto);
-        marcaRepository.save(marca);
+    public MarcaResponse actualizarMarca(Long id, MarcaRequest marcaRequest) {
+        Marca marca = new Marca(marcaRequest);
+        return new MarcaResponse(marcaRepository.save(marca));
     }
 
     @Override
