@@ -24,6 +24,13 @@ export function FormCategory() {
     }
   );
 
+  const successCategoryAlert = () => {
+  swal({
+    title: 'La categoria fue guardada',
+    icon: 'success',
+    timer: 1500,
+  });
+};
   return (
     <form onSubmit={handleSubmit}>
       <Input
@@ -37,7 +44,7 @@ export function FormCategory() {
       <div className='flex flex-col gap-3 min-[500px]:flex-row min-[500px]:justify-between'>
         <Button
           type='button'
-          onClick={resetForm}
+          onClick={() => closeModal()}
           disabled={loading}
           className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >

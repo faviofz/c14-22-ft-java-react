@@ -19,6 +19,7 @@ export function UpdateProvider({ provider }) {
         updateProvider({ ...values, id: provider.id });
         resetForm();
         closeModal();
+        successProviderAlert();
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -36,6 +37,14 @@ export function UpdateProvider({ provider }) {
       }),
     }
   );
+
+  const successProviderAlert = () => {
+    swal({
+      title: 'El proveedor fue actualizado',
+      icon: 'success',
+      timer: 1500,
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -67,7 +76,7 @@ export function UpdateProvider({ provider }) {
       <div className='flex flex-col gap-3 min-[500px]:flex-row min-[500px]:justify-between'>
         <Button
           type='button'
-          onClick={resetForm}
+          onClick={() => closeModal()}
           disabled={loading}
           className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >

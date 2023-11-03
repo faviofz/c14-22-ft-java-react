@@ -18,6 +18,7 @@ export function FormProduct() {
         createProvider(values);
         resetForm();
         closeModal();
+        successProviderAlert();
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -35,6 +36,14 @@ export function FormProduct() {
       }),
     }
   );
+
+  const successProviderAlert = () => {
+    swal({
+      title: 'El proveedor fue guardado',
+      icon: 'success',
+      timer: 1500,
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -66,7 +75,7 @@ export function FormProduct() {
       <div className='flex flex-col gap-3 min-[500px]:flex-row min-[500px]:justify-between'>
         <Button
           type='button'
-          onClick={resetForm}
+          onClick={() => closeModal()}
           disabled={loading}
           className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >

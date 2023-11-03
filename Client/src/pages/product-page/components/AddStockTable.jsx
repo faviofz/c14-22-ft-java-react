@@ -13,10 +13,23 @@ export function AddStockTable({ data, handleShow, setProductsNoStock }) {
     setNewStock({ ...newStock, [id]: { id, actual: Number(value) } });
   };
 
+  
+
   const submitStock = () => {
-    addStock(Object.values(newStock));
-    handleShow(true);
-    setProductsNoStock([]);
+    const parse = Object.values(newStock)
+    const filtered = parse.filter(e => e.actual != 0);
+    if(filtered.length === 0){
+      swal({
+        title: 'No ha hecho ninguna pedido',
+            icon: 'error',
+        button: true,
+      });
+    } else {
+      addStock(Object.values(newStock));
+      handleShow(true);
+      setProductsNoStock([]);
+    }
+    
   };
 
   return (
@@ -24,7 +37,7 @@ export function AddStockTable({ data, handleShow, setProductsNoStock }) {
       {loading ? (
         <TableSkeleton rows={6} headers={headers} />
       ) : (
-        <div className='overflow-auto pb-2'>
+        <div className='pb-2 overflow-auto'>
           <table className='table bg-base-200 '>
             <thead>
               <tr>
@@ -53,7 +66,7 @@ export function AddStockTable({ data, handleShow, setProductsNoStock }) {
           {Object.values(newStock).every(s => s.actual === '0') || (
             <button
               onClick={submitStock}
-              className='btn btn-primary btn-block mt-2'
+              className='mt-2 btn btn-primary btn-block'
             >
               Registrar entrada
             </button>
