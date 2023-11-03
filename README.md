@@ -18,6 +18,12 @@
     <a href="https://stockwise-client.vercel.app/" target="_blank">
           <img  src="https://img.shields.io/badge/Ver_Demo-3378FF?style=for-the-badge"/>
       </a>
+    <a href="https://inexpensive-action-production.up.railway.app/swagger-ui/index.html " target="_blank">
+          <img  src="https://img.shields.io/badge/VER_API-3378FF?style=for-the-badge"/>
+      </a>
+    <a href="https://www.figma.com/file/lIB64kDohOKOsdSNGkOSue/c14-22-ft-java-react" target="_blank">
+          <img  src="https://img.shields.io/badge/VER_DISEÑO-3378FF?style=for-the-badge"/>
+      </a>
     <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
           <img  src="https://img.shields.io/badge/Reportar_Bug-3378FF?style=for-the-badge"/>
       </a>
