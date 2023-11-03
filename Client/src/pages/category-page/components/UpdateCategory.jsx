@@ -17,6 +17,7 @@ export function UpdateCategory({ product }) {
         updateCategory({ ...values, id: product.id });
         resetForm();
         closeModal();
+        successCategoryAlert();
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -25,6 +26,15 @@ export function UpdateCategory({ product }) {
       }),
     }
   );
+
+  const successCategoryAlert = () => {
+    swal({
+      title: 'La categoria fue actualizada',
+      icon: 'success',
+      timer: 1500,
+    });
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <Input

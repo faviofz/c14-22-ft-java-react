@@ -17,6 +17,7 @@ export function UpdateBrand({ brand }) {
         updateBrand({ ...values, id: brand.id });
         resetForm();
         closeModal();
+        successBrandAlert();
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -25,6 +26,14 @@ export function UpdateBrand({ brand }) {
       }),
     }
   );
+  const successBrandAlert = () => {
+    swal({
+      title: 'La marca fue actualizada',
+      icon: 'success',
+      timer: 1500,
+    });
+  };
+
 
   return (
     <form onSubmit={handleSubmit}>

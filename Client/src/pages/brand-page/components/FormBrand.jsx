@@ -15,6 +15,7 @@ export function FormBrand() {
         createBrand(values);
         resetForm();
         closeModal();
+        successBrandAlert();
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -23,6 +24,14 @@ export function FormBrand() {
       }),
     }
   );
+
+  const successBrandAlert = () => {
+    swal({
+      title: 'La marca fue guardada',
+      icon: 'success',
+      timer: 1500,
+    });
+  };
 
   return (
     <form onSubmit={handleSubmit}>

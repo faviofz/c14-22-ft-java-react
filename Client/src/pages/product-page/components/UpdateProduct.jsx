@@ -45,6 +45,14 @@ export function UpdateProduct({ product }) {
     actual: product.actual,
   };
 
+  const successProductAlert = () => {
+    swal({
+      title: 'El producto fue actualizado',
+      icon: 'success',
+      timer: 1500,
+    });
+  };
+
   const { handleSubmit, touched, errors, values, getFieldProps, resetForm } =
     useFormik({
       initialValues,
@@ -56,6 +64,7 @@ export function UpdateProduct({ product }) {
 
         updateProduct({ ...values, id: product.id });
         closeModal();
+        successProductAlert();
       },
       validationSchema: Yup.object({
         nombre: Yup.string().required('Este dato es requerido'),

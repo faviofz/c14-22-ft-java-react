@@ -24,6 +24,13 @@ export function FormCategory() {
     }
   );
 
+  const successCategoryAlert = () => {
+  swal({
+    title: 'La categoria fue guardada',
+    icon: 'success',
+    timer: 1500,
+  });
+};
   return (
     <form onSubmit={handleSubmit}>
       <Input
