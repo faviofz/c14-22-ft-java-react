@@ -51,24 +51,34 @@ export function ProductDetail({ product }) {
           </h1>
         </div>
         <h2>
-          Marca: <span className='font-semibold'>{product.marca.nombre}</span>
+          Marca:
+          <span className='text-lg font-semibold'>
+            <span> {product.marca.nombre}</span>
+          </span>
         </h2>
         <h2>
           Proveedor:
-          <span className='font-semibold'>{product.proveedor.nombre}</span>
+          <span className='text-lg  font-semibold'>
+            <span> {product.proveedor.nombre}</span>
+          </span>
         </h2>
         <h2>
           Fecha de vencimiento:
           <span className='text-lg font-semibold'>
-            {product.fechaVencimiento}
+            <span> {product.fechaVencimiento}</span>
           </span>
         </h2>
         <h2>
-          Costo: <span className='text-lg font-semibold'>{product.costo}</span>
+          Costo:
+          <span className='text-lg font-semibold'>
+            <span> USD {product.costo.toLocaleString()}</span>
+          </span>
         </h2>
 
-        <h2 className='mt-5 text-lg font-semibold text-center'>Stock</h2>
-        <table className='table '>
+        <div className='mt-5 text-md font-semibold text-center bg-accent'>
+          Stock
+        </div>
+        <table className='table'>
           <thead>
             <tr>
               <th>Minimo</th>
@@ -79,13 +89,13 @@ export function ProductDetail({ product }) {
           <tbody>
             <tr>
               <td>
-                <h2>{product.min} </h2>
+                <h2>{product.min}</h2>
               </td>
               <td>
-                <h2>{product.actual} </h2>
+                <h2>{product.actual}</h2>
               </td>
               <td>
-                <h2>{product.max} </h2>
+                <h2>{product.max}</h2>
               </td>
             </tr>
           </tbody>

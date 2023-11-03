@@ -114,7 +114,7 @@ export function UpdateProduct({ product }) {
               type='number'
               min='0'
               step='0.01'
-              label='Precio'
+              label='Precio (USD)'
               placeholder='Ingresar precio'
               {...getFieldProps('costo')}
               errorMessage={touched.costo && errors.costo}
