@@ -98,7 +98,7 @@ export function FormProduct() {
           />
 
           <Select
-            label='categoria'
+            label='Categoria'
             list={categories.map(e => ({
               id: e.id,
               value: e.name,

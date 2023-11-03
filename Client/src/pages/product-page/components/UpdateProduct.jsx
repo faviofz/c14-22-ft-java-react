@@ -100,7 +100,7 @@ export function UpdateProduct({ product }) {
           />
 
           <Select
-            label='categoria'
+            label='Categoria'
             list={categories.map(e => ({
               id: e.id,
               value: e.name,
