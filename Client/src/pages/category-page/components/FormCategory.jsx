@@ -2,35 +2,35 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { Input, Button } from '@/components';
 import { useCategories, useModal } from '@/hooks';
+import swal from 'sweetalert';
 
 export function FormCategory() {
   const { createCategory, loading } = useCategories();
   const { closeModal } = useModal();
-  const { handleSubmit, touched, errors, getFieldProps, resetForm } = useFormik(
-    {
-      initialValues: {
-        name: '',
-      },
-      onSubmit: (values, { resetForm }) => {
-        createCategory(values);
-        resetForm();
-        closeModal();
-      },
-      validationSchema: Yup.object({
-        name: Yup.string()
-          .required('Este dato es requerido')
-          .min(3, 'Debe tener más de 3 caracteres'),
-      }),
-    }
-  );
+  const { handleSubmit, touched, errors, getFieldProps } = useFormik({
+    initialValues: {
+      name: '',
+    },
+    onSubmit: (values, { resetForm }) => {
+      createCategory(values);
+      resetForm();
+      closeModal();
+      successCategoryAlert();
+    },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .required('Este dato es requerido')
+        .min(3, 'Debe tener más de 3 caracteres'),
+    }),
+  });
 
   const successCategoryAlert = () => {
-  swal({
-    title: 'La categoria fue guardada',
-    icon: 'success',
-    timer: 1500,
-  });
-};
+    swal({
+      title: 'La categoria fue guardada',
+      icon: 'success',
+      timer: 1500,
+    });
+  };
   return (
     <form onSubmit={handleSubmit}>
       <Input
