@@ -1,6 +1,6 @@
 package com.c14g22.stockwise.model;
 
-import com.c14g22.stockwise.dto.CategoriaDto;
+import com.c14g22.stockwise.dto.CategoriaRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,9 +23,8 @@ public class Categoria {
     @Column(nullable = false, unique = true)
     private String nombre;
 
-    public Categoria(CategoriaDto categoriaDto) {
-
-        this.nombre = categoriaDto.getNombre();
+    public Categoria(CategoriaRequest categoriaRequest) {
+        this.nombre = categoriaRequest.getNombre();
     }
 
     public Categoria(String nombre) {

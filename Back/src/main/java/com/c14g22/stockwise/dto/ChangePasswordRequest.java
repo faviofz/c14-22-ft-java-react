@@ -1,4 +1,4 @@
-package com.c14g22.stockwise.model;
+package com.c14g22.stockwise.dto;
 
 import org.springframework.lang.NonNull;
 

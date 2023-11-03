@@ -24,31 +24,30 @@ public class NotificacionController {
         this.notificacionRepository = notificacionRepository;
     }
 
-    @GetMapping("/notificaciones")
+    @GetMapping
     public List<Notificacion> getNotificaciones() {
         return notificacionService.obtenerNotificaciones();
     }
 
-    @GetMapping("/notificaciones({id}")
+    @GetMapping("/{id}")
     public Notificacion getNotificacion(@PathVariable Long id) {
         return this.notificacionService.obtenerNotificacionPorId(id);
     }
 
-    @PostMapping("/notificaciones")
+    @PostMapping
     public Notificacion createNotificacion(@RequestBody Notificacion notificacion) {
         return notificacionRepository.save(notificacion);
     }
 
-    @PutMapping("/notificaciones/{id}")
+    @PutMapping("/{id}")
     public Notificacion updateNotificacion(@PathVariable Long id, @RequestBody Notificacion notificacion) {
         notificacion.setId(id);
         return notificacionRepository.save(notificacion);
     }
 
-    @DeleteMapping("/notificaciones({id}")
+    @DeleteMapping("/{id}")
     public void deleteNotificacion(@PathVariable Long id) {
         notificacionRepository.deleteById(id);
     }
-
 
 }

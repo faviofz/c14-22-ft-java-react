@@ -6,7 +6,7 @@ import com.c14g22.stockwise.exception.notfound.CategoriaNotFoundException;
 import com.c14g22.stockwise.exception.notfound.MarcaNotFoundException;
 import com.c14g22.stockwise.exception.notfound.ProductoNotFoundException;
 import com.c14g22.stockwise.exception.notfound.UsernameDuplicateException;
-import com.c14g22.stockwise.model.ErrorMessage;
+import com.c14g22.stockwise.dto.ErrorMessage;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

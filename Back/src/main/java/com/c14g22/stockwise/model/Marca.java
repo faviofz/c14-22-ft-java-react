@@ -1,6 +1,6 @@
 package com.c14g22.stockwise.model;
 
-import com.c14g22.stockwise.dto.MarcaDto;
+import com.c14g22.stockwise.dto.MarcaRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +24,8 @@ public class Marca {
     @Column(nullable = false)
     private String nombre;
 
-    public Marca(MarcaDto marcaDto) {
-
-        this.nombre = marcaDto.getNombre();
+    public Marca(MarcaRequest marcaRequest) {
+        this.nombre = marcaRequest.getNombre();
     }
 
     public Marca(String nombre) {

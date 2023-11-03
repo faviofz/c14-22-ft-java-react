@@ -12,12 +12,11 @@ export function NotificationButton() {
   }, []);
 
 
-
   const filteredNotifications = products
     .filter(product => product.min > product.actual)
     .map(product => ({
       title: `Falta de Stock - ${product.nombre}`,
-      to: `/notification`, 
+      to: `/notification`,
     }));
 
   return (
@@ -35,14 +34,13 @@ export function NotificationButton() {
           <h1 className='menu-title'>Notificaciones</h1>
         </li>
         {filteredNotifications.slice(-5).map((notification, index) => {
-       
           return(
             <li key={index}>
-            <Link className='text-sm text-secondary' to={notification.to}>
-              {notification.title}
-            </Link>
-          </li>
-          )
+              <Link className='text-sm text-secondary' to={notification.to}>
+                {notification.title}
+              </Link>
+            </li>
+          );
         })}
       </ul>
     </details>

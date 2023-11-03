@@ -12,12 +12,16 @@ import com.mercadopago.client.preference.PreferencePaymentMethodRequest;
 import com.mercadopago.client.preference.PreferencePaymentMethodsRequest;
 import com.mercadopago.client.preference.PreferencePaymentTypeRequest;
 import com.mercadopago.client.preference.PreferenceRequest;
+import com.mercadopago.client.preference.PreferenceShipmentsRequest;
 import com.mercadopago.exceptions.MPApiException;
 import com.mercadopago.exceptions.MPException;
+import com.mercadopago.net.MPResponse;
 import com.mercadopago.resources.preference.Preference;
 import java.math.BigDecimal;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +29,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class PaymentController {
+
+  @Value("${mercadopago.access_token}")
+  private String MERCADOPAGO_ACCESS_TOKEN;
 
 //  @PostMapping("/process_payment")
 //  public ResponseEntity<PaymentResponse> processPayment(
@@ -59,29 +66,39 @@ public class PaymentController {
 //  }
 
   @GetMapping("/createPreference")
-  public String preferenceMP() throws MPException, MPApiException {
-    MercadoPagoConfig.setAccessToken(
-        "TEST-1308096199358299-110121-3997b10096a0437110903ef1928911bb-191771922");
+  public MPResponse preferenceMP() throws MPException, MPApiException {
+    System.out.println(MERCADOPAGO_ACCESS_TOKEN);
+    MercadoPagoConfig.setAccessToken(MERCADOPAGO_ACCESS_TOKEN);
     String url = "http://localhost:8080/feedback";
 
-    PreferenceItemRequest itemRequest = PreferenceItemRequest.builder().id("1234").title("Games")
-        .description("PS5").pictureUrl("").categoryId("games").quantity(2).currencyId("BRL")
-        .unitPrice(new BigDecimal("4000")).build();
+    PreferenceItemRequest itemRequest = PreferenceItemRequest.builder()
+        .id("1234")
+        .title("Suscripción mensual Stockwise.")
+        .description("Suscripción mensual Stockwise.")
+        .pictureUrl(
+            "https://cdn.discordapp.com/attachments/1159947813938020454/1169833536564494376/Group_159.png?ex=6556d761&is=65446261&hm=7117e7e7d1ef1a164d5857ab27de8a841b6973282bca62a8f6757aed9c3834d4&")
+        .categoryId("suscription")
+        .quantity(1)
+        .currencyId("ARS")
+        .unitPrice(new BigDecimal("1"))
+        .build();
+
     List<PreferenceItemRequest> items = new ArrayList<>();
     items.add(itemRequest);
 
-    PhoneRequest phoneRequest = PhoneRequest.builder().number("38917239812").areaCode("3865")
+    PhoneRequest phoneRequest = PhoneRequest.builder().number("6257580").areaCode("385")
         .build();
 
-    IdentificationRequest identificationRequest = IdentificationRequest.builder().type("CPF")
-        .number("19119119100").build();
+    IdentificationRequest identificationRequest = IdentificationRequest.builder().type("DNI")
+        .number("38483213").build();
 
     AddressRequest addressRequest = AddressRequest.builder().streetName("Street")
-        .streetNumber("123").zipCode("06233200").build();
+        .streetNumber("422").zipCode("4400").build();
 
     PreferencePayerRequest payerRequest = PreferencePayerRequest.builder()
-        .name("Melina de los Angeles").surname("Valdez").email("melii.crack99@hotmail.com")
-        .phone(phoneRequest).identification(identificationRequest).address(addressRequest).build();
+        .name("Favio").surname("Valdez").email("favioo.wow@gmail.com")
+        .phone(phoneRequest).identification(identificationRequest).address(addressRequest)
+        .dateCreated(OffsetDateTime.now()).build();
 
     PreferenceBackUrlsRequest preferenceBackUrlsRequest = PreferenceBackUrlsRequest.builder()
         .success(url).failure(url).pending(url).build();
@@ -99,23 +116,31 @@ public class PaymentController {
     List<PreferencePaymentTypeRequest> excludedPaymentTypes = new ArrayList<>();
     excludedPaymentTypes.add(PreferencePaymentTypeRequest.builder().id("ticket").build());
     excludedPaymentTypes.add(PreferencePaymentTypeRequest.builder().id("debit_card").build());
+
     PreferencePaymentMethodsRequest preferencePaymentMethodsRequest = PreferencePaymentMethodsRequest.builder()
         .excludedPaymentMethods(excludedPaymentMethods).excludedPaymentTypes(excludedPaymentTypes)
         .installments(1).build();
 
-    PreferenceRequest preferenceRequest = PreferenceRequest.builder()
-        .payer(payerRequest)
-        .items(items)
-        .backUrls(preferenceBackUrlsRequest)
-        .paymentMethods(preferencePaymentMethodsRequest)
-        .autoReturn("approved")
-        .statementDescriptor("MINEGOCIO")
+    PreferenceShipmentsRequest preferenceShipmentsRequest = PreferenceShipmentsRequest.builder()
+        .mode("not_specified")
+        .build();
+
+    PreferenceRequest preferenceRequest = PreferenceRequest.builder().payer(payerRequest)
+        .items(items).backUrls(preferenceBackUrlsRequest)
+        .paymentMethods(preferencePaymentMethodsRequest).autoReturn("approved")
+        .shipments(preferenceShipmentsRequest)
+        .statementDescriptor("Pago de suscripción mensual de stockwise")
         .build();
 
     PreferenceClient client = new PreferenceClient();
 
-    Preference preference = client.create(preferenceRequest);
-    return preference.getId();
+    try {
+      Preference preference = client.create(preferenceRequest);
+      return preference.getResponse();
+    } catch (MPApiException e) {
+      System.out.println(e.getApiResponse().getContent());
+      return null;
+    }
   }
 
   @GetMapping("/feedback")
