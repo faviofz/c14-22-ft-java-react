@@ -17,11 +17,10 @@
     <br />
     <div align='center'>
     <a href="https://stockwise-client.vercel.app/" target="_blank">
-          <img src="https://img.shields.io/badge/Ver_Demo-3378FF?style=for-the-badge
-"/>
-</a>
+          <img  src="https://img.shields.io/badge/Ver_Demo-3378FF?style=for-the-badge"/>
+      </a></div>
     <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
-          <img src="https://img.shields.io/badge/Reportar_Bug-3378FF?style=for-the-badge"/>
+          <img  src="https://img.shields.io/badge/Reportar_Bug-3378FF?style=for-the-badge"/>
       </a></div>
     
   </p>
