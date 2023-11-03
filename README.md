@@ -122,7 +122,7 @@ npm run dev
 ```
 
 O simplemente clickea en el link de
-<a href="https://github.com/No-Country/c14-22-ft-java-react" target="_blank">Ver Demo.</a>
+<a href="https://stockwise-client.vercel.app/" target="_blank">Ver Demo.</a>
 
 <!-- USAGE EXAMPLES -->
 <h1> Uso
@@ -289,7 +289,15 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1> Video
 </h1>
 
-<p><a href="#" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
+<p><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
+
+<img src="https://i.imgur.com/CnxiHOh.png"/>
+
+<!-- Screenshots -->
+<h1>Capturas de Pantalla
+</h1>
+
+<img src="https://i.imgur.com/PiiZO5v.png"/>
 
 <br/>
 
@@ -298,6 +306,4 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <img src="https://cdn.icon-icons.com/icons2/317/PNG/512/heart-icon_34407.png" width="23"> Agradecimientos
 </h1>
 
-<a href="https://www.nocountry.tech/" target="_blank">
-    <img src="https://assets-global.website-files.com/62cc216ce23f79c10bc88169/63973e99052373b810cce94b_Branding%20NC-06-p-500.png" alt="Banner">
-  </a>
+[No Country](https://www.nocountry.tech/)

@@ -18,11 +18,12 @@ export function FilterDate({ onDateChange }) {
     <div className='flex items-center justify-between gap-3 '>
       <DatePicker
         selected={startDate}
+        dateFormat="dd/MM/yyyy"
         onChange={date => handleDateChange(date, endDate)}
         selectsStart
         startDate={startDate}
         endDate={endDate}
-        className='h-10 flex-1 border input input-md sm:bg-base-200'
+        className='flex-1 h-10 border input input-md sm:bg-base-200'
         showIcon
         icon={
           <IconCal className=' inset-0 m-auto mr-2 [&>path]:fill-secondary-content' />
@@ -30,12 +31,13 @@ export function FilterDate({ onDateChange }) {
       />
       <DatePicker
         selected={endDate}
+        dateFormat="dd/MM/yyyy"
         onChange={date => handleDateChange(startDate, date)}
         selectsEnd
         startDate={startDate}
         endDate={endDate}
         minDate={startDate}
-        className='h-10 flex-1 border input input-md sm:bg-base-200'
+        className='flex-1 h-10 border input input-md sm:bg-base-200'
         showIcon
         icon={
           <IconCal className=' inset-0 m-auto mr-2 [&>path]:fill-secondary-content' />
