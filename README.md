@@ -299,7 +299,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <img src="https://i.imgur.com/PiiZO5v.png"/>
 
-<br/><br/><br/><br/>
+<br/>
 
 <!-- ACKNOWLEDGMENTS -->
 <h1> 
