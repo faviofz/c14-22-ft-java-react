@@ -15,7 +15,9 @@ export function useProducts() {
   const dispatch = useDispatch();
 
   function getAllProducts() {
-    if (!products.length) dispatch(getAllProductsAsync());
+    if (!products.length) {
+      dispatch(getAllProductsAsync());
+    }
   }
 
   function getProduct(id) {
