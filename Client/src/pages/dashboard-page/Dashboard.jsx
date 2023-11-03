@@ -4,8 +4,10 @@ import { toast } from 'react-toastify';
 import { Container } from '@/components';
 import { DashboardPanel, Welcome, Stat } from './components';
 import { useProducts, useProviders, useMovements } from '@/hooks';
-import { TableUltimos } from '../product-page/components/';
+import { ProductsDashboard } from '@/pages/product-page/components/ProductsDashboard';
+
 import NotificationDash from '../../components/notificacion-dash/NotificationDash';
+
 import {
   ProductIcon,
   ProviderIcon,
@@ -14,6 +16,7 @@ import {
   IconSalida,
 } from '@/assets/svg';
 import './dashboard-page.scss';
+import { Botoncito } from '../../components/botoncito/botoncito';
 
 export default function Dashboard() {
   const { products, loading: loadingProducts, getAllProducts } = useProducts();
@@ -41,7 +44,7 @@ export default function Dashboard() {
     <div className='dashboard-page'>
       <Container>
         <Welcome />
-
+        <Botoncito />
         <div className='box-border flex flex-col justify-center w-full gap-5 mb-5 starts-group'>
           <Stat
             title='Productos'
@@ -80,7 +83,7 @@ export default function Dashboard() {
             isProduct={true}
           >
             <DashboardPanel.Content>
-              <TableUltimos data={products} />
+              <ProductsDashboard />
             </DashboardPanel.Content>
             <DashboardPanel.Footer>
               <Link to={'/product'} className='w-full mt-5 btn btn-primary'>

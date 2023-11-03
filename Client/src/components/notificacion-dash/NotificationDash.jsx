@@ -23,7 +23,9 @@ export default function NotificationDash() {
           <li key={index}>
             <div className='flex flex-row justify-between border-b-2'>
               <Link to={notification.to}>{notification.title}</Link>
-              <Link className='mb-1' to={notification.to}><p>Ver Detalles</p></Link>
+              <Link className='mb-1' to={notification.to}>
+                <p>Ver Detalles</p>
+              </Link>
             </div>
           </li>
         ))

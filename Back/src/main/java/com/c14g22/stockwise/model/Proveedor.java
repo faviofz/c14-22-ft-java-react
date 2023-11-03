@@ -1,6 +1,5 @@
 package com.c14g22.stockwise.model;
 
-import com.c14g22.stockwise.dto.ProveedorDto;
 import com.c14g22.stockwise.dto.ProveedorRequest;
 import jakarta.persistence.*;
 import lombok.Getter;

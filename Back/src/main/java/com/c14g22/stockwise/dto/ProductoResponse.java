@@ -31,9 +31,9 @@ public class ProductoResponse {
     private Integer min;
     private Integer max;
     private Integer actual;
-    private CategoriaDto categoria;
-    private ProveedorDto proveedor;
-    private MarcaDto marca;
+    private CategoriaResponse categoria;
+    private ProveedorResponse proveedor;
+    private MarcaResponse marca;
 
 
     public ProductoResponse(Producto producto) {
@@ -47,8 +47,8 @@ public class ProductoResponse {
         this.min = producto.getMin();
         this.max = producto.getMax();
         this.actual = producto.getActual();
-        this.categoria = producto.getCategoria() != null ? new CategoriaDto(producto.getCategoria()) : null;
-        this.proveedor = producto.getProveedor() != null ? new ProveedorDto(producto.getProveedor()) : null;
-        this.marca = producto.getMarca() != null ? new MarcaDto(producto.getMarca()) : null;
+        this.categoria = producto.getCategoria() != null ? new CategoriaResponse(producto.getCategoria()) : null;
+        this.proveedor = producto.getProveedor() != null ? new ProveedorResponse(producto.getProveedor()) : null;
+        this.marca = producto.getMarca() != null ? new MarcaResponse(producto.getMarca()) : null;
     }
 }

@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
 import { ViewIcon } from '@/assets/svg';
 import { useProducts, useModal } from '@/hooks/';
 import { TableSkeleton } from '@/components';
 import { ProductDetail } from './ProductDetail';
-export function TableUltimos({ data }) {
-  const { loading } = useProducts();
+
+export function ProductsDashboard() {
+  const { products, loading } = useProducts();
   const { openModal } = useModal();
   const headers = ['Nombre', 'Imagen', 'Acciones'];
 
@@ -22,7 +22,7 @@ export function TableUltimos({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.slice(-7).map(product => (
+            {products.slice(-7).map(product => (
               <tr key={product.id}>
                 <td>{product.nombre}</td>
                 <td>
@@ -50,6 +50,3 @@ export function TableUltimos({ data }) {
     </>
   );
 }
-TableUltimos.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.any),
-};

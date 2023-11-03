@@ -1,6 +1,7 @@
 package com.c14g22.stockwise.service;
 
-import com.c14g22.stockwise.dto.CategoriaDto;
+import com.c14g22.stockwise.dto.CategoriaRequest;
+import com.c14g22.stockwise.dto.CategoriaResponse;
 import com.c14g22.stockwise.model.Categoria;
 
 import java.util.List;
@@ -13,9 +14,9 @@ public interface CategoriaService {
 
     Categoria obtenerCategoriaPorNombre(String nombre);
 
-    CategoriaDto guardarCategoria(CategoriaDto categoriaDto);
+    CategoriaResponse guardarCategoria(CategoriaRequest categoriaRequest);
 
-    void actualizarCategoria(Long id, CategoriaDto categoriaDto);
+    CategoriaResponse actualizarCategoria(Long id, CategoriaRequest categoriaRequest);
 
     void eliminarCategoria(Long id);
 }
