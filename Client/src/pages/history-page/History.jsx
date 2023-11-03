@@ -43,13 +43,8 @@ export default function History() {
   };
 
   const handleDateChange = (start, end) => {
-    // console.log(`${start} -> ${end}`)
-    if (end == 'end') {
-      setStartDate(start);
-    } else {
       setStartDate(start);
       setEndDate(end);
-    }
   };
 
   return (
