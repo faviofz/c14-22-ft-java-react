@@ -10,7 +10,6 @@
 
 <h3>Bienvenid@s a StockWise</h3></div>
 <div >
-
   <p>
     Sistema de Gestión de Inventario para Pequeñas Empresas que ofrece una solución práctica y asequible para ayudar a las mismas a mantener un control eficiente de su inventario, lo que a su vez puede mejorar la rentabilidad y la eficiencia operativa.
   </p>
@@ -32,11 +31,10 @@
 "/>
       </a>
       </div>
-    <br>
 </div>
 
 <!-- ABOUT THE PROJECT -->
-
+<br>
 <h1> 
 <img src="Client/public/favicon.svg" width="18px">
 Acerca del Proyecto
