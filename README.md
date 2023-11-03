@@ -289,9 +289,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1> Video
 </h1>
 
-<p><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
-
-<img src="https://i.imgur.com/CnxiHOh.png"/>
+<p><a href="#" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
 
 <br/><br/><br/><br/>
 
