@@ -17,6 +17,7 @@ export function UpdateCategory({ product }) {
         updateCategory({ ...values, id: product.id });
         resetForm();
         closeModal();
+        successCategoryAlert();
       },
       validationSchema: Yup.object({
         name: Yup.string()
@@ -25,6 +26,15 @@ export function UpdateCategory({ product }) {
       }),
     }
   );
+
+  const successCategoryAlert = () => {
+    swal({
+      title: 'La categoria fue actualizada',
+      icon: 'success',
+      timer: 1500,
+    });
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <Input
@@ -38,7 +48,7 @@ export function UpdateCategory({ product }) {
       <div className='flex flex-col gap-3 min-[500px]:flex-row min-[500px]:justify-between'>
         <Button
           type='button'
-          onClick={resetForm}
+          onClick={() => closeModal()}
           disabled={loading}
           className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >

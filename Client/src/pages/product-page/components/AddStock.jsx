@@ -79,9 +79,9 @@ export function AddStock() {
         ) : (
           <div className='flex flex-col items-center justify-center pt-[3rem] pb-[3rem] text-[1rem] text-center'>
             <InfoIcon className='w-[2rem] h-[2rem] mb-3 [&>path]:fill-secondary-content' />
-            Para hacer un pedido
+            Seleccione un proveedor
             <br />
-            tienes que seleccionar un proveedor
+            para registrar un pedido
           </div>
         )}
       </div>

@@ -39,18 +39,6 @@ export default function Dashboard() {
     getAllMovements();
   }, []);
 
-  const notify = () => {
-    toast.info('Falta de Stock - Coca Cola 2lt', {
-      position: 'bottom-right',
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-  };
 
   return (
     <div className='dashboard-page'>
@@ -114,12 +102,6 @@ export default function Dashboard() {
 
             <DashboardPanel.Footer>
               <div className='flex flex-col gap-3 mt-5'>
-                <button
-                  onClick={() => notify()}
-                  className='w-full btn btn-primary btn-outline'
-                >
-                  Crear Toast
-                </button>
                 <Link to={'/notification'} className='w-full btn btn-primary'>
                   Ver más notificaciones
                 </Link>
