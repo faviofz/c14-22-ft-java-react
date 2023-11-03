@@ -27,15 +27,13 @@
           <img  src="https://img.shields.io/badge/VER_DISE%C3%91O-3378FF?style=for-the-badge&logo=figma&logoColor=%23343B4E
 "/>
       </a>
-      </div>
-    <br>
-</div>
-    <div align='center>
       <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
           <img  src="https://img.shields.io/badge/REPORTAR_BUG-343B4E?style=for-the-badge
 "/>
       </a>
-    </div>
+      </div>
+    <br>
+</div>
 
 <!-- ABOUT THE PROJECT -->
 
@@ -52,11 +50,23 @@ StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empre
 <h3>Front-End</h3>
 
 ![React](https://img.shields.io/static/v1?style=for-the-badge&message=React&color=222222&logo=React&logoColor=61DAFB&label=)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+![DaisyUI](https://img.shields.io/badge/daisyui-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white)	
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Formik](https://img.shields.io/badge/FORMIK-172B4D?style=for-the-badge)
+![YUP](https://img.shields.io/badge/YUP-000?style=for-the-badge)
+![Cloudinary](https://img.shields.io/badge/cloudinary-3448C5?style=for-the-badge)
 ![Vercel](https://img.shields.io/static/v1?style=for-the-badge&message=Vercel&color=000000&logo=Vercel&logoColor=FFFFFF&label=)
 
 <h3>Back-End</h3>
 
 ![Java](https://img.shields.io/badge/Java-%2523ED8B00.svg?style=for-the-badge&logo=oracle&logoColor=red&color=white)
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 ![Railway](https://img.shields.io/badge/Railway-000?style=for-the-badge&logo=railway&logoColor=white&labelColor=black&color=black)
 
 <h3>Base de datos</h3>
