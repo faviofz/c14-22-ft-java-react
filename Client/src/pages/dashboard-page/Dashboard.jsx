@@ -4,8 +4,10 @@ import { toast } from 'react-toastify';
 import { Container } from '@/components';
 import { DashboardPanel, Welcome, Stat } from './components';
 import { useProducts, useProviders, useMovements } from '@/hooks';
-import { TableUltimos } from '../product-page/components/';
+import { ProductsDashboard } from '@/pages/product-page/components/ProductsDashboard';
+
 import NotificationDash from '../../components/notificacion-dash/NotificationDash';
+
 import {
   ProductIcon,
   ProviderIcon,
@@ -93,7 +95,7 @@ export default function Dashboard() {
             isProduct={true}
           >
             <DashboardPanel.Content>
-              <TableUltimos data={products} />
+              <ProductsDashboard />
             </DashboardPanel.Content>
             <DashboardPanel.Footer>
               <Link to={'/product'} className='w-full mt-5 btn btn-primary'>
