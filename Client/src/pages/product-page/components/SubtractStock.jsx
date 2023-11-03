@@ -2,6 +2,7 @@ import { useProducts } from '@/hooks';
 import { Button, Counter, TableSkeleton } from '@/components';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 export function SubtractStock({ data, setFiltered }) {
   const { products, loading, subtractStock, getAllProducts } = useProducts();
@@ -13,11 +14,11 @@ export function SubtractStock({ data, setFiltered }) {
 
   const submitStock = () => {
     const parse = Object.values(newStock);
-    const filtered = parse.filter(e => e.actual != 0);
+    const filtered = parse.filter(e => e.actual !== 0);
 
     if (filtered.length === 0) {
       swal({
-        title: 'No ha hecho ninguna pedido',
+        title: 'No ha hecho ningún pedido de salida',
         icon: 'error',
         button: true,
       });
@@ -31,7 +32,7 @@ export function SubtractStock({ data, setFiltered }) {
   useEffect(() => {
     getAllProducts();
   }, []);
-
+  console.log(newStock);
   const headers = ['Producto', 'Stock minimo', 'Stock actual', 'Egreso'];
   return (
     <>
@@ -57,6 +58,7 @@ export function SubtractStock({ data, setFiltered }) {
                     <Counter
                       handler={setStockById}
                       currentValue={newStock[item.id]?.actual ?? 0}
+                      actual={item.actual}
                       id={item.id}
                     />
                   </td>

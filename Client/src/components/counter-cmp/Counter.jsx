@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import { Input } from '@/components';
+import swal from 'sweetalert';
 import './counter-cmp.scss';
 
-export function Counter({ handler, currentValue, id }) {
+export function Counter({ handler, currentValue, id, actual }) {
   const handleChange = ({ target }) => {
     if (Number(target.value) < 0) return;
     handler(id)(target.value);
@@ -10,7 +11,18 @@ export function Counter({ handler, currentValue, id }) {
 
   const handleClick = num => () => {
     if (Number(currentValue) + num < 0) return;
-    handler(id)(String(Number(currentValue) + num));
+
+    if (!actual) {
+      handler(id)(String(Number(currentValue) + num));
+    } else {
+      currentValue + num <= actual
+        ? handler(id)(String(Number(currentValue) + num))
+        : swal(
+            'La cantidad de salida no puede superar el stock actual',
+            '',
+            'warning'
+          );
+    }
   };
 
   return (
@@ -30,8 +42,9 @@ export function Counter({ handler, currentValue, id }) {
     </div>
   );
 }
-Counter.propType = {
+Counter.propTypes = {
   handler: PropTypes.func,
-  currentValue: PropTypes.string,
+  currentValue: PropTypes.number,
   id: PropTypes.number,
+  actual: PropTypes.number, // solo lo usaremos para la sustracción
 };

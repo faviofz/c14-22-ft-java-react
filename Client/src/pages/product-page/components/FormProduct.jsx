@@ -11,13 +11,14 @@ import {
 } from '@/hooks';
 import { Input, Select, Preload } from '@/components';
 import { ImageIcon } from '@/assets/svg';
+import swal from 'sweetalert';
 
 export function FormProduct() {
   const { categories, getAllCategories } = useCategories();
   const { brands, getAllBrands } = useBrands();
   const { providers, getAllProviders } = useProviders();
   const { createProduct } = useProducts();
-  const { handleImage, image, loading, resetImage } = useUploadImage();
+  const { handleImage, image, loading } = useUploadImage();
   const { closeModal } = useModal();
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export function FormProduct() {
     max: 0,
     actual: 0,
   };
-  
+
   const successProductAlert = () => {
     swal({
       title: 'El producto fue guardado',
@@ -48,39 +49,33 @@ export function FormProduct() {
     });
   };
 
-  const { handleSubmit, touched, errors, values, getFieldProps, resetForm } =
-    useFormik({
-      initialValues,
-      onSubmit: values => {
-        values.fechaVencimiento = values.fechaVencimiento
-          .split('-')
-          .reverse()
-          .join('-');
+  const { handleSubmit, touched, errors, values, getFieldProps } = useFormik({
+    initialValues,
+    onSubmit: values => {
+      values.fechaVencimiento = values.fechaVencimiento
+        .split('-')
+        .reverse()
+        .join('-');
 
-        createProduct(values);
-        closeModal();
-        successProductAlert();
-      },
-      validationSchema: Yup.object({
-        nombre: Yup.string().required('Este dato es requerido'),
-        imagen: Yup.string().required('Este dato es requerido'),
-        costo: Yup.number().required('Este dato es requerido'),
-        // impuesto: Yup.number().required('Este dato es requerido'),
-        fechaVencimiento: Yup.date()
-          .min(new Date())
-          .required('Este dato es requerido'),
-        categoria: Yup.string().required('Este dato es requerido'),
-        proveedor: Yup.string().required('Este dato es requerido'),
-        marca: Yup.string().required('Este dato es requerido'),
-        min: Yup.number().required('Este dato es requerido'),
-        max: Yup.number().required('Este dato es requerido'),
-      }),
-    });
-
-  const handleReset = () => {
-    resetForm();
-    resetImage();
-  };
+      createProduct(values);
+      closeModal();
+      successProductAlert();
+    },
+    validationSchema: Yup.object({
+      nombre: Yup.string().required('Este dato es requerido'),
+      imagen: Yup.string().required('Este dato es requerido'),
+      costo: Yup.number().required('Este dato es requerido'),
+      // impuesto: Yup.number().required('Este dato es requerido'),
+      fechaVencimiento: Yup.date()
+        .min(new Date())
+        .required('Este dato es requerido'),
+      categoria: Yup.string().required('Este dato es requerido'),
+      proveedor: Yup.string().required('Este dato es requerido'),
+      marca: Yup.string().required('Este dato es requerido'),
+      min: Yup.number().required('Este dato es requerido'),
+      max: Yup.number().required('Este dato es requerido'),
+    }),
+  });
 
   return (
     <form
