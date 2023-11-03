@@ -55,7 +55,7 @@ export function AddStockTable({ data, handleShow, setProductsNoStock }) {
               onClick={submitStock}
               className='btn btn-primary btn-block mt-2'
             >
-              Hacer Pedido
+              Registrar entrada
             </button>
           )}
         </div>
