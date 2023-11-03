@@ -95,18 +95,14 @@ O simplemente clickea en el link de
 <h1> Uso
 </h1>
 
-
 Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a partir de alli podras gestionar todo tu negocio con control de productos, seguimineto de las transacciones internas de la empresa y recepcion de notificaiones y alertas correspondientes.
 
 <!-- TEAMS -->
 
 <h1> Equipo
 </h1>
-
-<table align='center' >
-<tr>
-    <td align='center'>
-      <div >
+      <div align='center' style='display:flex; flex-wrap: wrap; column-gap: 3.5rem; justify-content: center'>
+      <div style='margin-bottom: 1rem'>
         <a href="https://github.com/alejoaraya" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/82895574?v=4"/>
         </a>
@@ -123,8 +119,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         </div>
       </div>
-    </td>
-    <td align='center'>
       <div >
         <a href="https://github.com/jooseariias" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/98505589?v=4"/>
@@ -142,8 +136,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         </div>
       </div>
-    </td>
-    <td align='center'>
       <div >
         <a href="https://github.com/luisangelsalcedo" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/8843955?v=4"/>
@@ -161,14 +153,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         </div>
       </div>
-    </td>
-  </tr>
-</tr>
-</table>
-<table align='center' >
-<tr>
-
-<td align='center'>
       <div >
         <a href="https://github.com/crishof" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/113149470?v=4"/>
@@ -186,9 +170,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         </div>
       </div>
-    </td>
-<td align='center'>
-      <div >
+      <div style='margin-bottom: 1rem'>
         <a href="https://github.com/faviofz" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/65041258?v=4"/>
         </a>
@@ -205,15 +187,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         </div>
       </div>
-    </td>
-
-    
-</tr>
-</tr>
-</table>
-<table align='center' >
-<tr>
-<td align='center'>
       <div >
         <a href="https://github.com/alvarodvc" target="_blank" rel="author">
           <img width="110" src="https://ca.slack-edge.com/T02KS88FB0E-U05UEK6G8P6-a2808b4d92a3-512"/>
@@ -231,8 +204,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         </div>
       </div>
-    </td>
-    <td align='center'>
       <div >
         <a href="https://github.com/Melina1599" target="_blank" rel="author">
           <img width="110" src="https://avatars.githubusercontent.com/u/72995774?v=4"/>
@@ -250,8 +221,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         </div>
       </div>
-    </td></tr>
-</table>
+      </div>
 
 <!-- Video -->
 <h1> Video
