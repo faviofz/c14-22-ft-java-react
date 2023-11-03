@@ -11,7 +11,7 @@ export function FilterDate({ onDateChange }) {
   const handleDateChange = (startDate, endDate) => {
     setStartDate(startDate);
     setEndDate(endDate);
-    onDateChange(startDate, endDate);
+      onDateChange(startDate, endDate);
   };
 
   return (

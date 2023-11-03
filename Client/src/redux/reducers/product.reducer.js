@@ -57,6 +57,7 @@ export const addStockAsync = createAsyncThunk(
 export const subtractStockAsync = createAsyncThunk(
   'products/subtractStock',
   async arr => {
+    // console.log(arr)
     const response = await serviceSubtractStock(arr);
     return response;
   }
