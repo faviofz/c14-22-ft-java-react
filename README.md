@@ -164,6 +164,8 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
     </td>
     
   </tr>
+  </table>
+  <table align='center'>
 <tr>
 <td align='center'>
       <div >
@@ -206,7 +208,9 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
     
 </tr>
-<tr>
+</table>
+<table align='center'>
+  <tr>
 <td align='center'>
       <div >
         <a href="https://github.com/alvarodvc" target="_blank" rel="author">
@@ -244,7 +248,8 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </a>
         </div>
       </div>
-    </td></tr>
+    </td>
+    </tr>
 </table>
 
 <!-- Video -->
