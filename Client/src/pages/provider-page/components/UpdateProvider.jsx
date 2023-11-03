@@ -67,7 +67,7 @@ export function UpdateProvider({ provider }) {
       <div className='flex flex-col gap-3 min-[500px]:flex-row min-[500px]:justify-between'>
         <Button
           type='button'
-          onClick={resetForm}
+          onClick={() => closeModal()}
           disabled={loading}
           className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >

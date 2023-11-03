@@ -39,6 +39,14 @@ export function FormProduct() {
     max: 0,
     actual: 0,
   };
+  
+  const successProductAlert = () => {
+    swal({
+      title: 'El producto fue guardado',
+      icon: 'success',
+      timer: 1500,
+    });
+  };
 
   const { handleSubmit, touched, errors, values, getFieldProps, resetForm } =
     useFormik({
@@ -51,6 +59,7 @@ export function FormProduct() {
 
         createProduct(values);
         closeModal();
+        successProductAlert();
       },
       validationSchema: Yup.object({
         nombre: Yup.string().required('Este dato es requerido'),
@@ -207,7 +216,7 @@ export function FormProduct() {
       <div className='flex flex-col gap-3 min-[500px]:flex-row min-[500px]:justify-between'>
         <button
           type='button'
-          onClick={() =>closeModal()}
+          onClick={() => closeModal()}
           className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >
           Cancelar
