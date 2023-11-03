@@ -6,7 +6,6 @@
   <a href="https://github.com/No-Country/c14-22-ft-java-react" target="_blank">
     <img src="Client\src\components\logo-cmp\logo.svg" alt="Banner">
   </a>
-
 <h3>Bienvenid@s a StockWise</h3></div>
 <div>
   <p>
@@ -16,7 +15,7 @@
     <a href="https://stockwise-client.vercel.app/" target="_blank">
           <img  src="https://img.shields.io/badge/VER_DEMO-3378FF?style=for-the-badge&logo=vercel&logoColor=%23343B4E"/>
        </a>
-   <!-- <a href="https://inexpensive-action-production.up.railway.app/swagger-ui/index.html " target="_blank">
+   <a href="https://inexpensive-action-production.up.railway.app/swagger-ui/index.html " target="_blank">
           <img  src="https://img.shields.io/badge/VER_API-3378FF?style=for-the-badge&logo=swagger&logoColor=%23343B4E
 "/>
       </a>
@@ -27,10 +26,9 @@
       <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
           <img  src="https://img.shields.io/badge/REPORTAR_BUG-343B4E?style=for-the-badge
 "/>
-      </a> -->
+      </a>
       </div>
 </div>
-
 <!-- ABOUT THE PROJECT -->
 <br>
 <h1> 
@@ -39,10 +37,8 @@ Acerca del Proyecto
 </h1>
 
 StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empresas. Esta innovadora aplicación ofrece una solución práctica y asequible para ayudar a las pequeñas empresas a mantener un control eficiente de su inventario. Con StockWise, puedes rastrear cada artículo en tu inventario, recibir alertas en tiempo real y generar informes detallados con facilidad. Ayudando a eliminar el desorden y la confusión, nuestra aplicación puede mejorar la rentabilidad y la eficiencia operativa de tu negocio. Contrata StockWise hoy mismo y lleva tu negocio al siguiente nivel
-
 <h1> Tecnologias Usadas
 </h1>
-
 <h3>Front-End</h3>
 
 ![React](https://img.shields.io/static/v1?style=for-the-badge&message=React&color=222222&logo=React&logoColor=61DAFB&label=)
@@ -57,7 +53,6 @@ StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empre
 ![YUP](https://img.shields.io/badge/YUP-000?style=for-the-badge)
 ![Cloudinary](https://img.shields.io/badge/cloudinary-3448C5?style=for-the-badge)
 ![Vercel](https://img.shields.io/static/v1?style=for-the-badge&message=Vercel&color=000000&logo=Vercel&logoColor=FFFFFF&label=)
-
 <h3>Back-End</h3>
 
 ![Java](https://img.shields.io/badge/Java-%2523ED8B00.svg?style=for-the-badge&logo=oracle&logoColor=red&color=white)
@@ -65,12 +60,10 @@ StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empre
 ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=Hibernate&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
 ![Railway](https://img.shields.io/badge/Railway-000?style=for-the-badge&logo=railway&logoColor=white&labelColor=black&color=black)
-
 <h3>Base de datos</h3>
 
 ![PostgreSQL](https://img.shields.io/static/v1?style=for-the-badge&message=PostgreSQL&color=4169E1&logo=PostgreSQL&logoColor=FFFFFF&label=)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
-
 <h3>QA</h3>
 
 ![Jira](https://img.shields.io/badge/Jira-FFF?style=for-the-badge&logo=jira&logoColor=blue)
@@ -78,7 +71,6 @@ StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empre
 <!-- Organización -->
 <h1> Organización
 </h1>
-
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain-wordmark.svg" alt="Logo" width="90" height="90">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Logo" width="60" height="60">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg" alt="Logo" width="60" height="60">
@@ -122,7 +114,6 @@ O simplemente clickea en el link de
 </h1>
 
 Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a partir de alli podras gestionar todo tu negocio con control de productos, seguimineto de las transacciones internas de la empresa y recepcion de notificaiones y alertas correspondientes.
-
 <!-- TEAMS -->
 
 <h1> Equipo ( c14-22-ft-java-react )
@@ -187,7 +178,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </div>
       </div>
     </td>
-    
   </tr>
   </table>
   <table align='center'>
@@ -230,7 +220,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         </div>
       </div>
     </td>
-
+  
 </tr>
 </table>
 <table align='center'>
@@ -279,7 +269,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <!-- Video -->
 <h1> Video
 </h1>
-
 <p><a href="#" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
 <br/>
 
@@ -287,5 +276,4 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1> 
 <img src="https://cdn.icon-icons.com/icons2/317/PNG/512/heart-icon_34407.png" width="23"> Agradecimientos
 </h1>
-
-[No Country](https://www.nocountry.tech/)
+<img src="https://assets-global.website-files.com/62cc216ce23f79c10bc88169/63973e99052373b810cce94b_Branding%20NC-06-p-500.png" width="200">
