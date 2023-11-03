@@ -15,7 +15,7 @@
     Sistema de Gestión de Inventario para Pequeñas Empresas que ofrece una solución práctica y asequible para ayudar a las mismas a mantener un control eficiente de su inventario, lo que a su vez puede mejorar la rentabilidad y la eficiencia operativa.
     <br />
     <br />
-    <div align='center' >
+    <div align='center'>
     <a href="https://stockwise-client.vercel.app/" target="_blank">
           <img src="https://img.shields.io/badge/Ver_Demo-3378FF?style=for-the-badge
 "/>
