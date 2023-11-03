@@ -81,9 +81,6 @@ public class ProductoServiceImpl implements ProductoService {
   public ProductoResponse actualizarProducto(Long id, ProductoRequest productoRequest)
       throws NullPointerException {
     Producto producto = productoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-    if (productoRequest.getNombre() == null) {
-      throw new NullPointerException("El nombre no puede ser null");
-    }
     producto.setNombre(productoRequest.getNombre());
     producto.setImagen(productoRequest.getImagen());
     producto.setCosto(productoRequest.getCosto());
@@ -121,9 +118,14 @@ public class ProductoServiceImpl implements ProductoService {
   public List<ProductoResponse> actualizarProductosSumarActual(List<StockPatchRequest> requestList) {
     List<Producto> productoList = this.productoRepository.findAllById(requestList.stream().map(
         StockPatchRequest::id).toList());
+    Producto producto;
+    Optional<Producto> opt;
     for (StockPatchRequest r : requestList) {
-      productoList.stream().filter(p -> p.getId().equals(r.id())).findFirst()
-          .ifPresent(p -> p.setActual(p.getActual() + r.actual()));
+      opt = productoList.stream().filter(p -> p.getId().equals(r.id())).findFirst();
+      if (opt.isPresent()) {
+        producto = opt.get();
+        producto.setActual(Math.min(producto.getActual() + r.actual(), producto.getMax()));
+      }
     }
     return this.productoRepository.saveAll(productoList).stream().map(ProductoResponse::new).toList();
   }
@@ -131,8 +133,8 @@ public class ProductoServiceImpl implements ProductoService {
   public List<ProductoResponse> actualizarProductosRestarActual(List<StockPatchRequest> requestList) {
     List<Producto> productoList = this.productoRepository.findAllById(requestList.stream().map(
         StockPatchRequest::id).toList());
-    Producto producto = null;
-    Optional<Producto> opt = null;
+    Producto producto;
+    Optional<Producto> opt;
     for (StockPatchRequest r : requestList) {
       opt = productoList.stream().filter(p -> p.getId().equals(r.id())).findFirst();
       if (opt.isPresent()) {

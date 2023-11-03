@@ -1,4 +1,4 @@
-package com.c14g22.stockwise;
+package com.c14g22.stockwise.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
