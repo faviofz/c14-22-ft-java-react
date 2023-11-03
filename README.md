@@ -17,8 +17,8 @@
     <a href="https://stockwise-client.vercel.app/" target="_blank">
           <img  src="https://img.shields.io/badge/VER_DEMO-3378FF?style=for-the-badge&logo=vercel&logoColor=%23343B4E
 "/>
-      </a>
-    <a href="https://inexpensive-action-production.up.railway.app/swagger-ui/index.html " target="_blank">
+       </a>
+   <!-- <a href="https://inexpensive-action-production.up.railway.app/swagger-ui/index.html " target="_blank">
           <img  src="https://img.shields.io/badge/VER_API-3378FF?style=for-the-badge&logo=swagger&logoColor=%23343B4E
 "/>
       </a>
@@ -29,7 +29,7 @@
       <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
           <img  src="https://img.shields.io/badge/REPORTAR_BUG-343B4E?style=for-the-badge
 "/>
-      </a>
+      </a> -->
       </div>
 </div>
 
@@ -287,16 +287,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1> Video
 </h1>
 
-<p><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
-
-<img src="https://i.imgur.com/CnxiHOh.png"/>
-
-<!-- Screenshots -->
-<h1>Capturas de Pantalla
-</h1>
-
-<img src="https://i.imgur.com/PiiZO5v.png"/>
-
+<p><a href="#" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
 <br/>
 
 <!-- ACKNOWLEDGMENTS -->
