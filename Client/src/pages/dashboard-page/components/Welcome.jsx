@@ -34,7 +34,7 @@ export function Welcome() {
           <h3>
             {
               // tiene que actualizarse la hora
-              new Date('2023-11-1 22:20:26').toLocaleTimeString('es', {
+              new Date().toLocaleTimeString('es', {
                 hour: '2-digit',
                 minute: '2-digit',
               })

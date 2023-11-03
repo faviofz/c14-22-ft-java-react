@@ -10,12 +10,11 @@ export function NotificationButton() {
     getAllProducts();
   }, []);
 
-
   const filteredNotifications = products
     .filter(product => product.min > product.actual)
     .map(product => ({
       title: `Falta de Stock - ${product.nombre}`,
-      to: `/notification`, 
+      to: `/notification`,
     }));
 
   return (

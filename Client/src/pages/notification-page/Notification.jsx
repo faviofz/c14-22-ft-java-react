@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { AccordionItem } from './components/AccordionItem';
 import { BellSVG } from '@/assets/svg';
-import { useProducts } from "../../hooks/useProducts";
+import { useProducts } from '../../hooks/useProducts';
 
 export default function Notification() {
   const { products, getAllProducts } = useProducts();
@@ -10,7 +10,9 @@ export default function Notification() {
     getAllProducts();
   }, []);
 
-  const filteredProducts = products.filter(product => product.min > product.actual);
+  const filteredProducts = products.filter(
+    product => product.min > product.actual
+  );
 
   return (
     <div className='flex flex-col items-center justify-center w-full gap-5 notification-component'>
