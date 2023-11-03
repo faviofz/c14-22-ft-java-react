@@ -1,12 +1,5 @@
-<!-- # c14-22-ft-java-react
-
-<br /> -->
 
 <div>
-
-<!-- ![Github Contributors](https://img.shields.io/github/contributors/No-Country/C13-41-FT-NODE-REACT)
-![Github Stars](https://img.shields.io/github/stars/No-Country/C13-41-FT-NODE-REACT)
-![Github Issues](https://img.shields.io/github/issues-raw/No-Country/C13-41-FT-NODE-REACT) -->
 
 <!-- PROJECT LOGO -->
 <br />
@@ -22,9 +15,15 @@
     Sistema de Gestión de Inventario para Pequeñas Empresas que ofrece una solución práctica y asequible para ayudar a las mismas a mantener un control eficiente de su inventario, lo que a su vez puede mejorar la rentabilidad y la eficiencia operativa.
     <br />
     <br />
-    <a href="https://stockwise-client.vercel.app/" target="_blank">Ver Demo</a>
-    ·
-    <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">Reportar Bug</a>
+    <div align='center'>
+    <a href="https://stockwise-client.vercel.app/" target="_blank">
+          <img style='width:8rem; border-radius: 1rem; height: 2rem; margin-right:5em' src="https://img.shields.io/badge/Ver_Demo-3378FF?style=for-the-badge
+"/>
+</a>
+    <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
+          <img style='width:8rem; border-radius: 1rem; height: 2rem' src="https://img.shields.io/badge/Reportar_Bug-3378FF?style=for-the-badge"/>
+      </a></div>
+    
   </p>
 </div>
 
@@ -100,7 +99,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <!-- TEAMS -->
 
-<h1> Equipo
+<h1> Equipo ( c14-22-ft-java-react )
 </h1>
 
 <table align='center'>
@@ -256,7 +255,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <h1> Video
 </h1>
 
-<p><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img style='width:8rem' src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
+<p><a href="https://www.youtube.com/watch?v=vl8dI9hspQI" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
 
 <img src="https://i.imgur.com/CnxiHOh.png"/>
 
