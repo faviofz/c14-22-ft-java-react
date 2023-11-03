@@ -12,21 +12,20 @@ export function SubtractStock({ data, setFiltered }) {
   };
 
   const submitStock = () => {
-    const parse = Object.values(newStock)
+    const parse = Object.values(newStock);
     const filtered = parse.filter(e => e.actual != 0);
-    
-    if(filtered.length === 0){
+
+    if (filtered.length === 0) {
       swal({
         title: 'No ha hecho ninguna pedido',
-            icon: 'error',
+        icon: 'error',
         button: true,
       });
     } else {
-    //   subtractStock(Object.values(newStock));
-    // setNewStock({});
-    // setFiltered(products);
+      subtractStock(Object.values(newStock));
+      setNewStock({});
+      setFiltered(products);
     }
-    
   };
 
   useEffect(() => {
