@@ -148,7 +148,7 @@ export function UpdateProduct({ product }) {
                 <Preload />
               ) : image ? (
                 <img
-                  className='w-full h-full object-contain'
+                  className='object-contain w-full h-full'
                   src={image}
                   alt='Nueva imagen de producto'
                 />
@@ -209,7 +209,7 @@ export function UpdateProduct({ product }) {
       <div className='flex flex-col gap-3 min-[500px]:flex-row min-[500px]:justify-between'>
         <button
           type='button'
-          onClick={handleReset}
+          onClick={() =>closeModal()}
           disabled={loading}
           className='w-full btn btn-outline btn-primary min-[500px]:w-[11rem]'
         >
