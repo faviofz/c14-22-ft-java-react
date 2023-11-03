@@ -45,7 +45,7 @@ export default function History() {
   const handleDateChange = (start, end) => {
       setStartDate(start);
       setEndDate(end);
-    }
+  };
 
   return (
     <div>

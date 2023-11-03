@@ -25,7 +25,8 @@ export default function Notification() {
           <AccordionItem
             key={index}
             title={`Falta Stock  ${product.nombre}`}
-            description={`minimo:${product.min} actual:${product.actual}`}
+            description1={`Minimo: ${product.min}`}
+            description2={`Actual: ${product.actual}`}
           />
         ))}
       </div>
