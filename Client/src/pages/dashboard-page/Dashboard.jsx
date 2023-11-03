@@ -1,11 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { toast } from 'react-toastify';
 import { Container } from '@/components';
 import { DashboardPanel, Welcome, Stat } from './components';
 import { useProducts, useProviders, useMovements } from '@/hooks';
 import { ProductsDashboard } from '@/pages/product-page/components/ProductsDashboard';
-
 import NotificationDash from '../../components/notificacion-dash/NotificationDash';
 
 import {
@@ -16,7 +14,6 @@ import {
   IconSalida,
 } from '@/assets/svg';
 import './dashboard-page.scss';
-import { Botoncito } from '../../components/botoncito/botoncito';
 
 export default function Dashboard() {
   const { products, loading: loadingProducts, getAllProducts } = useProducts();
@@ -38,7 +35,6 @@ export default function Dashboard() {
     getAllProducts();
     getAllMovements();
   }, []);
-
 
   return (
     <div className='dashboard-page'>
