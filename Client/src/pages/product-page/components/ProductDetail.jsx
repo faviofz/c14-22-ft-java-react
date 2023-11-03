@@ -64,7 +64,7 @@ export function ProductDetail({ product }) {
           </span>
         </h2>
         <h2>
-          Costo: <span className='text-lg font-semibold'>{product.costo}</span>
+          Costo: <span className='text-lg font-semibold'>${product.costo}</span>
         </h2>
 
         <h2 className='mt-5 text-lg font-semibold text-center'>Stock</h2>
