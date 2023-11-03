@@ -121,10 +121,14 @@ const productsSlice = createSlice({
     });
     builder.addCase(addStockAsync.fulfilled, (state, action) => {
       state.loading = false;
-      const pedidos = action.payload;
-      pedidos.forEach(({ id, actual }) => {
-        const index = state.products.findIndex(product => product.id === id);
-        state.products[index].actual += actual;
+      const productosModified = action.payload;
+      // console.log('addStock', productosModified);
+
+      productosModified.forEach(prodMod => {
+        const index = state.products.findIndex(
+          product => product.id === prodMod.id
+        );
+        state.products[index] = prodMod;
       });
     });
     // -------------------------------- SUSTRACT STOCK
@@ -133,10 +137,14 @@ const productsSlice = createSlice({
     });
     builder.addCase(subtractStockAsync.fulfilled, (state, action) => {
       state.loading = false;
-      const pedidos = action.payload;
-      pedidos.forEach(({ id, actual }) => {
-        const index = state.products.findIndex(product => product.id === id);
-        state.products[index].actual -= actual;
+      const productosModified = action.payload;
+      // console.log('subtractStock', productosModified);
+
+      productosModified.forEach(prodMod => {
+        const index = state.products.findIndex(
+          product => product.id === prodMod.id
+        );
+        state.products[index] = prodMod;
       });
     });
   },
