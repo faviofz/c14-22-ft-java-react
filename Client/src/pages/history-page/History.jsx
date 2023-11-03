@@ -10,7 +10,7 @@ export default function History() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterType, setFilterType] = useState('');
   const [filteredMovements, setFilteredMovements] = useState([]);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date('01/01/2023'));
   const [endDate, setEndDate] = useState(new Date());
 
   useEffect(() => {
