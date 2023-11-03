@@ -16,20 +16,26 @@
   </p>
     <div align='center'>
     <a href="https://stockwise-client.vercel.app/" target="_blank">
-          <img  src="https://img.shields.io/badge/Ver_Demo-3378FF?style=for-the-badge"/>
+          <img  src="https://img.shields.io/badge/VER_DEMO-3378FF?style=for-the-badge&logo=vercel&logoColor=%23343B4E
+"/>
       </a>
     <a href="https://inexpensive-action-production.up.railway.app/swagger-ui/index.html " target="_blank">
-          <img  src="https://img.shields.io/badge/VER_API-3378FF?style=for-the-badge"/>
+          <img  src="https://img.shields.io/badge/VER_API-3378FF?style=for-the-badge&logo=swagger&logoColor=%23343B4E
+"/>
       </a>
     <a href="https://www.figma.com/file/lIB64kDohOKOsdSNGkOSue/c14-22-ft-java-react" target="_blank">
-          <img  src="https://img.shields.io/badge/VER_DISEÑO-3378FF?style=for-the-badge"/>
-      </a>
-    <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
-          <img  src="https://img.shields.io/badge/Reportar_Bug-3378FF?style=for-the-badge"/>
+          <img  src="https://img.shields.io/badge/VER_DISE%C3%91O-3378FF?style=for-the-badge&logo=figma&logoColor=%23343B4E
+"/>
       </a>
       </div>
     <br>
 </div>
+    <div align='center>
+      <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
+          <img  src="https://img.shields.io/badge/REPORTAR_BUG-343B4E?style=for-the-badge
+"/>
+      </a>
+    </div>
 
 <!-- ABOUT THE PROJECT -->
 
