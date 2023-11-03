@@ -18,7 +18,7 @@
     <a href="https://stockwise-client.vercel.app/" target="_blank">
           <img  src="https://img.shields.io/badge/Ver_Demo-3378FF?style=for-the-badge"/>
       </a>
-    <a style='margin-left:5rem' href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
+    <a href="https://github.com/No-Country/c14-22-ft-java-react/issues" target="_blank">
           <img  src="https://img.shields.io/badge/Reportar_Bug-3378FF?style=for-the-badge"/>
       </a>
       </div>
@@ -52,6 +52,15 @@ StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empre
 ![PostgreSQL](https://img.shields.io/static/v1?style=for-the-badge&message=PostgreSQL&color=4169E1&logo=PostgreSQL&logoColor=FFFFFF&label=)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 
+<h1>Seccion especial</h1>
+<h3>i QA ! :D</h3>
+<h5>Trabajan arduamente </h5>
+
+![Jira](https://img.shields.io/badge/Jira-FFF?style=for-the-badge&logo=jira&logoColor=blue)
+
+
+
+
 <!-- Organización -->
 <h1> Organización
 </h1>
@@ -76,7 +85,13 @@ git clone https://github.com/No-Country/c14-22-ft-java-react.git
 Instalar dependencias
 
 ```sh
-npm install
+cd .\Client\ | npm install
+```
+
+Crear un archivo llamado '.env' con esta variable de entorno
+
+```sh
+VITE_API_URL=https://inexpensive-action-production.up.railway.app
 ```
 
 Correr el proyecto
