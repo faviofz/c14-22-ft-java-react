@@ -275,6 +275,6 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <div align='center'>
 <h3>Agradecimientos</h3>
   <a href="https://www.nocountry.tech/" target="_blank">
-    <img style='background-color:black;' src="https://media.licdn.com/dms/image/C4D0BAQHJ8T4EUDhVTQ/company-logo_200_200/0/1657893488557/nocountryforjuniordevs_logo?e=1707350400&v=beta&t=R2aSPlNCmmjeLeK_fQp0vI1kvqLQcsRriQHDCwp3_rM" width="200">
+    <img style='background-color:black;' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsukYB3HL90LSwYv_RIR2O2OlCV8Sbkx2eNHv8nRvOu8L16FxLQ0nPzY02wQ_BJOfQZw&usqp=CAU" width="200">
   </a>
 </div>
