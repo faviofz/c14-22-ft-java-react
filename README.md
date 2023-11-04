@@ -9,7 +9,7 @@
 <h3>Bienvenid@s a StockWise</h3></div>
 <div>
   <p>
-    Sistema de Gestión de Inventario para Pequeñas Empresas que ofrece una solución práctica y asequible para ayudar a las mismas a mantener un control eficiente de su inventario, lo que a su vez puede mejorar la rentabilidad y la eficiencia operativa.
+    <strong>Sistema de Gestión de Inventario para pequeñas empresas</strong>. Ofrecemos una solución práctica y simple para ayudar a las mismas a mantener un control eficiente de su inventario, aumentando la rentabilidad y la eficiencia operativa.
   </p>
     <div align='center'>
     <a href="https://stockwise-client.vercel.app/" target="_blank">
@@ -33,7 +33,10 @@
 Acerca del Proyecto
 </h1>
 
-StockWise es un Sistema de Gestión de Inventario diseñado para Pequeñas Empresas. Esta innovadora aplicación ofrece una solución práctica y asequible para ayudar a las pequeñas empresas a mantener un control eficiente de su inventario. Con StockWise, puedes rastrear cada artículo en tu inventario, recibir alertas en tiempo real y generar informes detallados con facilidad. Ayudando a eliminar el desorden y la confusión, nuestra aplicación puede mejorar la rentabilidad y la eficiencia operativa de tu negocio. Contrata StockWise hoy mismo y lleva tu negocio al siguiente nivel
+StockWise es un Sistema de Gestión de Inventario <b>orientado a pequeñas empresas</b>. Esta innovadora aplicación ofrece una solución práctica y asequible para ayudarte a mantener un control eficiente del inventario.
+Con StockWise, puedes rastrear cada artículo en tu inventario, recibir alertas en tiempo real y generar informes detallados con facilidad, ayudando a eliminar el desorden, la confusión y el uso de planillas manuales, hojas de Excel o blocks de notas.
+<strong>¡Contrata StockWise hoy mismo y lleva tu empresa al siguiente nivel!</strong>
+Nuestra aplicación puede mejorar la rentabilidad y la eficiencia operativa de tu negocio, además te permitirá tener mayor tiempo libre para realizar otras actividades.
 
 <h1> Tecnologias Usadas
 </h1>
@@ -234,7 +237,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
         <a href="https://github.com/alvarodvc" target="_blank">
           <img style='width:8rem' src="https://img.shields.io/static/v1?style=for-the-badge&message=GitHub&color=172B4D&logo=GitHub&logoColor=FFFFFF&label="/>
         </a>
-        <a href="https://www.linkedin.com/in/joose-ari-b08729233/" target="_blank">
+        <a href="https://www.linkedin.com/in/alvaro-deveze/" target="_blank">
           <img style='width:8rem' src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/>
         </a>
         </div>
@@ -271,5 +274,7 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 
 <div align='center'>
 <h3>Agradecimientos</h3>
-<img src="https://assets-global.website-files.com/62cc216ce23f79c10bc88169/63973e99052373b810cce94b_Branding%20NC-06-p-500.png" width="200">
+  <a href="https://www.nocountry.tech/" target="_blank">
+    <img style='background-color:black;' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsukYB3HL90LSwYv_RIR2O2OlCV8Sbkx2eNHv8nRvOu8L16FxLQ0nPzY02wQ_BJOfQZw&usqp=CAU" width="200">
+  </a>
 </div>
