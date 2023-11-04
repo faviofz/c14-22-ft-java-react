@@ -264,11 +264,12 @@ Puedes comenzar registrandote en nuestro portal, luego podras iniciar sesion y a
 <!-- Video -->
 <h1> Video
 </h1>
-<p><a href="#" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/Video-c14_22_ft_java_react-red?style=for-the-badge&logo=youtube"/></a></p>
+<p><a href="https://www.youtube.com/watch?v=QVgfj7hjp8g" target="_blank"><img src="https://img.youtube.com/vi/QVgfj7hjp8g/maxresdefault.jpg"/></a></p>
 <br/>
 
 <!-- ACKNOWLEDGMENTS -->
-<h1> 
-<img src="https://cdn.icon-icons.com/icons2/317/PNG/512/heart-icon_34407.png" width="23"> Agradecimientos
-</h1>
+
+<div align='center'>
+<h3>Agradecimientos</h3>
 <img src="https://assets-global.website-files.com/62cc216ce23f79c10bc88169/63973e99052373b810cce94b_Branding%20NC-06-p-500.png" width="200">
+</div>
