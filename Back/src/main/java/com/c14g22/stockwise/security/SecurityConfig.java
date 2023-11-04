@@ -67,6 +67,7 @@ public class SecurityConfig {
             request -> request.requestMatchers("/signup", "/login", "/resetPassword",
                     "/changePassword").permitAll()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
+                .requestMatchers("/createPreference").denyAll()
                 .anyRequest().authenticated())
         .exceptionHandling(
             httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint(

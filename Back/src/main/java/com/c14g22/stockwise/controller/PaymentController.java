@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PaymentController {
 
-  @Value("${mercadopago.access_token}")
+  @Value("${mercadopago.access_token:#{null}}")
   private String MERCADOPAGO_ACCESS_TOKEN;
 
 //  @PostMapping("/process_payment")
@@ -67,7 +67,6 @@ public class PaymentController {
 
   @GetMapping("/createPreference")
   public MPResponse preferenceMP() throws MPException, MPApiException {
-    System.out.println(MERCADOPAGO_ACCESS_TOKEN);
     MercadoPagoConfig.setAccessToken(MERCADOPAGO_ACCESS_TOKEN);
     String url = "http://localhost:8080/feedback";
 
